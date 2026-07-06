@@ -1085,7 +1085,6 @@ function showTab(t){
       <div class="ghostRows"><div class="ghostBox"></div><div class="ghostBox"></div><div class="ghostBox wide"></div></div>`;
     drawDashChart();
   }
-  }
   else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:11.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
   else if(t==='projects'){
     m.innerHTML=`<h2>Projects</h2><div style="margin:10px 0"><input type="text" placeholder="" style="max-width:260px"> <button class="btn sm" style="background:#4E495F; margin-left:8px;">+ NEW PROJECT</button></div>`+tbl(['Project name','Job number','Client name','Recent activity','Actions'],MOCK.projects, true);
