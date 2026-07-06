@@ -1031,15 +1031,59 @@ function expandProjectSurvey(rowElement, projName) {
   switchSubTab('ex', 'survey_dash');
   container.scrollIntoView({ behavior: 'smooth' });
 }
-
+const dashData=[
+  ['BMR Industrial','2026-06-21',[0,1,0,0,0]],
+  ['YXY Company','2026-03-07',[1,4,1,6,0]],
+  ['CTR Consulting','2026-05-02',[1,2,3,1,0]],
+  ['QEC Refinery','2026-07-01',[0,1,0,1,0]]
+];
+function drawDashChart(){
+  const plot=document.getElementById('dashPlot'), xl=document.getElementById('dashXLabels');
+  if(!plot)return;
+  const s=document.getElementById('dashStart').value, e=document.getElementById('dashEnd').value;
+  const rows=dashData.filter(d=>(!s||d[1]>=s)&&(!e||d[1]<=e));
+  const MAXY=6, H=220;
+  plot.innerHTML=''; xl.innerHTML='';
+  for(let v=0;v<=MAXY;v+=2){
+    const g=document.createElement('div');g.className='vGrid';g.style.bottom=(v/MAXY*H)+'px';
+    g.innerHTML=`<i>${v}</i>`;plot.appendChild(g);
+  }
+  if(!rows.length){
+    plot.innerHTML+='<div style="margin:auto;font-size:12px;color:var(--ink-soft)">No results in this date range</div>';
+    return;
+  }
+  rows.forEach(([name,date,counts])=>{
+    const grp=document.createElement('div');grp.className='vGroup';
+    counts.forEach((c,i)=>{
+      if(!c)return;
+      const b=document.createElement('div');b.className='vBar';
+      b.style.background=CAT[i][1];b.style.height=(c/MAXY*H)+'px';
+      b.title=name+' — '+c+' result'+(c>1?'s':'');
+      b.innerHTML='<span>'+c+'</span>';grp.appendChild(b);
+    });
+    plot.appendChild(grp);
+    const lbl=document.createElement('div');lbl.textContent=name;xl.appendChild(lbl);
+  });
+}
 function showTab(t){
   const m=document.getElementById('exMain');
   if(t==='dashboard'){
     m.innerHTML=`<h2 style="font-size:17px">Total # of samples collected by % of OEL category</h2>
+      <div class="dashDates">
+        <label>Start date<input type="date" id="dashStart" value="2026-01-01" onchange="drawDashChart()"></label>
+        <label>End date<input type="date" id="dashEnd" value="2026-12-31" onchange="drawDashChart()"></label>
+      </div>
       <div class="oelLegend"><span><i style="background:var(--oel-red)"></i>&gt;100%</span><span><i style="background:var(--oel-orange)"></i>50–100%</span><span><i style="background:var(--oel-yellow)"></i>10–50%</span><span><i style="background:var(--oel-blue)"></i>1–10%</span><span><i style="background:var(--oel-green)"></i>&lt;1%</span></div>
-      <div id="exChart" style="background:#fff;border-radius:10px;padding:14px"></div>`;
-    const ec=document.getElementById('exChart');
-    introData.forEach(([l,c])=>renderRow(ec,l,c));
+      <div class="vChartWrap">
+        <div class="vAxisLabel">Number of Results</div>
+        <div class="vChartArea">
+          <div class="vPlot" id="dashPlot"></div>
+          <div class="vXLabels" id="dashXLabels"></div>
+          <div class="xAxisLabel">Clients</div>
+        </div>
+      </div>
+      <div class="ghostRows"><div class="ghostBox"></div><div class="ghostBox"></div><div class="ghostBox wide"></div></div>`;
+    drawDashChart();
   }
   else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:11.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
   else if(t==='projects'){
