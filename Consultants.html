@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myIH — Interactive Sandbox for IH Teams</title>
+<!-- ==================================================================
+     MIXPANEL ANALYTICS — EDIT YOUR TOKEN
+     Replace YOUR_PROJECT_TOKEN_HERE below with your Mixpanel project token.
+     ================================================================== -->
+<script type="text/javascript">
+(function (f, b) { if (!b.__SV) { var e, g, i, h; window.mixpanel = b; b._i = []; b.init = function (e, f, c) { function g(a, d) { var b = d.split("."); 2 == b.length && ((a = a[b[0]]), (d = b[1])); a[d] = function () { a.push([d].concat(Array.prototype.slice.call(arguments, 0))); }; } var a = b; "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel"); a.people = a.people || []; a.toString = function (a) { var d = "mixpanel"; "mixpanel" !== c && (d += "." + c); a || (d += " (stub)"); return d; }; a.people.toString = function () { return a.toString(1) + ".people (stub)"; }; i = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" "); for (h = 0; h < i.length; h++) g(a, i[h]); var j = "set set_once union unset remove delete".split(" "); a.get_group = function () { function b(c) { d[c] = function () { call2_args = arguments; call2 = [c].concat(Array.prototype.slice.call(call2_args, 0)); a.push([e, call2]); }; } for (var d = {}, e = ["get_group"].concat(Array.prototype.slice.call(arguments, 0)), c = 0; c < j.length; c++) b(j[c]); return d; }; b._i.push([e, f, c]); }; b.__SV = 1.2; e = f.createElement("script"); e.type = "text/javascript"; e.async = !0; e.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === f.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; g = f.getElementsByTagName("script")[0]; g.parentNode.insertBefore(e, g); } })(document, window.mixpanel || []);
+mixpanel.init("d4e7c4c3ec74d60226dd1fa827567b9b", { debug: true, track_pageview: true, record_sessions_percent: 100, record_heatmap_data: true });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{ --teal:#7FA3A2; --teal-deep:#5F8887; --teal-header:#84A7A5; --slate:#4E495F; --slate-deep:#3B374A; --violet:#7B4FE0; --mist:#F4F6F6; --line:#E4E8E8; --ink:#3A3A3E; --ink-soft:#6E6E76; --oel-red:#D33B2F; --oel-orange:#F0A04B; --oel-yellow:#F7E04B; --oel-blue:#42A5F5; --oel-green:#8BC34A; }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:'Poppins','Segoe UI',sans-serif;background:linear-gradient(180deg,#fff,var(--mist));color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:920px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:14px}
+.shell{background:#fff;border-radius:18px;box-shadow:0 18px 60px rgba(59,55,74,.14);overflow:hidden;display:flex;flex-direction:column;flex:1}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--mist)}
+.logo{font-style:italic;font-weight:700;font-size:26px;letter-spacing:-1px;user-select:none}
+.logo .my{color:var(--teal)} .logo .ih{color:var(--slate)} .logo .tm{font-size:9px;font-style:normal;color:var(--ink-soft);vertical-align:top}
+.stepLabel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+.progress{display:flex;gap:5px;padding:9px 22px 0}
+.progress span{flex:1;height:4px;border-radius:2px;background:var(--mist);cursor:pointer;transition:background .3s}
+.progress span.on{background:var(--teal)}
+.stage{flex:1;position:relative;overflow-y:auto}
+.slide{display:none;padding:30px 34px 20px;animation:fadeIn .35s ease both}
+.slide.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:.3;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+h1{font-size:clamp(24px,4.4vw,36px);font-weight:600;color:var(--slate);line-height:1.16;letter-spacing:-.01em}
+h2{font-size:clamp(19px,3vw,24px);font-weight:600;color:var(--slate)}
+.sub{font-size:15px;color:var(--ink-soft);line-height:1.55;font-weight:300;margin-top:8px;max-width:640px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin-bottom:10px}
+.cardShadow{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(59,55,74,.10);padding:18px 20px}
+.grid2{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+.grid2>*{flex:1 1 280px}
+.btn{display:inline-block;background:var(--slate);color:#fff;font-weight:500;font-size:15px;padding:12px 26px;border:none;border-radius:8px;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,55,74,.25)}
+.btn.violet{background:var(--violet)}
+.btn.ghost{background:transparent;color:var(--slate);border:2px solid var(--slate)}
+.btn.sm{font-size:13px;padding:8px 16px}
+.chip{display:inline-block;background:var(--mist);color:var(--slate);border-radius:16px;padding:4px 12px;font-size:12px;font-weight:500}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 16px}
+.footnote{font-size:10.5px;color:var(--ink-soft);font-weight:300}
+input[type=text],input[type=number],select,textarea{font-family:inherit;font-size:14.5px;color:var(--slate);padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;width:100%;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--teal)}
+label{font-size:12px;color:var(--ink-soft);font-weight:500;display:block;margin-bottom:5px}
+.fieldRow{margin-top:12px}
+.radioRow{display:flex;gap:16px;margin-top:6px;font-size:13.5px;color:var(--ink)}
+.radioRow label{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink);font-weight:400;margin:0}
+.stats{display:flex;gap:0;margin-top:22px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(59,55,74,.10);overflow:hidden;flex-wrap:wrap}
+.stats div{flex:1 1 140px;padding:16px 18px;border-left:1.5px solid var(--mist)}
+.stats div:first-child{border-left:none}
+.stats b{display:block;font-size:26px;font-weight:700;color:var(--slate)}
+.stats span{font-size:12px;color:var(--ink-soft)}
+.appbar{background:var(--teal-header);color:#fff;padding:12px 18px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.appbar .abtns{display:flex;gap:8px}
+.abtn{background:var(--slate);color:#fff;font-size:10.5px;font-weight:500;border:none;border-radius:4px;padding:6px 10px;letter-spacing:.04em}
+.appbody{border:1.5px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:16px 18px;background:#FAFBFB}
+.oelLegend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--ink);margin:10px 0 14px}
+.oelLegend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.barRow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.barRow .lbl{width:130px;font-size:11.5px;color:var(--ink);text-align:right;flex-shrink:0}
+.barTrack{flex:1;height:22px;background:#EEF1F1;border-radius:4px;display:flex;overflow:hidden}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1);min-width:0}
+.seg.yellow{color:#6b6200}
+.tag{font-size:11px;font-weight:600;background:var(--mist);border-radius:10px;padding:1px 8px;white-space:nowrap}
+.tag.at{color:#2F80ED;background:#EAF2FD} .tag.hash{color:#2E9E5B;background:#EAF6EF} .tag.dol{color:#E4573D;background:#FDEEEA}
+.pill{display:inline-block;color:#fff;font-weight:600;font-size:12.5px;border-radius:16px;padding:5px 14px}
+#explore{display:none;flex:1;flex-direction:column}
+.exShell{display:flex;flex:1;min-height:520px}
+.exSide{width:190px;background:#fff;border-right:1.5px solid var(--line);padding:12px 0;flex-shrink:0}
+.exSide .who{padding:8px 16px 14px;border-bottom:1.5px solid var(--mist);margin-bottom:8px}
+.exSide .who b{font-size:12.5px;color:var(--slate);display:block}
+.exSide .who span{font-size:10px;color:var(--ink-soft)}
+.exNav{list-style:none}
+.exNav li{padding:9px 18px;font-size:13px;color:var(--ink);cursor:pointer;border-left:3px solid transparent}
+.exNav li:hover{background:var(--mist)}
+.exNav li.on{background:var(--mist);border-left-color:var(--teal);font-weight:500;color:var(--slate)}
+.exMain{flex:1;padding:18px 20px;overflow-y:auto;background:#FAFBFB}
+.exTop{background:var(--teal-header);padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+.exTop .logoW{font-style:italic;font-weight:700;font-size:19px;letter-spacing:-1px}
+.exTop .logoW .my{color:#DFEAE9}.exTop .logoW .ih{color:#fff}
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:10px;overflow:hidden}
+th{background:var(--mist);color:var(--slate);text-align:left;font-weight:600;padding:9px 12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+td{padding:9px 12px;border-top:1.5px solid var(--line);color:var(--ink)}
+tr:hover td{background:#F7F9F9}
+.disclaimer{text-align:center;font-size:11px;color:var(--ink-soft);padding:12px;border-top:1.5px solid var(--mist);background:#fff}
+.svHead{background:var(--teal-header);color:#fff;border-radius:12px 12px 0 0;padding:12px 16px 0}
+.svHead .svTitle{font-size:14px;font-weight:600}
+.svHead .svTitle span{font-weight:400;opacity:.85;font-size:12px}
+.svTabs{display:flex;gap:2px;margin-top:10px;overflow-x:auto}
+.svTabs span{font-size:11px;font-weight:500;padding:7px 14px;border-radius:8px 8px 0 0;color:#EAF3F2;white-space:nowrap;cursor:pointer}
+.svTabs span.on{background:#FAFBFB;color:var(--slate);font-weight:600}
+.svBody{border:1.5px solid var(--line);border-top:none;border-radius:0 0 12px 12px;background:#FAFBFB;padding:14px}
+.svGrid{display:flex;gap:14px;align-items:flex-start}
+.svGrid>div{flex:1 1 0;min-width:0}
+.panel{background:#fff;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.panelHd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1.5px solid var(--mist);font-size:13px;font-weight:600;color:var(--slate)}
+.panelBd{padding:12px 14px}
+.subj{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;cursor:pointer}
+.subj.active{border-color:var(--teal);background:#F2F7F7}
+.subjName{font-size:13px;font-weight:600;color:var(--slate)}
+.subjName .subjType{font-size:10px;font-weight:500;color:var(--ink-soft);background:var(--mist);border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+.subjChips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.dlDay{text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;padding:10px 0 2px}
+.dlFeed{max-height:230px;overflow-y:auto;padding:4px 14px 8px}
+.dlMsg{display:flex;gap:10px;padding:9px 0;border-bottom:1.5px solid var(--mist);animation:pop .3s ease both}
+.dlMsg:last-child{border-bottom:none}
+.dlMsg .dlT{width:58px;flex-shrink:0;text-align:right;font-size:10.5px;color:var(--ink-soft);padding-top:4px}
+.dlMsg .dlAv{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.dlMsg .dlBody{font-size:12.5px;line-height:1.55;color:var(--ink);min-width:0;overflow-wrap:break-word}
+.dlMsg .dlBody b{display:block;font-size:11px;color:var(--slate)}
+.dlComposer{display:flex;gap:8px;padding:10px 14px;border-top:1.5px solid var(--mist);background:#FAFBFB}
+.dlComposer input{flex:1}
+.dlHelp{font-size:10.5px;color:var(--ink-soft);padding:0 14px 10px;background:#FAFBFB}
+.dlHelp i{font-style:normal;font-weight:600}
+.dlHelp .h-at{color:#2F80ED}.dlHelp .h-hash{color:#2E9E5B}.dlHelp .h-dol{color:#E4573D}
+.mobileHint{display:none;font-size:10.5px;color:var(--ink-soft);text-align:center;padding:4px}
+
+/* Flawless CSS recreation of BMR Industrial Sample Data Sheet */
+.bmrReport{font-family:Arial,sans-serif;color:#333;background:#fff;border:1px solid #aaa;max-width:100%;margin:0 auto;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.bmrHeader{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:1px solid #333}
+.bmrTitleBlock{text-align:center;flex:1;font-size:12px;line-height:1.4}
+.bmrTitleBlock h3{font-size:14px;font-weight:bold;margin:2px 0}
+.bmrSectionHeader{background:#4E495F;color:#fff;font-size:11px;font-weight:bold;text-align:center;padding:5px 0;text-transform:uppercase;letter-spacing:0.5px}
+.bmrGrid{display:grid;grid-template-columns:120px 1fr 120px 1fr;border-bottom:1px solid #ccc}
+.bmrLabel{background:#f0f2f2;font-weight:bold;font-size:11px;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc}
+.bmrValue{font-size:11px;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;background:#fff}
+.bmrGrid .bmrLabel:nth-last-child(2), .bmrGrid .bmrValue:last-child{border-bottom:none}
+.bmrGrid .bmrValue:nth-child(4n){border-right:none}
+.bmrTable{width:100%;border-collapse:collapse;margin:0;font-size:11px}
+.bmrTable th{background:#e1e5e6;color:#333;font-weight:bold;text-transform:none;letter-spacing:normal;padding:6px;border:1px solid #ccc}
+.bmrTable td{padding:6px;border:1px solid #ccc;text-align:left}
+.bmrTable tr:nth-child(even){background:#f9fafb}
+/* Prompted question follow-ups (guided branching) */
+.qFollow{display:none;background:#F2F5F5;border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:10px 14px;margin-top:10px}
+.qFollow.open{display:block;animation:pop .3s ease both}
+.qFollow label{color:var(--slate)}
+.qFollow .note{font-size:11.5px;color:var(--teal-deep);font-weight:500;margin-top:8px}
+.qFollow .flag{font-size:11.5px;color:var(--oel-red);font-weight:600;margin-top:8px}
+/* Samples & Subjects panel (survey dashboard, left side) */
+.ssCard{border:1.5px solid var(--line);border-radius:10px;margin-top:12px;overflow:hidden;background:#ECECEF}
+.ssHd{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 14px;border-bottom:1.5px solid var(--line)}
+.ssHd .ssName{font-size:14px;font-weight:700;color:#26262c}
+.ssHd .ssEdit{font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);cursor:pointer}
+.ssBody{padding:12px}
+.ssAddWrap{text-align:center;margin-bottom:12px;position:relative}
+.sampleCard{background:#fff;border-radius:6px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);text-align:left}
+.sampleTop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sampleTop b{font-size:13px;color:#26262c}
+.sampleTop .skc{font-size:11px;color:var(--ink-soft);margin-left:6px}
+.sampleTop .openS{font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--slate);cursor:pointer;white-space:nowrap}
+.sampleLines{font-size:12px;color:var(--ink);line-height:1.75;margin-top:8px}
+.ssMenu{position:absolute;left:50%;transform:translateX(-50%);top:34px;background:#fff;border:1.5px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(59,55,74,.18);z-index:5;min-width:230px;text-align:left;display:none}
+.ssMenu.open{display:block;animation:pop .2s ease both}
+.ssMenu div{padding:9px 14px;font-size:12.5px;color:var(--slate);cursor:pointer;border-bottom:1px solid var(--mist)}
+.ssMenu div:last-child{border-bottom:none}
+.ssMenu div:hover{background:var(--mist)}
+@media(max-width:640px){
+  .slide{padding:22px 18px 16px}
+  .svGrid{flex-direction:column}
+  .svGrid>div{width:100%}
+  .exSide{width:104px}
+  .exSide .who{display:none}
+  .exNav li{padding:11px 8px;font-size:11px}
+  .mobileHint{display:block}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="shell">
+    <div class="hdr">
+      <div class="logo"><span class="my">my</span><span class="ih">IH</span><span class="tm">™</span></div>
+      <div class="stepLabel" id="stepLabel">Step 1 of 8</div>
+    </div>
+    <div class="progress" id="progress"></div>
+
+    <div class="stage" id="stage">
+      <section class="slide active">
+        <div class="eyebrow">Interactive sandbox · about 3 minutes</div>
+        <h1 id="c_heroH"></h1>
+        <p class="sub" id="c_heroSub"></p>
+        <div class="stats">
+          <div><b id="c_stat1n"></b><span id="c_stat1l"></span></div>
+          <div><b id="c_stat2n"></b><span id="c_stat2l"></span></div>
+          <div><b id="c_stat3n"></b><span id="c_stat3l"></span></div>
+        </div>
+        <p class="footnote" style="margin-top:8px">*Based on internal data from beta testing and active user subscriptions.</p>
+        <div style="margin-top:24px"><button class="btn" onclick="go(1)">Start the tour →</button></div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 2 · The dashboard</div>
+        <h2 id="c_dashH"></h2>
+        <p class="sub" id="c_dashSub"></p>
+        <div class="appbar" style="margin-top:16px"><span>Dashboard · Sam Garrison (DEMO)</span><div class="abtns"><button class="abtn">EXPAND</button></div></div>
+        <div class="appbody">
+          <div style="font-size:13px;font-weight:600;color:var(--slate)">Total # of samples collected by % of OEL category</div>
+          <div class="oelLegend">
+            <span><i style="background:var(--oel-red)"></i>&gt; 100% of OEL</span>
+            <span><i style="background:var(--oel-orange)"></i>50–100%</span>
+            <span><i style="background:var(--oel-yellow)"></i>10–50%</span>
+            <span><i style="background:var(--oel-blue)"></i>1–10%</span>
+            <span><i style="background:var(--oel-green)"></i>&lt; 1%</span>
+          </div>
+          <div id="introChart"></div>
+          <div style="font-size:11px;color:var(--ink-soft);margin-top:6px">Filter by date range, client, and hazard. Click a band to drill into the underlying samples.</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 3 · Structural Plan &amp; Scenarios</div>
+        <h2>Set up once. Sample forever.</h2>
+        <p class="sub" id="c_projSub"></p>
+        <div class="grid2">
+          <div class="cardShadow">
+            <div class="eyebrow" style="margin-bottom:6px">Client</div>
+            <div style="font-size:15px;font-weight:600;color:var(--slate)">YXY Company</div>
+            <div style="font-size:12.5px;color:var(--ink-soft);margin-top:4px">5133 Taravella Rd · Los Osos, CA</div>
+            <div class="chip" style="margin-top:10px">Contact: Site EHS Director</div>
+          </div>
+          <div class="cardShadow">
+            <div class="eyebrow" style="margin-bottom:6px">Project</div>
+            <div style="font-size:15px;font-weight:600;color:var(--slate)">2026 IH Sampling Campaign</div>
+            <div style="font-size:12.5px;color:var(--ink-soft);margin-top:4px">Sampling plan attached · Question groups assigned</div>
+            <div class="chip" style="margin-top:10px;background:#EAF3F2;color:var(--teal-deep)">Samples taken: 11 / 59</div>
+          </div>
+        </div>
+        
+        <hr style="margin:25px 0; border:none; border-top:1px dashed var(--line);">
+        <div class="eyebrow">Prompted questions — try it</div>
+        <h2 id="c_pqH" style="font-size:clamp(17px,2.6vw,21px)"></h2>
+        <p class="sub" id="c_pqSub"></p>
+        <div class="cardShadow" style="margin-top:16px;max-width:640px">
+          <div style="background:var(--slate);color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:500">Benzene Air Sampling Questions — Full Shift &amp; Short Term <span style="float:right;background:#D33B2F;border-radius:10px;padding:0 8px;font-size:11px" id="qCount">6</span></div>
+          <div class="fieldRow"><label>Did product drip from the hose during sampling?</label>
+            <div class="radioRow" onchange="answerQ(this,0)">
+              <label><input type="radio" name="q1" value="none"> No drip</label>
+              <label><input type="radio" name="q1" value="slight"> Slight</label>
+              <label><input type="radio" name="q1" value="moderate"> Moderate</label>
+              <label><input type="radio" name="q1" value="high"> High</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf0"></div>
+          <div class="fieldRow"><label>Activity included in the monitoring? (all that apply)</label>
+            <div class="radioRow" style="flex-wrap:wrap" onchange="answerQ(this,1)">
+              <label><input type="checkbox" value="connect"> Connecting line(s)</label>
+              <label><input type="checkbox" value="cargo"> Cargo operations</label>
+              <label><input type="checkbox" value="disconnect"> Disconnecting</label>
+              <label><input type="checkbox" value="purge"> Line clearing / purging</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf1"></div>
+          <div class="fieldRow"><label>Were engineering controls operating during the task?</label>
+            <div class="radioRow" onchange="answerQ(this,2)">
+              <label><input type="radio" name="q3" value="yes"> Yes</label>
+              <label><input type="radio" name="q3" value="no"> No</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf2"></div>
+          <div class="fieldRow"><label>Was respiratory protection worn during the task?</label>
+            <div class="radioRow" onchange="answerQ(this,3)">
+              <label><input type="radio" name="q4" value="yes"> Yes</label>
+              <label><input type="radio" name="q4" value="no"> No</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf3"></div>
+          <div class="fieldRow"><label>Worker position relative to the emission source?</label>
+            <div class="radioRow" style="flex-wrap:wrap" onchange="answerQ(this,4)">
+              <label><input type="radio" name="q5" value="upwind"> Upwind</label>
+              <label><input type="radio" name="q5" value="downwind"> Downwind</label>
+              <label><input type="radio" name="q5" value="variable"> Variable</label>
+              <label><input type="radio" name="q5" value="indoors"> Indoors / N/A</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf4"></div>
+          <div class="fieldRow"><label>Any interruptions to sampling?</label>
+            <div class="radioRow" onchange="answerQ(this,5)">
+              <label><input type="radio" name="q6" value="none"> None</label>
+              <label><input type="radio" name="q6" value="media"> Media change-out</label>
+              <label><input type="radio" name="q6" value="pump"> Pump fault</label>
+            </div>
+          </div>
+          <div class="qFollow" id="qf5"></div>
+          <div id="qDone" style="display:none;margin-top:12px" class="chip"></div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 4 · Attach the sample</div>
+        <h2>Equipment, media, and calibration — on the record</h2>
+        <p class="sub" id="c_sampleSub"></p>
+        <div class="cardShadow" style="margin-top:16px">
+          <div style="font-size:13px;font-weight:600;color:var(--slate)">Sample ID: #KA070626-0000555</div>
+          <div class="grid2" style="margin-top:10px">
+            <div style="font-size:12.5px;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">IH instrument:</b> Casella dB2 · SN 789587<br><b style="color:var(--slate)">Calibration device:</b> Acoustical Calibrator · SN 24568<br><b style="color:var(--slate)">Sample media:</b> PW PVC · Lot #4471</div>
+            <div style="font-size:12.5px;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">Start:</b> 9:00 a.m. · <b style="color:var(--slate)">Flow rate:</b> 2.001 L/min<br><b style="color:var(--slate)">TWA assumption:</b> Assume Same<br><b style="color:var(--slate)">Type:</b> Full shift</div>
+          </div>
+          <div class="chip" style="margin-top:12px;background:#EAF3F2;color:var(--teal-deep)">Unique sample IDs enforced — no duplicates, no mix-ups</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 5 · The survey dashboard workspace</div>
+        <h2 id="c_logH"></h2>
+        <p class="sub" id="c_logSub"></p>
+        <div style="margin-top:14px" id="svGuided"></div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 6 · Enter results — watch the dashboard react</div>
+        <h2 id="c_oelH"></h2>
+        <p class="sub" id="c_oelSub"></p>
+        <div class="grid2">
+          <div class="cardShadow">
+            <div class="fieldRow"><label>Hazard (AL &amp; OEL prefilled from sample plan)</label>
+              <select id="hazSel" onchange="hazChange()">
+                <option value="silica">Respirable crystalline silica — OEL 50 µg/m³ · AL 25 (OSHA)</option>
+                <option value="noise">Noise 8-hr TWA — OEL 90 dBA · AL 85 (OSHA)</option>
+                <option value="benzene">Benzene 8-hr TWA — OEL 1 ppm · AL 0.5 (OSHA)</option>
+              </select>
+            </div>
+            <div class="fieldRow"><label id="valLabel">Result (µg/m³)</label><input type="number" id="valIn" placeholder="e.g. 32" step="any"></div>
+            <div style="margin-top:13px"><button class="btn sm" onclick="logResult()">Add result</button></div>
+            <div id="statusOut" style="margin-top:14px"></div>
+          </div>
+          <div class="cardShadow">
+            <div style="font-size:12.5px;font-weight:600;color:var(--slate)">Live: samples by % of OEL category</div>
+            <div class="oelLegend">
+              <span><i style="background:var(--oel-red)"></i>&gt;100%</span><span><i style="background:var(--oel-orange)"></i>50–100%</span><span><i style="background:var(--oel-yellow)"></i>10–50%</span><span><i style="background:var(--oel-blue)"></i>1–10%</span><span><i style="background:var(--oel-green)"></i>&lt;1%</span>
+            </div>
+            <div class="barRow"><div class="lbl">Your entries</div><div class="barTrack" id="liveBar"></div></div>
+            <div id="entryList" style="font-size:11.5px;color:var(--ink-soft);line-height:1.7;margin-top:8px">No results yet — add one on the left.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="eyebrow">Step 7 · The sample report template</div>
+        <h2 id="c_reportH"></h2>
+        <p class="sub" id="c_reportSub"></p>
+        <div style="margin-top:14px;border:1.5px solid var(--line);border-radius:12px;padding:16px 14px;background:#fff;">
+          <div class="bmrReport">
+            <div class="bmrHeader">
+              <div class="logo" style="font-size:22px;"><span class="my">my</span><span class="ih">IH</span></div>
+              <div class="bmrTitleBlock">
+                <div>Client: <b>BMR Industrial</b></div>
+                <div>Project: <b>Hazards Survey</b></div>
+              </div>
+            </div>
+            <div class="bmrSectionHeader">Sample Data Sheet</div>
+            <div class="bmrGrid">
+              <div class="bmrLabel">Job#</div><div class="bmrValue">BR-0621-2024</div>
+              <div class="bmrLabel">Client</div><div class="bmrValue">BMR Industrial</div>
+              <div class="bmrLabel">Sample ID</div><div class="bmrValue">BR-062124-001</div>
+              <div class="bmrLabel">Project name</div><div class="bmrValue">Hazards Survey</div>
+              <div class="bmrLabel">Sampler name</div><div class="bmrValue">Brennan Robertson</div>
+              <div class="bmrLabel">Project Location</div><div class="bmrValue">5133 Taravella Rd<br>70820 Marrero<br>La United States</div>
+              <div class="bmrLabel">Date</div><div class="bmrValue">06/21/24</div>
+            </div>
+            <div class="bmrSectionHeader">Subject Data</div>
+            <div class="bmrGrid">
+              <div class="bmrLabel">Employee name</div><div class="bmrValue">Garage</div>
+              <div class="bmrLabel">Sampling conditions</div><div class="bmrValue">Average (Normal Operations)</div>
+              <div class="bmrLabel">Employee ID #</div><div class="bmrValue">N/A</div>
+              <div class="bmrLabel">Work environment</div><div class="bmrValue">Open area</div>
+              <div class="bmrLabel">Ventilation</div><div class="bmrValue">Natural</div>
+              <div class="bmrLabel">Welding process</div><div class="bmrValue">N/A</div>
+              <div class="bmrLabel">Job title</div><div class="bmrValue">—</div>
+              <div class="bmrLabel">Metal</div><div class="bmrValue">—</div>
+              <div class="bmrLabel">Shift length</div><div class="bmrValue">—</div>
+              <div class="bmrLabel">Electrode</div><div class="bmrValue">—</div>
+              <div class="bmrLabel">Description</div><div class="bmrValue">Three story structure, parking spaces are very small</div>
+              <div class="bmrLabel">Exposure control</div><div class="bmrValue">—</div>
+            </div>
+            <div class="bmrSectionHeader">IH Sample Equipment</div>
+            <div style="padding:10px; font-size:11px; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #BR-062124-001</div>
+            <div class="bmrGrid">
+              <div class="bmrLabel">IH instrument</div><div class="bmrValue">N/A for passive badges</div>
+              <div class="bmrLabel">Calibration device</div><div class="bmrValue">N/A for passive badges</div>
+              <div class="bmrLabel">Sample media</div><div class="bmrValue">Assay 566 Badge</div>
+              <div class="bmrLabel">Serial number</div><div class="bmrValue">N/A</div>
+              <div class="bmrLabel">Serial number</div><div class="bmrValue">N/A</div>
+              <div class="bmrLabel">Serial number</div><div class="bmrValue">11223344</div>
+            </div>
+            <div class="bmrSectionHeader">Sample Data</div>
+            <table class="bmrTable">
+              <thead><tr><th>Start time</th><th>Stop time</th><th>Total time</th><th>Flow rate</th><th>Total volume</th></tr></thead>
+              <tbody><tr><td>06:55 AM</td><td>03:05 PM</td><td>490 min</td><td>N/A (passive badge)</td><td>N/A (passive badge)</td></tr></tbody>
+            </table>
+            <div class="bmrSectionHeader">Analytical Results</div>
+            <table class="bmrTable">
+              <thead><tr><th>Hazard</th><th>CAS #</th><th>Result</th><th>Action level</th><th>OEL</th><th>% of OEL</th></tr></thead>
+              <tbody><tr><td>Benzene</td><td>71-43-2</td><td>0.32 ppm</td><td>0.5 ppm</td><td>1 ppm</td><td>32%</td></tr></tbody>
+            </table>
+            <div class="bmrSectionHeader">Daily Log — Tagged Entries</div>
+            <div style="padding:8px 12px;font-size:11px;line-height:1.8;border-bottom:1px solid #ccc">
+              7:57 AM — Demonstration Person: Checked on $CR-050224-01 and it was operating correctly<br>
+              7:58 AM — Demonstration Person: Observed @Walter Paton standing downwind of the welding fumes<br>
+              9:08 AM — Demonstration Person: Observed @Walter Paton working in the shop MIG welding on carbon steel with no ventilation other than natural ventilation through the shop assisted by a shop fan
+            </div>
+            <div class="bmrSectionHeader">Prompted Question Responses</div>
+            <div class="bmrGrid">
+              <div class="bmrLabel">Product drip during sampling</div><div class="bmrValue">No drip</div>
+              <div class="bmrLabel">Engineering controls operating</div><div class="bmrValue">Yes</div>
+              <div class="bmrLabel">Respiratory protection worn</div><div class="bmrValue">Yes — Half-face APR, OV cartridge</div>
+              <div class="bmrLabel">Sampling interruptions</div><div class="bmrValue">None</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" style="text-align:center">
+        <div style="max-width:620px;margin:0 auto;padding-top:12px">
+          <div class="eyebrow">That's the core loop — plan, collect, review, export</div>
+          <h1 id="c_ctaH"></h1>
+          <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+            <a class="btn violet" href="INSERT_CALENDAR_LINK_HERE" target="_blank" rel="noopener">Book a Demo</a>
+            <button class="btn ghost" onclick="enterExplore()">Explore more →</button>
+          </div>
+          <p class="footnote" style="margin-top:22px" id="c_ctaFoot"></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- =================== EXPLORE MODE =================== -->
+    <div id="explore">
+      <div class="exTop">
+        <div class="logoW"><span class="my">my</span><span class="ih">IH</span></div>
+        <button class="abtn" onclick="exitExplore()">← BACK TO TOUR</button>
+      </div>
+      <div class="mobileHint">Tip: rotate your phone for the full dashboard view</div>
+      <div class="exShell">
+        <div class="exSide">
+          <div class="who"><b>Bridget Shelton</b><span>DEMO</span></div>
+          <ul class="exNav" id="exNav">
+            <li data-tab="clients" class="on"><span class="txt">Clients</span></li>
+            <li data-tab="projects"><span class="txt">Projects</span></li>
+            <li data-tab="samples"><span class="txt">Samples</span></li>
+            <li data-tab="media"><span class="txt">Sample Media</span></li>
+            <li data-tab="instruments"><span class="txt">Instruments</span></li>
+            <li data-tab="calibration"><span class="txt">Calibration</span></li>
+            <li data-tab="questions"><span class="txt">Question groups</span></li>
+          </ul>
+        </div>
+        <div class="exMain" id="exMain"></div>
+      </div>
+      <div class="disclaimer">Note: this is not the full environment, but a limited mirror to show key features.</div>
+    </div>
+
+    <div class="nav" id="guidedNav">
+      <button class="btn ghost sm" id="backBtn" onclick="go(cur-1)" style="visibility:hidden">← Back</button>
+      <span class="footnote" id="navHint"></span>
+      <button class="btn sm" id="nextBtn" onclick="go(cur+1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PERSONA COPY & LOGIC FOR IH TEAMS
+   ============================================================ */
+const PERSONA = {
+  heroH: "Field notes your techs finish on site. Reports that start themselves.",
+  heroSub: "myIH is a field-to-office workflow for IH teams: sample plans that drive the field day, prompted questions that make completeness mandatory, TWA-aware sample handling, and one-click Excel/PDF exports into your own templates and admin system.",
+  stat1n:"30%", stat1l:"CIH time savings per report*",
+  stat2n:"$26,000", stat2l:"annual data-entry savings per IH*",
+  stat3n:"40%", stat3l:"reduction in technician feedback time*",
+  dashH:"Your whole program, banded by % of OEL",
+  dashSub:"Every result lands here banded against its action level and OEL — filterable by client, hazard, date range, and sample type (full shift, short term, excursion, grab). Click a band to drill to the underlying samples. No pivot tables required.",
+  projSub:"Clients, projects, sample plans, and question groups share one structure — so a technician who worked the BMR survey last month produces identical records on the YXY Company campaign today. Uniformity is what makes your stats work later.",
+  sampleSub:"Media lot numbers, instrument serials, calibrator serials, start time, flow rate to three decimals, and the TWA assumption (assume same / assume zero / N/A) — captured at collection, not reconstructed at the desk.",
+  pqH:"Encode your senior judgment as mandatory fields",
+  pqSub:"Question groups — free text, dropdown, multi-select, checkbox, radio — assigned per project, served every survey moment. Your newest tech can't close a shift without answering what your best CIH would have asked. Clear the counter below:",
+  logH:"The survey dashboard: your field-day command center",
+  logSub:"Samples & subjects on the left; a contemporaneous daily log on the right. @ tags subjects (flows to the Excel export), # tags samples — including media change-outs you'll need for TWA calcs — and $ stamps pump checks onto the sample card. Type an entry and tag it yourself:",
+  oelH:"Results banded against prefilled limits, the moment they're entered",
+  oelSub:"The sample plan prefills analytical method, action level, and OEL — so entering lab results is a banding event, not a lookup exercise. Watch the dashboard react to every value you add:",
+  ctaH:"You just saw how to cut your report writing time by 30%.",
+  reportH:"From field notes to formatted report — no re-keying",
+  reportSub:"Sample tables, % of OEL banding, tagged log entries, and question-group responses compile into an export-ready report — Excel and PDF, into your own templates and admin system.",
+  ctaFoot:"*Based on internal data from beta testing and active user subscriptions.",
+  navHint:"Built for IH teams (10–35 practitioners)"
+};
+
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const N = slides.length;
+const prog = document.getElementById('progress');
+for(let i=0;i<N;i++){const s=document.createElement('span');s.onclick=()=>go(i);prog.appendChild(s);}
+function go(n){
+  if(n<0||n>=N)return;
+  slides[cur].classList.remove('active');
+  cur=n;
+  slides[cur].classList.add('active');
+  document.getElementById('stepLabel').textContent=`Step ${cur+1} of ${N}`;
+  document.getElementById('backBtn').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('nextBtn').style.display=cur===N-1?'none':'inline-block';
+  [...prog.children].forEach((s,i)=>s.classList.toggle('on',i<=cur));
+  document.getElementById('stage').scrollTop=0;
+}
+for(const k in PERSONA){const el=document.getElementById('c_'+k);if(el)el.textContent=PERSONA[k];}
+document.getElementById('navHint').textContent=PERSONA.navHint;
+go(0);
+
+const CAT=[['red','var(--oel-red)'],['orange','var(--oel-orange)'],['yellow','var(--oel-yellow)'],['blue','var(--oel-blue)'],['green','var(--oel-green)']];
+const introData=[
+  ['BMR Industrial',[0,1,0,0,0]],
+  ['YXY Company',[1,4,1,6,0]],
+  ['CTR Consulting',[1,2,3,1,0]],
+  ['QEC Refinery',[0,1,0,1,0]]
+];
+const MAXROW=12;
+function renderRow(target,label,counts){
+  const row=document.createElement('div');row.className='barRow';
+  const l=document.createElement('div');l.className='lbl';l.textContent=label;row.appendChild(l);
+  const tr=document.createElement('div');tr.className='barTrack';
+  counts.forEach((c,i)=>{
+    if(!c)return;
+    const seg=document.createElement('div');seg.className='seg'+(i===2?' yellow':'');
+    seg.style.background=CAT[i][1];seg.style.width=(c/MAXROW*100)+'%';seg.textContent=c;
+    tr.appendChild(seg);
+  });
+  row.appendChild(tr);target.appendChild(row);
+}
+const ic=document.getElementById('introChart');
+introData.forEach(([l,c])=>renderRow(ic,l,c));
+
+/* ---- Prompted questions: guided branching logic ----
+   Most answers spawn a follow-up step, showing how the software
+   guides question selection for the compliance & safety report. */
+const answered=[false,false,false,false,false,false];
+function markAnswered(i){
+  answered[i]=true;
+  const left=answered.filter(a=>!a).length;
+  document.getElementById('qCount').textContent=left;
+  if(left===0){
+    const d=document.getElementById('qDone');
+    d.style.display='inline-block';d.style.background='#EAF3F2';d.style.color='var(--teal-deep)';
+    d.textContent='All required questions answered — responses attached to the compliance report.';
+  }
+}
+function openFollow(id,html){const f=document.getElementById(id);f.innerHTML=html;f.classList.add('open');}
+function closeFollow(id){const f=document.getElementById(id);f.innerHTML='';f.classList.remove('open');}
+function answerQ(el,i){
+  markAnswered(i);
+  const checked=el.querySelector('input[type=radio]:checked');
+  const v=checked?checked.value:null;
+  if(i===0){
+    if(v && v!=='none'){
+      openFollow('qf0',`<label style="color:var(--oel-red);font-weight:600">Product release logged. Specify estimated quantity and duration:</label>
+        <input type="text" placeholder="e.g. 50 ml, less than 2 minutes" style="margin-top:5px">
+        <div class="fieldRow"><label>Was the release cleaned up immediately?</label>
+          <div class="radioRow" onchange="qCleanup(this)">
+            <label><input type="radio" name="q1b" value="yes"> Yes</label>
+            <label><input type="radio" name="q1b" value="no"> No</label>
+          </div></div><div id="qf0b"></div>`);
+    } else closeFollow('qf0');
+  }
+  else if(i===1){
+    const vals=[...el.querySelectorAll('input:checked')].map(x=>x.value);
+    let h='';
+    if(vals.includes('disconnect')) h+=`<div><label>Disconnecting selected — was the line drained and depressurized first?</label>
+      <div class="radioRow" onchange="qYesNoText(this,'qf1b','no','Describe the deviation and who authorized the task to proceed:','e.g. residual product present — authorized by shift supervisor')">
+        <label><input type="radio" name="q2b" value="yes"> Yes</label>
+        <label><input type="radio" name="q2b" value="no"> No</label>
+      </div><div id="qf1b"></div></div>`;
+    if(vals.includes('cargo')) h+=`<div style="margin-top:${vals.includes('disconnect')?'12px':'0'}"><label>Cargo operations selected — was vapor recovery in service?</label>
+      <div class="radioRow" onchange="qVapor(this)">
+        <label><input type="radio" name="q2c" value="yes"> Yes</label>
+        <label><input type="radio" name="q2c" value="partial"> Partial</label>
+        <label><input type="radio" name="q2c" value="no"> No</label>
+      </div><div id="qf1c"></div></div>`;
+    if(h) openFollow('qf1',h); else closeFollow('qf1');
+  }
+  else if(i===2){
+    if(v==='no'){
+      openFollow('qf2',`<label>Which controls were unavailable? (all that apply)</label>
+        <div class="radioRow" style="flex-wrap:wrap">
+          <label><input type="checkbox"> Local exhaust ventilation</label>
+          <label><input type="checkbox"> Vapor recovery</label>
+          <label><input type="checkbox"> Enclosure / isolation</label>
+        </div>
+        <div class="fieldRow"><label>Was the task authorized to proceed without controls?</label>
+          <div class="radioRow" onchange="qYesNoText(this,'qf2b','yes','Authorized by (name / role):','e.g. J. Rivera, Operations Superintendent')">
+            <label><input type="radio" name="q3b" value="yes"> Yes</label>
+            <label><input type="radio" name="q3b" value="no"> No</label>
+          </div></div><div id="qf2b"></div>
+        <div class="flag">Flagged for the report: task performed with engineering controls out of service.</div>`);
+    } else closeFollow('qf2');
+  }
+  else if(i===3){
+    if(v==='yes'){
+      openFollow('qf3',`<label>Respirator type</label>
+        <select><option>Half-face APR — organic vapor cartridge</option><option>Full-face APR — organic vapor cartridge</option><option>PAPR</option><option>Supplied air</option></select>
+        <div class="fieldRow"><label>Was the wearer fit-tested within the last 12 months?</label>
+          <div class="radioRow" onchange="qFit(this)">
+            <label><input type="radio" name="q4b" value="yes"> Yes</label>
+            <label><input type="radio" name="q4b" value="no"> No</label>
+          </div></div><div id="qf3b"></div>`);
+    } else closeFollow('qf3');
+  }
+  else if(i===4){
+    if(v==='downwind'||v==='variable'){
+      openFollow('qf4',`<label>Estimated distance from the emission source</label>
+        <select onchange="qDist(this)"><option value="">Select…</option><option value="near">Less than 3 ft</option><option value="mid">3–10 ft</option><option value="far">More than 10 ft</option></select>
+        <div id="qf4b"></div>`);
+    } else closeFollow('qf4');
+  }
+  else if(i===5){
+    if(v==='media'){
+      openFollow('qf5',`<label>Media change-out logged — time and new media lot #:</label>
+        <input type="text" placeholder="e.g. 11:32 AM, Lot #4472">
+        <div class="note">Change-out recorded on the sample card — carried into the TWA calculation automatically.</div>`);
+    } else if(v==='pump'){
+      openFollow('qf5',`<label>Pump fault — time and duration:</label>
+        <input type="text" placeholder="e.g. 10:14 AM, 6 minutes">
+        <div class="fieldRow"><label>Was the sample voided?</label>
+          <div class="radioRow" onchange="qVoid(this)">
+            <label><input type="radio" name="q6b" value="yes"> Yes</label>
+            <label><input type="radio" name="q6b" value="no"> No</label>
+          </div></div><div id="qf5b"></div>`);
+    } else closeFollow('qf5');
+  }
+}
+function qCleanup(el){
+  const v=el.querySelector('input:checked').value;
+  document.getElementById('qf0b').innerHTML = v==='no'
+    ? `<div class="fieldRow"><label>Describe current containment status:</label><input type="text" placeholder="e.g. absorbent applied, area barricaded"></div>`
+    : `<div class="note">Cleanup confirmed — noted on the report timeline.</div>`;
+}
+function qYesNoText(el,target,trigger,labelTxt,ph){
+  const v=el.querySelector('input:checked').value;
+  document.getElementById(target).innerHTML = v===trigger
+    ? `<div class="fieldRow"><label>${labelTxt}</label><input type="text" placeholder="${ph}"></div>`
+    : '';
+}
+function qVapor(el){
+  const v=el.querySelector('input:checked').value;
+  document.getElementById('qf1c').innerHTML = v==='yes' ? ''
+    : `<div class="fieldRow"><label>Reason vapor recovery was out of service:</label>
+        <select><option>Scheduled maintenance</option><option>Unit malfunction</option><option>Not required for product</option><option>Other (describe in log)</option></select></div>`;
+}
+function qFit(el){
+  const v=el.querySelector('input:checked').value;
+  document.getElementById('qf3b').innerHTML = v==='no'
+    ? `<div class="flag">Flagged for the report: fit test overdue — respirator use recorded as an exception.</div>`
+    : `<div class="note">Fit test current — respirator use documented as compliant.</div>`;
+}
+function qDist(el){
+  document.getElementById('qf4b').innerHTML = el.value==='near'
+    ? `<div class="flag">Short-term excursion sample recommended — added to the survey checklist.</div>`
+    : el.value ? `<div class="note">Position and distance recorded with the sample metadata.</div>` : '';
+}
+function qVoid(el){
+  const v=el.querySelector('input:checked').value;
+  document.getElementById('qf5b').innerHTML = v==='yes'
+    ? `<div class="flag">Sample marked void — excluded from results and noted in the report.</div>`
+    : `<div class="note">Fault duration subtracted from run time — TWA adjusted automatically.</div>`;
+}
+
+const HAZ={
+  silica:{unit:'µg/m³',al:25,oel:50,ph:'e.g. 32'},
+  noise:{unit:'dBA',al:85,oel:90,ph:'e.g. 87.5'},
+  benzene:{unit:'ppm',al:0.5,oel:1,ph:'e.g. 0.4'}
+};
+const counts=[0,0,0,0,0]; let entries=[];
+function hazChange(){
+  const h=HAZ[document.getElementById('hazSel').value];
+  document.getElementById('valLabel').textContent=`Result (${h.unit})`;
+  document.getElementById('valIn').placeholder=h.ph;
+}
+function catFor(pct){ if(pct>100)return 0; if(pct>=50)return 1; if(pct>=10)return 2; if(pct>=1)return 3; return 4; }
+const CATLBL=['>100% of OEL','50–100% of OEL','10–50% of OEL','1–10% of OEL','<1% of OEL'];
+const PILLC=['var(--oel-red)','var(--oel-orange)','#C9A227','var(--oel-blue)','var(--oel-green)'];
+function logResult(){
+  const key=document.getElementById('hazSel').value, h=HAZ[key];
+  const v=parseFloat(document.getElementById('valIn').value);
+  if(isNaN(v))return;
+  let pct = key==='noise' ? (v>=h.oel?101 : v>=h.al?60 : v>=h.oel-20?20 : 5) : (v/h.oel*100);
+  const c=catFor(pct);
+  counts[c]++; entries.unshift({v,unit:h.unit,cat:c,pctTxt:key==='noise'?'':' · '+Math.round(pct)+'% of OEL'});
+  
+  document.getElementById('statusOut').innerHTML=
+    `<span class="pill" style="background:${PILLC[c]};animation:pop .3s ease both">${CATLBL[c]}</span>
+     <div style="font-size:12.5px;color:var(--ink);margin-top:8px;line-height:1.5">Banded instantly against dynamic legal standards.</div>`;
+  
+  const total=counts.reduce((a,b)=>a+b,0);
+  const bar=document.getElementById('liveBar');bar.innerHTML='';
+  counts.forEach((n,i)=>{
+    if(!n)return;
+    const seg=document.createElement('div');seg.className='seg'+(i===2?' yellow':'');
+    seg.style.background=CAT[i][1];seg.style.width=(n/total*100)+'%';seg.textContent=n;
+    bar.appendChild(seg);
+  });
+  document.getElementById('entryList').innerHTML=entries.map(e=>`<span style="color:${PILLC[e.cat]};font-weight:600">●</span> ${e.v} ${e.unit}${e.pctTxt}`).join('<br>');
+  document.getElementById('valIn').value='';
+}
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const SV_ENT=[
+  ['at','@','Walter Paton'],
+  ['hash','#','CR-050224-01'],['hash','#','789562'],
+  ['dol','$','CR-050224-01'],['dol','$','SKC 52']
+];
+function tagify(raw){
+  let out=esc(raw); const hold=[];
+  SV_ENT.forEach(([cls,sym,name])=>{
+    const token=esc(sym+name);
+    if(out.includes(token)){
+      hold.push(`<span class="tag ${cls}">${esc(sym+' '+name)}</span>`);
+      out=out.split(token).join('\u0001'+(hold.length-1)+'\u0001');
+    }
+  });
+  out=out.replace(/(^|\s)([@#$])([\w#][\w.\-\/#]*)/g,(m,pre,sym,rest)=>{
+    return `${pre}<span class="tag ${sym==='@'?'at':sym==='#'?'hash':'dol'}">${sym} ${rest}</span>`;
+  });
+  return out.replace(/\u0001(\d+)\u0001/g,(m,i)=>hold[+i]);
+}
+const SV_SEED=[
+  ['7:57 AM','DP','Demonstration Person','Checked on $CR-050224-01 and it was operating correctly'],
+  ['7:58 AM','DP','Demonstration Person','Observed @Walter Paton standing downwind of the welding fumes'],
+  ['9:08 AM','DP','Demonstration Person','Observed @Walter Paton working in the shop MIG welding on carbon steel with no ventilation other than natural ventilation through the shop assisted by a shop fan'],
+];
+function svMsg(time,init,name,text){
+  return `<div class="dlMsg"><div class="dlT">${time}</div><div class="dlAv">${init}</div><div class="dlBody"><b>${name}</b>${tagify(text)}</div></div>`;
+}
+function samplesPanelHTML(p){
+  return `<div class="panel">
+    <div class="panelHd">Samples &amp; Subjects <button class="abtn" style="background:var(--slate);">+ ADD SUBJECT</button></div>
+    <div class="panelBd">
+      <div class="ssCard">
+        <div class="ssHd"><span class="ssName">#789562 | Walter Paton <span style="font-weight:400">&rarr;</span></span><span class="ssEdit">EDIT</span></div>
+        <div class="ssBody">
+          <div class="ssAddWrap">
+            <button class="abtn" style="background:var(--slate);padding:8px 16px" onclick="toggleSampleMenu('${p}')">ADD SAMPLE</button>
+            <div class="ssMenu" id="${p}SampleMenu">
+              <div onclick="addExampleSample('${p}','full')">Full shift — Air sample</div>
+              <div onclick="addExampleSample('${p}','short')">Short term — Air sample</div>
+              <div onclick="addExampleSample('${p}','grab')">Grab sample</div>
+              <div onclick="addExampleSample('${p}','noise')">Noise dosimetry</div>
+              <div onclick="addExampleSample('${p}','direct')">Direct read</div>
+            </div>
+          </div>
+          <div id="${p}SampleList">
+            <div class="sampleCard">
+              <div class="sampleTop"><span><b>#CR-050224-01</b><span class="skc">SKC 52</span></span><span class="openS">OPEN SAMPLE</span></div>
+              <div class="sampleLines">Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 06:55 am. (10 hours ago)<br>Last check: 2 May 2024, 07:57 am (9 hours ago)<br>Samples has finished.<br>Samples has finished and has results.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function toggleSampleMenu(p){document.getElementById(p+'SampleMenu').classList.toggle('open');}
+const EX_SAMPLES={
+  full:['#CR-050224-02','SKC 52','Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 07:12 am.<br>Sample is running.'],
+  short:['#CR-050224-ST-01','SKC 52','Sample type: short term (15 min)<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 09:41 am.<br>Sample is running.'],
+  grab:['#CR-050224-G-01','Tedlar bag','Sample type: grab<br>Hazards: Benzene - # 71-43-2,<br>Collected: 10:05 am.<br>Awaiting lab submission.'],
+  noise:['#ND-050224-01','Casella dB2','Sample type: noise dosimetry<br>Hazard: Noise (8-hr TWA)<br>Start time: 06:58 am.<br>Sample is running.'],
+  direct:['#DR-050224-01','PID','Sample type: direct read<br>Hazard: VOCs (total)<br>Logged: 10:22 am.<br>Reading recorded.']
+};
+function addExampleSample(p,k){
+  const s=EX_SAMPLES[k];
+  document.getElementById(p+'SampleList').insertAdjacentHTML('beforeend',
+    `<div class="sampleCard" style="margin-top:10px;animation:pop .3s ease both">
+      <div class="sampleTop"><span><b>${s[0]}</b><span class="skc">${s[1]}</span></span><span class="openS">OPEN SAMPLE</span></div>
+      <div class="sampleLines">${s[2]}</div></div>`);
+  toggleSampleMenu(p);
+}
+function svHTML(p){
+  return `<div class="svHead">
+    <div class="svTitle">Hazards Survey <span>#BR-0621-2024</span></div>
+    <div class="svTabs">
+      <span onclick="switchSubTab('${p}','project_dash')">Project Dashboard</span>
+      <span class="on" onclick="switchSubTab('${p}','survey_dash')">Survey Dashboard</span>
+      <span onclick="switchSubTab('${p}','loc_info')">Location info</span>
+      <span onclick="switchSubTab('${p}','proj_info')">Project info</span>
+      <span onclick="switchSubTab('${p}','questions')">Questions <div style="display:inline-block; background:#D33B2F; color:#fff; font-size:9px; padding:1px 5px; border-radius:10px; margin-left:4px; vertical-align:top;">45</div></span>
+    </div>
+  </div>
+  <div class="svBody" id="${p}ContentContainer"><div class="svGrid">
+    <div>${samplesPanelHTML(p)}</div>
+    <div>
+      <div class="panel">
+        <div class="panelHd">Live Track Log</div>
+        <div class="dlDay" id="${p}Day"></div>
+        <div class="dlFeed" id="${p}Feed"></div>
+        <div class="dlComposer">
+          <input type="text" id="${p}In" placeholder="Type log with tags (@person, #sample, $media)...">
+          <button class="btn sm" onclick="dlSubmit('${p}')">LOG</button>
+        </div>
+        <div class="dlHelp">Use <i class="h-at">@</i> area/person · <i class="h-hash">#</i> sample IDs · <i class="h-dol">$</i> instruments</div>
+      </div>
+    </div>
+  </div></div>`;
+}
+
+function switchSubTab(p, tabName) {
+  const container = document.getElementById(p + 'ContentContainer');
+  const tabs = container.parentElement.querySelectorAll('.svTabs span');
+  tabs.forEach(t => t.classList.remove('on'));
+  if (typeof event !== 'undefined' && event && event.target && event.target.closest && event.target.closest('.svTabs')) {
+    event.target.classList.add('on');
+  } else {
+    tabs.forEach(t => { const oc = t.getAttribute('onclick') || ''; if (oc.indexOf("'" + tabName + "'") !== -1) t.classList.add('on'); });
+  }
+  
+  if(tabName === 'survey_dash') {
+    container.innerHTML = `<div class="svGrid">
+      <div>${samplesPanelHTML(p)}</div>
+      <div>
+        <div class="panel">
+          <div class="panelHd">Live Track Log</div>
+          <div class="dlDay" id="${p}Day"></div>
+          <div class="dlFeed" id="${p}Feed"></div>
+          <div class="dlComposer">
+            <input type="text" id="${p}In" placeholder="Type log with tags (@person, #sample, $media)...">
+            <button class="btn sm" onclick="dlSubmit('${p}')">LOG</button>
+          </div>
+          <div class="dlHelp">Use <i class="h-at">@</i> area/person · <i class="h-hash">#</i> sample IDs · <i class="h-dol">$</i> instruments</div>
+        </div>
+      </div>
+    </div>`;
+    initLog(p);
+  } else if(tabName === 'project_dash') {
+    container.innerHTML = `
+    <div class="svGrid">
+      <div style="display:flex; flex-direction:column; gap:14px; flex:1;">
+        <div class="cardShadow" style="background:#fff;">
+          <h3 style="margin-bottom:10px; font-size:16px;">#BR-0621-2025</h3>
+          <b style="font-size:14px;">Hazards Survey</b><br>
+          <div style="font-size:12px; color:var(--ink-soft); margin-top:5px; line-height:1.5;">100 myIH Rd<br>70820 Marrero<br>La United States</div>
+        </div>
+        <div class="cardShadow" style="background:#fff;">
+          <h3 style="margin-bottom:10px; font-size:16px;">Contact information</h3>
+          <div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">Chris Davidson<br>Email: cdavidson@myihportal.com<br>Phone: 888-760-8811</div>
+        </div>
+      </div>
+      <div style="flex:2;">
+        <div class="cardShadow" style="background:#fff; position:relative; height:100%;">
+           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+             <h3 style="font-size:16px;">Sampling Plan</h3>
+             <button class="abtn" style="background:var(--teal-deep); opacity:0.7; pointer-events:none;">MANAGE SAMPLING PLAN</button>
+           </div>
+           <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:12px;">
+             <div><b>First survey date</b><br>August 15, 2025</div>
+             <div style="text-align:right;"><b>Samples taken</b><br>32 / 39</div>
+           </div>
+           <div style="height:120px; background:#f4f6f6; margin-top:20px; display:flex; align-items:center; justify-content:center; border:1px solid #e1e5e6; color:var(--ink-soft); font-size:11px;">
+             [ Chart Visualization Placeholder ]
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="cardShadow" style="background:#fff; margin-top:14px;">
+      <h3 style="margin-bottom:10px; font-size:16px;">Survey days</h3>
+      <table style="width:100%;">
+        <thead><tr><th>Created at</th><th>Sampler(s)</th><th>Samples created</th><th>Lab results</th><th>Recent activity</th></tr></thead>
+        <tbody>
+          <tr><td>2025-07-30</td><td>Chris Davidson</td><td>1</td><td>1</td><td>Oct 04, 2025 04:22 PM</td></tr>
+          <tr><td>2025-07-08</td><td>Chris Davidson</td><td>4</td><td>2</td><td>Nov 14, 2025 09:26 AM</td></tr>
+          <tr><td>2025-07-02</td><td>Chris Davidson</td><td>6</td><td>0</td><td>Jul 12, 2025 01:39 PM</td></tr>
+          <tr><td>2025-06-29</td><td>Chris Davidson</td><td>1</td><td>1</td><td>Sep 20, 2025 12:46 PM</td></tr>
+          <tr><td>2025-06-28</td><td>Chris Davidson</td><td>4</td><td>0</td><td>Jul 29, 2025 02:56 PM</td></tr>
+        </tbody>
+      </table>
+    </div>`;
+  } else if(tabName === 'questions') {
+    container.innerHTML = `
+    <div style="padding:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+           <h2 style="font-size:24px; font-weight:400; color:var(--slate);">Prompted Questions</h2>
+           <div style="display:flex; gap:10px;">
+             <button class="abtn" style="background:#4E495F;">DOWNLOAD SELECTED DAILY QUESTIONS</button>
+             <button class="abtn" style="background:#4E495F;">DOWNLOAD ALL QUESTIONS</button>
+           </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; margin-bottom:15px; flex-wrap:wrap;">
+           <h3 style="font-size:18px; color:var(--slate); font-weight:500;">Survey Dashboard, Sun 07 Dec 2025</h3>
+           <div style="font-size:12px; color:var(--ink-soft);">Sunday 07 December 2025 &nbsp;|&nbsp; &lt; &nbsp; &gt;</div>
+        </div>
+        <h3 style="margin-bottom:10px; font-size:18px; color:var(--slate); font-weight:600;">Daily Questions</h3>
+        <div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:15px;">Benzene Air Sampling Questions for Real Time Sampling <span>˅</span></div>
+        <div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:15px;">Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling <span>˅</span></div>
+        <div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:20px; display:flex; justify-content:space-between; font-size:15px;">ENV Asbestos Air Sampling Questions - Daily <span>˅</span></div>
+        
+        <h3 style="margin-bottom:10px; font-size:18px; color:var(--slate); font-weight:600;">One time Questions</h3>
+        <div style="border:1px solid var(--line); border-radius:4px; overflow:hidden;">
+           <div style="background:#524e5d; color:#fff; padding:14px 18px; display:flex; justify-content:space-between; font-size:15px;">Catalyst change Out <span>˄</span></div>
+           <div style="padding:20px; background:#fff;">
+             <p style="font-size:13px; color:var(--ink-soft); margin-bottom:10px;">Are there 5 workers in the confined space</p>
+             <div style="display:flex; gap:15px; margin-bottom:20px;">
+                <label style="font-size:13px; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> Yes</label>
+                <label style="font-size:13px; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> No</label>
+             </div>
+             <div style="background:#FAFBFB; padding:12px; border:1px solid var(--line); border-radius:4px; min-height:80px;">
+                <p style="font-size:11px; color:var(--ink-soft);">What is the catalyst ?</p>
+             </div>
+             <button class="abtn" style="background:#6c757d; margin-top:20px; padding:10px 20px; font-size:12px; opacity:0.8; pointer-events:none;">SUBMIT</button>
+           </div>
+        </div>
+    </div>`;
+  } else {
+    container.innerHTML = `<div style="padding:40px; text-align:center; color:var(--ink-soft);"><h3>Book a demo to unlock</h3></div>`;
+  }
+}
+
+function initLog(p){
+  const dEl = document.getElementById(p+'Day');
+  if(dEl) dEl.textContent=new Date().toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const feed=document.getElementById(p+'Feed');
+  if(feed) feed.innerHTML=SV_SEED.map(e=>svMsg(...e)).join('');
+  const inp = document.getElementById(p+'In');
+  if(inp) inp.addEventListener('keydown',e=>{if(e.key==='Enter')dlSubmit(p);});
+}
+function dlSubmit(p){
+  const inp=document.getElementById(p+'In');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  const now=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
+  const feed=document.getElementById(p+'Feed');
+  feed.insertAdjacentHTML('beforeend',svMsg(now,'SG','Sam Garrison',txt));
+  feed.scrollTop=feed.scrollHeight;
+  inp.value='';
+}
+
+function enterExplore(){
+  document.getElementById('stage').style.display='none';
+  document.getElementById('guidedNav').style.display='none';
+  document.querySelector('.hdr').style.display='none';
+  document.getElementById('progress').style.display='none';
+  document.getElementById('explore').style.display='flex';
+  showTab('clients');
+}
+function exitExplore(){
+  document.getElementById('explore').style.display='none';
+  document.getElementById('stage').style.display='block';
+  document.getElementById('guidedNav').style.display='flex';
+  document.querySelector('.hdr').style.display='flex';
+  document.getElementById('progress').style.display='flex';
+}
+document.getElementById('exNav').addEventListener('click',e=>{
+  const li=e.target.closest('li');if(!li)return;
+  [...document.querySelectorAll('#exNav li')].forEach(x=>x.classList.remove('on'));
+  li.classList.add('on');showTab(li.dataset.tab);
+});
+
+const MOCK={
+  clients:[
+    ['BMR Industrial','No Where Ville, USA','Jun 21, 2024'],
+    ['CBC','Zaltbommel, Netherlands','Jun 21, 2024'],
+    ['CTR Consulting','Calgary, Canada','May 02, 2024'],
+    ['NPA University','Wales, United Kingdom','May 02, 2024'],
+    ['QEC Refinery','Belle Chasse, United States','May 02, 2024'],
+    ['SW Manufacturing Company','Los Osos, United States','May 02, 2024'],
+    ['XZY Chemical Industries','Marrero, United States','Jul 18, 2024'],
+    ['Maritime Shipping','Marrero, United States','May 02, 2024']
+  ],
+  projects:[
+    ['Hazards Survey','# BR-0621-2024','BMR Industrial','Jul 30, 2025','Edit'],
+    ['2024 Benzene Air Sampling','# 1234','CBC','Jul 18, 2025','Edit'],
+    ['2024 Hospital Sampling','# PO # 12345','CTR Consulting','May 15, 2025','Edit'],
+    ['Q2 2023 XZY Unit Turnaround','# Requisition #: 78958','XZY Chemical Industries','May 02, 2025','Edit'],
+    ['QEC North','# Requisition #: 456789','QEC Refinery','Jul 30, 2025','Edit'],
+    ['2024 IH Sampling','# Project #: 24-15987','XZY Chemical Industries','May 02, 2025','Edit'],
+    ['Chemistry and Biology Buidling IH Sampling','# IH 123-4356766','NPA University','May 02, 2025','Edit'],
+    ['Downtown Hospital','# IH 123-435673','NPA University','May 02, 2025','Edit'],
+    ['QEC South','# 12345','QEC Refinery','May 15, 2025','Edit']
+  ],
+  samples:[['#BR-062124-001','Garage','Noise','Full shift','07/06/26','58% of OEL'],['#BR-062124-002','John Doe','Benzene','Full shift','03/07/26','32% of OEL']],
+  media:[['PW PVC','Lot #4471','In stock'],['Assay 566 Badge','Lot #11223344','In stock']],
+  instruments:[['Casella dB2','Noise','SN 789587'],['GilAir 5','Chemical','SN 995748']],
+  calibration:[['Acoustical Calibrator','SN 24568','Verified 07/01/26']],
+  qgroups:[
+    ['Catalyst change Out','2',''],
+    ['General Questions','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+    ['Frequently Asked Questions','2','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+    ['Blasting Question Group','4',''],
+    ['Full Shift Sampling Questions','3',''],
+    ['Daily Questions to Ask','3','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+    ['2024 Turnaround Sample Plan','1',''],
+    ['TES Safety Attendant Audit','12','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+    ['Welding Fume Sampling','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+    ['FNV Asbestos Air Sampling Questions - Clearance','4','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>']
+  ]
+};
+
+function tbl(head,rows,isProject=false){
+  return `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r, idx)=>`<tr ${isProject?`style="cursor:pointer;" onclick="expandProjectSurvey(this, '${r[0]}')"`:''}>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table><div id="nestedExploreDashboard"></div>`;
+}
+
+function expandProjectSurvey(rowElement, projName) {
+  const container = document.getElementById('nestedExploreDashboard');
+  container.innerHTML = `<div style="margin-top:20px; animation:pop 0.3s ease both;">
+    <h3 style="font-size:14px; margin-bottom:8px; color:var(--teal-deep);">Active Survey Workspace Context: ${projName}</h3>
+    ${svHTML('ex')}
+  </div>`;
+  switchSubTab('ex', 'survey_dash');
+  container.scrollIntoView({ behavior: 'smooth' });
+}
+
+function showTab(t){
+  const m=document.getElementById('exMain');
+  if(t==='dashboard'){
+    m.innerHTML=`<h2 style="font-size:17px">Total # of samples collected by % of OEL category</h2>
+      <div class="oelLegend"><span><i style="background:var(--oel-red)"></i>&gt;100%</span><span><i style="background:var(--oel-orange)"></i>50–100%</span><span><i style="background:var(--oel-yellow)"></i>10–50%</span><span><i style="background:var(--oel-blue)"></i>1–10%</span><span><i style="background:var(--oel-green)"></i>&lt;1%</span></div>
+      <div id="exChart" style="background:#fff;border-radius:10px;padding:14px"></div>`;
+    const ec=document.getElementById('exChart');
+    introData.forEach(([l,c])=>renderRow(ec,l,c));
+  }
+  else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:11.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
+  else if(t==='projects'){
+    m.innerHTML=`<h2>Projects</h2><div style="margin:10px 0"><input type="text" placeholder="" style="max-width:260px"> <button class="btn sm" style="background:#4E495F; margin-left:8px;">+ NEW PROJECT</button></div>`+tbl(['Project name','Job number','Client name','Recent activity','Actions'],MOCK.projects, true);
+    setTimeout(() => { expandProjectSurvey(null, 'Hazards Survey'); }, 150);
+  }
+  else if(t==='samples'){m.innerHTML=`<h2>Samples</h2><br>`+tbl(['Sample ID','Subject','Hazard','Type','Date','Result'],MOCK.samples);}
+  else if(t==='media'){m.innerHTML=`<h2>Sample Media</h2><br>`+tbl(['Media','Lot','Status'],MOCK.media);}
+  else if(t==='instruments'){m.innerHTML=`<h2>Instruments</h2><br>`+tbl(['Instrument','Type','Serial numbers'],MOCK.instruments);}
+  else if(t==='calibration'){m.innerHTML=`<h2>Calibration</h2><br>`+tbl(['Device','Serial number','Last verified'],MOCK.calibration);}
+  else if(t==='questions'){
+    m.innerHTML=`
+      <div style="background:#EAF3F2; color:var(--teal-deep); padding:12px 16px; border-radius:8px; margin-bottom:15px; font-size:15px; font-weight:600; text-align:center;">
+         See how we create questions in a demo
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;">
+         <h2 style="font-size:24px; font-weight:600; color:var(--slate);">Question groups</h2>
+         <div style="display:flex; gap:10px;">
+           <input type="text" placeholder="Search question groups" style="max-width:200px; padding:6px 12px; font-size:12px;">
+           <button class="abtn" style="background:#4E495F; padding:8px 14px; font-size:12px;">+ NEW GROUP</button>
+         </div>
+      </div>
+    `+tbl(['Title','Questions','Group type'], MOCK.qgroups);
+  }
+}
+
+document.getElementById('svGuided').innerHTML=svHTML('g');
+switchSubTab('g', 'survey_dash');
+</script>
+</body>
+</html>
