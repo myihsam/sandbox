@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/consultants", "destination": "/Consultants.html" },
+    { "source": "/owners-operators", "destination": "/owners-operators.html" },
+    { "source": "/", "destination": "/Consultants.html" }
+  ]
+}
