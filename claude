@@ -1,0 +1,26 @@
+
+/* ===== Hero two-column restructure ===== */
+.lpHero{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.lpHeroText{flex:1 1 480px;min-width:0;position:relative;z-index:1}
+.lpHero .sub + .sub{margin-top:16px}
+.eyebrowXL{font-size:22px;letter-spacing:.14em;line-height:1.3}
+/* Hero tech image — fills the right column, never touches the text (flex gap keeps clearance) */
+.lpHeroImg{flex:1 1 520px;min-width:580px;max-width:800px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}.lpHeroImg img{width:100%;height:auto;object-fit:contain;display:block}
+@media(max-width:800px){.lpHeroImg{flex-basis:100%;min-width:0;max-width:100%;margin-top:12px}}
+/* Tablet buffer image above the six value tiles */
+.tilesBuffer{display:flex;justify-content:center;margin:30px auto 8px;max-width:800px;position:relative;z-index:1}
+.tilesBuffer img{width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 20px 52px rgba(59,55,74,.20)}
+/* ===== Value section alternating pastel tiles ===== */
+.valueTiles .cardShadow{border:2px solid var(--line)}
+.valueTiles .cardShadow:nth-child(odd){background:#EAF3FD}
+.valueTiles .cardShadow:nth-child(even){background:#F0EAFB}
+/* ===== Platform overview deck viewer ===== */
+.lpDeckWrap{padding:0;overflow:hidden}
+.lpDeckWrap object,.lpDeckWrap iframe{width:100%;min-height:80vh;border:0;display:block}
+.lpDeckFallback{padding:40px;text-align:center;font-size:14px;color:var(--ink-soft)}
+</style>
+
+<style id="revampFX">
+
+
+
