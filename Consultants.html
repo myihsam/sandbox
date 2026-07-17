@@ -1061,7 +1061,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
       <!-- Phase 5 — from air/dust to sound -->
       <div class="sciSound" id="i-sound">
         <div class="sndKick">The full spectrum of exposure</div>
-        <div class="sndTitle">From air and dust to sound assessments, we have you covered.</div>
+        <div class="sndTitle">From air and dust to noise assessments, we have you covered.</div>
       </div>
 
       <div class="sciHint">Scroll to follow the sample</div>
@@ -1102,7 +1102,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
     <div class="lpExportCard">
       <div class="lpExportHd">Sample Data Sheet — one-click export</div>
       <div class="lpExportRow"><b>Sample ID</b><span>BR-062124-001</span></div>
-      <div class="lpExportRow"><b>Hazard</b><span>Benzene · CAS 71-43-2</span></div>
+      <div class="lpExportRow"><b>Hazard</b><span>Airborne fiber sample · CAS 71-43-2</span></div>
       <div class="lpExportRow"><b>Result</b><span>0.32 ppm · <b style="background:none;border:none;padding:0;color:var(--oel-blue)">32% of OEL</b></span></div>
       <div class="lpExportRow"><b>Tagged log</b><span>3 entries · chain-of-custody attached</span></div>
       <div class="lpExportRow"><b>Prompted questions</b><span>6 / 6 answered</span></div>
@@ -1996,11 +1996,11 @@ switchSubTab('g', 'survey_dash');
     var title=e('sciTitle'), cap=e('sciCaption'), rail=scene.querySelectorAll('.sciRail i'), headBox=scene.querySelector('.sciHeadBox');
     var chips={pump:e('i-pump'),benzene:e('i-benzene'),gcms:e('i-gcms'),pcm:e('i-pcm'),soft:e('i-soft'),dust:e('i-dust'),oel:e('i-oel'),sound:e('i-sound')};
 
-    var TITLES=['On the plant floor','Into the analytical lab','Back into the software','Down to the particle','From air, to dust, to sound'];
+    var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','From air, to dust, to sound'];
     var CAPS=[
-      "A personal pump runs the full shift, pulling the worker\u2019s air across a sampling medium.",
-      "The media goes to the lab \u2014 GC\u2013MS and phase-contrast microscopy turn air into numbers.",
-      "Import the lab's results file to autoload it into the survey \u2014 or read results off the instrument and key them in by hand \u2014 for dust, air, metals, and more.",
+      "For example, a personal pump runs the full shift, pulling the worker\u2019s air across a sampling medium.",
+      "The sampled media is sent to a laboratory for analysis. Any resulting data you can then import into the survey.",
+      "Import the lab's air/dust/results file to autoload it into the survey \u2014 or read results off the instrument and key them in by hand (such as noise). \u2014",
       "Now it\u2019s a concentration you can defend: each result measured against its occupational exposure limit.",
       "Vapor rises and condenses, water cascades to the floor, and the splash ripples outward \u2014 the exposure story runs across air, dust, and sound."
     ];
