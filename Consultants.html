@@ -499,14 +499,11 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 .sciCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .sciOverlay{position:absolute;inset:0;pointer-events:none;z-index:2}
 .sciHeadBox{position:absolute;top:5vh;left:50%;transform:translateX(-50%);width:min(780px,90vw);text-align:center;
-  padding:22px 34px;border-radius:20px;z-index:6;
-  background:linear-gradient(158deg, rgba(144,180,179,.95), rgba(160,192,191,.88));
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
-  border:1px solid rgba(95,136,135,.5);box-shadow:0 22px 56px rgba(59,55,74,.2)}
+  padding:22px 34px;z-index:6;transition:opacity .4s ease}
 .sciKicker{color:#2E3A3A;font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
 .sciTitle{color:#1F232B;font-weight:600;font-size:clamp(30px,5.4vw,60px);transition:opacity .34s ease,color .34s;letter-spacing:-.01em;margin-top:8px}
 .sciCaption{color:var(--slate);font-size:clamp(16px,2vw,23px);font-weight:400;line-height:1.5;margin-top:12px}
-.sciInstr{position:absolute;min-width:250px;background:#fff;border-radius:14px;
+.sciInstr{position:absolute;min-width:250px;background:#fff;border-radius:22px;
   box-shadow:0 20px 52px rgba(0,0,0,.46);overflow:hidden;opacity:0;transform:translateY(18px) scale(.95);
   transition:opacity .55s ease,transform .55s cubic-bezier(.22,.8,.3,1)}
 .sciInstr.on{opacity:1;transform:none}
@@ -521,7 +518,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 /* software panel (myIH Project Config recreation) */
 .sciSoft{position:absolute;top:58%;left:50%;transform:translate(-50%,-44%) scale(.96);width:min(760px,90vw);max-height:60vh;overflow:hidden;z-index:3;
   opacity:0;transition:opacity .5s ease,transform .6s cubic-bezier(.22,.8,.3,1);
-  background:#F8F9FA;border-radius:16px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+  background:#F8F9FA;border-radius:24px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
 .sciSoft.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .sciSoftBar{background:var(--teal-header);color:#fff;padding:12px 20px;font-size:15px;font-weight:500}
 .sciSoftBody{padding:18px;display:flex;flex-direction:column;gap:14px}
@@ -537,7 +534,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 @media(max-width:640px){.sciAutoload{grid-template-columns:1fr}.sciSoftBar{font-size:13px}}
 /* ---- Sound-assessment box (finale) ---- */
 .sciSound{position:absolute;top:44vh;left:50%;transform:translateX(-50%) translateY(16px) scale(.94);width:min(560px,86vw);text-align:center;
-  padding:24px 32px;border-radius:18px;z-index:6;opacity:0;
+  padding:24px 32px;border-radius:26px;z-index:6;opacity:0;
   background:linear-gradient(158deg, rgba(144,180,179,.95), rgba(160,192,191,.88));
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border:1px solid rgba(95,136,135,.5);box-shadow:0 22px 56px rgba(59,55,74,.2);
@@ -1996,30 +1993,30 @@ switchSubTab('g', 'survey_dash');
     var title=e('sciTitle'), cap=e('sciCaption'), rail=scene.querySelectorAll('.sciRail i'), headBox=scene.querySelector('.sciHeadBox');
     var chips={pump:e('i-pump'),benzene:e('i-benzene'),gcms:e('i-gcms'),pcm:e('i-pcm'),soft:e('i-soft'),dust:e('i-dust'),oel:e('i-oel'),sound:e('i-sound')};
 
-    var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','From air, to dust, to sound'];
+    var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','From air, to sound, to gas'];
     var CAPS=[
       "For example, a personal pump runs the full shift, pulling the worker\u2019s air across a sampling medium.",
       "The sampled media is sent to a laboratory for analysis. Any resulting data you can then import into the survey.",
       "Import the lab's air/dust/results file to autoload it into the survey \u2014 or read results off the instrument and key them in by hand (such as noise). \u2014",
       "Now it\u2019s a concentration you can defend: each result measured against its occupational exposure limit.",
-      "Vapor rises and condenses, water cascades to the floor, and the splash ripples outward \u2014 the exposure story runs across air, dust, and sound."
+      "The particles assemble into a sound wave, capturing left to right like a voice memo \u2014 then settle into the flask as rising vapor. Air, sound, and gas: the three exposure groups we measure."
     ];
 
-    // dust particles — each carries a target position inside a cloud silhouette (for the collect)
-    var CL=[[-1.5,0.25,0.62],[-0.85,-0.12,0.82],[-0.1,-0.44,0.98],[0.75,-0.18,0.86],[1.45,0.22,0.64],[-0.45,0.32,0.72],[0.55,0.34,0.68],[1.05,0.3,0.56]];
-    var CLW=CL.map(function(l){return l[2]*l[2];}), CLT=CLW.reduce(function(a,b){return a+b;},0);
-    var dust=[]; for(var i=0;i<520;i++){
-      var pick=Math.random()*CLT, li=0; while(li<CL.length-1 && pick>CLW[li]){ pick-=CLW[li]; li++; }
-      var L=CL[li], ang=Math.random()*6.28, rad=Math.sqrt(Math.random())*L[2];
-      var tx=(L[0]+Math.cos(ang)*rad)*0.62, ty=L[1]+Math.sin(ang)*rad*0.62;
-      dust.push({x:Math.random(),y:Math.random(),r:0.4+Math.random()*2.6,sp:0.2+Math.random()*0.8,ph:Math.random()*6.28,tx:tx,ty:ty});
+    // dust particles — each carries: a sound-wave slot (sx:0..1 along the wave, strand:layer offset)
+    // AND a flask-body target (u:-1..1 across, v:0..1 shoulder->base). Sequence: air -> sound wave -> gas in flask.
+    var dust=[]; for(var i=0;i<560;i++){
+      var v=Math.pow(Math.random(),0.6), u=(Math.random()*2-1)*(0.55+0.45*v);
+      var sx=(i+Math.random())/560, strand=0.32+Math.random()*0.68;
+      dust.push({x:Math.random(),y:Math.random(),r:0.5+Math.random()*2.4,sp:0.2+Math.random()*0.8,ph:Math.random()*6.28,u:u,v:v,sx:sx,strand:strand});
     }
-    // fill particles — only rendered DURING the finale collect, to densen the cloud body
+    // fill particles — only rendered DURING the finale collect, to densen the crowd inside the flask
     var cfill=[]; for(var ci=0;ci<720;ci++){
-      var pk2=Math.random()*CLT, l2=0; while(l2<CL.length-1 && pk2>CLW[l2]){ pk2-=CLW[l2]; l2++; }
-      var L2=CL[l2], a2=Math.random()*6.28, r2=Math.sqrt(Math.random())*L2[2];
-      var fx3=(L2[0]+Math.cos(a2)*r2)*0.62, fy3=L2[1]+Math.sin(a2)*r2*0.62;
-      cfill.push({tx:fx3,ty:fy3,r:0.7+Math.random()*2.8,ph:Math.random()*6.28,ci:ci%3});
+      var v2=Math.pow(Math.random(),0.6), u2=(Math.random()*2-1)*(0.55+0.45*v2);
+      cfill.push({u:u2,v:v2,r:0.7+Math.random()*2.8,ph:Math.random()*6.28,ci:ci%3});
+    }
+    // vapor particles — ride the wave streams up and out of the flask mouth
+    var vaporP=[]; for(var vi=0;vi<70;vi++){
+      vaporP.push({w:vi%3,o:Math.random(),sp:0.18+Math.random()*0.16,r:0.4+Math.random()*1.8,jx:(Math.random()*2-1)*6,ci:vi%3});
     }
     var prog=0, tt=0, curPh=-1;
     function onS(){ var vh=innerHeight||1, r=scene.getBoundingClientRect(), tot=(scene.offsetHeight-vh)||1; prog=Math.min(1,Math.max(0,-r.top/tot)); }
@@ -2120,83 +2117,173 @@ switchSubTab('g', 'survey_dash');
         g.beginPath(); g.arc(sx,sy,r,0,6.28); g.fill(); }
       g.restore(); }
 
-    /* ---- Phase 5: particles collect into a cloud -> streams + splashes -> ripple sound ---- */
-    function soundRipples(intensity,cx,oy){ if(intensity<=0.01)return; g.save();
-      g.beginPath(); g.rect(0,0,W,oy+2); g.clip();   // only above the floor
-      var maxR=Math.min(W,H)*1.05, spacing=72, speed=30;
-      var t0=(tt*speed)%spacing;
-      for(var Rr=t0; Rr<maxR; Rr+=spacing){
-        var fade=1-Rr/maxR; if(fade<=0) continue;
-        var idx=Math.round((Rr-t0)/spacing);
-        var col=idx%3===0?'60,120,240':(idx%3===1?'40,190,245':'150,70,225');
-        g.strokeStyle='rgba('+col+','+(0.5*fade*intensity).toFixed(3)+')'; g.lineWidth=2.1*fade+0.6;
-        g.beginPath(); var seg=70;
-        for(var s=0;s<=seg;s++){ var th=Math.PI + (s/seg)*Math.PI;   // upper semicircle
-          var wob=Math.sin(th*7 - tt*2.4)*3.2*fade;                  // crests & troughs across the front
-          var x=cx+Math.cos(th)*(Rr+wob), y=oy+Math.sin(th)*(Rr+wob);
-          if(s===0) g.moveTo(x,y); else g.lineTo(x,y); }
-        g.stroke();
-      }
-      g.restore(); }
-
+    /* ---- Phase 5: AIR particles -> SOUND WAVE (voice-memo fill L->R) -> GAS in an Erlenmeyer flask ---- */
+    function mix(a,b,t){ return [Math.round(lerp(a[0],b[0],t)),Math.round(lerp(a[1],b[1],t)),Math.round(lerp(a[2],b[2],t))]; }
+    var COOL_A=[54,140,235], COOL_B=[150,92,214];   // blue -> violet across the wave
+    // wave packet envelope + carrier: a voice-memo-like burst that peaks in the centre
+    function waveOffset(xf,t){
+      var env=Math.exp(-Math.pow((xf-0.5)/0.27,2));
+      var carrier=Math.sin(xf*Math.PI*10 - t*2.0)*0.62 + Math.sin(xf*Math.PI*23 - t*3.1)*0.38;
+      return carrier*env;
+    }
     function drawFinale(sp){ if(sp<=0.001)return;
-      var floorY=H*0.82, cx=W*0.5, R=Math.min(W*0.22,H*0.30), cloudCy=H*0.25, baseY=cloudCy+R*0.5;
-      var form=ease(ramp(sp,0.02,0.30));      // particles gather into cloud shape
-      var water=ramp(sp,0.30,0.52);
-      var splash=ramp(sp,0.50,0.70);
-      var sound=ramp(sp,0.62,0.82);
-      var cloudFade=1;   // cloud stays present through the final scroll-out
-      // 1) soft cloud body glow (binds the particles once mostly formed)
-      if(form>0.35 && cloudFade>0.01){ g.save(); g.globalAlpha=Math.min(1,(form-0.35)/0.5)*0.72*cloudFade;
-        var LB=[[-1.5,0.25,0.62],[-0.85,-0.12,0.82],[-0.1,-0.44,0.98],[0.75,-0.18,0.86],[1.45,0.22,0.64],[-0.45,0.32,0.72],[0.55,0.34,0.68],[1.05,0.3,0.56]];
-        for(var l=0;l<LB.length;l++){ var lx=cx+LB[l][0]*R*0.66, ly=cloudCy+LB[l][1]*R, lr=LB[l][2]*R*0.72;
-          var gb=g.createRadialGradient(lx,ly-lr*0.3,lr*0.2,lx,ly,lr);
-          gb.addColorStop(0,'rgba(196,214,238,0.95)'); gb.addColorStop(0.6,'rgba(140,168,210,0.6)'); gb.addColorStop(1,'rgba(112,142,192,0)');
-          g.fillStyle=gb; g.beginPath(); g.arc(lx,ly,lr,0,6.28); g.fill(); }
+      var t=tt;
+      // ---- sub-phase timeline ----
+      var reveal0=ramp(sp,0.03,0.40);            // voice-memo capture front sweeps L->R
+      var soundIn=ease(ramp(sp,0.02,0.22));      // fly-in strength for revealed particles
+      var morph=ease(ramp(sp,0.46,0.70));        // sound wave -> flask body
+      var glass=ease(ramp(sp,0.48,0.66));        // flask glass draws in
+      var fillLevel=ease(ramp(sp,0.60,0.94));    // gas rises from base
+      var vapor=ramp(sp,0.66,1.0);               // vapor emission from the mouth
+
+      // ---- wave geometry ----
+      var wX0=W*0.13, wSpan=W*0.74, wCy=H*0.44, wAmp=Math.min(H*0.20,W*0.14);
+      // ---- Erlenmeyer flask geometry ----
+      var cx=W*0.5, rimY=H*0.235, rimHalf=Math.min(W*0.052,54), neckHalf=Math.min(W*0.033,34),
+          neckBotY=H*0.30, shoulderY=H*0.415, baseY=H*0.76, baseHalf=Math.min(W*0.16,190), corner=Math.min(24,baseHalf*0.16);
+      function halfAtV(v){ return lerp(neckHalf, baseHalf, v); }
+      function flaskHome(u,v){ var y=lerp(shoulderY, baseY, v); return { x: cx + u*Math.max(0, wallHalf(y)-strokeHalf-2), y:y }; }
+      // interior half-width of the ACTUAL drawn glass outline at a given y (matches the wall path + rounded base)
+      var strokeHalf=1.2, ybCorner=baseY-corner;
+      function wallHalf(y){
+        if(y<=ybCorner){ return lerp(neckHalf, baseHalf-corner*0.3, (y-shoulderY)/(ybCorner-shoulderY)); }
+        var b=Math.min(1,(y-ybCorner)/corner);        // 0..1 through the rounded bottom corner
+        return (baseHalf-corner*0.3) - (corner*0.7)*Math.pow(b,1.5);
+      }
+      // clamp a point to strictly inside the glass (respecting stroke + particle radius)
+      function confine(px,py,rad){
+        var yy=Math.max(shoulderY+rad+2, Math.min(baseY-rad-2, py));
+        var hw=Math.max(0, wallHalf(yy)-strokeHalf-rad-1);
+        return { x: Math.max(cx-hw, Math.min(cx+hw, px)), y: yy };
+      }
+      var liquidY = lerp(baseY, shoulderY, fillLevel);
+
+      // ---- 1) capture progress axis (the "recording" baseline) ----
+      if(reveal0>0 && morph<0.98){ g.save(); g.globalAlpha=(1-morph);
+        g.strokeStyle='rgba(120,150,205,0.35)'; g.lineWidth=1.5;
+        g.beginPath(); g.moveTo(wX0, wCy); g.lineTo(wX0+wSpan*reveal0, wCy); g.stroke();
+        // leading capture head
+        var hx=wX0+wSpan*reveal0;
+        g.fillStyle='rgba(90,120,200,0.5)'; g.beginPath(); g.arc(hx,wCy,3.2,0,6.28); g.fill();
         g.restore(); }
-      // 2) particles physically collect from their scattered spots into the cloud
-      if(cloudFade>0.01){ g.save();
-        for(var i=0;i<dust.length;i++){ var d=dust[i];
-          var jx=Math.sin(tt*0.8+d.ph)*3*form, jy=Math.cos(tt*0.7+d.ph)*3*form;
-          var x=lerp(d.x*W, cx+d.tx*R+jx, form), y=lerp(d.y*H, cloudCy+d.ty*R+jy, form);
-          var a=(0.45+0.5*form)*cloudFade;
-          g.fillStyle='rgba('+((i%3===0)?'150,176,214':(i%3===1?'108,138,196':'150,116,206'))+','+a.toFixed(3)+')';
-          g.beginPath(); g.arc(x,y,1.2+d.r*1.4,0,6.28); g.fill(); }
-        // extra fill particles — appear ONLY during the collect (form>0) to densen the cloud
-        if(form>0.02){ for(var ci=0;ci<cfill.length;ci++){ var f=cfill[ci];
-          var fjx=Math.sin(tt*0.7+f.ph)*3.2, fjy=Math.cos(tt*0.6+f.ph)*3.2;
-          var fx2=cx+f.tx*R+fjx, fy2=cloudCy+f.ty*R+fjy;
-          var fa=form*form*0.72*cloudFade;
-          g.fillStyle='rgba('+(f.ci===0?'138,166,208':(f.ci===1?'96,128,190':'144,110,202'))+','+fa.toFixed(3)+')';
-          g.beginPath(); g.arc(fx2,fy2,1.5+f.r*1.55,0,6.28); g.fill(); } }
-        g.restore(); }
-      // 3) water streams FROM the cloud base down to the floor, each splashing
-      if(water>0.01){ g.save(); var nS=7;
-        for(var s2=0;s2<nS;s2++){ var sxo=cx+((s2/(nS-1))-0.5)*R*1.35;
-          for(var k=0;k<5;k++){ var ph=((tt*0.55*(0.7+((s2*3+k)%4)/4) + (k/5) + s2*0.13)%1);
-            var yy=lerp(baseY,floorY,ph), xx=sxo+Math.sin(ph*6+s2)*4, dl=4+7*ph;
-            g.strokeStyle='rgba(70,150,230,'+(0.55*water).toFixed(3)+')'; g.lineWidth=2;
-            g.beginPath(); g.moveTo(xx,yy-dl); g.lineTo(xx,yy); g.stroke();
-            g.fillStyle='rgba(130,195,248,'+(0.75*water).toFixed(3)+')'; g.beginPath(); g.arc(xx,yy,1.8,0,6.28); g.fill(); }
-          if(splash>0.03){ var sph=(tt*1.1 + s2*0.37)%1, srad=sph*22, sf=(1-sph)*water*Math.min(1,splash*1.4);
-            if(sf>0.02){ g.strokeStyle='rgba(90,170,235,'+(0.55*sf).toFixed(3)+')'; g.lineWidth=1.6;
-              g.beginPath(); g.ellipse(sxo,floorY,srad,srad*0.42,0,Math.PI,2*Math.PI); g.stroke();
-              g.fillStyle='rgba(150,205,250,'+(0.6*sf).toFixed(3)+')';
-              g.beginPath(); g.arc(sxo-srad*0.5,floorY-srad*0.5,1.6,0,6.28); g.fill();
-              g.beginPath(); g.arc(sxo+srad*0.5,floorY-srad*0.4,1.6,0,6.28); g.fill(); } }
+
+      // ---- 2) glass flask outline (draws in as the wave collapses) ----
+      if(glass>0.01){ g.save(); g.globalAlpha=glass;
+        // interior gas fill up to the liquid line
+        if(fillLevel>0.01){ g.save();
+          g.beginPath();
+          g.moveTo(cx-neckHalf, shoulderY); g.lineTo(cx-baseHalf+corner*0.3, baseY-corner);
+          g.arcTo(cx-baseHalf, baseY, cx-baseHalf+corner, baseY, corner);
+          g.lineTo(cx+baseHalf-corner, baseY);
+          g.arcTo(cx+baseHalf, baseY, cx+baseHalf-corner*0.3, baseY-corner, corner);
+          g.lineTo(cx+neckHalf, shoulderY); g.closePath(); g.clip();
+          var gy=g.createLinearGradient(0,baseY,0,liquidY);
+          gy.addColorStop(0,'rgba(96,150,224,0.34)'); gy.addColorStop(0.7,'rgba(122,120,208,0.20)'); gy.addColorStop(1,'rgba(150,140,214,0.02)');
+          g.fillStyle=gy; g.fillRect(cx-baseHalf, liquidY, baseHalf*2, baseY-liquidY+2);
+          // shimmering gas surface line
+          g.strokeStyle='rgba(120,150,224,'+(0.5).toFixed(2)+')'; g.lineWidth=1.6; g.beginPath();
+          for(var gx=-1;gx<=1.001;gx+=0.05){ var yy=liquidY+Math.sin(gx*7+t*2)*2.2; var xx=cx+gx*halfAtV(fillLevel);
+            if(gx<=-1) g.moveTo(xx,yy); else g.lineTo(xx,yy); }
+          g.stroke();
+          g.restore();
         }
-        // central bigger splash crown + puddle
-        if(splash>0.02){ var pud=lerp(16,R*1.4,splash);
-          g.fillStyle='rgba(66,165,245,'+(0.14*splash).toFixed(3)+')';
-          g.beginPath(); g.ellipse(cx,floorY,pud,9+7*splash,0,0,6.28); g.fill();
-          g.strokeStyle='rgba(96,165,235,'+(0.5*splash).toFixed(3)+')'; g.lineWidth=2.2;
-          for(var c=0;c<7;c++){ var ca=-Math.PI*0.2 - c/6*Math.PI*0.6, ln=(26+Math.sin(c*1.7+tt*1.5)*9)*Math.min(1,splash*1.3), bx=cx+(c-3)*10;
-            g.beginPath(); g.moveTo(bx,floorY); g.lineTo(bx+Math.cos(ca)*7,floorY-ln); g.stroke(); } }
-        g.restore(); }
-      // 4) sound ripples radiating in all directions from the splash
-      soundRipples(sound, cx, floorY);
-      // floor line
-      g.strokeStyle='rgba(78,73,95,0.22)'; g.lineWidth=1.5; g.beginPath(); g.moveTo(0,floorY); g.lineTo(W,floorY); g.stroke();
+        // glass body stroke
+        g.strokeStyle='rgba(78,90,120,0.7)'; g.lineWidth=2.4; g.lineJoin='round';
+        g.beginPath();
+        g.moveTo(cx-rimHalf, rimY);
+        g.lineTo(cx-neckHalf, neckBotY);
+        g.lineTo(cx-neckHalf, shoulderY);
+        g.lineTo(cx-baseHalf+corner*0.3, baseY-corner);
+        g.arcTo(cx-baseHalf, baseY, cx-baseHalf+corner, baseY, corner);
+        g.lineTo(cx+baseHalf-corner, baseY);
+        g.arcTo(cx+baseHalf, baseY, cx+baseHalf-corner*0.3, baseY-corner, corner);
+        g.lineTo(cx+neckHalf, shoulderY);
+        g.lineTo(cx+neckHalf, neckBotY);
+        g.lineTo(cx+rimHalf, rimY);
+        g.stroke();
+        // rim lip
+        g.lineWidth=3; g.beginPath(); g.moveTo(cx-rimHalf-4, rimY); g.lineTo(cx+rimHalf+4, rimY); g.stroke();
+        // graduation ticks
+        g.strokeStyle='rgba(78,90,120,0.32)'; g.lineWidth=1.2;
+        for(var gv=0.25; gv<0.92; gv+=0.22){ var ty=lerp(shoulderY,baseY,gv), tw=halfAtV(gv);
+          g.beginPath(); g.moveTo(cx+tw*0.42, ty); g.lineTo(cx+tw*0.72, ty); g.stroke(); }
+        // specular highlight
+        g.strokeStyle='rgba(255,255,255,0.5)'; g.lineWidth=3;
+        g.beginPath(); g.moveTo(cx-baseHalf*0.55, baseY-14); g.lineTo(cx-neckHalf*0.7, shoulderY+18); g.stroke();
+        g.restore();
+        // base shadow
+        g.save(); g.globalAlpha=glass*0.5; g.fillStyle='rgba(78,73,95,0.14)';
+        g.beginPath(); g.ellipse(cx, baseY+8, baseHalf*0.95, 9, 0,0,6.28); g.fill(); g.restore();
+      }
+
+      // ---- 3) the particles: air -> wave -> gas in flask ----
+      g.save();
+      function drawParticle(px,py,rad,col,a){ if(a<=0.01)return;
+        g.fillStyle='rgba('+col[0]+','+col[1]+','+col[2]+','+a.toFixed(3)+')';
+        g.beginPath(); g.arc(px,py,rad,0,6.28); g.fill(); }
+      for(var i=0;i<dust.length;i++){ var d=dust[i];
+        var rp=Math.min(1,Math.max(0,(reveal0 - d.sx)/0.16));   // per-particle reveal as capture head passes
+        var appear=ease(rp)*soundIn;
+        // wave home
+        var wob=waveOffset(d.sx,t)*d.strand;
+        var wy=wCy + wob*wAmp + Math.sin(t*1.4+d.ph)*2.0*appear;
+        var wx=wX0 + d.sx*wSpan;
+        // scattered air home
+        var ax=d.x*W, ay=d.y*H;
+        // flask home + gentle convection drift, clamped strictly inside the glass
+        var fh=flaskHome(d.u, d.v);
+        var conv=Math.sin(t*0.9 + d.ph)*2.6, convY=Math.cos(t*0.8+d.ph)*2.2;
+        var rad=1.1+d.r*1.35;
+        var fc=confine(fh.x+conv, fh.y+convY, rad);
+        var fx3=fc.x, fy3=fc.y;
+        // blend: air -> wave (by appear) -> flask (by morph)
+        var swx=lerp(ax,wx,appear), swy=lerp(ay,wy,appear);
+        var x=lerp(swx,fx3,morph), y=lerp(swy,fy3,morph);
+        var col=mix(COOL_A,COOL_B,d.sx);
+        // brightness: revealed on the wave, then "settled gas" once the rising level covers it
+        var gasLit=Math.min(1,Math.max(0,(fy3 - liquidY)/(H*0.03)));
+        var aWave=(0.35+0.55*appear)*(1-morph);
+        var aGas=morph*(0.16+0.6*gasLit);
+        var a=Math.max(aWave,aGas);
+        drawParticle(x,y,1.1+d.r*1.35, col, a);
+      }
+      // extra fill particles densen the gas inside the flask (only while morphing in)
+      if(morph>0.02){ for(var ci=0;ci<cfill.length;ci++){ var f=cfill[ci];
+        var fh2=flaskHome(f.u,f.v);
+        var jx=Math.sin(t*0.8+f.ph)*2.6, jy=Math.cos(t*0.7+f.ph)*2.2;
+        var frad=1.3+f.r*1.45;
+        var fcc=confine(fh2.x+jx, fh2.y+jy, frad);
+        var fx2=fcc.x, fy2=fcc.y;
+        var gasLit2=Math.min(1,Math.max(0,(fh2.y - liquidY)/(H*0.03)));
+        var fa=morph*(0.12+0.5*gasLit2);
+        var col2=mix(COOL_A,COOL_B,(f.u+1)/2);
+        drawParticle(fx2,fy2,frad, col2, fa);
+      } }
+      g.restore();
+
+      // ---- 4) vapor waves emitting from the flask mouth ----
+      if(vapor>0.02){ g.save();
+        var nStreams=3, topY=rimY - Math.min(H*0.20,W*0.16);
+        for(var w=0;w<nStreams;w++){
+          var baseX=cx+(w-1)*neckHalf*0.85, freq=2.2+w*0.6, phase=w*1.3;
+          g.strokeStyle='rgba('+(w===1?'120,120,210':'90,150,220')+','+(0.28*vapor).toFixed(3)+')'; g.lineWidth=2.2;
+          g.beginPath();
+          for(var s=0;s<=1.001;s+=0.05){ var yy=lerp(rimY-4, topY, s);
+            var sway=Math.sin(s*freq*3.1 + t*2 + phase)*(8+22*s)*vapor;
+            var xx=baseX + sway; if(s<=0) g.moveTo(xx,yy); else g.lineTo(xx,yy); }
+          g.stroke();
+        }
+        // vapor particles riding the streams up and out
+        for(var vi=0;vi<vaporP.length;vi++){ var vp=vaporP[vi];
+          if(!reduce) vp.o+=vp.sp*0.01; if(vp.o>1) vp.o-=1;
+          var s2=vp.o, yy2=lerp(rimY-2, topY, s2);
+          var bx=cx+(vp.w-1)*neckHalf*0.85, freq2=2.2+vp.w*0.6, ph2=vp.w*1.3;
+          var xx2=bx + Math.sin(s2*freq2*3.1 + t*2 + ph2)*(8+22*s2)*vapor + vp.jx*s2;
+          var col3=mix(COOL_A,COOL_B, s2);
+          drawParticle(xx2, yy2, vp.r*(0.7+s2*0.7), col3, vapor*(1-s2)*0.7);
+        }
+        g.restore();
+      }
     }
 
     function draw(){ if(!reduce) tt+=0.01; var p=prog;
@@ -2225,8 +2312,8 @@ switchSubTab('g', 'survey_dash');
         if(cap){ cap.style.opacity=0; setTimeout(function(){ cap.textContent=CAPS[ph]; cap.style.opacity=1; },170); }
       }
       for(var i=0;i<rail.length;i++){ rail[i].classList.toggle('on',i<=ph); }
-      // remove the big head box once the water starts to fall
-      if(headBox){ headBox.style.opacity = fin<=0.001 ? '1' : String(Math.max(0,1-ramp(fin,0.0,0.10))); }
+      // hide the heading box entirely during the finale (phase 4); keep it for phases 0-3
+      if(headBox){ headBox.style.opacity = p>=0.66 ? '0' : '1'; }
       requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
