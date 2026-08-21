@@ -963,7 +963,7 @@ input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
                 <div class="bmrLabel">Exposure control</div><div class="bmrValue">—</div>
               </div>
               <div class="bmrSectionHeader">IH Sample Equipment</div>
-              <div style="padding:10px; font-size:11px; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #BR-062124-001</div>
+              <div style="padding:10px; font-size:11px; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #SG-062124-001</div>
               <div class="bmrGrid">
                 <div class="bmrLabel">IH instrument</div><div class="bmrValue">N/A for passive badges</div>
                 <div class="bmrLabel">Calibration device</div><div class="bmrValue">N/A for passive badges</div>
@@ -1535,7 +1535,7 @@ return `<div class="panel">
 </div>
 <div id="${p}SampleList">
 <div class="sampleCard">
-<div class="sampleTop"><span><b>#CR-050224-01</b><span class="skc">SKC 52</span></span><span class="openS">OPEN SAMPLE</span></div>
+<div class="sampleTop"><span><b>#SG-050224-01</b><span class="skc">SKC 52</span></span><span class="openS">OPEN SAMPLE</span></div>
 <div class="sampleLines">Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 06:55 am. (10 hours ago)<br>Last check: 2 May 2024, 07:57 am (9 hours ago)<br>Samples has finished.<br>Samples has finished and has results.</div>
 </div>
 </div>
@@ -1546,9 +1546,9 @@ return `<div class="panel">
 }
 function toggleSampleMenu(p){document.getElementById(p+'SampleMenu').classList.toggle('open');}
 const EX_SAMPLES={
-full:['#CR-050224-02','SKC 52','Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 07:12 am.<br>Sample is running.'],
-short:['#CR-050224-ST-01','SKC 52','Sample type: short term (15 min)<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 09:41 am.<br>Sample is running.'],
-grab:['#CR-050224-G-01','Tedlar bag','Sample type: grab<br>Hazards: Benzene - # 71-43-2,<br>Collected: 10:05 am.<br>Awaiting lab submission.'],
+full:['#SG-050224-02','SKC 52','Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 07:12 am.<br>Sample is running.'],
+short:['#SG-050224-ST-01','SKC 52','Sample type: short term (15 min)<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 09:41 am.<br>Sample is running.'],
+grab:['#SG-050224-G-01','Tedlar bag','Sample type: grab<br>Hazards: Benzene - # 71-43-2,<br>Collected: 10:05 am.<br>Awaiting lab submission.'],
 noise:['#ND-050224-01','Casella dB2','Sample type: noise dosimetry<br>Hazard: Noise (8-hr TWA)<br>Start time: 06:58 am.<br>Sample is running.'],
 direct:['#DR-050224-01','PID','Sample type: direct read<br>Hazard: VOCs (total)<br>Logged: 10:22 am.<br>Reading recorded.']
 };
