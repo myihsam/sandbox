@@ -4,11 +4,49 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Official myIH Deck | myIH</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f7f9f9;color:#3b374a;font:16px/1.5 system-ui,sans-serif}header,main{max-width:1200px;margin:auto;padding:20px}nav{display:flex;gap:24px;flex-wrap:wrap}a{color:#426d6c}h1{font-size:28px;margin:12px 0}object{width:100%;height:80vh;min-height:500px;display:block;border:1px solid #dbe2e2;background:#fff}.fallback{padding:32px}footer{padding:20px;text-align:center}
+*{box-sizing:border-box}body{margin:0;background:#f7f9f9;color:#3b374a;font:16px/1.5 system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:20px}a{color:#426d6c}h1{font-size:28px;margin:12px 0}object{width:100%;height:80vh;min-height:500px;display:block;border:1px solid #dbe2e2;background:#fff}.fallback{padding:32px}footer{padding:20px;text-align:center}
+:root{--line:#dbe2e2;--slate:#3b374a;--teal:#7ea8a7;--mist:#f2f6f6}
+.lpHeader{max-width:none;margin:0;padding:0}
+.lpHeader{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--line)}
+.lpHeaderInner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:12px 22px;position:relative}
+.lpHeaderCta{position:absolute;right:22px;top:50%;transform:translateY(-50%)}
+.btn{display:inline-block;background:var(--slate);color:#fff;font-weight:500;font-size:15px;padding:12px 26px;border:none;border-radius:8px;text-decoration:none;transition:transform .12s,box-shadow .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,55,74,.25);color:#fff}
+.btn.sm{font-size:13px;padding:9px 18px}
+.lpMenuWrap{position:absolute;left:22px;top:50%;transform:translateY(-50%);z-index:60}
+.lpMenuBtn{display:flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:9px 15px;font-size:13px;font-weight:600;color:var(--slate);letter-spacing:.04em}
+.lpMenuBtn:hover{border-color:var(--teal)}
+.lpMenuBtn .bars{display:inline-flex;flex-direction:column;gap:3px}
+.lpMenuBtn .bars i{width:16px;height:2px;background:var(--slate);border-radius:2px}
+.lpMenu{position:absolute;left:0;top:calc(100% + 8px);min-width:220px;background:#fff;border:1.5px solid var(--line);border-radius:12px;box-shadow:0 16px 40px rgba(59,55,74,.16);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .22s ease,transform .22s ease,visibility .22s}
+.lpMenu.open{opacity:1;visibility:visible;transform:none}
+.lpMenu a{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-size:14px;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--mist);font-weight:500}
+.lpMenu a:last-child{border-bottom:none}
+.lpMenu a:hover{background:var(--mist);color:var(--slate)}
+.lpMenu a .tagNew{font-size:9.5px;font-weight:700;letter-spacing:.1em;background:var(--teal);color:#fff;border-radius:20px;padding:2px 8px}
+@media(max-width:640px){.lpMenuBtn span.mtxt{display:none}.lpMenuBtn{padding:9px 11px}.lpHeaderCta .btn{padding:9px 15px;font-size:13px}}
 </style>
 </head>
 <body>
-<header><nav aria-label="Site"><a href="Consultants.html">For consultants</a><a href="owners-operators.html">For owners and operators</a><a href="blog.html">Blog</a></nav></header>
+<header class="lpHeader">
+  <div class="lpHeaderInner">
+    <div class="lpMenuWrap">
+      <button class="lpMenuBtn" id="lpMenuBtn" aria-expanded="false" aria-controls="lpMenu"><span class="bars"><i></i><i></i><i></i></span><span class="mtxt">Menu</span></button>
+      <nav class="lpMenu" id="lpMenu" aria-label="Site">
+        <a href="Consultants.html">Home</a>
+        <a href="Consultants.html#sandbox">Interactive sandbox</a>
+        <a href="Consultants.html#sciScene">The science of exposure</a>
+        <a href="blog.html">Blog</a>
+        <a href="https://koalendar.com/e/meet-with-sam-garrison" rel="noopener">Book a demo</a>
+      </nav>
+    </div>
+    <a href="Consultants.html" aria-label="myIH home" style="display:inline-flex;align-items:center"><img src="assets/myih-logo.png" alt="myIH" width="6119" height="4021" style="display:block;width:96px;height:auto;max-width:100%"></a>
+
+    <div class="lpHeaderCta"><a class="btn sm" href="https://koalendar.com/e/meet-with-sam-garrison" rel="noopener">Book a demo</a></div>
+  </div>
+</header>
 <main><h1>Official myIH deck</h1><p><a href="assets/decks/myih-official-info-deck.pdf" target="_blank" rel="noopener">Open PDF</a> · <a href="assets/decks/myih-official-info-deck.pdf" download>Download PDF</a></p>
 <object data="assets/decks/myih-official-info-deck.pdf#view=FitH" type="application/pdf" aria-label="Official myIH platform overview, 16 slides"><p class="fallback"><a href="assets/decks/myih-official-info-deck.pdf">Open the 16-slide PDF overview</a>.</p></object></main>
+<script>(function(){var btn=document.getElementById('lpMenuBtn'),menu=document.getElementById('lpMenu');if(!btn)return;function set(o){menu.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false');}btn.addEventListener('click',function(e){e.stopPropagation();set(!menu.classList.contains('open'));});document.addEventListener('click',function(e){if(!menu.contains(e.target)&&e.target!==btn)set(false);});document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});})();</script>
 </body></html>
+
