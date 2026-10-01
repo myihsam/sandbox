@@ -1,7 +1,20 @@
 {
   "rewrites": [
-    { "source": "/consultants", "destination": "/Consultants.html" },
-    { "source": "/owners-operators", "destination": "/owners-operators.html" },
-    { "source": "/", "destination": "/Consultants.html" }
+    {
+      "source": "/consultants.html",
+      "destination": "/Consultants.html"
+    },
+    {
+      "source": "/consultants",
+      "destination": "/Consultants.html"
+    },
+    {
+      "source": "/owners-operators",
+      "destination": "/owners-operators.html"
+    },
+    {
+      "source": "/",
+      "destination": "/Consultants.html"
+    }
   ]
 }
