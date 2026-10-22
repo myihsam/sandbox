@@ -1329,33 +1329,19 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
         <div class="sciInstrBd"><div class="sciReading">0.04 <small>f/cc</small></div><span class="pill" style="background:var(--oel-green)">&lt; 1% of OEL</span></div>
       </div>
 
-      <!-- Phase 3 — back into the software (myIH Project Config) -->
+      <!-- Phase 3 — Project Config, based on the actual product interface -->
       <div class="sciSoft" id="i-soft" aria-hidden="true">
-        <div class="sciSoftBar">‹&nbsp; Results &amp; OEL Records</div>
+        <div class="sciSoftBar">Project Config</div>
         <div class="sciSoftBody">
-          <div class="sciSoftCard">
-            <h3>Record Results Against OELs</h3>
-            <p style="font-size:14.5px;color:var(--ink-soft);margin:-4px 0 14px;line-height:1.5">Record sample results and view them against the selected OEL. Dashboards update as results are added. Your IH reviews the data and applies professional judgment.</p>
-            <div class="sciAutoload">
-              <div class="sciSoftBtn ghost">Excel / PDF export</div>
-              <div class="sciImport"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:block;margin:0 auto 6px"><path d="M12 15V4M8 8l4-4 4 4M5 19h14"/></svg>Results &amp; OELs</div>
-            </div>
+          <div class="sciSoftCard"><h3>Download Chain of Custody</h3><div class="sciSoftRow"><div class="sciField">From</div><div class="sciField">To</div><div class="sciSoftBtn disabled">Download</div></div></div>
+          <div class="sciSoftCard"><h3>Download Employee Notifications for Chemical samples</h3><div class="sciSoftRow"><div class="sciField">From</div><div class="sciField">To</div><div class="sciSoftBtn disabled">Download</div></div>
+            <h3 style="margin-top:16px">Download Employee Notifications for Noise samples</h3>
+            <div class="sciSoftRow"><div class="sciField">From</div><div class="sciField">To</div><div class="sciField">Report Type · Statutory</div><div class="sciSoftBtn disabled">Download</div></div>
           </div>
           <div class="sciSoftCard">
-            <h3>Download Chain of Custody</h3>
-            <div class="sciSoftRow">
-              <div class="sciField">From <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-              <div class="sciField">To <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-              <div class="sciSoftBtn disabled">Download</div>
-            </div>
-          </div>
-          <div class="sciSoftCard">
-            <h3>Employee Exposure Notes</h3>
-            <div class="sciSoftRow">
-              <div class="sciField">From <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-              <div class="sciField">To <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-              <div class="sciSoftBtn disabled">Download</div>
-            </div>
+            <h3>Upload Autoload Lab Results</h3>
+            <p style="font-size:13px;color:var(--ink-soft);margin:8px 0 12px;line-height:1.5">Upload your lab results file into the survey using Autoload Lab Results.</p>
+            <div class="sciSoftBtn" style="display:inline-block">AUTOLOAD LAB RESULTS</div>
           </div>
         </div>
       </div>
@@ -1935,7 +1921,7 @@ container.innerHTML = `
 </div>
 </div>
 <div class="cardShadow" style="background:#fff;margin-top:14px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Employee Exposure Notes</h3>
+<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Chemical samples</h3>
 <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
 <label style="font-size:11px;color:var(--ink-soft);font-weight:600">From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
 <label style="font-size:11px;color:var(--ink-soft);font-weight:600">To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
@@ -1943,8 +1929,17 @@ container.innerHTML = `
 </div>
 </div>
 <div class="cardShadow" style="background:#fff;margin-top:14px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Results & OEL Records</h3>
-<button class="abtn" style="background:#4E495F">REVIEW RESULTS</button>
+<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Noise samples</h3>
+<div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+<label>From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label>To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label>Report Type<select style="display:block;max-width:180px;margin-top:4px"><option>Statutory</option></select></label>
+<button class="abtn" disabled style="background:#e4e8e8;color:#9aa1a1">DOWNLOAD</button>
+</div></div>
+<div class="cardShadow" style="background:#fff;margin-top:14px">
+<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Upload Autoload Lab Results</h3>
+<p style="font-size:13px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px">Upload your lab results file into the survey using Autoload Lab Results.</p>
+<button class="abtn" style="background:#4E495F">AUTOLOAD LAB RESULTS</button>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px">
 <h3 style="font-size:20px;color:var(--slate);font-weight:600">Project Locks</h3>
@@ -2282,9 +2277,9 @@ switchSubTab('g', 'survey_dash');
     var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','Capture the sample. Keep the context.'];
     var CAPS=[
       "A personal sampling pump draws air through a sampling medium. Record the equipment and calibration with the sample.",
-      "The sampled media is sent to a laboratory for analysis. Any resulting data you can then import into the survey.",
-      "Add sample results and view them as a percentage of the selected OEL. The dashboard supports review; exposure judgments remain with your IH.",
-      "Now it\u2019s a concentration you can defend: each result measured against its occupational exposure limit.",
+      "Send the sampled media to a laboratory for analysis, then upload the lab results file into the survey using Autoload Lab Results.",
+      "Upload your lab results file from Project Config. Review results against the selected OEL and download chain-of-custody documentation and employee notifications.",
+      "Review each result as a percentage of its selected occupational exposure limit.",
       "For vapor sampling, a pump draws air through a sorbent tube. myIH connects the sample ID, flow checks, and field notes to the record."
     ];
 
