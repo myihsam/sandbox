@@ -686,6 +686,64 @@ input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
 #mainContent{position:relative;z-index:2}
 #mainContent>section,#mainContent>footer{position:relative;z-index:2}
 </style>
+
+<style id="mobile-polish">
+/* Fan and intake share the same measured centre, including the gentle float. */
+#fxParticles{inset:auto;right:auto;bottom:auto;contain:strict}
+#ventWrap{top:88px;right:24px;width:clamp(110px,16vw,190px);opacity:.48}
+.sciSticky{height:100svh}
+.sciInstr{box-shadow:0 12px 32px rgba(59,55,74,.14);border:1px solid rgba(127,163,162,.2)}
+.sciSoft{box-shadow:0 20px 55px rgba(59,55,74,.18)}
+:focus-visible{outline:3px solid var(--teal-deep);outline-offset:4px}
+@media(max-width:700px){
+  #ventWrap{display:block;top:82px;right:12px;width:88px;opacity:.4}
+  .lpHero{gap:24px;padding-top:30px}
+  .lpHeroText{flex-basis:100%;padding:24px 20px;border-radius:20px}
+  .lpHero .eyebrowXL{padding-right:70px;font-size:14px;letter-spacing:.12em}
+  .lpHero h1{font-size:clamp(28px,7.5vw,40px);line-height:1.18}
+  .lpHero .sub{font-size:16px;line-height:1.7}
+  .lpHeroCtas{gap:10px;margin-top:24px}
+  .lpHeroCtas .btn{width:100%;text-align:center;min-height:48px}
+  .lpHeroImg{margin:0;flex-basis:100%}
+  .sciScene{height:460svh}
+  .sciHeadBox{top:76px;width:100%;padding:16px 20px}
+  .sciKicker{font-size:10px;letter-spacing:.16em}
+  .sciTitle{font-size:clamp(25px,6.7vw,34px);line-height:1.15}
+  .sciCaption{font-size:14px;line-height:1.5;margin-top:10px}
+  .sciCanvas{top:32%;height:39%;bottom:auto}
+  .sciInstr{top:auto!important;bottom:62px!important;min-width:0;width:calc(50% - 22px);border-radius:14px}
+  #i-pump,#i-gcms,#i-dust{left:16px!important;right:auto!important}
+  #i-benzene,#i-pcm,#i-oel{right:16px!important;left:auto!important}
+  .sciInstrHd{font-size:10px;letter-spacing:0;padding:10px;gap:6px;min-height:44px}
+  .sciInstrBd{padding:12px 10px;min-height:116px}
+  .sciReading{font-size:26px}.sciReading small{font-size:13px}
+  .sciSub{font-size:11px;line-height:1.5}
+  .sciInstr .pill{font-size:10px;padding:5px 8px}
+  .sciDot{width:7px;height:7px;box-shadow:none}
+  .sciSoft,.sciSoft.on{top:34%;width:calc(100% - 32px);max-height:calc(66% - 62px);transform:translateX(-50%);border-radius:16px}
+  .sciSoft{overflow-y:auto;pointer-events:auto;overscroll-behavior:contain}.sciSoftBody{padding:10px;gap:8px}.sciSoftCard{padding:12px}
+  .sciSoftCard h3{font-size:14px}.sciSoftCard p{font-size:12px!important;margin:8px 0!important}
+  .sciAutoload{grid-template-columns:1fr 1fr;gap:8px}
+  .sciSoftBtn,.sciImport{font-size:10px;padding:10px 8px;white-space:normal}
+  .sciField{flex-basis:60px;padding:8px;font-size:11px}
+  .sciSoftRow{gap:6px}.sciSoftBar{padding:10px 14px;font-size:12px}
+  .sciSound{top:auto;bottom:74px;width:calc(100% - 32px);padding:18px 20px;border-radius:18px}
+  .sciSound .sndKick{font-size:10px}.sciSound .sndTitle{font-size:20px}
+  .sciRail{bottom:24px;gap:8px}.sciRail i{width:26px;height:4px}
+  .sciHint{bottom:38px;font-size:9px;letter-spacing:.12em}
+  .valueTiles .cardShadow::before{opacity:.1}
+  .valueTiles .cardShadow::after{opacity:.1}
+  .lpExport{gap:24px}.lpExportRow{grid-template-columns:105px minmax(0,1fr)}
+  .lpExportRow span{overflow-wrap:anywhere}
+  .rv{transform:translateY(12px)}
+  input,select,textarea{font-size:16px!important}
+}
+@media(hover:none){
+  .cardShadow:hover,.lpExportCard:hover,.panel:hover,.valueTiles .cardShadow:hover,img:not(#sandbox *):hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){.sciScene{height:180svh}}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1988,88 +2046,38 @@ switchSubTab('g', 'survey_dash');
     revealEls.forEach(function(e){ io.observe(e); });
   } else { revealEls.forEach(function(e){ e.classList.add('inview'); }); }
 
-  /* ---- Particulates — direct-to-vent trajectory, 3x slower, sandbox-masked opacity ---- */
-  var cv=document.getElementById('fxParticles'); if(!cv) return;
-  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ctx=cv.getContext('2d');
-  var W,H,DPR=Math.min(2,window.devicePixelRatio||1);
-  function size(){ W=innerWidth; H=innerHeight; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
-  size(); addEventListener('resize',size);
-
-  var COLORS=['rgba(120,190,245,','rgba(96,165,235,','rgba(150,125,220,','rgba(178,150,235,'];
-  var COUNT=340;
-  function docHalf(){ return Math.max(document.documentElement.scrollHeight,document.body.scrollHeight||0,H); }
-
-  var scrollY=0;
-  function onScroll(){ scrollY=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0; }
-  addEventListener('scroll',onScroll,{passive:true}); onScroll();
-
-  /* Spawn inside a band around the CURRENT viewport (in document space).
-     This guarantees uniform particle density at every scroll depth —
-     top hero, mid page, and the bottom sections all stay populated. */
+  /* Local intake: every particle stays within one fan diameter of the grille. */
+  var cv=document.getElementById('fxParticles'), vent=document.getElementById('ventWrap');
+  if(!cv || !vent || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx=cv.getContext('2d'), particles=[], last=0;
+  var colors=['96,165,235','150,125,220','120,190,245'];
   function spawn(p){
-    p=p||{};
-    var half=docHalf();
-    var bandTop=Math.max(0, scrollY - H*0.6);
-    var bandBot=Math.min(half, scrollY + H*1.6);
-    var mode=Math.random();
-    if(mode<0.35){
-      /* bottom-edge origin — anywhere across the width, near the base of the viewport band */
-      p.x=Math.random()*W;
-      p.dy=Math.min(bandBot, scrollY+H*0.98) - Math.random()*(H*0.16);
-    } else {
-      /* side origin — left or right edge, anywhere down the band */
-      p.x=(Math.random()<.5)? Math.random()*(W*.24) : W-(Math.random()*(W*.24));
-      p.dy=bandTop + Math.random()*(bandBot-bandTop);
-    }
-    p.r=1.4+Math.random()*3.4;                  /* small particulates */
-    p.c=COLORS[(Math.random()*COLORS.length)|0];
-    p.sp=(0.9+Math.random()*1.5)/3;             /* direct travel speed — exactly 3x slower */
-    p.life=0;                                   /* fade in calmly */
+    p.angle=Math.random()*Math.PI*2;
+    p.progress=0;
+    p.speed=.12+Math.random()*.12;
+    p.radius=1+Math.random()*1.6;
+    p.color=colors[Math.floor(Math.random()*colors.length)];
     return p;
   }
-  var P=[]; for(var i=0;i<COUNT;i++){ var p0=spawn(); p0.life=Math.random(); P.push(p0); }
-
-  /* #sandbox mask rect (document space) — particles are MORE visible behind it */
-  var sandboxEl=document.getElementById('sandbox'), sbRect=null;
-  function measureSb(){ if(!sandboxEl) return; var r=sandboxEl.getBoundingClientRect();
-    sbRect={top:r.top+scrollY,bottom:r.bottom+scrollY,left:r.left,right:r.right}; }
-  measureSb(); addEventListener('resize',measureSb); setInterval(measureSb,1200);
-
-  function ventPos(){ var on=W>700; return {x:W-154, y:150, on:on}; }
-
-  function frame(){
-    ctx.clearRect(0,0,W,H);
-    var vent=ventPos();
-    var half=docHalf();
-    for(var i=0;i<P.length;i++){
-      var p=P[i];
-      p.life=Math.min(1,p.life+.004);           /* fade-in, 3x slower */
-      /* purposeful trajectory: straight line into the industrial vent */
-      if(vent.on){
-        var tdy=scrollY+vent.y;                 /* vent position mapped to document space */
-        var dx=vent.x-p.x, dyv=tdy-p.dy;
-        var d=Math.hypot(dx,dyv)||1;
-        p.x+=dx/d*p.sp; p.dy+=dyv/d*p.sp;
-        if(d<46){ spawn(p); continue; }         /* swallowed by the vent — disappear */
-      } else {
-        p.dy-=p.sp;                             /* no vent (mobile): rise straight up */
-        if(p.dy<-70){ spawn(p); continue; }
-      }
-      if(p.dy>half+40){ p.dy=half+40; }
-      var sy=p.dy-scrollY;
-      /* recycle particles the user scrolled far away from — keeps every
-         section stocked instead of stranding particles offscreen */
-      if(sy<-H*0.9||sy>H*1.9){ spawn(p); continue; }
-      if(sy<-90||sy>H+90) continue;
-      /* masked opacity: boosted directly behind #sandbox */
-      var inSb=sbRect && p.dy>=sbRect.top && p.dy<=sbRect.bottom && p.x>=sbRect.left && p.x<=sbRect.right;
-      var a=(inSb?.68:.42)*p.life;
-      ctx.beginPath(); ctx.fillStyle=p.c+(a*.28).toFixed(4)+')';
-      ctx.arc(p.x,sy,p.r*2.4,0,Math.PI*2); ctx.fill();   /* soft bokeh halo */
-      ctx.beginPath(); ctx.fillStyle=p.c+a.toFixed(4)+')';
-      ctx.arc(p.x,sy,p.r,0,Math.PI*2); ctx.fill();
+  for(var i=0;i<48;i++){var p=spawn({});p.progress=Math.random();particles.push(p);}
+  function frame(now){
+    var dt=Math.min(.05,(now-last)/1000||0);last=now;
+    var r=vent.getBoundingClientRect(), size=r.width*2, dpr=Math.min(2,devicePixelRatio||1);
+    if(cv.width!==Math.round(size*dpr)){
+      cv.width=cv.height=Math.round(size*dpr);
+      cv.style.width=cv.style.height=size+'px';
     }
+    cv.style.left=(r.left+r.width/2-size/2)+'px';
+    cv.style.top=(r.top+r.height/2-size/2)+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,size,size);
+    particles.forEach(function(p){
+      p.progress+=dt*p.speed;
+      if(p.progress>=1)spawn(p);
+      var t=p.progress, radius=r.width*(.92-.66*t), angle=p.angle+.14*t;
+      var alpha=Math.sin(Math.PI*t)*.62;
+      ctx.fillStyle='rgba('+p.color+','+alpha.toFixed(3)+')';
+      ctx.beginPath();ctx.arc(size/2+Math.cos(angle)*radius,size/2+Math.sin(angle)*radius,p.radius,0,Math.PI*2);ctx.fill();
+    });
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
@@ -2099,7 +2107,7 @@ switchSubTab('g', 'survey_dash');
     var scene=document.getElementById('sciScene'), sc=document.getElementById('sciCanvas');
     if(!scene||!sc) return;
     var g=sc.getContext('2d'), D=Math.min(2,window.devicePixelRatio||1), W=1,H=1;
-    function ssize(){ W=innerWidth||1; H=innerHeight||1; sc.width=W*D; sc.height=H*D; g.setTransform(D,0,0,D,0,0); onS(); }
+    function ssize(){ W=sc.clientWidth||1; H=sc.clientHeight||1; sc.width=W*D; sc.height=H*D; g.setTransform(D,0,0,D,0,0); onS(); }
     addEventListener('resize',ssize);
     // re-measure after layout settles (initial innerHeight can be wrong in embedded frames)
     addEventListener('load',ssize); setTimeout(ssize,80); setTimeout(ssize,400);
@@ -2111,7 +2119,7 @@ switchSubTab('g', 'survey_dash');
     var CAPS=[
       "For example, a personal pump runs the full shift, pulling the worker\u2019s air across a sampling medium.",
       "The sampled media is sent to a laboratory for analysis. Any resulting data you can then import into the survey.",
-      "Import the lab's air/dust/results file to autoload it into the survey \u2014 or read results off the instrument and key them in by hand (such as noise). \u2014",
+      "Import the lab's air/dust/results file to autoload it into the survey \u2014 or read results off the instrument and key them in by hand (such as noise).",
       "Now it\u2019s a concentration you can defend: each result measured against its occupational exposure limit.",
       "The particles assemble into a sound wave, capturing left to right like a voice memo \u2014 then settle into the flask as rising vapor. Air, sound, and gas: the three exposure groups we measure."
     ];
@@ -2133,7 +2141,7 @@ switchSubTab('g', 'survey_dash');
       vaporP.push({w:vi%3,o:Math.random(),sp:0.18+Math.random()*0.16,r:0.4+Math.random()*1.8,jx:(Math.random()*2-1)*6,ci:vi%3});
     }
     var prog=0, tt=0, curPh=-1;
-    function onS(){ var vh=innerHeight||1, r=scene.getBoundingClientRect(), tot=(scene.offsetHeight-vh)||1; prog=Math.min(1,Math.max(0,-r.top/tot)); }
+    function onS(){ var vh=scene.querySelector(".sciSticky").clientHeight||1, r=scene.getBoundingClientRect(), tot=(scene.offsetHeight-vh)||1; prog=Math.min(1,Math.max(0,-r.top/tot)); }
     addEventListener('scroll',onS,{passive:true}); ssize();
 
     function lerp(a,b,t){ return a+(b-a)*t; }
@@ -2619,3 +2627,4 @@ switchSubTab('g', 'survey_dash');
 </script>
 </body>
 </html>
+
