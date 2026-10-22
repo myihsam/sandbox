@@ -855,6 +855,73 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .scienceInView #ventWrap,.scienceInView #fxParticles{visibility:hidden}
 </style>
 <style>.productScope{font-size:12px;line-height:1.6;color:#d9d9dd;margin-top:16px;max-width:490px}.exportMethod{font-size:14px;line-height:1.7;color:var(--ink);margin-top:16px}.claimQualifier{font-size:11px;line-height:1.5;color:#c9d6d5;margin-top:12px}</style>
+
+<style id="sandbox-space">
+/* Give the workspace most of the viewport; views replace vertical stacking. */
+#sandbox{padding:24px 16px 16px;min-height:calc(100svh - 70px)}
+.sandboxHeading{margin-bottom:16px;gap:16px}
+.sandboxHeading h2{font-size:clamp(24px,2.5vw,32px);margin-top:4px}
+.sandboxHeading p{margin-top:4px;font-size:14px}
+#sandbox .wrap{height:calc(100svh - 190px);min-height:420px;max-width:none}
+#sandbox .exTop{padding:8px 16px}
+#sandbox .exSide{width:160px}
+#sandbox .exNav li{padding:11px 14px}
+#sandbox .exMain{padding:16px 20px}
+#sandbox .dashboardHeading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+#sandbox .dashboardHeading h2{font-size:21px;margin:0}
+.dashboardSwitch{display:flex;gap:4px;padding:3px;background:#e5ecec;border-radius:6px}
+.dashboardSwitch button{background:transparent;border:0;border-radius:4px;padding:8px 16px;color:var(--slate);font-weight:500;font-size:13px;min-height:40px}
+.dashboardSwitch button[aria-pressed="true"]{background:#fff;box-shadow:0 2px 6px rgba(64,62,75,.1);color:#403e4b}
+#sandbox [data-dashboard-panel][hidden]{display:none!important}
+#sandbox .dashboardChartTitle{font-size:17px;font-weight:600;color:var(--slate);margin:0 0 12px}
+#sandbox .dashboardView .cardShadow{padding:16px}
+#sandbox .dashboardView .dashDates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:12px;margin:12px 0}
+#sandbox .dashboardView .dashDates label{min-width:0}
+#sandbox .dashboardView .dashDates input,#sandbox .dashboardView .dashDates select{width:100%;min-width:0!important;min-height:38px}
+#sandbox .dashboardView .oelLegend{gap:8px 16px;margin:12px 0!important}
+#sandbox .hbarTrack{height:30px}#sandbox .hbarRow{margin:8px 0}
+#sandbox .dashboardHazard .dashDates{display:block;max-width:420px}
+#sandbox .dashboardHazard .donutGrid{gap:20px;margin-top:8px;display:grid;grid-template-columns:240px 160px minmax(240px,1fr)}
+#sandbox .dashboardHazard .donutBox{width:240px;height:240px}
+#sandbox .dashboardHazard .donutBox svg{width:100%;height:100%}
+#sandbox .dashboardHazard .donutClients{max-height:240px}
+#sandbox .dashboardHazard .dashResults{min-width:0;max-height:280px;overflow:auto}
+#sandboxModal #sandbox{height:calc(100dvh - 64px);min-height:0;padding:8px}
+#sandboxModal #sandbox .wrap{height:100%;min-height:0}
+#sandboxModal .previewBar{height:56px}
+#sandboxModal #previewMount{height:calc(100dvh - 56px)}
+#sandboxModal #sandbox{height:calc(100dvh - 56px)}
+@media(max-width:1100px){
+ #sandbox .dashboardHazard .donutGrid{grid-template-columns:240px minmax(140px,1fr)}
+ #sandbox .dashboardHazard .dashResults{grid-column:1/-1;max-height:200px}
+}
+@media(max-width:700px){
+ #sandbox{padding:20px 8px 8px}
+ .sandboxHeading{margin-bottom:12px;padding:0 8px}
+ .sandboxHeading h2{font-size:23px}.sandboxHeading p{font-size:12px}
+ #sandbox .wrap{height:calc(100svh - 196px);min-height:440px}
+ #sandbox .exSide{width:100%}
+ #sandbox .exMain{padding:12px}
+ #sandbox .dashboardHeading{margin-bottom:10px}
+ #sandbox .dashboardHeading h2{font-size:18px!important}
+ .dashboardSwitch button{font-size:11px;padding:6px 10px;min-height:36px}
+ #sandbox .dashboardView .cardShadow{padding:12px}
+ #sandbox .dashboardView .dashDates{grid-template-columns:1fr 1fr;gap:8px}
+ #sandbox .dashboardOverview .dashDates label:last-child{grid-column:1/-1}
+ #sandbox .dashboardView .dashDates input{font-size:14px!important}
+ #sandbox .dashboardChartTitle{font-size:15px}
+ #sandbox .hbarLabel{width:94px;font-size:10px}
+ #sandbox .hbarRow{gap:8px;margin:8px 0}
+ #sandbox .hbarTrack{height:26px}
+ #sandbox .hAxis{margin-left:102px;font-size:9px}
+ #sandbox .oelLegend{font-size:10px}
+ #sandbox .dashboardHazard .donutGrid{grid-template-columns:minmax(0,1fr) minmax(100px,1fr);gap:12px}
+ #sandbox .dashboardHazard .donutBox{width:100%;max-width:200px;height:auto;aspect-ratio:1}
+ #sandbox .dashboardHazard .donutClients{max-height:190px;font-size:11px}
+ #sandbox .dashboardHazard .dashResults{max-height:220px}
+ #sandboxModal #sandbox{padding:0;min-height:0}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1387,10 +1454,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 
 
 
-<section id="field-documentation-guides" class="lpSection" aria-labelledby="field-guides-title"><div style="max-width:960px;margin:0 auto"><h2 id="field-guides-title">Practical guides to IH sampling documentation</h2><p>Keep field context, sample information and report preparation connected.</p><ul style="padding-left:24px;line-height:1.8;margin-top:20px"><li style="margin-bottom:16px"><a href="ih-sampling-field-notes-context.html" style="text-decoration:underline;font-weight:600">What should IH field notes capture alongside an air sample?</a><p>Keep task timing, controls and sampling events connected to air-sampling results with structured field notes and myIH’s tagged daily log.</p></li>
-<li style="margin-bottom:16px"><a href="ih-prompted-questions-consistent-field-documentation.html" style="text-decoration:underline;font-weight:600">How can IH consultants standardize field notes across a team?</a><p>Use reusable, task-specific questions to capture consistent IH field observations while preserving professional judgment and unexpected findings.</p></li>
-<li style="margin-bottom:16px"><a href="ih-lab-results-field-record-report-review.html" style="text-decoration:underline;font-weight:600">How can IH consultants keep results and field records together?</a><p>Keep sample results, field context, and OEL comparisons together, then export records to Excel or PDF for your own review.</p></li>
-<li style="margin-bottom:16px"><a href="noise-dosimetry-field-documentation.html" style="text-decoration:underline;font-weight:600">What should consultants document during a noise dosimetry survey?</a><p>Preserve task timing, dosimeter settings, instrument details and field observations so noise results remain understandable during report review.</p></li></ul><p><a href="blog.html">Browse all myIH articles →</a></p></div></section>
+
 </main>
 
 <footer class="lpFooter">
@@ -2045,29 +2109,32 @@ ci.addEventListener('mousemove',ev=>{const i=+ci.dataset.cat,n=+ci.dataset.n;con
 ci.addEventListener('mouseleave',hideTip);
 });
 }
+function setDashboardView(view){
+document.querySelectorAll('#exMain [data-dashboard-panel]').forEach(function(panel){panel.hidden=panel.dataset.dashboardPanel!==view;});
+document.querySelectorAll('#exMain [data-dashboard-view]').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.dashboardView===view));});
+document.getElementById('exMain').scrollTop=0;
+}
 function showTab(t){
 const m=document.getElementById('exMain');
+m.classList.toggle('dashboardView',t==='dashboard');
 if(t==='dashboard'){
-m.innerHTML=`<div style="display:flex;align-items:stretch;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-<div style="flex:1 1 260px;display:flex;align-items:center;justify-content:center;color:#403e4b;background:#e1ebeb;border-radius:8px;padding:12px 16px;font-size:14px;font-weight:600;text-align:center">Sample workspace</div>
-<a href="https://koalendar.com/e/meet-with-sam-garrison-6" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#fff;background:#525062;border-radius:4px;padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none">BOOK A DEMO</a>
-</div>
-<div class="cardShadow" style="background:#fff">
-<h2 style="font-size:19px;color:var(--slate)">Total # of samples collected by % of OEL category</h2>
+m.innerHTML=`<div class="dashboardHeading"><h2>OEL Dashboard</h2><div class="dashboardSwitch" role="group" aria-label="Dashboard view"><button type="button" data-dashboard-view="overview" aria-pressed="true" onclick="setDashboardView('overview')">Overview</button><button type="button" data-dashboard-view="hazard" aria-pressed="false" onclick="setDashboardView('hazard')">By Hazard</button></div></div>
+<div class="cardShadow dashboardOverview" data-dashboard-panel="overview" style="background:#fff">
+<h3 class="dashboardChartTitle">Samples by % of OEL</h3>
 <div class="dashDates" style="margin-top:12px">
-<label for="dashStart">Start date</label><input type="date" id="dashStart" value="2026-01-01" onchange="drawHDash()"></label>
-<label for="dashEnd">End date</label><input type="date" id="dashEnd" value="2026-12-31" onchange="drawHDash()"></label>
-<label for="dashClientQ">Select clients</label><input type="text" id="dashClientQ" placeholder="All clients" style="min-width:160px" oninput="drawHDash()"></label>
+<label for="dashStart">Start date<input type="date" id="dashStart" value="2026-01-01" onchange="drawHDash()"></label>
+<label for="dashEnd">End date<input type="date" id="dashEnd" value="2026-12-31" onchange="drawHDash()"></label>
+<label for="dashClientQ">Clients<input type="text" id="dashClientQ" placeholder="All clients" oninput="drawHDash()"></label>
 </div>
 <div class="oelLegend" style="justify-content:center;margin:16px 0 6px"><span><i style="background:var(--oel-red)"></i>&gt; 100% of OEL</span><span><i style="background:var(--oel-orange)"></i>50–100% of OEL</span><span><i style="background:var(--oel-yellow)"></i>10–50% of OEL</span><span><i style="background:var(--oel-blue)"></i>1–10% of OEL</span><span><i style="background:var(--oel-green)"></i>&lt; 1% of OEL</span></div>
 <div class="hdash" id="hdash"></div>
 <div class="hAxis" id="hAxis"></div>
 <div style="text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);margin-top:4px">Number of results</div>
-<div style="font-size:11.5px;color:var(--teal-deep);margin-top:10px;text-align:center">Hover a bar for the full OEL breakdown · click a segment to see those samples</div>
+<div style="font-size:11.5px;color:var(--teal-deep);margin-top:10px;text-align:center">Select a bar segment to view its samples.</div>
 </div>
-<div id="segSamples"></div>
-<div class="cardShadow" style="background:#fff;margin-top:16px">
-<h2 style="font-size:19px;color:var(--slate);margin-bottom:12px">Detail of sample scenario selected by % of OEL category</h2>
+<div id="segSamples" data-dashboard-panel="overview"></div>
+<div class="cardShadow dashboardHazard" data-dashboard-panel="hazard" hidden style="background:#fff">
+<h3 class="dashboardChartTitle">Results by Hazard</h3>
 <div class="dashDates"><label>Hazard<select id="donutHaz" style="min-width:240px" onchange="drawDonut()"><option>Carbon Monoxide - # 630-08-0</option><option>1,3-Butadiene - # 106-99-0</option><option>Benzene - # 71-43-2</option><option>Manganese - # 7439-96-5</option><option>Noise Dose</option></select></label></div>
 <div class="donutGrid">
 <div class="donutBox" id="donutBox"></div>
