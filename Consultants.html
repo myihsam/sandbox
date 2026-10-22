@@ -939,6 +939,24 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
  .lpHeader .btn{font-size:10px;padding:9px 10px}
 }
 </style>
+<style id="restore-both-dashboards">
+#sandbox .dashboardView{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start;align-content:start}
+#sandbox .dashboardView .dashboardHeading{grid-column:1/-1;margin-bottom:0}
+#sandbox .dashboardOverview{grid-column:1;grid-row:2;min-width:0}
+#sandbox .dashboardHazard{grid-column:2;grid-row:2;min-width:0}
+#sandbox #segSamples{grid-column:1/-1;grid-row:3}
+#sandbox #segSamples:empty{display:none}
+#sandbox .dashboardHazard .donutGrid{grid-template-columns:minmax(0,200px) minmax(100px,1fr);gap:12px}
+#sandbox .dashboardHazard .donutBox{width:100%;max-width:200px;height:auto;aspect-ratio:1}
+#sandbox .dashboardHazard .donutClients{max-height:200px}
+#sandbox .dashboardHazard .dashResults{grid-column:1/-1;max-height:180px}
+#sandbox .dashboardView .dashboardChartTitle{font-size:15px;line-height:1.4}
+@media(max-width:1100px){
+ #sandbox .dashboardView{display:block}
+ #sandbox .dashboardView .dashboardHeading{margin-bottom:12px}
+ #sandbox .dashboardHazard{margin-top:16px}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -2132,18 +2150,13 @@ ci.addEventListener('mousemove',ev=>{const i=+ci.dataset.cat,n=+ci.dataset.n;con
 ci.addEventListener('mouseleave',hideTip);
 });
 }
-function setDashboardView(view){
-document.querySelectorAll('#exMain [data-dashboard-panel]').forEach(function(panel){panel.hidden=panel.dataset.dashboardPanel!==view;});
-document.querySelectorAll('#exMain [data-dashboard-view]').forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.dashboardView===view));});
-document.getElementById('exMain').scrollTop=0;
-}
 function showTab(t){
 const m=document.getElementById('exMain');
 m.classList.toggle('dashboardView',t==='dashboard');
 if(t==='dashboard'){
-m.innerHTML=`<div class="dashboardHeading"><h2>OEL Dashboard</h2><div class="dashboardSwitch" role="group" aria-label="Dashboard view"><button type="button" data-dashboard-view="overview" aria-pressed="true" onclick="setDashboardView('overview')">Overview</button><button type="button" data-dashboard-view="hazard" aria-pressed="false" onclick="setDashboardView('hazard')">By Hazard</button></div></div>
+m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 <div class="cardShadow dashboardOverview" data-dashboard-panel="overview" style="background:#fff">
-<h3 class="dashboardChartTitle">Samples by % of OEL</h3>
+<h3 class="dashboardChartTitle">Dashboard 1 · Samples by % of OEL</h3>
 <div class="dashDates" style="margin-top:12px">
 <label for="dashStart">Start date<input type="date" id="dashStart" value="2026-01-01" onchange="drawHDash()"></label>
 <label for="dashEnd">End date<input type="date" id="dashEnd" value="2026-12-31" onchange="drawHDash()"></label>
@@ -2156,8 +2169,8 @@ m.innerHTML=`<div class="dashboardHeading"><h2>OEL Dashboard</h2><div class="das
 <div style="font-size:11.5px;color:var(--teal-deep);margin-top:10px;text-align:center">Select a bar segment to view its samples.</div>
 </div>
 <div id="segSamples" data-dashboard-panel="overview"></div>
-<div class="cardShadow dashboardHazard" data-dashboard-panel="hazard" hidden style="background:#fff">
-<h3 class="dashboardChartTitle">Results by Hazard</h3>
+<div class="cardShadow dashboardHazard" data-dashboard-panel="hazard" style="background:#fff">
+<h3 class="dashboardChartTitle">Dashboard 2 · Results by Hazard</h3>
 <div class="dashDates"><label>Hazard<select id="donutHaz" style="min-width:240px" onchange="drawDonut()"><option>Carbon Monoxide - # 630-08-0</option><option>1,3-Butadiene - # 106-99-0</option><option>Benzene - # 71-43-2</option><option>Manganese - # 7439-96-5</option><option>Noise Dose</option></select></label></div>
 <div class="donutGrid">
 <div class="donutBox" id="donutBox"></div>
