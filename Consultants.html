@@ -984,6 +984,46 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .productQA .productQAItem p{padding:0 20px 20px;margin:0;font-size:16px;line-height:1.7}
 @media(max-width:760px){.productQAGrid{grid-template-columns:minmax(0,1fr);gap:24px}.productQAItem summary{padding:16px;font-size:16px}.productQA .productQAItem p{padding:0 16px 18px;font-size:15px}}
 </style>
+<style id="record-story-design">
+.recordStory{background:#e9efee;color:#403e4b;padding:64px 24px}
+.recordStoryInner{max-width:1160px;margin:0 auto}
+.recordEyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;color:#4f7f7e}
+.recordStory h2{font-family:Poppins,Roboto,sans-serif;font-weight:700;font-style:italic;font-size:clamp(30px,4vw,48px);line-height:1.16;letter-spacing:-.035em;margin:14px 0 28px;color:#403e4b}
+.recordSteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.recordSteps article{background:#fff;border:1px solid #d6dfde;border-radius:8px;padding:24px;position:relative}
+.recordStepNumber{font-size:11px;letter-spacing:.13em;font-weight:700;color:#4f7f7e}
+.recordGlyph{font-size:46px;line-height:1.2;color:#5c8d8c;margin:24px 0 18px;height:56px;font-weight:500}
+.recordTags{font-size:36px;letter-spacing:.1em}.recordTags span{color:#7b6fb0}
+.recordSteps h3{font-size:21px;line-height:1.25;margin:0 0 12px}
+.recordSteps p{font-size:16px;line-height:1.55;margin:0;max-width:28ch}
+.recordTokens{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.recordTokens span{font-size:11px;font-weight:500;padding:5px 8px;background:#edf3f2;border-radius:4px;color:#4f7f7e}
+.recordProof{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;background:#403e4b;border-radius:8px;color:#fff;margin:20px 0 52px;padding:28px 32px;align-items:center}
+.recordProofStat{display:flex;align-items:center;gap:16px;border-right:1px solid #706e79;padding-right:24px}
+.recordProofStat strong{font-size:56px;line-height:1;color:#a8d1ce;letter-spacing:-.05em}.recordProofStat span{font-size:12px;line-height:1.4;color:#dce8e7}
+.recordProof blockquote{font-size:19px;line-height:1.5;margin:0 0 8px}
+.recordProof cite{font-size:12px;color:#dce8e7;font-style:normal}
+.recordProof .claimQualifier{font-size:11px;color:#d0d5d6;margin:12px 0 0;line-height:1.5}
+.recordExport{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.recordExportIntro h2{font-size:clamp(28px,3vw,38px);margin-bottom:16px}
+.recordExportIntro p{font-size:16px;line-height:1.5;margin:0 0 24px}
+.recordDestinations details{background:#fff;border:1px solid #d6dfde;border-radius:8px;margin-bottom:10px;overflow:hidden}
+.recordDestinations summary{list-style:none;padding:22px;display:flex;justify-content:space-between;gap:16px;align-items:center;cursor:pointer;font-size:19px;font-weight:600;min-height:64px}
+.recordDestinations summary::-webkit-details-marker{display:none}
+.recordDestinations summary small{font-size:12px;color:#5c8d8c;margin-right:16px}
+.recordDestinations summary:hover{background:#f4f8f7}
+.recordDestinations summary:focus-visible{outline:3px solid #503c79;outline-offset:-3px}
+.recordExpand{color:#5c8d8c;font-size:26px;line-height:1}
+.recordDestinations details[open] .recordExpand{transform:rotate(45deg)}
+.recordDestinationBody{padding:0 22px 22px}
+.recordDestinationBody p{font-size:16px;line-height:1.6;margin:0 0 16px}
+.recordFileList{display:flex;flex-wrap:wrap;gap:10px}
+.recordFileList>span{font-size:13px;background:#edf3f2;border-radius:4px;padding:10px}
+.recordFileList b{color:#4f7f7e;margin-right:8px;font-size:11px}
+.recordRoute{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px}
+.recordRoute span{padding:8px;background:#edf3f2;border-radius:4px}.recordRoute>b{color:#5c8d8c}
+@media(max-width:800px){.recordStory{padding:40px 20px}.recordSteps{grid-template-columns:1fr}.recordSteps article{padding:20px}.recordGlyph{position:absolute;right:20px;top:14px;font-size:32px;margin:0;height:auto}.recordTags{font-size:24px}.recordSteps h3{margin-top:20px}.recordSteps p{max-width:none}.recordTokens{margin-top:16px}.recordProof{grid-template-columns:1fr;gap:20px;padding:24px;margin-bottom:36px}.recordProofStat{border-right:0;border-bottom:1px solid #706e79;padding:0 0 20px}.recordProofStat strong{font-size:48px}.recordExport{grid-template-columns:1fr;gap:24px}.recordDestinations summary{padding:18px}.recordDestinationBody{padding:0 18px 20px}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1441,53 +1481,28 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
   </div>
 </section>
 
-<!-- ================= AUDIENCE TARGET GRID ================= -->
-<section class="lpSection tight lpAudience">
-  <div class="eyebrow">Built for the way IH work actually gets done</div>
-  <h2>Your field team. Your office. One workspace.</h2>
-  <div class="grid2" style="justify-content:center">
-    <div class="cardShadow" style="flex:0 1 680px">
-      <span class="chip">For EHS Leaders</span>
-      <h3 class="txtShield">For IH / EHS Teams: Field Documentation in One Place.</h3>
-      <p class="txtShield" style="font-size:125%">Keep field notes, daily observations, sampling equipment, and calibration records together. Access myIH from any device, with remote training and support.</p>
-    </div>
-  </div>
-</section>
-<!-- ================= SOCIAL PROOF ================= -->
-<section class="lpSection tight">
-  <div class="lpQuote">
-    <blockquote>Using myIH, we experienced a minimum 20% efficiency gain...And the myIH tagging features (<span class="lpTag t-at">@</span> <span class="lpTag t-hash">#</span> <span class="lpTag t-dol">$</span>) are really cool. When used properly, they help to interpret sample result differences.</blockquote>
-    <cite>— Current user, IH Consultancy CEO</cite>
-    <p class="claimQualifier">Based on internal data from beta testing and active user subscriptions.</p>
-  </div>
-</section>
-
-<!-- ================= ADMINISTRATIVE FEATURE AREA ================= -->
-<section class="lpSection lpExport">
-  <div class="txt">
-    <div class="glassBox">
-    <div class="eyebrow">From field day to filing cabinet</div>
-    <h2>Reduce re-entry. Export your sampling records.</h2>
-    <p class="sub" style="font-size:125%">Export sample records, prompted responses, daily observations, and chain-of-custody documentation to Excel or PDF. Employee exposure notes show the result against the OEL, PPE worn, and date/time.</p>
-    </div>
-    <p class="exportMethod">Custom export templates can support your analytics and AI workflows. Drop an export into a shared SharePoint or Google Drive folder that feeds Tableau, Power BI, Looker Studio, or Hex, or upload it to Claude, ChatGPT, or Copilot. These workflows use exported files; myIH has no native BI or AI integrations.</p>
-    
-    <div style="margin-top:20px"><a class="btn" href="#sandbox">PREVIEW THE EXPORT FLOW<span aria-hidden="true"> ↑</span></a></div>
-  </div>
-  <div class="viz">
-    <div class="lpExportCard">
-      <div class="lpExportHd">Sample Record — Excel / PDF Export</div>
-      <div class="lpExportRow"><b>Sample ID</b><span>BR-062124-001</span></div>
-      <div class="lpExportRow"><b>Hazard</b><span>Benzene · CAS 71-43-2</span></div>
-      <div class="lpExportRow"><b>Result</b><span>0.32 ppm · <b style="background:none;border:none;padding:0;color:#0B62A8">32% of OEL</b></span></div>
-      <div class="lpExportRow"><b>Tagged log</b><span>3 entries · chain-of-custody attached</span></div>
-      <div class="lpExportRow"><b>Prompted questions</b><span>6 / 6 answered</span></div>
-      <div class="lpExportBtns">
-        <button class="btn sm">Export Excel</button>
-        <button class="btn sm ghost">Export PDF</button>
-      </div>
-    </div>
-  </div>
+<!-- Field records and exports -->
+<section class="recordStory" aria-labelledby="recordStoryTitle">
+<div class="recordStoryInner">
+<header class="recordStoryHeader"><span class="recordEyebrow">FROM FIELDWORK TO FOLLOW-UP</span><h2 id="recordStoryTitle">Capture it once.<br>Keep the context.</h2></header>
+<div class="recordSteps">
+<article><span class="recordStepNumber">01 / CAPTURE</span><div class="recordGlyph" aria-hidden="true">☑</div><h3>Follow the prompts.</h3><p>Project questions guide what samplers record.</p><div class="recordTokens"><span>Field notes</span><span>Daily observations</span></div></article>
+<article><span class="recordStepNumber">02 / KEEP TOGETHER</span><div class="recordGlyph recordTags" aria-hidden="true">@ <span>#</span> $</div><h3>A sample with its story.</h3><p>Equipment, calibration, and observations stay with the sample.</p><div class="recordTokens"><span>Serial numbers</span><span>Pre / post calibration</span></div></article>
+<article><span class="recordStepNumber">03 / TAKE WITH YOU</span><div class="recordGlyph" aria-hidden="true">↗</div><h3>Ready to export.</h3><p>Download the records in Excel or PDF.</p><div class="recordTokens"><span>Excel</span><span>PDF</span></div></article>
+</div>
+<aside class="recordProof">
+<div class="recordProofStat"><strong>20%</strong><span>minimum efficiency gain<br>reported by a user</span></div>
+<div><blockquote>“Using myIH, we experienced a minimum 20% efficiency gain.”</blockquote><cite>— Current user, IH Consultancy CEO</cite><p class="claimQualifier">Based on internal data from beta testing and active user subscriptions.</p></div>
+</aside>
+<div class="recordExport">
+<div class="recordExportIntro"><span class="recordEyebrow">YOUR RECORDS, YOUR NEXT STEP</span><h2>Where do they<br>go from here?</h2><p>Choose a workflow to see how exports fit.</p><button type="button" class="btn" onclick="openSandbox()">Sandbox preview <span aria-hidden="true">↗</span></button></div>
+<div class="recordDestinations">
+<details open><summary><span><small>01</small> Project records</span><span class="recordExpand" aria-hidden="true">+</span></summary><div class="recordDestinationBody"><p>Employee exposure notes, chain-of-custody documents, and survey-day records.</p><div class="recordFileList"><span><b>PDF</b> Share the record</span><span><b>XLS</b> Work with the data</span></div></div></details>
+<details><summary><span><small>02</small> Analytics</span><span class="recordExpand" aria-hidden="true">+</span></summary><div class="recordDestinationBody"><p>Use Excel exports in your BI workflow. Custom templates can match your team’s needs.</p><div class="recordRoute"><span>myIH</span><b aria-label="exports to">→</b><span>Excel file</span><b aria-label="used in">→</b><span>Your BI workflow</span></div></div></details>
+<details><summary><span><small>03</small> AI assistants</span><span class="recordExpand" aria-hidden="true">+</span></summary><div class="recordDestinationBody"><p>Upload an exported file to ChatGPT, Claude, or Copilot for use in your own workflow.</p><div class="recordRoute"><span>myIH</span><b aria-label="exports to">→</b><span>Exported file</span><b aria-label="manually uploaded to">→</b><span>Your AI assistant</span></div></div></details>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ================= INTERACTIVE SOFTWARE SANDBOX WORKSPACE ================= -->
