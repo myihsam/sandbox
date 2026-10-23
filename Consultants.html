@@ -940,22 +940,35 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 }
 </style>
 <style id="restore-both-dashboards">
-#sandbox .dashboardView{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start;align-content:start}
-#sandbox .dashboardView .dashboardHeading{grid-column:1/-1;margin-bottom:0}
-#sandbox .dashboardOverview{grid-column:1;grid-row:2;min-width:0}
-#sandbox .dashboardHazard{grid-column:2;grid-row:2;min-width:0}
-#sandbox #segSamples{grid-column:1/-1;grid-row:3}
+#sandbox .dashboardView{display:block}
+#sandbox .dashboardView .dashboardHeading{margin-bottom:12px}
+#sandbox .dashboardOverview,#sandbox .dashboardHazard{width:100%;min-width:0}
+#sandbox .dashboardHazard{margin-top:16px}
 #sandbox #segSamples:empty{display:none}
-#sandbox .dashboardHazard .donutGrid{grid-template-columns:minmax(0,200px) minmax(100px,1fr);gap:12px}
-#sandbox .dashboardHazard .donutBox{width:100%;max-width:200px;height:auto;aspect-ratio:1}
-#sandbox .dashboardHazard .donutClients{max-height:200px}
-#sandbox .dashboardHazard .dashResults{grid-column:1/-1;max-height:180px}
-#sandbox .dashboardView .dashboardChartTitle{font-size:15px;line-height:1.4}
+#sandbox .dashboardHazard .donutGrid{display:grid;grid-template-columns:240px 180px minmax(240px,1fr);gap:20px}
+#sandbox .dashboardHazard .donutBox{width:240px;height:240px}
+#sandbox .dashboardHazard .donutClients{max-height:240px}
+#sandbox .dashboardHazard .dashResults{grid-column:auto;max-height:280px}
 @media(max-width:1100px){
- #sandbox .dashboardView{display:block}
- #sandbox .dashboardView .dashboardHeading{margin-bottom:12px}
- #sandbox .dashboardHazard{margin-top:16px}
+ #sandbox .dashboardHazard .donutGrid{grid-template-columns:240px minmax(140px,1fr)}
+ #sandbox .dashboardHazard .dashResults{grid-column:1/-1}
 }
+@media(max-width:700px){
+ #sandbox .dashboardHazard .donutGrid{grid-template-columns:minmax(0,1fr) minmax(100px,1fr);gap:12px}
+ #sandbox .dashboardHazard .donutBox{width:100%;max-width:200px;height:auto;aspect-ratio:1}
+ #sandbox .dashboardHazard .donutClients{max-height:200px}
+ #sandbox .dashboardHazard .dashResults{max-height:220px}
+}
+</style>
+<style id="product-qa">
+.productQA{background:#dce8e7;padding:48px 24px;color:#403e4b}
+.productQAInner{max-width:1080px;margin:auto}
+.productQA .brandEyebrow{color:#4f7f7e}
+.productQA h2{font-family:Poppins,Roboto,sans-serif;font-style:italic;font-size:clamp(26px,3vw,38px);margin:8px 0 24px;color:#403e4b}
+.productQAItem{padding:24px 0;border-top:1px solid rgba(82,80,98,.18)}
+.productQAItem h3{font-size:19px;font-weight:600;line-height:1.4}
+.productQAItem p{font-size:16px;line-height:1.7;margin-top:10px;max-width:850px}
+@media(max-width:700px){.productQA{padding:32px 20px}.productQAItem{padding:20px 0}.productQAItem h3{font-size:17px}.productQAItem p{font-size:15px}}
 </style>
 </head>
 <body>
@@ -1030,10 +1043,10 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 <section class="brandHero" aria-labelledby="brandHeadline">
   <div class="brandHeroInner">
     <div class="brandHeroCopy">
-      <div class="brandEyebrow"><span></span> BUILT FOR INDUSTRIAL HYGIENE TEAMS</div>
+      <div class="brandEyebrow"><span></span> BUILT FOR INDUSTRIAL HYGIENE TEAMS AND DEPARTMENTS</div>
       <h1 id="brandHeadline">Your field notes.<br><em>All together.</em></h1>
-      <p class="brandIntro">myIH digitizes field notes, standardizes sampling observations, and manages OELs in one industrial hygiene workspace.</p>
-      <p class="brandDetail">Prompt your technicians to capture consistent field observations. Give your CIHs the records to apply their own professional judgment.</p>
+      <p class="brandIntro">myIH digitizes field notes and standardizes the sampling workflow, from planning to lab results.</p>
+      
       <div class="brandActions"><button class="btn brandPrimary" type="button" onclick="openSandbox()">PREVIEW <span aria-hidden="true">↗</span></button><a class="brandTextLink" href="https://koalendar.com/e/meet-with-sam-garrison-6">BOOK A DEMO <span aria-hidden="true">→</span></a></div>
       
       <div class="brandProof">No sign-up to preview <span aria-hidden="true">/</span> Built for field and office</div>
@@ -1048,7 +1061,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 </section>
 
 <section id="sandbox" aria-labelledby="sandboxTitle">
-  <div class="sandboxHeading"><div><div class="brandEyebrow">THE PRODUCT, IN YOUR HANDS</div><h2 id="sandboxTitle">See your field day come together.</h2><p>Explore a sample workspace. Follow a guided tour whenever you need it.</p></div><button class="btn sandboxPreview" type="button" onclick="openSandbox()">PREVIEW <span aria-hidden="true">↗</span></button></div>
+  <div class="sandboxHeading"><div><div class="brandEyebrow">THE PRODUCT, IN YOUR HANDS</div><h2 id="sandboxTitle">Sandbox Preview</h2><p>Follow the slideshow, then explore the software preview.</p></div><button class="btn sandboxPreview" type="button" onclick="openSandbox()">PREVIEW <span aria-hidden="true">↗</span></button></div>
   <div class="wrap">
     <div class="shell">
       <div class="hdr">
@@ -1060,7 +1073,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
       <div class="stage" id="stage">
 
         <section class="slide active">
-          <div class="eyebrow">Interactive sandbox · about 3 minutes</div>
+          <div class="eyebrow">Sandbox Preview · about 3 minutes</div>
           <h2 id="c_heroH"></h2>
           <p class="sub" id="c_heroSub"></p>
           <div class="stats">
@@ -1444,7 +1457,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
     <p class="sub" style="font-size:125%">Export sample records, prompted responses, daily observations, and chain-of-custody documentation to Excel or PDF. Employee exposure notes show the result against the OEL, PPE worn, and date/time.</p>
     </div>
     <p class="exportMethod">Custom export templates can support your analytics and AI workflows. Drop an export into a shared SharePoint or Google Drive folder that feeds Tableau, Power BI, Looker Studio, or Hex, or upload it to Claude, ChatGPT, or Copilot. These workflows use exported files; myIH has no native BI or AI integrations.</p>
-    <p class="exportMethod">Access from any device, with remote training and support. Data is stored on servers in the Netherlands.</p>
+    
     <div style="margin-top:20px"><a class="btn" href="#sandbox">PREVIEW THE EXPORT FLOW<span aria-hidden="true"> ↑</span></a></div>
   </div>
   <div class="viz">
@@ -1487,6 +1500,14 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 
 
 
+<section id="questions-and-answers" class="productQA" aria-labelledby="productQATitle">
+  <div class="productQAInner">
+    <div class="brandEyebrow">QUESTIONS &amp; ANSWERS</div>
+    <h2 id="productQATitle">A few things to know.</h2>
+    <div class="productQAItem"><h3>Do you offer training?</h3><p>Yes. Unlimited virtual training sessions.</p></div>
+    <div class="productQAItem"><h3>Does myIH create a sampling report?</h3><p>No. myIH creates employee exposure notes, chain-of-custody documents, and survey-day PDFs and Excel files with all the context entered by the sampler. These records auto-generate and stay permanently on the project.</p></div>
+  </div>
+</section>
 </main>
 
 <footer class="lpFooter">
@@ -2168,7 +2189,6 @@ m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 <div style="text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);margin-top:4px">Number of results</div>
 <div style="font-size:11.5px;color:var(--teal-deep);margin-top:10px;text-align:center">Select a bar segment to view its samples.</div>
 </div>
-<div id="segSamples" data-dashboard-panel="overview"></div>
 <div class="cardShadow dashboardHazard" data-dashboard-panel="hazard" style="background:#fff">
 <h3 class="dashboardChartTitle">Dashboard 2 · Results by Hazard</h3>
 <div class="dashDates"><label>Hazard<select id="donutHaz" style="min-width:240px" onchange="drawDonut()"><option>Carbon Monoxide - # 630-08-0</option><option>1,3-Butadiene - # 106-99-0</option><option>Benzene - # 71-43-2</option><option>Manganese - # 7439-96-5</option><option>Noise Dose</option></select></label></div>
@@ -2195,7 +2215,8 @@ m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 <tr><td>12</td><td>Client D – Site 1 – Q3 2026</td></tr>
 </tbody></table><div style="display:flex;justify-content:flex-end;align-items:center;gap:22px;font-size:12.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1–10 of 136</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div></div>
 </div>
-</div>`;
+</div>
+<div id="segSamples" data-dashboard-panel="overview"></div>`;
 drawHDash();drawDonut();
 }
 else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:11.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
@@ -2747,6 +2768,7 @@ switchSubTab('g', 'survey_dash');
   sandbox.before(marker);
   window.openSandbox=function(){
     if(modal.open)return;
+    exitExplore();go(0);
     lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;savedX=window.scrollX;savedY=window.scrollY;
     document.getElementById('previewMount').appendChild(sandbox);
     modal.showModal();document.body.style.overflow='hidden';
@@ -2764,7 +2786,8 @@ document.querySelectorAll('#exNav li').forEach(function(item){
   item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();item.click();}});
 });
   if('IntersectionObserver' in window){new IntersectionObserver(function(entries){document.body.classList.toggle('scienceInView',entries[0].isIntersecting);},{threshold:0}).observe(document.getElementById('sciScene'));}
-  enterExplore();
+  exitExplore();
+  go(0);
 })();
 </script>
 
