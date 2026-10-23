@@ -970,6 +970,20 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .productQAItem p{font-size:16px;line-height:1.7;margin-top:10px;max-width:850px}
 @media(max-width:700px){.productQA{padding:32px 20px}.productQAItem{padding:20px 0}.productQAItem h3{font-size:17px}.productQAItem p{font-size:15px}}
 </style>
+<style id="expanded-product-qa">
+.productQAGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.productQAGroup{min-width:0}
+.productQAGroup>h3{font-size:18px;color:#4f7f7e;margin:0 0 14px;font-weight:700}
+.productQA .productQAItem{background:#fff;border:1px solid rgba(82,80,98,.15);border-radius:8px;margin:0 0 10px;padding:0;overflow:hidden}
+.productQAItem summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;font-size:16px;font-weight:600;line-height:1.45;padding:18px 20px;min-height:56px}
+.productQAItem summary::-webkit-details-marker{display:none}
+.productQAItem summary::after{content:"+";flex-shrink:0;color:#4f7f7e;font-size:24px;line-height:1}
+.productQAItem[open] summary::after{content:"−"}
+.productQAItem summary:hover{background:#f2f7f6}
+.productQAItem summary:focus-visible{outline:3px solid #503c79;outline-offset:-3px}
+.productQA .productQAItem p{padding:0 20px 20px;margin:0;font-size:16px;line-height:1.7}
+@media(max-width:760px){.productQAGrid{grid-template-columns:minmax(0,1fr);gap:24px}.productQAItem summary{padding:16px;font-size:16px}.productQA .productQAItem p{padding:0 16px 18px;font-size:15px}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1501,13 +1515,32 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 
 
 <section id="questions-and-answers" class="productQA" aria-labelledby="productQATitle">
-  <div class="productQAInner">
-    <div class="brandEyebrow">QUESTIONS &amp; ANSWERS</div>
-    <h2 id="productQATitle">A few things to know.</h2>
-    <div class="productQAItem"><h3>Do you offer training?</h3><p>Yes. Unlimited virtual training sessions.</p></div>
-    <div class="productQAItem"><h3>Does myIH create a sampling report?</h3><p>No. myIH creates employee exposure notes, chain-of-custody documents, and survey-day PDFs and Excel files with all the context entered by the sampler. These records auto-generate and stay permanently on the project.</p></div>
-  </div>
-</section>
+<div class="productQAInner">
+<div class="brandEyebrow">QUESTIONS &amp; ANSWERS</div>
+<h2 id="productQATitle">Your questions about myIH.</h2>
+<div class="productQAGrid">
+<div class="productQAGroup"><h3 id="qa-group-0">Getting started</h3><details class="productQAItem"><summary>Who is myIH built for?</summary><p>myIH is built for industrial hygiene teams and departments, including IH consultancies, CIHs, and in-house IH/EHS teams. It digitizes field notes and standardizes the sampling workflow, from planning to lab results.</p></details>
+<details class="productQAItem"><summary>Do you offer training?</summary><p>Yes. Unlimited virtual training sessions.</p></details>
+<details class="productQAItem"><summary>What does our IT team need to do before we start?</summary><p>Make sure your organization’s network allows access to the myIH web domain so your team can load the platform. The original implementation guidance recommends whitelisting the domain.</p></details>
+<details class="productQAItem"><summary>How do I find a project?</summary><p>Use the Search Projects box in the Projects tab to filter by a project identifier. You can also adjust the number of rows shown per page.</p></details></div>
+<div class="productQAGroup"><h3 id="qa-group-1">Field notes and sampling</h3><details class="productQAItem"><summary>How does myIH standardize field documentation?</summary><p>Prompted questions guide samplers through what to capture and keep their responses with the sampling information. The daily log records observations and events as the field day develops.</p></details>
+<details class="productQAItem"><summary>Can we tailor the questions to our projects?</summary><p>Yes. Question groups can be assigned to projects so prompts focus on the work and observations relevant to the sampling assignment.</p></details>
+<details class="productQAItem"><summary>What types of prompted questions can we create?</summary><p>Questions can use free text, dropdowns, multi-select, checkboxes, and radio options. Assign question groups to a project to guide the information samplers capture.</p></details>
+<details class="productQAItem"><summary>How does the sample plan support fieldwork?</summary><p>Set up a sample plan in the Project Dashboard or import one using the myIH-format spreadsheet. The plan records who and what to sample and the planned sample count, helping the team follow the sampling assignment.</p></details>
+<details class="productQAItem"><summary>How are daily observations recorded?</summary><p>The digital observation log keeps field notes together. Tags using @, #, and $ help associate and find information, while prompted responses capture the details your team expects for the assignment.</p></details>
+<details class="productQAItem"><summary>Does myIH record sampling equipment and calibration?</summary><p>Yes. Record media, instrument and calibrator serial numbers linked to each sample, along with pre- and post-sampling calibration.</p></details>
+<details class="productQAItem"><summary>Can a CIH review the team’s field records remotely?</summary><p>Yes. CIHs and managers can access the field notes and observations entered by the team to review context and follow up on details that need clarification.</p></details>
+<details class="productQAItem"><summary>Can we bring lab results into the survey?</summary><p>Yes. Project Config includes an Upload Autoload Lab Results option for a user-initiated upload. Laboratory results can then be reviewed alongside the sampling records and field observations.</p></details></div>
+<div class="productQAGroup"><h3 id="qa-group-2">OELs and project records</h3><details class="productQAItem"><summary>How does myIH manage occupational exposure limits?</summary><p>myIH supports OEL management, including designation of statutory and non-statutory limits. Dashboards display results as a percentage of the OEL and update as results are added.</p></details>
+<details class="productQAItem"><summary>What is included in an employee exposure note?</summary><p>Employee exposure notes show the result against the OEL, plus the PPE worn and the date and time.</p></details>
+<details class="productQAItem"><summary>Does myIH create a sampling report?</summary><p>No. myIH creates employee exposure notes, chain-of-custody documents, and survey-day PDFs and Excel files with all the context entered by the sampler. These records auto-generate and stay permanently on the project.</p></details>
+<details class="productQAItem"><summary>Can I download chain-of-custody documentation?</summary><p>Yes. You can download chain-of-custody documentation from Project Config for a selected date range.</p></details></div>
+<div class="productQAGroup"><h3 id="qa-group-3">Exports and existing workflows</h3><details class="productQAItem"><summary>Can I export my records?</summary><p>Yes. myIH offers one-click Excel and PDF exports, so your team can use the captured records in its existing review and documentation workflow.</p></details>
+<details class="productQAItem"><summary>Can we use myIH alongside Cority or another EHS system?</summary><p>Yes. Export records from myIH, then import the files or place the PDFs in your other system’s document repository as supported by that system. This is a file-based workflow, not a native integration.</p></details>
+<details class="productQAItem"><summary>Can we use the data in BI tools or AI assistants?</summary><p>Yes. Use Excel exports in your analytics workflow, or upload exported files to AI assistants such as ChatGPT, Claude, or Copilot. A shared SharePoint or Google Drive folder can hold exports for a BI workflow. These workflows use exported files.</p></details>
+<details class="productQAItem"><summary>Can you build export templates for our team?</summary><p>Yes. Custom export templates can be built for your organization’s analytics and AI workflows.</p></details></div>
+</div>
+</div></section>
 </main>
 
 <footer class="lpFooter">
