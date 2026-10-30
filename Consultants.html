@@ -1136,7 +1136,50 @@ p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
 .productQAItem[open]{background:#eaf1ef;border-radius:8px}
 .ctaParticles{background:radial-gradient(ellipse at 80% 10%,#5b7778,transparent 65%),linear-gradient(125deg,#343541,#464454)!important;box-shadow:inset 0 1px 0 #ffffff30}
 @media(prefers-reduced-motion:reduce){.recordSteps article{transition:none}.recordSteps article:hover{transform:none}}
-</style></head>
+</style>
+<style id="dashboard-viewport-fit">
+/* Keep the opening preview within the viewport; tour slides retain their own layout. */
+#sandbox.tourOpening{min-height:0;padding:20px 16px}
+#sandbox.tourOpening .openingDashboard{position:relative}
+#sandbox.tourOpening .tourStart{position:absolute;inset:0;z-index:4;display:grid;place-items:center;margin:0;pointer-events:none}
+#sandbox.tourOpening .tourStart .btn{pointer-events:auto;background:rgba(51,57,68,.82);color:#fff;border:1px solid rgba(255,255,255,.65);border-radius:14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 12px 36px rgba(25,38,44,.3),inset 0 1px 0 rgba(255,255,255,.2);padding:20px 38px;font-size:1.3rem;gap:22px}
+#sandbox.tourOpening .tourStart .btn:hover{background:rgba(51,57,68,.94)}
+.referenceDashboard{height:calc(100svh - 170px);max-height:720px;display:flex;flex-direction:column;max-width:1280px;margin:auto}
+.referenceTop{padding:7px 20px;flex:none}.referenceTop button{font-size:1.1rem;min-height:32px}
+.referenceLayout{flex:1;min-height:0;grid-template-columns:190px minmax(0,1fr)}
+.referenceSide{overflow:auto}.referenceUser{padding:12px;gap:8px;font-size:16px}.referenceUser small{font-size:14px}
+.referenceSide nav button{padding:9px 14px;font-size:16px;gap:12px;line-height:1.3;min-height:36px}
+.referenceMain{padding:14px;min-height:0;display:flex}
+.referenceCard{padding:16px 22px;flex:1;min-width:0;min-height:0;display:flex;flex-direction:column}
+.referenceCard h2{font-size:clamp(18px,1.8vw,26px);line-height:1.25;margin-bottom:12px;flex:none}
+.referenceFilters{gap:14px;margin-bottom:10px;grid-template-columns:1fr 1fr 1.6fr;flex:none}
+.referenceFilters label{font-size:14px;margin:0}.referenceFilters input,.referenceFilters select{font-size:16px;padding:7px 9px;height:38px}
+.referenceClient{grid-column:auto}
+.referenceLegend{font-size:14px;gap:6px 12px;flex:none}.referenceLegend i{width:16px;height:16px;flex:none}
+.referenceChartScroll{flex:1;min-height:0;margin-top:8px;overflow:hidden;display:flex}
+.referenceChartScroll svg{width:100%;height:100%;min-width:0;display:block}
+#sandboxModal #sandbox.tourOpening{height:100%;padding:12px}
+#sandboxModal .referenceDashboard{height:calc(100dvh - 100px);max-height:none}
+@media(max-width:700px){
+ .referenceLayout{grid-template-columns:1fr}
+ .referenceSide{display:none}
+ .navCollapsed .referenceSide{display:block;max-height:120px}
+ .referenceSide nav{display:flex}
+ .referenceSide nav button{width:auto;min-width:max-content}
+ .referenceUser{display:none}
+ .referenceMain{padding:8px}
+ .referenceCard{padding:12px}
+ .referenceCard h2{font-size:18px;margin-bottom:8px}
+ .referenceFilters{gap:6px}
+ .referenceFilters label{font-size:12px}
+ .referenceFilters input,.referenceFilters select{font-size:14px;padding:4px}
+ .referenceLegend{font-size:12px;gap:4px 8px}
+ .referenceLegend i{width:12px;height:12px}
+ .referenceDashboard{height:calc(100svh - 140px)}
+ #sandbox.tourOpening .tourStart .btn{font-size:1.1rem;padding:16px 28px}
+}
+</style>
+</head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
 
