@@ -1027,7 +1027,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 
 <style id="readable-typography">
 /* Respect browser font preferences and keep body copy comfortable to read. */
-html{font-size:100%}
+html{font-size:125%}
 body{font-size:1.125rem;line-height:1.6}
 p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
 .sub,.lpAudience p,.lpQuote blockquote,.lpFooter,.ctaParticles .ctaSub{font-weight:400}
@@ -1052,6 +1052,42 @@ p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
  .previewBar{height:auto;min-height:56px;gap:8px;padding:8px 16px}
  .svGrid,.brandActions{gap:16px}
  .sciInstr{max-height:40svh;overflow:auto;pointer-events:auto}
+}
+</style>
+<style id="comfortable-reading">
+/* Main copy is 22.5px and supporting text is 20px at default preferences. */
+.brandIntro{font-size:1.25rem;max-width:34ch}
+.brandDetail,.productScope,.exportMethod,.sub,.lpAudience p,
+.lpExport .sub,.lpAudience .sub,.ctaParticles .ctaSub{font-size:1.125rem!important;line-height:1.7}
+.brandHeroInner{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.brandHeroInner,.lpSection{max-width:1440px}
+.brandProductTop{background:#456867}
+.brandProductFoot{gap:12px}
+.brandEyebrow,.brandWorkflow{letter-spacing:.08em}
+.brandProof{color:#d9d9dd}
+#sandbox .wrap{min-height:640px}
+#sandbox .exSide{width:220px}
+#sandbox .exNav li{white-space:normal}
+#sandbox .exTop,#sandbox .hdr,#sandbox .nav{gap:12px}
+#sandbox .svTabs{flex-wrap:wrap}
+#sandbox .svTabs span{white-space:normal}
+#sandbox .dlMsg .dlT{width:4.5rem}
+#sandbox .dlMsg .dlAv{width:2rem;height:2rem}
+#sandbox .exMain table{display:block;overflow-x:auto}
+@media(max-width:1000px){
+ .brandHeroInner{grid-template-columns:1fr}
+ .brandProduct{max-width:760px;width:100%;margin:auto;transform:none}
+}
+@media(max-width:700px){
+ #sandbox .exSide{width:100%}
+ #sandbox .exNav li{white-space:nowrap}
+ #sandbox .wrap{min-height:560px}
+ .lpHeaderInner{gap:10px}
+ .lpHeader .btn{padding:10px 12px}
+ .brandHero h1{font-size:clamp(2rem,9.5vw,2.75rem)}
+ .brandHeroInner{padding:40px 20px}
+ .brandWorkflow{gap:20px}
+ .sciAutoload{grid-template-columns:1fr}
 }
 </style>
 </head>
