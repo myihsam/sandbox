@@ -1090,7 +1090,53 @@ p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
  .sciAutoload{grid-template-columns:1fr}
 }
 </style>
-</head>
+<style id="dashboard-and-depth">
+/* Reference-led opening dashboard */
+#sandbox.tourOpening .hdr,#sandbox.tourOpening .progress,#sandbox.tourOpening #guidedNav{display:none!important}
+#sandbox.tourOpening .wrap{height:auto;min-height:0}
+#sandbox.tourOpening .shell{background:transparent;box-shadow:none;overflow:visible}
+#sandbox.tourOpening .stage{overflow:visible}
+.openingDashboard{padding:0!important}
+.tourStart{text-align:center;margin:0 0 28px}.tourStart .btn{font-size:1.2rem;padding:16px 36px;gap:30px}
+.referenceDashboard{background:#f5f6f8;border:1px solid #d9dddd;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px #34464625;font-family:Roboto,Arial,sans-serif;color:#35363b}
+.referenceTop{background:#80a6a5;padding:18px 28px}.referenceTop button{border:0;background:none;color:white;font-size:1.6rem}
+.referenceLayout{display:grid;grid-template-columns:230px minmax(0,1fr)}
+.referenceSide{background:white;border-right:1px solid #dfe1e4}
+.referenceUser{display:flex;align-items:center;gap:12px;padding:20px 14px;line-height:1.4}.referenceUser small{display:block;font-size:.9rem;color:#666}
+.referenceSide nav button{display:flex;gap:18px;align-items:center;text-align:left;border:0;background:white;width:100%;padding:15px 18px;color:#333;font-size:1rem;line-height:1.5}
+.referenceSide nav button span{width:24px;text-align:center}.referenceSide nav button:hover,.referenceSide nav .selected{background:#ecedef}
+.referenceMain{padding:24px 22px 70px;min-width:0}
+.referenceCard{background:white;border-radius:6px;padding:28px;box-shadow:0 2px 7px #0002;border:1px solid #e8e8e8}
+.referenceCard h2{font-size:1.55rem;font-weight:400;line-height:1.35;color:#35363b;margin-bottom:24px}
+.referenceFilters{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:20px;margin-bottom:22px}
+.referenceFilters label{font-size:.9rem;color:#666;min-width:0}.referenceFilters input,.referenceFilters select{font:inherit;font-size:1rem;width:100%;min-width:0;padding:14px 10px;border:1px solid #bbb;background:white;border-radius:4px;color:#444}
+.referenceLegend{display:flex;flex-wrap:wrap;gap:10px 14px;font-size:.9rem;line-height:1.5}.referenceLegend span{display:flex;align-items:center;gap:6px}.referenceLegend i{width:22px;height:22px}
+.referenceChartScroll svg{width:100%;display:block;min-width:700px;font:24px Roboto,Arial,sans-serif;fill:#444}
+.referenceChartScroll{overflow-x:auto;margin-top:20px}
+.navCollapsed .referenceSide{display:none}.navCollapsed .referenceLayout{grid-template-columns:1fr}
+#sandboxModal #sandbox.tourOpening{overflow-y:auto;height:100%}
+#sandboxModal #sandbox.tourOpening .wrap{height:auto}
+@media(max-width:1000px){.referenceLayout{grid-template-columns:190px minmax(0,1fr)}.referenceFilters{grid-template-columns:1fr 1fr}.referenceClient{grid-column:1/-1}.referenceCard{padding:20px}}
+@media(max-width:700px){.referenceLayout{grid-template-columns:1fr}.referenceSide nav{display:flex;overflow:auto}.referenceSide nav button{min-width:max-content;width:auto}.referenceUser{padding:12px 18px}.referenceMain{padding:16px 10px 24px}.referenceCard h2{font-size:1.3rem}.referenceFilters{gap:10px}.referenceLegend{font-size:.9rem}}
+/* Dimensional field-record panels: paper, ink and machined teal details. */
+.recordStory{background:radial-gradient(ellipse at 10% 0%,#cbdedc 0,transparent 45%),linear-gradient(135deg,#f4f6f4,#e2e9ea)!important}
+.recordSteps{gap:28px!important;perspective:1200px}
+.recordSteps article{position:relative;background:linear-gradient(145deg,#fff 5%,#f5f9f8 65%,#dbe8e6)!important;border:1px solid #ffffff!important;border-top:4px solid #6e9996!important;border-radius:20px!important;padding:34px!important;box-shadow:0 3px 4px #34464612,0 20px 35px -16px #314b4a55,inset 0 1px 0 white!important;transition:transform .25s,box-shadow .25s}
+.recordSteps article:nth-child(2){background:linear-gradient(145deg,#fff,#f0eef6 65%,#ddd9eb)!important;border-top-color:#82759e!important}
+.recordSteps article:hover{transform:translateY(-5px);box-shadow:0 28px 40px -18px #314b4a66!important}
+.recordGlyph{display:flex;align-items:center;justify-content:center;width:86px;height:86px;border-radius:20px;background:linear-gradient(145deg,#fff,#d7e5e3);box-shadow:6px 7px 14px #36565320,-3px -3px 8px #fff,inset 0 1px 1px white;margin:28px 0!important}
+.recordTokens span{background:#ffffffb8!important;border:1px solid #cbd9d6!important;box-shadow:0 2px 3px #3b50500d;border-radius:6px!important}
+.recordProof{background:linear-gradient(120deg,#343944,#47585c)!important;border:1px solid #667978!important;border-radius:20px!important;box-shadow:0 20px 45px -20px #243d4b80,inset 0 1px 0 #ffffff30!important}
+.recordExport{gap:48px!important}.recordDestinations details{margin-bottom:16px;background:linear-gradient(120deg,#fff,#f5f8f7)!important;border:1px solid #d3dfdc!important;border-radius:14px!important;box-shadow:0 8px 20px -12px #34464660;overflow:hidden}
+.recordDestinations details[open]{box-shadow:0 15px 30px -15px #34464650;border-left:4px solid #628f8c!important}
+.recordFileList span,.recordRoute span{border-radius:8px;box-shadow:0 3px 6px #34464615}
+.productQA{background:linear-gradient(150deg,#e8eeec,#f7f8fa)!important}
+.productQAGroup{background:linear-gradient(145deg,#fff,#f3f6f5)!important;padding:28px!important;border:1px solid white!important;border-radius:18px!important;box-shadow:0 15px 30px -18px #34464666}
+.productQAGroup h3{border-bottom:3px solid #8aacaa;padding-bottom:18px}
+.productQAItem[open]{background:#eaf1ef;border-radius:8px}
+.ctaParticles{background:radial-gradient(ellipse at 80% 10%,#5b7778,transparent 65%),linear-gradient(125deg,#343541,#464454)!important;box-shadow:inset 0 1px 0 #ffffff30}
+@media(prefers-reduced-motion:reduce){.recordSteps article{transition:none}.recordSteps article:hover{transform:none}}
+</style></head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
 
@@ -1181,7 +1227,7 @@ p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
 </section>
 
 <section id="sandbox" aria-labelledby="sandboxTitle">
-  <div class="sandboxHeading"><div><div class="brandEyebrow">THE PRODUCT, IN YOUR HANDS</div><h2 id="sandboxTitle">Sandbox Preview</h2><p>Follow the slideshow, then explore the software preview.</p></div><button class="btn sandboxPreview" type="button" onclick="openSandbox()">PREVIEW <span aria-hidden="true">↗</span></button></div>
+  <h2 id="sandboxTitle" class="visually-hidden">OEL Dashboard sandbox</h2>
   <div class="wrap">
     <div class="shell">
       <div class="hdr">
@@ -1192,18 +1238,16 @@ p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
       <div class="progress" id="progress"></div>
       <div class="stage" id="stage">
 
-        <section class="slide active">
-          <div class="eyebrow">Sandbox Preview · about 3 minutes</div>
-          <h2 id="c_heroH"></h2>
-          <p class="sub" id="c_heroSub"></p>
-          <div class="stats">
-            <div><b id="c_stat1n"></b><span id="c_stat1l"></span></div>
-            <div><b id="c_stat2n"></b><span id="c_stat2l"></span></div>
-            <div><b id="c_stat3n"></b><span id="c_stat3l"></span></div>
-          </div>
-          <p class="footnote" style="margin-top:8px">*Based on internal data from beta testing and active user subscriptions.</p>
-          <div style="margin-top:24px"><button class="btn" onclick="go(1)">START TOUR<span aria-hidden="true"> →</span></button></div>
-        </section>
+        <section class="slide active openingDashboard">
+<div class="tourStart"><button class="btn" type="button" onclick="go(1)">Start Tour <span aria-hidden="true">→</span></button></div>
+<div class="referenceDashboard" aria-label="OEL Dashboard — illustrative sample data">
+<div class="referenceTop"><button type="button" aria-label="Toggle dashboard navigation" aria-expanded="true" onclick="var d=this.closest('.referenceDashboard');d.classList.toggle('navCollapsed');this.setAttribute('aria-expanded',!d.classList.contains('navCollapsed'))">☰</button></div>
+<div class="referenceLayout"><aside class="referenceSide"><div class="referenceUser"><span aria-hidden="true">●</span><div><b>Jordan Smith</b><small>XYZ Consulting</small></div><span aria-hidden="true">⌄</span></div><nav aria-label="Dashboard preview"><button type="button" class="selected" onclick="enterExplore();showTab('dashboard')"><span aria-hidden="true">▦</span>Dashboard</button><button type="button" class="" onclick="enterExplore();showTab('clients')"><span aria-hidden="true">♟</span>Client</button><button type="button" class="" onclick="enterExplore();showTab('projects')"><span aria-hidden="true">▣</span>Projects</button><button type="button" class="" onclick="enterExplore();showTab('samples')"><span aria-hidden="true">⚗</span>Samples</button><button type="button" class="" onclick="enterExplore();showTab('media')"><span aria-hidden="true">♧</span>Sample Media</button><button type="button" class="" onclick="enterExplore();showTab('instruments')"><span aria-hidden="true">⚒</span>Instruments</button><button type="button" class="" onclick="enterExplore();showTab('calibration')"><span aria-hidden="true">☷</span>Calibration</button><button type="button" class="" onclick="enterExplore();showTab('questions')"><span aria-hidden="true">▤</span>Question groups</button><button type="button" onclick="go(5)"><span aria-hidden="true">▥</span>OEL Table</button></nav></aside>
+<div class="referenceMain"><div class="referenceCard"><h2>Total # of samples collected by % of OEL category</h2>
+<div class="referenceFilters"><label>Start date<input type="date" value="2026-04-21" aria-label="Example start date" readonly></label><label>End date<input type="date" value="2026-10-21" aria-label="Example end date" readonly></label><label class="referenceClient">Clients<select aria-label="Select clients" onchange="document.querySelectorAll('.reference-row').forEach(r=>r.style.display=(!this.value||r.dataset.client===this.value)?'':'none')"><option value="">Select Clients</option><option>Contoso Terminal</option><option>Fabrikam Fabrication</option><option>Northwind Chemical</option><option>Tailspin Shipyard</option><option>Adventure Works</option><option>Acme Coatings</option><option>XYZ Inc.</option></select></label></div>
+<div class="referenceLegend"><span><i style="background:#db291b"></i>> 100% of OEL</span><span><i style="background:#f8bd6a"></i>50% - 100% of OEL</span><span><i style="background:#ffff3c"></i>10% - 50% of OEL</span><span><i style="background:#4bace5"></i>1% - 10% of OEL</span><span><i style="background:#9ed261"></i>&lt; 1% of OEL</span></div>
+<div class="referenceChartScroll"><svg viewBox="0 0 910 710" role="img" aria-label="Sample counts by client and OEL category"><title>OEL Dashboard sample counts</title><desc>Contoso Terminal: 0, 0, 2, 18, 7 in red, orange, yellow, blue and green categories; Fabrikam Fabrication: 2, 1, 6, 9, 3 in red, orange, yellow, blue and green categories; Northwind Chemical: 2, 3, 1, 1, 2 in red, orange, yellow, blue and green categories; Tailspin Shipyard: 3, 2, 12, 4, 0 in red, orange, yellow, blue and green categories; Adventure Works: 0, 1, 4, 1, 4 in red, orange, yellow, blue and green categories; Acme Coatings: 1, 2, 9, 5, 0 in red, orange, yellow, blue and green categories; XYZ Inc.: 1, 1, 5, 3, 1 in red, orange, yellow, blue and green categories</desc><g class="reference-row" data-client="Contoso Terminal"><text x="278" y="71" text-anchor="end">Contoso Terminal</text><rect x="290" y="30" width="42" height="66" fill="#ffff3c"/><text x="311" y="71" text-anchor="middle" fill="#171717">2</text><rect x="332" y="30" width="378" height="66" fill="#4bace5"/><text x="521" y="71" text-anchor="middle" fill="#171717">18</text><rect x="710" y="30" width="147" height="66" fill="#9ed261"/><text x="783.5" y="71" text-anchor="middle" fill="#171717">7</text></g><g class="reference-row" data-client="Fabrikam Fabrication"><text x="278" y="163" text-anchor="end">Fabrikam Fabrication</text><rect x="290" y="122" width="42" height="66" fill="#db291b"/><text x="311" y="163" text-anchor="middle" fill="#171717">2</text><rect x="332" y="122" width="21" height="66" fill="#f8bd6a"/><text x="342.5" y="163" text-anchor="middle" fill="#171717">1</text><rect x="353" y="122" width="126" height="66" fill="#ffff3c"/><text x="416" y="163" text-anchor="middle" fill="#171717">6</text><rect x="479" y="122" width="189" height="66" fill="#4bace5"/><text x="573.5" y="163" text-anchor="middle" fill="#171717">9</text><rect x="668" y="122" width="63" height="66" fill="#9ed261"/><text x="699.5" y="163" text-anchor="middle" fill="#171717">3</text></g><g class="reference-row" data-client="Northwind Chemical"><text x="278" y="255" text-anchor="end">Northwind Chemical</text><rect x="290" y="214" width="42" height="66" fill="#db291b"/><text x="311" y="255" text-anchor="middle" fill="#171717">2</text><rect x="332" y="214" width="63" height="66" fill="#f8bd6a"/><text x="363.5" y="255" text-anchor="middle" fill="#171717">3</text><rect x="395" y="214" width="21" height="66" fill="#ffff3c"/><text x="405.5" y="255" text-anchor="middle" fill="#171717">1</text><rect x="416" y="214" width="21" height="66" fill="#4bace5"/><text x="426.5" y="255" text-anchor="middle" fill="#171717">1</text><rect x="437" y="214" width="42" height="66" fill="#9ed261"/><text x="458" y="255" text-anchor="middle" fill="#171717">2</text></g><g class="reference-row" data-client="Tailspin Shipyard"><text x="278" y="347" text-anchor="end">Tailspin Shipyard</text><rect x="290" y="306" width="63" height="66" fill="#db291b"/><text x="321.5" y="347" text-anchor="middle" fill="#171717">3</text><rect x="353" y="306" width="42" height="66" fill="#f8bd6a"/><text x="374" y="347" text-anchor="middle" fill="#171717">2</text><rect x="395" y="306" width="252" height="66" fill="#ffff3c"/><text x="521" y="347" text-anchor="middle" fill="#171717">12</text><rect x="647" y="306" width="84" height="66" fill="#4bace5"/><text x="689" y="347" text-anchor="middle" fill="#171717">4</text></g><g class="reference-row" data-client="Adventure Works"><text x="278" y="439" text-anchor="end">Adventure Works</text><rect x="290" y="398" width="21" height="66" fill="#f8bd6a"/><text x="300.5" y="439" text-anchor="middle" fill="#171717">1</text><rect x="311" y="398" width="84" height="66" fill="#ffff3c"/><text x="353" y="439" text-anchor="middle" fill="#171717">4</text><rect x="395" y="398" width="21" height="66" fill="#4bace5"/><text x="405.5" y="439" text-anchor="middle" fill="#171717">1</text><rect x="416" y="398" width="84" height="66" fill="#9ed261"/><text x="458" y="439" text-anchor="middle" fill="#171717">4</text></g><g class="reference-row" data-client="Acme Coatings"><text x="278" y="531" text-anchor="end">Acme Coatings</text><rect x="290" y="490" width="21" height="66" fill="#db291b"/><text x="300.5" y="531" text-anchor="middle" fill="#171717">1</text><rect x="311" y="490" width="42" height="66" fill="#f8bd6a"/><text x="332" y="531" text-anchor="middle" fill="#171717">2</text><rect x="353" y="490" width="189" height="66" fill="#ffff3c"/><text x="447.5" y="531" text-anchor="middle" fill="#171717">9</text><rect x="542" y="490" width="105" height="66" fill="#4bace5"/><text x="594.5" y="531" text-anchor="middle" fill="#171717">5</text></g><g class="reference-row" data-client="XYZ Inc."><text x="278" y="623" text-anchor="end">XYZ Inc.</text><rect x="290" y="582" width="21" height="66" fill="#db291b"/><text x="300.5" y="623" text-anchor="middle" fill="#171717">1</text><rect x="311" y="582" width="21" height="66" fill="#f8bd6a"/><text x="321.5" y="623" text-anchor="middle" fill="#171717">1</text><rect x="332" y="582" width="105" height="66" fill="#ffff3c"/><text x="384.5" y="623" text-anchor="middle" fill="#171717">5</text><rect x="437" y="582" width="63" height="66" fill="#4bace5"/><text x="468.5" y="623" text-anchor="middle" fill="#171717">3</text><rect x="500" y="582" width="21" height="66" fill="#9ed261"/><text x="510.5" y="623" text-anchor="middle" fill="#171717">1</text></g><path d="M290 660H878" stroke="#aaa"/><text x="290" y="688" text-anchor="middle">0</text><text x="332" y="688" text-anchor="middle">2</text><text x="374" y="688" text-anchor="middle">4</text><text x="416" y="688" text-anchor="middle">6</text><text x="458" y="688" text-anchor="middle">8</text><text x="500" y="688" text-anchor="middle">10</text><text x="542" y="688" text-anchor="middle">12</text><text x="584" y="688" text-anchor="middle">14</text><text x="626" y="688" text-anchor="middle">16</text><text x="668" y="688" text-anchor="middle">18</text><text x="710" y="688" text-anchor="middle">20</text><text x="752" y="688" text-anchor="middle">22</text><text x="794" y="688" text-anchor="middle">24</text><text x="836" y="688" text-anchor="middle">26</text><text x="878" y="688" text-anchor="middle">28</text></svg></div>
+</div></div></div></div></section>
 
         <section class="slide">
           <div class="eyebrow">Step 2 · The dashboard</div>
@@ -1675,6 +1719,7 @@ if(n<0||n>=N)return;
 const _lockX=window.scrollX||window.pageXOffset||0, _lockY=window.scrollY||window.pageYOffset||0;
 slides[cur].classList.remove('active');
 cur=n;
+document.getElementById('sandbox').classList.toggle('tourOpening',cur===0);
 slides[cur].classList.add('active');
 document.getElementById('stepLabel').textContent=`Step ${cur+1} of ${N}`;
 var _names=['the overview','the dashboard','structural plan and scenarios','attaching the sample','the survey dashboard','entering results','the sample record export','the export'];
