@@ -72,26 +72,26 @@ body{font-family:'Poppins','Segoe UI',sans-serif;background:#F8F9FA;color:var(--
 button{font-family:inherit;cursor:pointer}
 h1{font-size:clamp(24px,4.4vw,36px);font-weight:600;color:var(--slate);line-height:1.16;letter-spacing:-.01em}
 h2{font-size:clamp(19px,3vw,24px);font-weight:600;color:var(--slate)}
-.sub{font-size:15px;color:var(--ink-soft);line-height:1.55;font-weight:300;margin-top:8px;max-width:640px}
-.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-text);font-weight:600;margin-bottom:10px}
+.sub{font-size:1rem;color:var(--ink-soft);line-height:1.55;font-weight:300;margin-top:8px;max-width:640px}
+.eyebrow{font-size:1rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-text);font-weight:600;margin-bottom:10px}
 .cardShadow{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(59,55,74,.10);padding:18px 20px}
 /* Micro-animation hover states */
 .cardShadow, .lpExportCard, .panel{transition:transform .25s cubic-bezier(0.25,0.8,0.25,1),box-shadow .25s cubic-bezier(0.25,0.8,0.25,1)}
 .cardShadow:hover, .lpExportCard:hover, .panel:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 12px 32px rgba(59,55,74,.15)}
 .grid2{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
 .grid2>*{flex:1 1 280px}
-.btn{display:inline-block;background:var(--slate);color:#fff;font-weight:500;font-size:15px;padding:12px 26px;border:none;border-radius:8px;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn{display:inline-block;background:var(--slate);color:#fff;font-weight:500;font-size:1rem;padding:12px 26px;border:none;border-radius:8px;text-decoration:none;transition:transform .12s,box-shadow .12s}
 #sandbox .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,55,74,.25)}
 .btn.violet{background:var(--violet);color:var(--violet-ink);border:1.5px solid #CBBEE8}
 .btn.ghost{background:transparent;color:var(--slate);border:2px solid var(--slate)}
-.btn.sm{font-size:13px;padding:8px 16px}
-.chip{display:inline-block;background:var(--mist);color:var(--slate);border-radius:16px;padding:4px 12px;font-size:12px;font-weight:500}
-.footnote{font-size:10.5px;color:var(--ink-soft);font-weight:300}
-.logo{font-style:italic;font-weight:700;font-size:26px;letter-spacing:-1px;user-select:none}
-.logo .my{color:var(--teal)} .logo .ih{color:var(--slate)} .logo .tm{font-size:9px;font-style:normal;color:var(--ink-soft);vertical-align:top}
-input[type=text],input[type=number],select,textarea{font-family:inherit;font-size:14.5px;color:var(--slate);padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;width:100%;background:#fff}
+.btn.sm{font-size:1rem;padding:8px 16px}
+.chip{display:inline-block;background:var(--mist);color:var(--slate);border-radius:16px;padding:4px 12px;font-size:1rem;font-weight:500}
+.footnote{font-size:1rem;color:var(--ink-soft);font-weight:300}
+.logo{font-style:italic;font-weight:700;font-size:1.625rem;letter-spacing:-1px;user-select:none}
+.logo .my{color:var(--teal)} .logo .ih{color:var(--slate)} .logo .tm{font-size:1rem;font-style:normal;color:var(--ink-soft);vertical-align:top}
+input[type=text],input[type=number],select,textarea{font-family:inherit;font-size:1rem;color:var(--slate);padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;width:100%;background:#fff}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--teal)}
-label,legend{font-size:12px;color:var(--ink-soft);font-weight:500;display:block;margin-bottom:5px}
+label,legend{font-size:1rem;color:var(--ink-soft);font-weight:500;display:block;margin-bottom:5px}
 fieldset{border:none;padding:0;margin:0;min-width:0}
 @keyframes fadeIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
 @keyframes pop{from{opacity:.3;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
@@ -104,8 +104,8 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .lpHeader{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--line)}
 .lpHeaderInner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:12px 22px;position:relative}
 .lpHeaderCta{position:absolute;right:22px;top:50%;transform:translateY(-50%)}
-.lpHeaderCta .btn{font-size:14px;padding:9px 20px}
-@media(max-width:640px){.lpHeaderCta{right:14px}.lpHeaderCta .btn{font-size:12.5px;padding:7px 12px}}
+.lpHeaderCta .btn{font-size:1rem;padding:9px 20px}
+@media(max-width:640px){.lpHeaderCta{right:14px}.lpHeaderCta .btn{font-size:1rem;padding:7px 12px}}
 .lpSection{max-width:1080px;margin:0 auto;padding:64px 22px}
 .lpSection.tight{padding-top:34px;padding-bottom:34px}
 .lpHero{padding-top:76px;padding-bottom:44px;animation:riseIn .5s ease both}
@@ -114,55 +114,55 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .lpHeroCtas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 /* Signature OEL banding bar */
 .lpBandWrap{margin-top:44px;max-width:820px}
-.lpBandLabel{font-size:13.75px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:8px}
+.lpBandLabel{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:8px}
 .lpBand{display:flex;height:26px;border-radius:6px;overflow:hidden;box-shadow:0 8px 24px rgba(59,55,74,.12);position:relative}
 /* Glossy sheen sweep across the banding bar */
 .lpBand::after{content:"";position:absolute;top:0;left:0;height:100%;width:34%;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.42) 45%,rgba(255,255,255,.62) 50%,rgba(255,255,255,.42) 55%,rgba(255,255,255,0) 100%);transform:translateX(-140%) skewX(-12deg);animation:bandSheen 4.6s cubic-bezier(.4,.1,.2,1) 1.3s infinite}
 @keyframes bandSheen{0%{transform:translateX(-140%) skewX(-12deg)}38%{transform:translateX(420%) skewX(-12deg)}100%{transform:translateX(420%) skewX(-12deg)}}
 @media (prefers-reduced-motion:reduce){.lpBand::after{animation:none;display:none}.lpBand div{animation:none}}
-.lpBand div{height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#12232B;transform-origin:left;animation:bandGrow .9s cubic-bezier(.2,.8,.2,1) both}
+.lpBand div{height:100%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#12232B;transform-origin:left;animation:bandGrow .9s cubic-bezier(.2,.8,.2,1) both}
 @keyframes bandGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .lpBand .b-green{background:var(--oel-green);width:38%;animation-delay:.1s}
 .lpBand .b-blue{background:var(--oel-blue);width:26%;animation-delay:.25s}
 .lpBand .b-yellow{background:var(--oel-yellow);color:#6b6200;width:18%;animation-delay:.4s}
 .lpBand .b-orange{background:var(--oel-orange);width:12%;animation-delay:.55s}
 .lpBand .b-red{background:var(--oel-red);width:6%;animation-delay:.7s}
-.lpBandLegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--ink);margin-top:10px}
+.lpBandLegend{display:flex;gap:14px;flex-wrap:wrap;font-size:1rem;color:var(--ink);margin-top:10px}
 .lpBandLegend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 /* Audience grid */
 .lpAudience .cardShadow{border-top:4px solid var(--teal)}
 .lpAudience .cardShadow.consult{border-top-color:var(--violet)}
-.lpAudience h3{font-size:17px;font-weight:600;color:var(--slate);margin-top:6px}
-.lpAudience p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;font-weight:300;margin-top:8px}
+.lpAudience h3{font-size:1.0625rem;font-weight:600;color:var(--slate);margin-top:6px}
+.lpAudience p{font-size:1rem;color:var(--ink-soft);line-height:1.6;font-weight:300;margin-top:8px}
 /* Stats panel */
 .lpStats{display:flex;gap:0;margin-top:26px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(59,55,74,.10);overflow:hidden;flex-wrap:wrap}
 .lpStats div{flex:1 1 200px;padding:22px 22px;border-left:1.5px solid var(--mist)}
 .lpStats div:first-child{border-left:none}
-.lpStats b{display:block;font-size:30px;font-weight:700;color:var(--slate)}
-.lpStats span{font-size:12.5px;color:var(--ink-soft)}
+.lpStats b{display:block;font-size:1.875rem;font-weight:700;color:var(--slate)}
+.lpStats span{font-size:1rem;color:var(--ink-soft)}
 /* Quote */
 .lpQuote{background:var(--slate-deep);border-radius:18px;padding:38px 36px;color:#fff;position:relative;overflow:hidden}
-.lpQuote::before{content:"“";position:absolute;top:-24px;left:18px;font-size:150px;font-weight:700;color:var(--teal);opacity:.28;font-style:italic}
+.lpQuote::before{content:"“";position:absolute;top:-24px;left:18px;font-size:9.375rem;font-weight:700;color:var(--teal);opacity:.28;font-style:italic}
 .lpQuote blockquote{font-size:clamp(15px,2.2vw,18px);line-height:1.65;font-weight:300;max-width:820px;position:relative}
 .lpQuote blockquote .lpTag{font-weight:600;border-radius:10px;padding:1px 8px;font-size:.82em;white-space:nowrap}
 .lpQuote .t-at{color:#9CC4F5;background:rgba(47,128,237,.22)}
 .lpQuote .t-hash{color:#9FE0BB;background:rgba(46,158,91,.22)}
 .lpQuote .t-dol{color:#F5B3A5;background:rgba(228,87,61,.22)}
-.lpQuote cite{display:block;margin-top:18px;font-style:normal;font-size:13px;color:#C9D6D5;font-weight:500}
+.lpQuote cite{display:block;margin-top:18px;font-style:normal;font-size:1rem;color:#C9D6D5;font-weight:500}
 /* Admin / export feature */
 .lpExport{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
 .lpExport .txt{flex:1 1 320px}
 .lpExport .viz{flex:1 1 320px}
 .lpExportCard{background:#fff;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(59,55,74,.10)}
-.lpExportHd{background:var(--slate);color:#fff;font-size:11px;font-weight:600;text-align:center;padding:7px 0;text-transform:uppercase;letter-spacing:.5px}
-.lpExportRow{display:grid;grid-template-columns:130px 1fr;font-size:11.5px}
+.lpExportHd{background:var(--slate);color:#fff;font-size:1rem;font-weight:600;text-align:center;padding:7px 0;text-transform:uppercase;letter-spacing:.5px}
+.lpExportRow{display:grid;grid-template-columns:130px 1fr;font-size:1rem}
 .lpExportRow b{background:#f0f2f2;font-weight:600;padding:7px 10px;border-bottom:1px solid #e4e8e8;border-right:1px solid #e4e8e8}
 .lpExportRow span{padding:7px 10px;border-bottom:1px solid #e4e8e8}
 .lpExportBtns{display:flex;gap:8px;padding:12px;justify-content:center;background:#FAFBFB}
 /* Sandbox section wrapper */
 #sandbox{background:linear-gradient(180deg,var(--mist),#E9EDED);border-top:1.5px solid var(--line);padding:64px 0 40px}
-.lpFooter{background:var(--slate-deep);color:#C9D6D5;padding:34px 22px;text-align:center;font-size:12px;font-weight:300}
-.lpFooter .logo{font-size:22px}
+.lpFooter{background:var(--slate-deep);color:#C9D6D5;padding:34px 22px;text-align:center;font-size:1rem;font-weight:300}
+.lpFooter .logo{font-size:1.375rem}
 .lpFooter .logo .my{color:var(--teal)} .lpFooter .logo .ih{color:#fff}
 @media(max-width:640px){.lpSection{padding:44px 18px}.lpHero{padding-top:52px}.lpQuote{padding:28px 22px}}
 
@@ -172,7 +172,7 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .wrap{max-width:920px;margin:0 auto;height:min(760px,86vh);max-height:86vh;min-height:560px;display:flex;flex-direction:column;padding:14px}
 .shell{background:#fff;border-radius:18px;box-shadow:0 18px 60px rgba(59,55,74,.14);overflow:hidden;display:flex;flex-direction:column;flex:1}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--mist)}
-.stepLabel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+.stepLabel{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
 .progress{display:flex;gap:5px;padding:9px 22px 0}
 .progress span{flex:1;height:4px;border-radius:2px;background:var(--mist);cursor:pointer;transition:background .3s}
 .progress span.on{background:var(--teal)}
@@ -181,79 +181,79 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .slide.active{display:block}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 16px}
 .fieldRow{margin-top:12px}
-.radioRow{display:flex;gap:16px;margin-top:6px;font-size:13.5px;color:var(--ink)}
-.radioRow label{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink);font-weight:400;margin:0}
+.radioRow{display:flex;gap:16px;margin-top:6px;font-size:1rem;color:var(--ink)}
+.radioRow label{display:flex;align-items:center;gap:6px;font-size:1rem;color:var(--ink);font-weight:400;margin:0}
 .stats{display:flex;gap:0;margin-top:22px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(59,55,74,.10);overflow:hidden;flex-wrap:wrap}
 .stats div{flex:1 1 140px;padding:16px 18px;border-left:1.5px solid var(--mist)}
 .stats div:first-child{border-left:none}
-.stats b{display:block;font-size:26px;font-weight:700;color:var(--slate)}
-.stats span{font-size:12px;color:var(--ink-soft)}
-.appbar{background:var(--teal-header);color:#fff;padding:12px 18px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.stats b{display:block;font-size:1.625rem;font-weight:700;color:var(--slate)}
+.stats span{font-size:1rem;color:var(--ink-soft)}
+.appbar{background:var(--teal-header);color:#fff;padding:12px 18px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;font-size:1rem}
 .appbar .abtns{display:flex;gap:8px}
-.abtn{background:var(--slate);color:#fff;font-size:12px;font-weight:500;border:none;border-radius:4px;padding:6px 10px;letter-spacing:.04em}
+.abtn{background:var(--slate);color:#fff;font-size:1rem;font-weight:500;border:none;border-radius:4px;padding:6px 10px;letter-spacing:.04em}
 .appbody{border:1.5px solid var(--line);border-top:none;border-radius:0 0 12px 12px;padding:16px 18px;background:#FAFBFB}
-.oelLegend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--ink);margin:10px 0 14px}
+.oelLegend{display:flex;gap:12px;flex-wrap:wrap;font-size:1rem;color:var(--ink);margin:10px 0 14px}
 .oelLegend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 .barRow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.barRow .lbl{width:130px;font-size:11.5px;color:var(--ink);text-align:right;flex-shrink:0}
+.barRow .lbl{width:130px;font-size:1rem;color:var(--ink);text-align:right;flex-shrink:0}
 .barTrack{flex:1;height:22px;background:#EEF1F1;border-radius:4px;display:flex;overflow:hidden}
-.seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1);min-width:0}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;color:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1);min-width:0}
 .seg.yellow{color:#6b6200}
-.tag{font-size:11px;font-weight:600;background:var(--mist);border-radius:10px;padding:1px 8px;white-space:nowrap}
+.tag{font-size:1rem;font-weight:600;background:var(--mist);border-radius:10px;padding:1px 8px;white-space:nowrap}
 .tag.at{color:#2F80ED;background:#EAF2FD}
 .tag.hash{color:#2E9E5B;background:#EAF6EF}
 .tag.dol{color:#E4573D;background:#FDEEEA}
-.pill{display:inline-block;color:#fff;font-weight:600;font-size:12.5px;border-radius:16px;padding:5px 14px}
+.pill{display:inline-block;color:#fff;font-weight:600;font-size:1rem;border-radius:16px;padding:5px 14px}
 #explore{display:none;flex:1;min-height:0;flex-direction:column;overflow:hidden}
 .exShell{display:flex;flex:1;min-height:0}
 .exSide{width:190px;background:#fff;border-right:1.5px solid var(--line);padding:12px 0;flex-shrink:0}
 .exSide .who{padding:8px 16px 14px;border-bottom:1.5px solid var(--mist);margin-bottom:8px}
-.exSide .who b{font-size:12.5px;color:var(--slate);display:block}
-.exSide .who span{font-size:10px;color:var(--ink-soft)}
+.exSide .who b{font-size:1rem;color:var(--slate);display:block}
+.exSide .who span{font-size:1rem;color:var(--ink-soft)}
 .exNav{list-style:none}
-.exNav li{padding:9px 18px;font-size:13px;color:var(--ink);cursor:pointer;border-left:3px solid transparent}
+.exNav li{padding:9px 18px;font-size:1rem;color:var(--ink);cursor:pointer;border-left:3px solid transparent}
 .exNav li:hover{background:var(--mist)}
 .exNav li.on{background:var(--mist);border-left-color:var(--teal);font-weight:500;color:var(--slate)}
 .exMain{flex:1;padding:18px 20px;overflow-y:auto;background:#FAFBFB}
 .exTop{background:var(--teal-header);padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
-.exTop .logoW{font-style:italic;font-weight:700;font-size:19px;letter-spacing:-1px}
+.exTop .logoW{font-style:italic;font-weight:700;font-size:1.1875rem;letter-spacing:-1px}
 .exTop .logoW .my{color:#DFEAE9}.exTop .logoW .ih{color:#fff}
-#sandbox table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:10px;overflow:hidden}
-#sandbox th{background:var(--mist);color:var(--slate);text-align:left;font-weight:600;padding:9px 12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+#sandbox table{width:100%;border-collapse:collapse;font-size:1rem;background:#fff;border-radius:10px;overflow:hidden}
+#sandbox th{background:var(--mist);color:var(--slate);text-align:left;font-weight:600;padding:9px 12px;font-size:1rem;letter-spacing:.06em;text-transform:uppercase}
 #sandbox td{padding:9px 12px;border-top:1.5px solid var(--line);color:var(--ink)}
 #sandbox tr:hover td{background:#F7F9F9}
-.disclaimer{text-align:center;font-size:11px;color:var(--ink-soft);padding:12px;border-top:1.5px solid var(--mist);background:#fff}
+.disclaimer{text-align:center;font-size:1rem;color:var(--ink-soft);padding:12px;border-top:1.5px solid var(--mist);background:#fff}
 .svHead{background:var(--teal-header);color:#fff;border-radius:12px 12px 0 0;padding:12px 16px 0}
-.svHead .svTitle{font-size:14px;font-weight:600}
-.svHead .svTitle span{font-weight:400;opacity:.85;font-size:12px}
+.svHead .svTitle{font-size:1rem;font-weight:600}
+.svHead .svTitle span{font-weight:400;opacity:.85;font-size:1rem}
 .svTabs{display:flex;gap:2px;margin-top:10px;overflow-x:auto}
-.svTabs span{font-size:11px;font-weight:500;padding:7px 14px;border-radius:8px 8px 0 0;color:#EAF3F2;white-space:nowrap;cursor:pointer}
+.svTabs span{font-size:1rem;font-weight:500;padding:7px 14px;border-radius:8px 8px 0 0;color:#EAF3F2;white-space:nowrap;cursor:pointer}
 .svTabs span.on{background:#FAFBFB;color:var(--slate);font-weight:600}
 .svBody{border:1.5px solid var(--line);border-top:none;border-radius:0 0 12px 12px;background:#FAFBFB;padding:14px}
 .svGrid{display:flex;gap:14px;align-items:flex-start}
 .svGrid>div{flex:1 1 0;min-width:0}
 .panel{background:#fff;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
-.panelHd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1.5px solid var(--mist);font-size:13px;font-weight:600;color:var(--slate)}
+.panelHd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1.5px solid var(--mist);font-size:1rem;font-weight:600;color:var(--slate)}
 .panelBd{padding:12px 14px}
 .subj{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;cursor:pointer}
 .subj.active{border-color:var(--teal);background:#F2F7F7}
-.subjName{font-size:13px;font-weight:600;color:var(--slate)}
-.subjName .subjType{font-size:10px;font-weight:500;color:var(--ink-soft);background:var(--mist);border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+.subjName{font-size:1rem;font-weight:600;color:var(--slate)}
+.subjName .subjType{font-size:1rem;font-weight:500;color:var(--ink-soft);background:var(--mist);border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:1px}
 .subjChips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.dlDay{text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;padding:10px 0 2px}
+.dlDay{text-align:center;font-size:1rem;font-weight:600;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;padding:10px 0 2px}
 .dlFeed{max-height:230px;overflow-y:auto;padding:4px 14px 8px}
 .dlMsg{display:flex;gap:10px;padding:9px 0;border-bottom:1.5px solid var(--mist);animation:pop .3s ease both}
 .dlMsg:last-child{border-bottom:none}
-.dlMsg .dlT{width:58px;flex-shrink:0;text-align:right;font-size:10.5px;color:var(--ink-soft);padding-top:4px}
-.dlMsg .dlAv{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center}
-.dlMsg .dlBody{font-size:12.5px;line-height:1.55;color:var(--ink);min-width:0;overflow-wrap:break-word}
-.dlMsg .dlBody b{display:block;font-size:11px;color:var(--slate)}
+.dlMsg .dlT{width:58px;flex-shrink:0;text-align:right;font-size:1rem;color:var(--ink-soft);padding-top:4px}
+.dlMsg .dlAv{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--teal);color:#fff;font-size:1rem;font-weight:600;display:flex;align-items:center;justify-content:center}
+.dlMsg .dlBody{font-size:1rem;line-height:1.55;color:var(--ink);min-width:0;overflow-wrap:break-word}
+.dlMsg .dlBody b{display:block;font-size:1rem;color:var(--slate)}
 .dlComposer{display:flex;gap:8px;padding:10px 14px;border-top:1.5px solid var(--mist);background:#FAFBFB}
 .dlComposer input{flex:1}
-.dlHelp{font-size:10.5px;color:var(--ink-soft);padding:0 14px 10px;background:#FAFBFB}
+.dlHelp{font-size:1rem;color:var(--ink-soft);padding:0 14px 10px;background:#FAFBFB}
 .dlHelp i{font-style:normal;font-weight:600}
 .dlHelp .h-at{color:#2F80ED}.dlHelp .h-hash{color:#2E9E5B}.dlHelp .h-dol{color:#E4573D}
-.mobileHint{display:none;font-size:10.5px;color:var(--ink-soft);text-align:center;padding:4px}
+.mobileHint{display:none;font-size:1rem;color:var(--ink-soft);text-align:center;padding:4px}
 /* Flawless CSS recreation of BMR Industrial Sample Data Sheet */
 .bmrReport{font-family:Arial,sans-serif;color:#333;background:#fff;border:1px solid #aaa;max-width:100%;margin:0 auto;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
 /* Slide 7: compress the full report to fit the stage without cropping */
@@ -264,15 +264,15 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .slide--report .bmrLabel,.slide--report .bmrValue{padding:4px 6px}
 .slide--report .bmrTable th,.slide--report .bmrTable td{padding:4px 6px}
 .bmrHeader{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:1px solid #333}
-.bmrTitleBlock{text-align:center;flex:1;font-size:12px;line-height:1.4}
-.bmrTitleBlock h3{font-size:14px;font-weight:bold;margin:2px 0}
-.bmrSectionHeader{background:#4E495F;color:#fff;font-size:11px;font-weight:bold;text-align:center;padding:5px 0;text-transform:uppercase;letter-spacing:0.5px}
+.bmrTitleBlock{text-align:center;flex:1;font-size:1rem;line-height:1.4}
+.bmrTitleBlock h3{font-size:1rem;font-weight:bold;margin:2px 0}
+.bmrSectionHeader{background:#4E495F;color:#fff;font-size:1rem;font-weight:bold;text-align:center;padding:5px 0;text-transform:uppercase;letter-spacing:0.5px}
 .bmrGrid{display:grid;grid-template-columns:120px 1fr 120px 1fr;border-bottom:1px solid #ccc}
-.bmrLabel{background:#f0f2f2;font-weight:bold;font-size:11px;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc}
-.bmrValue{font-size:11px;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;background:#fff}
+.bmrLabel{background:#f0f2f2;font-weight:bold;font-size:1rem;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc}
+.bmrValue{font-size:1rem;padding:6px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;background:#fff}
 .bmrGrid .bmrLabel:nth-last-child(2), .bmrGrid .bmrValue:last-child{border-bottom:none}
 .bmrGrid .bmrValue:nth-child(4n){border-right:none}
-.bmrTable{width:100%;border-collapse:collapse;margin:0;font-size:11px}
+.bmrTable{width:100%;border-collapse:collapse;margin:0;font-size:1rem}
 .bmrTable th{background:#e1e5e6;color:#333;font-weight:bold;text-transform:none;letter-spacing:normal;padding:6px;border:1px solid #ccc}
 .bmrTable td{padding:6px;border:1px solid #ccc;text-align:left}
 .bmrTable tr:nth-child(even){background:#f9fafb}
@@ -280,24 +280,24 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .qFollow{display:none;background:#F2F5F5;border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:10px 14px;margin-top:10px}
 .qFollow.open{display:block;animation:pop .3s ease both}
 .qFollow label{color:var(--slate)}
-.qFollow .note{font-size:11.5px;color:var(--teal-deep);font-weight:500;margin-top:8px}
-.qFollow .flag{font-size:11.5px;color:var(--oel-red);font-weight:600;margin-top:8px}
+.qFollow .note{font-size:1rem;color:var(--teal-deep);font-weight:500;margin-top:8px}
+.qFollow .flag{font-size:1rem;color:var(--oel-red);font-weight:600;margin-top:8px}
 /* Samples & Subjects panel (survey dashboard, left side) */
 .ssCard{border:1.5px solid var(--line);border-radius:10px;margin-top:12px;overflow:hidden;background:#ECECEF}
 .ssHd{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 14px;border-bottom:1.5px solid var(--line)}
-.ssHd .ssName{font-size:14px;font-weight:700;color:#26262c}
-.ssHd .ssEdit{font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);cursor:pointer}
+.ssHd .ssName{font-size:1rem;font-weight:700;color:#26262c}
+.ssHd .ssEdit{font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);cursor:pointer}
 .ssBody{padding:12px}
 .ssAddWrap{text-align:center;margin-bottom:12px;position:relative}
 .sampleCard{background:#fff;border-radius:6px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);text-align:left}
 .sampleTop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.sampleTop b{font-size:13px;color:#26262c}
-.sampleTop .skc{font-size:11px;color:var(--ink-soft);margin-left:6px}
-.sampleTop .openS{font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--slate);cursor:pointer;white-space:nowrap}
-.sampleLines{font-size:12px;color:var(--ink);line-height:1.75;margin-top:8px}
+.sampleTop b{font-size:1rem;color:#26262c}
+.sampleTop .skc{font-size:1rem;color:var(--ink-soft);margin-left:6px}
+.sampleTop .openS{font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--slate);cursor:pointer;white-space:nowrap}
+.sampleLines{font-size:1rem;color:var(--ink);line-height:1.75;margin-top:8px}
 .ssMenu{position:absolute;left:50%;transform:translateX(-50%);top:34px;background:#fff;border:1.5px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(59,55,74,.18);z-index:5;min-width:230px;text-align:left;display:none}
 .ssMenu.open{display:block;animation:pop .2s ease both}
-.ssMenu div{padding:9px 14px;font-size:12.5px;color:var(--slate);cursor:pointer;border-bottom:1px solid var(--mist)}
+.ssMenu div{padding:9px 14px;font-size:1rem;color:var(--slate);cursor:pointer;border-bottom:1px solid var(--mist)}
 .ssMenu div:last-child{border-bottom:none}
 .ssMenu div:hover{background:var(--mist)}
 @media(max-width:640px){
@@ -306,44 +306,44 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .svGrid>div{width:100%}
 .exSide{width:104px}
 .exSide .who{display:none}
-.exNav li{padding:11px 8px;font-size:11px}
+.exNav li{padding:11px 8px;font-size:1rem}
 .mobileHint{display:block}
 }
 /* ===== Dashboard tab ===== */
 .dashDates{display:flex;gap:14px;align-items:flex-end;margin:12px 0 16px;flex-wrap:wrap}
-.dashDates label{display:flex;flex-direction:column;font-size:11px;font-weight:600;color:var(--ink-soft);gap:4px}
-.dashDates input[type=date]{padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;color:var(--ink);background:#fff}
+.dashDates label{display:flex;flex-direction:column;font-size:1rem;font-weight:600;color:var(--ink-soft);gap:4px}
+.dashDates input[type=date]{padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem;color:var(--ink);background:#fff}
 .vChartWrap{background:#fff;border-radius:10px;padding:26px 14px 10px;display:flex;gap:10px}
-.vAxisLabel{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;font-weight:600;color:var(--ink-soft);text-align:center}
+.vAxisLabel{writing-mode:vertical-rl;transform:rotate(180deg);font-size:1rem;font-weight:600;color:var(--ink-soft);text-align:center}
 .vChartArea{flex:1;display:flex;flex-direction:column;min-width:0}
 .vPlot{position:relative;display:flex;align-items:flex-end;justify-content:space-around;height:220px;margin-left:26px;border-left:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
 .vGrid{position:absolute;left:0;right:0;border-top:1px dashed var(--line);pointer-events:none}
-.vGrid i{position:absolute;left:-24px;top:-7px;font-size:10px;font-style:normal;color:var(--ink-soft)}
+.vGrid i{position:absolute;left:-24px;top:-7px;font-size:1rem;font-style:normal;color:var(--ink-soft)}
 .vGroup{display:flex;align-items:flex-end;gap:3px;height:100%;z-index:1}
 .vBar{width:32px;border-radius:3px 3px 0 0;position:relative;transition:opacity .15s;cursor:pointer}
 .vBar:hover{opacity:.72}
-.vBar span{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:var(--ink)}
-.vXLabels{display:flex;justify-content:space-around;font-size:11px;color:var(--ink);margin:6px 0 0 26px}
+.vBar span{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:1rem;font-weight:600;color:var(--ink)}
+.vXLabels{display:flex;justify-content:space-around;font-size:1rem;color:var(--ink);margin:6px 0 0 26px}
 .vXLabels div{text-align:center;max-width:110px}
-.xAxisLabel{text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);margin-top:8px}
+.xAxisLabel{text-align:center;font-size:1rem;font-weight:600;color:var(--ink-soft);margin-top:8px}
 .ghostRows{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
 .ghostBox{background:#E9ECEC;border-radius:10px;height:120px;opacity:.65}
 .ghostBox.wide{grid-column:1 / -1;height:90px}
 /* Horizontal OEL stacked-bar dashboard */
 .hbarRow{display:flex;align-items:center;gap:12px;margin:9px 0}
-.hbarLabel{width:150px;flex:none;text-align:right;font-size:12.5px;color:var(--ink);font-weight:500;overflow-wrap:break-word}
+.hbarLabel{width:150px;flex:none;text-align:right;font-size:1rem;color:var(--ink);font-weight:500;overflow-wrap:break-word}
 .hbarArea{flex:1;min-width:0}
 .hbarTrack{display:flex;height:34px;border-radius:3px;overflow:hidden;background:#f4f6f6;min-width:2px}
-.hseg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;transition:filter .15s;min-width:0}
+.hseg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:filter .15s;min-width:0}
 .hseg:hover{filter:brightness(1.07)}
 .hseg.yellowSeg{color:#5b5300}
-.hAxis{display:flex;margin-left:162px;justify-content:space-between;font-size:10.5px;color:var(--ink-soft);margin-top:6px}
-.oelTip{position:fixed;z-index:9999;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 34px rgba(59,55,74,.24);padding:12px 15px;font-size:13.5px;pointer-events:none;min-width:236px;display:none}
+.hAxis{display:flex;margin-left:162px;justify-content:space-between;font-size:1rem;color:var(--ink-soft);margin-top:6px}
+.oelTip{position:fixed;z-index:9999;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 34px rgba(59,55,74,.24);padding:12px 15px;font-size:1rem;pointer-events:none;min-width:236px;display:none}
 .oelTip .r{display:flex;justify-content:space-between;gap:22px;align-items:center;padding:4px 0;color:var(--ink)}
 .oelTip .r i{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:9px;vertical-align:-2px}
 .donutGrid{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;margin-top:14px}
 .donutBox{position:relative;width:300px;height:300px;flex:none}
-.donutClients{font-size:13px;color:var(--ink);max-height:260px;overflow:auto;flex:0 0 190px}
+.donutClients{font-size:1rem;color:var(--ink);max-height:260px;overflow:auto;flex:0 0 190px}
 .donutClients label{display:flex;gap:9px;align-items:flex-start;margin:8px 0;font-weight:400;cursor:pointer}
 .dashResults{flex:1 1 300px;min-width:260px}
 .dashResults table{width:100%}
@@ -353,7 +353,7 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 .lpHeroText{flex:1 1 480px;min-width:0;position:relative;z-index:1;background:rgba(255,255,255,.7);padding:26px 28px;border-radius:16px}
 .txtShield{background:rgba(255,255,255,.7);border-radius:8px;padding:4px 8px;display:inline-block}   
 .lpHero .sub + .sub{margin-top:16px}
-.eyebrowXL{font-size:22px;letter-spacing:.14em;line-height:1.3}
+.eyebrowXL{font-size:1.375rem;letter-spacing:.14em;line-height:1.3}
 /* Hero tech image — enlarged ~30%, right-side, may tuck under the hero text card */
 .lpHeroImg{flex:1 1 520px;min-width:300px;max-width:820px;display:flex;align-items:center;justify-content:center;position:relative;z-index:0;margin-left:-140px}
 .lpHeroImg img{width:100%;height:auto;object-fit:contain;display:block}
@@ -369,7 +369,7 @@ fieldset{border:none;padding:0;margin:0;min-width:0}
 /* ===== Platform overview deck viewer ===== */
 .lpDeckWrap{padding:0;overflow:hidden}
 .lpDeckWrap object,.lpDeckWrap iframe{width:100%;min-height:80vh;border:0;display:block}
-.lpDeckFallback{padding:40px;text-align:center;font-size:14px;color:var(--ink-soft)}
+.lpDeckFallback{padding:40px;text-align:center;font-size:1rem;color:var(--ink-soft)}
 </style>
 
 <style id="revampFX">
@@ -492,7 +492,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 /* ---- Collapsible header menu ---- */
 .lpMenuWrap{position:relative;z-index:60;margin-right:14px}
 .lpMenuBtn{display:flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--line);border-radius:9px;
-  padding:9px 15px;font-size:13px;font-weight:600;color:var(--slate);letter-spacing:.04em}
+  padding:9px 15px;font-size:1rem;font-weight:600;color:var(--slate);letter-spacing:.04em}
 .lpMenuBtn:hover{border-color:var(--teal)}
 .lpMenuBtn .bars{display:inline-flex;flex-direction:column;gap:3px}
 .lpMenuBtn .bars i{width:16px;height:2px;background:var(--slate);border-radius:2px}
@@ -500,11 +500,11 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
   border-radius:12px;box-shadow:0 16px 40px rgba(59,55,74,.16);overflow:hidden;opacity:0;visibility:hidden;
   transform:translateY(-6px);transition:opacity .22s ease,transform .22s ease,visibility .22s}
 .lpMenu.open{opacity:1;visibility:visible;transform:none}
-.lpMenu a{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-size:14px;color:var(--slate);
+.lpMenu a{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-size:1rem;color:var(--slate);
   text-decoration:none;border-bottom:1px solid var(--mist);font-weight:500}
 .lpMenu a:last-child{border-bottom:none}
 .lpMenu a:hover{background:var(--mist)}
-.lpMenu a .tagNew{font-size:9.5px;font-weight:700;letter-spacing:.1em;background:var(--teal);color:#fff;border-radius:20px;padding:2px 8px}
+.lpMenu a .tagNew{font-size:1rem;font-weight:700;letter-spacing:.1em;background:var(--teal);color:#fff;border-radius:20px;padding:2px 8px}
 @media(max-width:640px){.lpMenuWrap{margin-right:8px}.lpMenuBtn span.mtxt{display:none}.lpMenuBtn{padding:9px 11px}}
 
 /* ---- Scroll scene: LIGHT (plant floor -> lab -> software -> particle) ---- */
@@ -514,38 +514,38 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 .sciOverlay{position:absolute;inset:0;pointer-events:none;z-index:2}
 .sciHeadBox{position:absolute;top:5vh;left:50%;transform:translateX(-50%);width:min(780px,90vw);text-align:center;
   padding:22px 34px;z-index:6;transition:opacity .4s ease}
-.sciKicker{color:#2E3A3A;font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
+.sciKicker{color:#2E3A3A;font-size:1rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
 .sciTitle{color:#1F232B;font-weight:600;font-size:clamp(30px,5.4vw,60px);transition:opacity .34s ease,color .34s;letter-spacing:-.01em;margin-top:8px}
 .sciCaption{color:var(--slate);font-size:clamp(16px,2vw,23px);font-weight:400;line-height:1.5;margin-top:12px}
 .sciInstr{position:absolute;min-width:250px;background:#fff;border-radius:22px;
   box-shadow:0 20px 52px rgba(0,0,0,.46);overflow:hidden;opacity:0;transform:translateY(18px) scale(.95);
   transition:opacity .55s ease,transform .55s cubic-bezier(.22,.8,.3,1)}
 .sciInstr.on{opacity:1;transform:none}
-.sciInstrHd{background:var(--teal-header);color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;
+.sciInstrHd{background:var(--teal-header);color:#fff;font-size:1rem;font-weight:600;letter-spacing:.05em;
   text-transform:uppercase;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .sciInstrBd{padding:15px 18px}
-.sciReading{font-size:38px;font-weight:700;color:var(--slate);line-height:1.02}
-.sciReading small{font-size:17px;font-weight:500;color:var(--ink-soft)}
-.sciSub{font-size:15px;color:var(--ink-soft);margin-top:7px;line-height:1.45}
+.sciReading{font-size:2.375rem;font-weight:700;color:var(--slate);line-height:1.02}
+.sciReading small{font-size:1.0625rem;font-weight:500;color:var(--ink-soft)}
+.sciSub{font-size:1rem;color:var(--ink-soft);margin-top:7px;line-height:1.45}
 .sciDot{width:10px;height:10px;border-radius:50%;background:#8BC34A;box-shadow:0 0 0 4px rgba(139,195,74,.28);flex-shrink:0}
-.sciInstr .pill{margin-top:12px;font-size:14px;padding:6px 16px}
+.sciInstr .pill{margin-top:12px;font-size:1rem;padding:6px 16px}
 /* software panel (myIH Project Config recreation) */
 .sciSoft{position:absolute;top:58%;left:50%;transform:translate(-50%,-44%) scale(.96);width:min(760px,90vw);max-height:60vh;overflow:hidden;z-index:3;
   opacity:0;transition:opacity .5s ease,transform .6s cubic-bezier(.22,.8,.3,1);
   background:#F8F9FA;border-radius:24px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
 .sciSoft.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.sciSoftBar{background:var(--teal-header);color:#fff;padding:12px 20px;font-size:15px;font-weight:500}
+.sciSoftBar{background:var(--teal-header);color:#fff;padding:12px 20px;font-size:1rem;font-weight:500}
 .sciSoftBody{padding:18px;display:flex;flex-direction:column;gap:14px}
 .sciSoftCard{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(59,55,74,.08);padding:16px 18px}
-.sciSoftCard h4{font-size:18px;font-weight:600;color:var(--slate);margin-bottom:12px}
+.sciSoftCard h4{font-size:1.125rem;font-weight:600;color:var(--slate);margin-bottom:12px}
 .sciSoftRow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.sciField{flex:1 1 130px;min-width:0;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;font-size:15px;color:var(--ink-soft);background:#fff;display:flex;justify-content:space-between;align-items:center}
-.sciSoftBtn{background:var(--slate);color:#fff;font-size:13px;font-weight:600;letter-spacing:.04em;border-radius:8px;padding:12px 22px;text-transform:uppercase;white-space:nowrap;text-align:center}
+.sciField{flex:1 1 130px;min-width:0;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;font-size:1rem;color:var(--ink-soft);background:#fff;display:flex;justify-content:space-between;align-items:center}
+.sciSoftBtn{background:var(--slate);color:#fff;font-size:1rem;font-weight:600;letter-spacing:.04em;border-radius:8px;padding:12px 22px;text-transform:uppercase;white-space:nowrap;text-align:center}
 .sciSoftBtn.disabled{background:#E4E8E8;color:#9AA6A6}
 .sciSoftBtn.ghost{background:#fff;border:1.5px dashed var(--line);color:var(--ink-soft)}
 .sciAutoload{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
-.sciImport{border:1.5px dashed #C4CFCF;border-radius:10px;padding:16px;text-align:center;color:var(--ink-soft);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:center}
-@media(max-width:640px){.sciAutoload{grid-template-columns:1fr}.sciSoftBar{font-size:13px}}
+.sciImport{border:1.5px dashed #C4CFCF;border-radius:10px;padding:16px;text-align:center;color:var(--ink-soft);font-size:1rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:640px){.sciAutoload{grid-template-columns:1fr}.sciSoftBar{font-size:1rem}}
 /* ---- Sound-assessment box (finale) ---- */
 .sciSound{position:absolute;top:44vh;left:50%;transform:translateX(-50%) translateY(16px) scale(.94);width:min(560px,86vw);text-align:center;
   padding:24px 32px;border-radius:26px;z-index:6;opacity:0;
@@ -554,7 +554,7 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
   border:1px solid rgba(95,136,135,.5);box-shadow:0 22px 56px rgba(59,55,74,.2);
   transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.3,1)}
 .sciSound.on{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
-.sciSound .sndKick{color:#2E3A3A;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.sciSound .sndKick{color:#2E3A3A;font-size:1rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
 .sciSound .sndTitle{color:#1F232B;font-weight:600;font-size:clamp(20px,2.8vw,30px);line-height:1.25;letter-spacing:-.01em}
 
 /* rail + hint */
@@ -562,19 +562,19 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 .sciRail i{width:38px;height:5px;border-radius:3px;background:rgba(78,73,95,.20);transition:background .4s}
 .sciRail i.on{background:var(--teal)}
 .sciHint{position:absolute;left:0;right:0;bottom:calc(5vh + 18px);text-align:center;color:rgba(78,73,95,.55);
-  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
-@media(max-width:700px){.sciScene{height:560vh}.sciInstr{min-width:200px}.sciReading{font-size:30px}}
+  font-size:1rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+@media(max-width:700px){.sciScene{height:560vh}.sciInstr{min-width:200px}.sciReading{font-size:1.875rem}}
 @media(prefers-reduced-motion:reduce){.sciScene{height:180vh}.sciSticky{top:0}}
 
 /* ---- Particle-letter CTA (“Ready for a 15 minute demo?”) ---- */
 .ctaParticles{position:relative;width:100%;background:#fff;padding:72px 0 84px;overflow:hidden;text-align:center;border-top:1px solid var(--line)}
-.ctaParticles .ctaEyebrow{color:var(--teal-deep);font-size:13px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.ctaParticles .ctaEyebrow{color:var(--teal-deep);font-size:1rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
 .ctaCanvasWrap{position:relative;width:100%;height:clamp(200px,30vw,360px)}
 .ctaBigHead{font-size:clamp(30px,5vw,54px);font-weight:600;color:var(--slate);line-height:1.1;letter-spacing:-.01em;max-width:16ch;margin:6px auto 4px;text-wrap:balance}
 .ctaCanvasWrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .ctaParticles .ctaSub{color:var(--ink-soft);font-size:clamp(14px,1.6vw,17px);font-weight:300;margin:6px auto 22px;max-width:52ch}
 .ctaParticles .ctaBtnRow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
-.ctaBtnBig{display:inline-block;background:var(--slate);color:#fff;font-weight:600;font-size:17px;padding:16px 34px;border-radius:10px;text-decoration:none;box-shadow:0 10px 30px rgba(78,73,95,.24)}
+.ctaBtnBig{display:inline-block;background:var(--slate);color:#fff;font-weight:600;font-size:1.0625rem;padding:16px 34px;border-radius:10px;text-decoration:none;box-shadow:0 10px 30px rgba(78,73,95,.24)}
 .ctaBtnBig:hover{background:var(--slate-deep);color:#fff}
 .ctaBtnBig.tealed{background:var(--teal);}
 .ctaBtnBig.tealed:hover{background:var(--teal-deep)}
@@ -593,16 +593,16 @@ img:not(#sandbox *):hover{transform:scale(1.05)}
 .glassBox:hover,.cardShadow:hover,.lpExportCard:hover,.lpQuote:hover,.heroDark .lpHeroText:hover{transform:scale(1.05);box-shadow:0 26px 60px rgba(59,55,74,.22)}
 
 /* ---- Larger, more readable text (old-eyes pass): smallest sandbox text +~20%, body text +~10% ---- */
-.sub{font-size:16.5px}
-#sandbox .stepLabel,#sandbox .svTabs span,#sandbox th,.disclaimer,#sandbox .oelLegend,.dashDates label,.dlMsg .dlBody b{font-size:13px}
-#sandbox .dlHelp,#sandbox .mobileHint,.abtn,.ssHd .ssEdit,.sampleTop .openS,.dlMsg .dlT{font-size:12.5px}
-.subjType,.dlMsg .dlAv{font-size:12px}
-#sandbox table,#sandbox td,.dlMsg .dlBody,.pill,.exSide .who b,.ssMenu div,.dashDates input[type=date]{font-size:14px}
-.panelHd,.subjName,.sampleTop b{font-size:14.5px}
-.ssHd .ssName,.svHead .svTitle{font-size:15.5px}
-.sampleLines{font-size:13.5px}
-.radioRow,.radioRow label{font-size:15px}
-.exNav li{font-size:14px}
+.sub{font-size:1.03125rem}
+#sandbox .stepLabel,#sandbox .svTabs span,#sandbox th,.disclaimer,#sandbox .oelLegend,.dashDates label,.dlMsg .dlBody b{font-size:1rem}
+#sandbox .dlHelp,#sandbox .mobileHint,.abtn,.ssHd .ssEdit,.sampleTop .openS,.dlMsg .dlT{font-size:1rem}
+.subjType,.dlMsg .dlAv{font-size:1rem}
+#sandbox table,#sandbox td,.dlMsg .dlBody,.pill,.exSide .who b,.ssMenu div,.dashDates input[type=date]{font-size:1rem}
+.panelHd,.subjName,.sampleTop b{font-size:1rem}
+.ssHd .ssName,.svHead .svTitle{font-size:1rem}
+.sampleLines{font-size:1rem}
+.radioRow,.radioRow label{font-size:1rem}
+.exNav li{font-size:1rem}
 
 /* ---- Glossy light-blue dimension on all cyan glass boxes ---- */
 .glassBox,.sciHeadBox,.sciSound,.heroDark .lpHeroText{
@@ -623,30 +623,30 @@ input:focus,select:focus,textarea:focus{outline:3px solid #2B4C8C;outline-offset
 a,button,[role=button],summary{min-height:24px}
 .btn,.abtn,.lpMenu a,.lpMenuBtn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 [id]{scroll-margin-top:88px}
-.fieldError{color:#B32020;font-size:12.5px;font-weight:600;margin-top:4px;display:block}
+.fieldError{color:#B32020;font-size:1rem;font-weight:600;margin-top:4px;display:block}
 .fieldError::before{content:"Error: "}
 input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
 .errorSummary{border:2px solid #B32020;background:#FFF5F5;color:#7A1414;padding:12px 14px;border-radius:8px;margin-bottom:12px}
-.errorSummary h3{font-size:14px;margin-bottom:6px}
+.errorSummary h3{font-size:1rem;margin-bottom:6px}
 .errorSummary a{color:#7A1414}
 /* Consent banner */
 #myihConsent{position:fixed;left:0;right:0;bottom:0;z-index:9000;background:#fff;border-top:3px solid #3B374A;box-shadow:0 -6px 24px rgba(0,0,0,.18);padding:18px 22px}
 #myihConsent .inner{max-width:1080px;margin:0 auto}
-#myihConsent h2{font-size:16px;margin-bottom:6px}
-#myihConsent p{font-size:13.5px;line-height:1.55;color:#3A3A3E;max-width:70ch}
+#myihConsent h2{font-size:1rem;margin-bottom:6px}
+#myihConsent p{font-size:1rem;line-height:1.55;color:#3A3A3E;max-width:70ch}
 #myihConsent .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-#myihConsent .acts button{font-family:inherit;font-size:14px;font-weight:600;padding:11px 22px;border-radius:8px;border:2px solid #3B374A;background:#fff;color:#3B374A;min-height:44px}
+#myihConsent .acts button{font-family:inherit;font-size:1rem;font-weight:600;padding:11px 22px;border-radius:8px;border:2px solid #3B374A;background:#fff;color:#3B374A;min-height:44px}
 #myihConsent .acts button.primary{background:#3B374A;color:#fff}
 #myihPrefs{border:none;border-radius:12px;padding:22px;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 #myihPrefs::backdrop{background:rgba(0,0,0,.45)}
 #myihPrefs fieldset{border:1px solid #E4E8E8;border-radius:8px;padding:12px;margin:12px 0}
-#myihPrefs legend{font-size:12px;font-weight:600;padding:0 6px}
+#myihPrefs legend{font-size:1rem;font-weight:600;padding:0 6px}
 #myihPrefs .row{display:flex;gap:8px;align-items:flex-start;margin:10px 0}
-#myihPrefs .row p{font-size:12px;color:#6E6E76;margin-top:2px}
-#myihPrefs button{font-family:inherit;font-size:14px;font-weight:600;padding:10px 18px;border-radius:8px;min-height:44px;border:2px solid #3B374A;background:#fff;color:#3B374A;margin-right:8px}
+#myihPrefs .row p{font-size:1rem;color:#6E6E76;margin-top:2px}
+#myihPrefs button{font-family:inherit;font-size:1rem;font-weight:600;padding:10px 18px;border-radius:8px;min-height:44px;border:2px solid #3B374A;background:#fff;color:#3B374A;margin-right:8px}
 #myihPrefs button.primary{background:#3B374A;color:#fff}
-.a11yFooterLinks{margin-top:14px;font-size:12px}
-.a11yFooterLinks a,.a11yFooterLinks button{color:#C9D6D5;text-decoration:underline;background:none;border:none;font-family:inherit;font-size:12px;padding:6px 2px}
+.a11yFooterLinks{margin-top:14px;font-size:1rem}
+.a11yFooterLinks a,.a11yFooterLinks button{color:#C9D6D5;text-decoration:underline;background:none;border:none;font-family:inherit;font-size:1rem;padding:6px 2px}
 @media(prefers-reduced-motion:reduce){.lpBand div,.lpHero,.slide{animation:none!important}}
 
 /* ============================================================
@@ -699,44 +699,44 @@ input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
   #ventWrap{display:block;top:82px;right:12px;width:88px;opacity:.4}
   .lpHero{gap:24px;padding-top:30px}
   .lpHeroText{flex-basis:100%;padding:24px 20px;border-radius:20px}
-  .lpHero .eyebrowXL{padding-right:70px;font-size:14px;letter-spacing:.12em}
+  .lpHero .eyebrowXL{padding-right:70px;font-size:1rem;letter-spacing:.12em}
   .lpHero h1{font-size:clamp(28px,7.5vw,40px);line-height:1.18}
-  .lpHero .sub{font-size:16px;line-height:1.7}
+  .lpHero .sub{font-size:1rem;line-height:1.7}
   .lpHeroCtas{gap:10px;margin-top:24px}
   .lpHeroCtas .btn{width:100%;text-align:center;min-height:48px}
   .lpHeroImg{margin:0;flex-basis:100%}
   .sciScene{height:460svh}
   .sciHeadBox{top:76px;width:100%;padding:16px 20px}
-  .sciKicker{font-size:10px;letter-spacing:.16em}
+  .sciKicker{font-size:1rem;letter-spacing:.16em}
   .sciTitle{font-size:clamp(25px,6.7vw,34px);line-height:1.15}
-  .sciCaption{font-size:14px;line-height:1.5;margin-top:10px}
+  .sciCaption{font-size:1rem;line-height:1.5;margin-top:10px}
   .sciCanvas{top:32%;height:39%;bottom:auto}
   .sciInstr{top:auto!important;bottom:62px!important;min-width:0;width:calc(50% - 22px);border-radius:14px}
   #i-pump,#i-gcms,#i-dust{left:16px!important;right:auto!important}
   #i-benzene,#i-pcm,#i-oel{right:16px!important;left:auto!important}
-  .sciInstrHd{font-size:10px;letter-spacing:0;padding:10px;gap:6px;min-height:44px}
+  .sciInstrHd{font-size:1rem;letter-spacing:0;padding:10px;gap:6px;min-height:44px}
   .sciInstrBd{padding:12px 10px;min-height:116px}
-  .sciReading{font-size:26px}.sciReading small{font-size:13px}
-  .sciSub{font-size:11px;line-height:1.5}
-  .sciInstr .pill{font-size:10px;padding:5px 8px}
+  .sciReading{font-size:1.625rem}.sciReading small{font-size:1rem}
+  .sciSub{font-size:1rem;line-height:1.5}
+  .sciInstr .pill{font-size:1rem;padding:5px 8px}
   .sciDot{width:7px;height:7px;box-shadow:none}
   .sciSoft,.sciSoft.on{top:34%;width:calc(100% - 32px);max-height:calc(66% - 62px);transform:translateX(-50%);border-radius:16px}
   .sciSoft{overflow-y:auto;pointer-events:auto;overscroll-behavior:contain}.sciSoftBody{padding:10px;gap:8px}.sciSoftCard{padding:12px}
-  .sciSoftCard h3{font-size:14px}.sciSoftCard p{font-size:12px!important;margin:8px 0!important}
+  .sciSoftCard h3{font-size:1rem}.sciSoftCard p{font-size:1rem!important;margin:8px 0!important}
   .sciAutoload{grid-template-columns:1fr 1fr;gap:8px}
-  .sciSoftBtn,.sciImport{font-size:10px;padding:10px 8px;white-space:normal}
-  .sciField{flex-basis:60px;padding:8px;font-size:11px}
-  .sciSoftRow{gap:6px}.sciSoftBar{padding:10px 14px;font-size:12px}
+  .sciSoftBtn,.sciImport{font-size:1rem;padding:10px 8px;white-space:normal}
+  .sciField{flex-basis:60px;padding:8px;font-size:1rem}
+  .sciSoftRow{gap:6px}.sciSoftBar{padding:10px 14px;font-size:1rem}
   .sciSound{top:auto;bottom:74px;width:calc(100% - 32px);padding:18px 20px;border-radius:18px}
-  .sciSound .sndKick{font-size:10px}.sciSound .sndTitle{font-size:20px}
+  .sciSound .sndKick{font-size:1rem}.sciSound .sndTitle{font-size:1.25rem}
   .sciRail{bottom:24px;gap:8px}.sciRail i{width:26px;height:4px}
-  .sciHint{bottom:38px;font-size:9px;letter-spacing:.12em}
+  .sciHint{bottom:38px;font-size:1rem;letter-spacing:.12em}
   .valueTiles .cardShadow::before{opacity:.1}
   .valueTiles .cardShadow::after{opacity:.1}
   .lpExport{gap:24px}.lpExportRow{grid-template-columns:105px minmax(0,1fr)}
   .lpExportRow span{overflow-wrap:anywhere}
   .rv{transform:translateY(12px)}
-  input,select,textarea{font-size:16px!important}
+  input,select,textarea{font-size:1rem!important}
 }
 @media(hover:none){
   .cardShadow:hover,.lpExportCard:hover,.panel:hover,.valueTiles .cardShadow:hover,img:not(#sandbox *):hover{transform:none}
@@ -748,51 +748,51 @@ input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
 :root{--teal:#75a3a3;--teal-deep:#5c8d8c;--teal-text:#4f7f7e;--teal-header:#75a3a3;--slate:#525062;--slate-deep:#403e4b;--violet-ink:#503c79;--ink:#4a4855;--ink-soft:#6b6a75;--mist:#f1f1f3;--line:#d9d9dd}
 body{font-family:Roboto,'Segoe UI',sans-serif;background:#e8eeee}
 main{overflow:clip}button,input,select,textarea{font-family:inherit}
-.btn,.abtn{border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.035em;min-height:44px}
+.btn,.abtn{border-radius:4px;font-size:1rem;font-weight:600;letter-spacing:.035em;min-height:44px}
 .cardShadow,.lpExportCard,.panel{border-radius:10px}
 .lpHeaderInner{max-width:1440px;padding:12px 40px;justify-content:space-between;gap:24px}
 .brandHome{display:flex;align-items:center}.brandHome img{width:90px;height:45px;object-fit:contain}
-.brandNav{display:flex;gap:28px}.brandNav a{color:var(--slate);font-size:14px;text-decoration:none}.brandNav a:hover{color:var(--teal-text)}
+.brandNav{display:flex;gap:28px}.brandNav a{color:var(--slate);font-size:1rem;text-decoration:none}.brandNav a:hover{color:var(--teal-text)}
 .lpHeader .btn{padding:10px 20px}.brandHero{background:var(--slate-deep);color:#fff;position:relative;isolation:isolate;overflow:hidden}
 .brandHero::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 85% 25%,rgba(117,163,163,.27),transparent 58%),linear-gradient(115deg,transparent 58%,rgba(117,163,163,.08) 58%);pointer-events:none}
 .brandHeroInner{max-width:1440px;margin:auto;min-height:min(740px,calc(100svh - 130px));padding:80px 56px 64px;display:grid;grid-template-columns:1fr 1.12fr;gap:64px;align-items:center}
-.brandEyebrow{font-size:11px;font-weight:600;letter-spacing:.17em;line-height:1.5;display:flex;align-items:center;gap:10px}
+.brandEyebrow{font-size:1rem;font-weight:600;letter-spacing:.17em;line-height:1.5;display:flex;align-items:center;gap:10px}
 .brandHero .brandEyebrow{color:#a6cccb}.brandEyebrow>span{width:7px;height:7px;background:var(--teal);border-radius:50%;flex-shrink:0}
 .brandHero h1{font-family:Poppins,Roboto,sans-serif;font-style:italic;font-weight:800;font-size:clamp(38px,4.4vw,67px);line-height:1.09;letter-spacing:-.035em;color:#fff;margin:24px 0}
 .brandHero h1 em{font-style:inherit;color:#a6cccb}
-.brandIntro{font-size:19px;line-height:1.6;max-width:510px;color:#f1f1f3}
-.brandDetail{font-size:15px;line-height:1.7;max-width:480px;margin-top:16px;color:#c8c9d0}
-.brandActions{display:flex;gap:24px;align-items:center;margin-top:32px}.brandPrimary{background:var(--teal);color:#172d2c;gap:40px;padding:14px 24px;font-size:14px}
-.brandTextLink{font-size:12px;letter-spacing:.04em;color:#fff;text-decoration:none;display:inline-flex;gap:16px;align-items:center;min-height:44px}
-.brandProof{display:flex;gap:12px;flex-wrap:wrap;color:#b6b5bd;font-size:12px;margin-top:18px}
+.brandIntro{font-size:1.1875rem;line-height:1.6;max-width:510px;color:#f1f1f3}
+.brandDetail{font-size:1rem;line-height:1.7;max-width:480px;margin-top:16px;color:#c8c9d0}
+.brandActions{display:flex;gap:24px;align-items:center;margin-top:32px}.brandPrimary{background:var(--teal);color:#172d2c;gap:40px;padding:14px 24px;font-size:1rem}
+.brandTextLink{font-size:1rem;letter-spacing:.04em;color:#fff;text-decoration:none;display:inline-flex;gap:16px;align-items:center;min-height:44px}
+.brandProof{display:flex;gap:12px;flex-wrap:wrap;color:#b6b5bd;font-size:1rem;margin-top:18px}
 .brandProduct{position:relative;background:#fff;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.25);overflow:hidden;transform:perspective(1600px) rotateY(-4deg);min-width:0}
-.brandProductTop{background:#5c8d8c;display:flex;gap:9px;align-items:center;padding:15px 16px;font-size:10px;font-weight:600;letter-spacing:.08em;color:#fff}
-.liveDot{width:6px;height:6px;background:#d6f2d3;border-radius:50%}.brandProductTag{margin-left:auto;font-size:9px;opacity:.75}
+.brandProductTop{background:#5c8d8c;display:flex;gap:9px;align-items:center;padding:15px 16px;font-size:1rem;font-weight:600;letter-spacing:.08em;color:#fff}
+.liveDot{width:6px;height:6px;background:#d6f2d3;border-radius:50%}.brandProductTag{margin-left:auto;font-size:1rem;opacity:.75}
 .brandProductImage{aspect-ratio:1.36;overflow:hidden}.brandProductImage img{display:block;width:100%;height:auto;pointer-events:none}
-.brandProductFoot{padding:16px;display:flex;gap:18px;font-size:11px;color:#6b6a75;align-items:center;background:#fbfcfd}.brandProductFoot b{color:var(--teal-text);font-size:16px;margin-right:4px}.brandRecord{margin-left:auto;font-size:10px}
-.brandWorkflow{border-top:1px solid rgba(255,255,255,.12);padding:24px;display:flex;justify-content:center;align-items:center;gap:32px;background:rgba(0,0,0,.08);font-size:10px;letter-spacing:.14em;color:#d1dedf}.brandWorkflow i{color:#75a3a3;font-style:normal}
+.brandProductFoot{padding:16px;display:flex;gap:18px;font-size:1rem;color:#6b6a75;align-items:center;background:#fbfcfd}.brandProductFoot b{color:var(--teal-text);font-size:1rem;margin-right:4px}.brandRecord{margin-left:auto;font-size:1rem}
+.brandWorkflow{border-top:1px solid rgba(255,255,255,.12);padding:24px;display:flex;justify-content:center;align-items:center;gap:32px;background:rgba(0,0,0,.08);font-size:1rem;letter-spacing:.14em;color:#d1dedf}.brandWorkflow i{color:#75a3a3;font-style:normal}
 #ventWrap{z-index:3;opacity:.26;top:96px;width:104px;right:18px}#fxParticles{z-index:3}
 #sandbox{background:#dce8e7;padding:48px 24px 24px;min-height:calc(100svh - 70px);border:0;animation:none;scroll-margin-top:70px}
 .sandboxHeading{max-width:1392px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .sandboxHeading .brandEyebrow{color:var(--teal-text)}.sandboxHeading h2{font-family:Poppins,Roboto,sans-serif;font-weight:700;font-style:italic;font-size:clamp(25px,3vw,38px);line-height:1.2;margin-top:8px;color:var(--slate-deep)}
-.sandboxHeading p{font-size:15px;color:var(--ink-soft);line-height:1.6;margin-top:8px}.sandboxPreview{gap:24px;flex-shrink:0}
+.sandboxHeading p{font-size:1rem;color:var(--ink-soft);line-height:1.6;margin-top:8px}.sandboxPreview{gap:24px;flex-shrink:0}
 #sandbox .wrap{width:100%;max-width:1440px;height:calc(100svh - 236px);max-height:none;min-height:480px;padding:0}
 #sandbox .shell{border-radius:10px;box-shadow:0 12px 40px rgba(64,62,75,.13)}
 #sandbox .appbar,#sandbox .hdr,#sandbox .exTop{background:var(--teal-header)}
 #sandbox .exTop{padding:10px 20px;flex-shrink:0}#sandbox .exSide{width:192px;background:#f1f1f3}
-#sandbox .exNav li{font-size:13px;padding:13px 18px;border-left:3px solid transparent;min-height:44px}
+#sandbox .exNav li{font-size:1rem;padding:13px 18px;border-left:3px solid transparent;min-height:44px}
 #sandbox .exNav li.on{background:#e1ebeb;border-left-color:#5c8d8c;color:#403e4b}
 #sandbox .exMain{padding:24px;background:#fbfcfd;min-width:0;overflow:auto}
 #sandbox .cardShadow{border:0!important;box-shadow:0 3px 12px rgba(64,62,75,.07);padding:20px}
 #sandbox .cardShadow:hover,#sandbox .panel:hover{transform:none}
-#sandbox .disclaimer{font-size:11px;padding:8px 16px;background:#f1f1f3;flex-shrink:0}
+#sandbox .disclaimer{font-size:1rem;padding:8px 16px;background:#f1f1f3;flex-shrink:0}
 #sandbox .progress button{flex:1;height:4px;border-radius:2px;background:#e5ebeb!important;cursor:pointer}
 #sandbox .progress button.on{background:#5c8d8c!important}
 #sandbox .mobileHint{display:none}
 #sandboxModal{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#dce8e7;color:var(--slate);overflow:hidden}
 #sandboxModal::backdrop{background:rgba(43,42,51,.7)}
 .previewBar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#403e4b;color:#fff}
-.previewBar>span{font-weight:700;font-style:italic;font-size:24px}.previewBar>span>span{font-style:normal;font-size:11px;font-weight:400;letter-spacing:.08em;margin-left:16px;color:#b6b5bd}
+.previewBar>span{font-weight:700;font-style:italic;font-size:1.5rem}.previewBar>span>span{font-style:normal;font-size:1rem;font-weight:400;letter-spacing:.08em;margin-left:16px;color:#b6b5bd}
 .previewBar .btn{background:transparent;color:#fff;border:1px solid #6b6a75;gap:24px;padding:8px 16px}
 #sandboxModal #sandbox{height:calc(100dvh - 64px);min-height:0;padding:12px}
 #sandboxModal .sandboxHeading{display:none}#sandboxModal #sandbox .wrap{height:100%;min-height:0;max-width:none}
@@ -800,80 +800,80 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .sciScene{background:#dceaea;height:480svh}
 .sciHeadBox{background:transparent!important;border:0!important;box-shadow:none!important;top:88px;padding:24px;max-width:780px}
 .sciTitle{font-family:Poppins,Roboto,sans-serif;font-style:italic;font-weight:700;font-size:clamp(28px,4.2vw,52px);color:#403e4b;line-height:1.12}
-.sciCaption{font-size:17px;max-width:650px;margin:14px auto 0;color:#525062}
-.sciKicker{color:#4f7f7e;font-size:11px;letter-spacing:.17em}
+.sciCaption{font-size:1.0625rem;max-width:650px;margin:14px auto 0;color:#525062}
+.sciKicker{color:#4f7f7e;font-size:1rem;letter-spacing:.17em}
 .sciCanvas{top:25%;height:63%;bottom:auto}
 .sciSound{top:auto;bottom:78px;width:auto;max-width:640px;padding:16px 24px;border-radius:6px;background:#403e4b!important;border:0!important;box-shadow:none!important}
-.sciSound .sndKick{color:#a6cccb;font-size:9px}.sciSound .sndTitle{color:#fff;font-size:20px}
+.sciSound .sndKick{color:#a6cccb;font-size:1rem}.sciSound .sndTitle{color:#fff;font-size:1.25rem}
 .sciInstr{border:0;border-radius:10px;box-shadow:0 6px 20px rgba(64,62,75,.12)}
 .sciSoft{border-radius:10px}.sciSoftCard{border-radius:6px}
 .glassBox{background:#dce8e7!important;border:0!important;border-radius:10px;box-shadow:none!important}
 .lpQuote{border-radius:10px}.lpQuote:hover,.glassBox:hover{transform:none}
 .lpSection{padding:48px 24px}.lpSection.tight{padding-top:32px;padding-bottom:32px}
 .lpExport{max-width:1200px}.lpExport .txt,.lpExport .viz{min-width:0}
-.lpExport .sub{font-size:16px!important;line-height:1.7}
+.lpExport .sub{font-size:1rem!important;line-height:1.7}
 .lpAudience{max-width:none;background:#e3e3eb;padding-left:max(24px,calc((100vw - 1080px)/2));padding-right:max(24px,calc((100vw - 1080px)/2))}
-.lpAudience .sub,.lpAudience p{font-size:16px!important}.lpAudience .cardShadow{box-shadow:none;border-radius:10px}.lpAudience .txtShield{background:transparent}
+.lpAudience .sub,.lpAudience p{font-size:1rem!important}.lpAudience .cardShadow{box-shadow:none;border-radius:10px}.lpAudience .txtShield{background:transparent}
 .ctaParticles{background:#403e4b;padding:48px 24px}.ctaParticles .ctaEyebrow,.ctaParticles .ctaSub{color:#d9d9dd}.ctaBtnBig{border-radius:4px;background:#75a3a3;color:#172d2c}
-.ctaCanvasWrap{max-width:860px;margin:auto}.ctaSub{font-size:15px;line-height:1.6}
+.ctaCanvasWrap{max-width:860px;margin:auto}.ctaSub{font-size:1rem;line-height:1.6}
 .tilesImageSection{width:min(1200px,calc(100% - 48px));margin:24px auto}.tilesImageSection img{border-radius:10px;box-shadow:none}
 .rv{opacity:1;transform:none}#field-documentation-guides{background:#e3e3eb;max-width:none;padding-left:max(24px,calc((100vw - 1080px)/2));padding-right:max(24px,calc((100vw - 1080px)/2))}
-@media(max-width:1000px){.brandHeroInner{gap:32px;padding:64px 32px;grid-template-columns:1fr 1fr}.brandIntro{font-size:17px}.brandRecord{display:none}.brandWorkflow{gap:16px}.brandProductFoot{gap:12px}.brandProductTag{display:none}}
+@media(max-width:1000px){.brandHeroInner{gap:32px;padding:64px 32px;grid-template-columns:1fr 1fr}.brandIntro{font-size:1.0625rem}.brandRecord{display:none}.brandWorkflow{gap:16px}.brandProductFoot{gap:12px}.brandProductTag{display:none}}
 @media(max-width:700px){
-  .lpHeaderInner{padding:10px 16px;gap:12px}.brandHome img{width:72px;height:36px}.brandNav{display:none}.lpHeader .btn{font-size:11px;padding:9px 12px;min-height:40px}
+  .lpHeaderInner{padding:10px 16px;gap:12px}.brandHome img{width:72px;height:36px}.brandNav{display:none}.lpHeader .btn{font-size:1rem;padding:9px 12px;min-height:40px}
   .brandHeroInner{padding:44px 20px 32px;grid-template-columns:1fr;gap:32px;min-height:0}
-  .brandHero h1{font-size:clamp(36px,9.5vw,55px);margin:20px 0}.brandEyebrow{font-size:9px;letter-spacing:.12em;padding-right:36px}
-  .brandIntro{font-size:17px;line-height:1.6}.brandDetail{font-size:14px;line-height:1.6}
-  .brandActions{gap:20px;flex-wrap:wrap}.brandPrimary{min-width:145px}.brandTextLink{font-size:11px}.brandProof{font-size:10px;gap:8px}
-  .brandProduct{transform:none}.brandProductTop{padding:12px;font-size:9px}.brandProductFoot{padding:12px;font-size:10px;gap:16px}.brandProductFoot b{font-size:14px}
-  .brandWorkflow{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:24px 20px;font-size:8px;letter-spacing:.1em}.brandWorkflow i{display:none}
+  .brandHero h1{font-size:clamp(36px,9.5vw,55px);margin:20px 0}.brandEyebrow{font-size:1rem;letter-spacing:.12em;padding-right:36px}
+  .brandIntro{font-size:1.0625rem;line-height:1.6}.brandDetail{font-size:1rem;line-height:1.6}
+  .brandActions{gap:20px;flex-wrap:wrap}.brandPrimary{min-width:145px}.brandTextLink{font-size:1rem}.brandProof{font-size:1rem;gap:8px}
+  .brandProduct{transform:none}.brandProductTop{padding:12px;font-size:1rem}.brandProductFoot{padding:12px;font-size:1rem;gap:16px}.brandProductFoot b{font-size:1rem}
+  .brandWorkflow{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:24px 20px;font-size:1rem;letter-spacing:.1em}.brandWorkflow i{display:none}
   #ventWrap{width:66px;top:85px;right:10px;opacity:.20}
   #sandbox{padding:32px 12px 12px;min-height:100svh}.sandboxHeading{padding:0 8px;gap:16px;margin-bottom:20px;align-items:flex-start}
-  .sandboxHeading .brandEyebrow{font-size:8px;padding-right:0}.sandboxHeading h2{font-size:25px}.sandboxHeading p{font-size:13px}.sandboxPreview{padding:10px;font-size:10px;gap:8px;min-height:40px}
+  .sandboxHeading .brandEyebrow{font-size:1rem;padding-right:0}.sandboxHeading h2{font-size:1.5625rem}.sandboxHeading p{font-size:1rem}.sandboxPreview{padding:10px;font-size:1rem;gap:8px;min-height:40px}
   #sandbox .wrap{height:calc(100svh - 236px);min-height:460px}#sandbox .shell{border-radius:6px}
   #sandbox .exTop{padding:8px 12px;gap:10px}#sandbox .exTop img{max-width:70px!important;height:32px!important;object-fit:contain}
-  #sandbox .exTop .abtn{font-size:10px;padding:8px 10px;min-height:36px}
+  #sandbox .exTop .abtn{font-size:1rem;padding:8px 10px;min-height:36px}
   #sandbox .exShell{flex-direction:column}#sandbox .exSide{width:100%;padding:0;border:0;flex-shrink:0}
   #sandbox .exSide .who{display:none}#sandbox .exNav{display:flex;overflow-x:auto;white-space:nowrap;border-bottom:1px solid var(--line);scrollbar-width:thin}
-  #sandbox .exNav li{flex-shrink:0;font-size:11px;border-left:0;border-bottom:2px solid transparent;padding:12px 14px}
+  #sandbox .exNav li{flex-shrink:0;font-size:1rem;border-left:0;border-bottom:2px solid transparent;padding:12px 14px}
   #sandbox .exNav li.on{border-left:0;border-bottom-color:var(--teal-deep)}
   #sandbox .exMain{padding:14px;flex:1;min-height:0}#sandbox .cardShadow{padding:14px}
-  #sandbox .exMain h2{font-size:17px!important}#sandbox .disclaimer{font-size:10px}
-  #sandbox .slide{padding:24px 16px}#sandbox .slide .sub{font-size:14px;line-height:1.6}
-  #sandbox .stats div{flex-basis:100%;padding:12px;border-left:0;border-bottom:1px solid var(--line)}#sandbox .stats b{font-size:24px}
-  .previewBar{height:56px;padding:0 16px}.previewBar>span{font-size:22px}.previewBar>span>span{font-size:9px;margin-left:8px}.previewBar .btn{font-size:10px;gap:12px;padding:6px 10px;min-height:36px}
+  #sandbox .exMain h2{font-size:1.0625rem!important}#sandbox .disclaimer{font-size:1rem}
+  #sandbox .slide{padding:24px 16px}#sandbox .slide .sub{font-size:1rem;line-height:1.6}
+  #sandbox .stats div{flex-basis:100%;padding:12px;border-left:0;border-bottom:1px solid var(--line)}#sandbox .stats b{font-size:1.5rem}
+  .previewBar{height:56px;padding:0 16px}.previewBar>span{font-size:1.375rem}.previewBar>span>span{font-size:1rem;margin-left:8px}.previewBar .btn{font-size:1rem;gap:12px;padding:6px 10px;min-height:36px}
   #previewMount{height:calc(100dvh - 56px)}#sandboxModal #sandbox{height:calc(100dvh - 56px);padding:0}#sandboxModal #sandbox .shell{border-radius:0}
-  .sciScene{height:420svh}.sciHeadBox{top:72px;padding:20px;width:100%}.sciTitle{font-size:clamp(26px,7.5vw,34px)}.sciCaption{font-size:14px;line-height:1.5}
-  .sciCanvas{top:32%;height:38%}.sciSound{bottom:76px;width:calc(100% - 32px);padding:14px 18px}.sciSound .sndTitle{font-size:18px}
-  .sciHeadBox .sciKicker{font-size:9px}.sciSoft,.sciSoft.on{top:34%;max-height:calc(66% - 64px)}
+  .sciScene{height:420svh}.sciHeadBox{top:72px;padding:20px;width:100%}.sciTitle{font-size:clamp(26px,7.5vw,34px)}.sciCaption{font-size:1rem;line-height:1.5}
+  .sciCanvas{top:32%;height:38%}.sciSound{bottom:76px;width:calc(100% - 32px);padding:14px 18px}.sciSound .sndTitle{font-size:1.125rem}
+  .sciHeadBox .sciKicker{font-size:1rem}.sciSoft,.sciSoft.on{top:34%;max-height:calc(66% - 64px)}
   .lpSection{padding:32px 20px}.lpSection.tight{padding:28px 20px}.lpAudience{padding:32px 20px}
-  .tilesImageSection{width:calc(100% - 32px);margin:16px auto}.ctaParticles{padding:32px 20px}.ctaSub{color:#d9d9dd!important;font-size:14px}
+  .tilesImageSection{width:calc(100% - 32px);margin:16px auto}.ctaParticles{padding:32px 20px}.ctaSub{color:#d9d9dd!important;font-size:1rem}
 }
-@media(max-height:600px) and (min-width:701px){.sciHeadBox{top:68px;padding:8px}.sciTitle{font-size:28px}.sciCaption{font-size:13px;margin-top:8px}.sciCanvas{top:35%;height:52%}.sciSound{bottom:50px;padding:8px 16px}.sciSound .sndTitle{font-size:16px}}
+@media(max-height:600px) and (min-width:701px){.sciHeadBox{top:68px;padding:8px}.sciTitle{font-size:1.75rem}.sciCaption{font-size:1rem;margin-top:8px}.sciCanvas{top:35%;height:52%}.sciSound{bottom:50px;padding:8px 16px}.sciSound .sndTitle{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){.sciScene{height:180svh}.brandProduct{transform:none}}
 
 .scienceInView #ventWrap,.scienceInView #fxParticles{visibility:hidden}
 </style>
-<style>.productScope{font-size:12px;line-height:1.6;color:#d9d9dd;margin-top:16px;max-width:490px}.exportMethod{font-size:14px;line-height:1.7;color:var(--ink);margin-top:16px}.claimQualifier{font-size:11px;line-height:1.5;color:#c9d6d5;margin-top:12px}</style>
+<style>.productScope{font-size:1rem;line-height:1.6;color:#d9d9dd;margin-top:16px;max-width:490px}.exportMethod{font-size:1rem;line-height:1.7;color:var(--ink);margin-top:16px}.claimQualifier{font-size:1rem;line-height:1.5;color:#c9d6d5;margin-top:12px}</style>
 
 <style id="sandbox-space">
 /* Give the workspace most of the viewport; views replace vertical stacking. */
 #sandbox{padding:24px 16px 16px;min-height:calc(100svh - 70px)}
 .sandboxHeading{margin-bottom:16px;gap:16px}
 .sandboxHeading h2{font-size:clamp(24px,2.5vw,32px);margin-top:4px}
-.sandboxHeading p{margin-top:4px;font-size:14px}
+.sandboxHeading p{margin-top:4px;font-size:1rem}
 #sandbox .wrap{height:calc(100svh - 190px);min-height:420px;max-width:none}
 #sandbox .exTop{padding:8px 16px}
 #sandbox .exSide{width:160px}
 #sandbox .exNav li{padding:11px 14px}
 #sandbox .exMain{padding:16px 20px}
 #sandbox .dashboardHeading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-#sandbox .dashboardHeading h2{font-size:21px;margin:0}
+#sandbox .dashboardHeading h2{font-size:1.3125rem;margin:0}
 .dashboardSwitch{display:flex;gap:4px;padding:3px;background:#e5ecec;border-radius:6px}
-.dashboardSwitch button{background:transparent;border:0;border-radius:4px;padding:8px 16px;color:var(--slate);font-weight:500;font-size:13px;min-height:40px}
+.dashboardSwitch button{background:transparent;border:0;border-radius:4px;padding:8px 16px;color:var(--slate);font-weight:500;font-size:1rem;min-height:40px}
 .dashboardSwitch button[aria-pressed="true"]{background:#fff;box-shadow:0 2px 6px rgba(64,62,75,.1);color:#403e4b}
 #sandbox [data-dashboard-panel][hidden]{display:none!important}
-#sandbox .dashboardChartTitle{font-size:17px;font-weight:600;color:var(--slate);margin:0 0 12px}
+#sandbox .dashboardChartTitle{font-size:1.0625rem;font-weight:600;color:var(--slate);margin:0 0 12px}
 #sandbox .dashboardView .cardShadow{padding:16px}
 #sandbox .dashboardView .dashDates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:12px;margin:12px 0}
 #sandbox .dashboardView .dashDates label{min-width:0}
@@ -898,26 +898,26 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 @media(max-width:700px){
  #sandbox{padding:20px 8px 8px}
  .sandboxHeading{margin-bottom:12px;padding:0 8px}
- .sandboxHeading h2{font-size:23px}.sandboxHeading p{font-size:12px}
+ .sandboxHeading h2{font-size:1.4375rem}.sandboxHeading p{font-size:1rem}
  #sandbox .wrap{height:calc(100svh - 196px);min-height:440px}
  #sandbox .exSide{width:100%}
  #sandbox .exMain{padding:12px}
  #sandbox .dashboardHeading{margin-bottom:10px}
- #sandbox .dashboardHeading h2{font-size:18px!important}
- .dashboardSwitch button{font-size:11px;padding:6px 10px;min-height:36px}
+ #sandbox .dashboardHeading h2{font-size:1.125rem!important}
+ .dashboardSwitch button{font-size:1rem;padding:6px 10px;min-height:36px}
  #sandbox .dashboardView .cardShadow{padding:12px}
  #sandbox .dashboardView .dashDates{grid-template-columns:1fr 1fr;gap:8px}
  #sandbox .dashboardOverview .dashDates label:last-child{grid-column:1/-1}
- #sandbox .dashboardView .dashDates input{font-size:14px!important}
- #sandbox .dashboardChartTitle{font-size:15px}
- #sandbox .hbarLabel{width:94px;font-size:10px}
+ #sandbox .dashboardView .dashDates input{font-size:1rem!important}
+ #sandbox .dashboardChartTitle{font-size:1rem}
+ #sandbox .hbarLabel{width:94px;font-size:1rem}
  #sandbox .hbarRow{gap:8px;margin:8px 0}
  #sandbox .hbarTrack{height:26px}
- #sandbox .hAxis{margin-left:102px;font-size:9px}
- #sandbox .oelLegend{font-size:10px}
+ #sandbox .hAxis{margin-left:102px;font-size:1rem}
+ #sandbox .oelLegend{font-size:1rem}
  #sandbox .dashboardHazard .donutGrid{grid-template-columns:minmax(0,1fr) minmax(100px,1fr);gap:12px}
  #sandbox .dashboardHazard .donutBox{width:100%;max-width:200px;height:auto;aspect-ratio:1}
- #sandbox .dashboardHazard .donutClients{max-height:190px;font-size:11px}
+ #sandbox .dashboardHazard .donutClients{max-height:190px;font-size:1rem}
  #sandbox .dashboardHazard .dashResults{max-height:220px}
  #sandboxModal #sandbox{padding:0;min-height:0}
 }
@@ -933,10 +933,10 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .lpMenu a{display:flex;width:100%;justify-content:flex-start;text-decoration:none}
 @media(max-width:700px){
  .lpHeaderInner{gap:10px;padding:10px 12px}
- .lpMenuBtn{padding:9px 10px;font-size:12px;gap:7px}
+ .lpMenuBtn{padding:9px 10px;font-size:1rem;gap:7px}
  .lpMenuBtn span.mtxt{display:inline}
  .brandHome img{width:64px}
- .lpHeader .btn{font-size:10px;padding:9px 10px}
+ .lpHeader .btn{font-size:1rem;padding:9px 10px}
 }
 </style>
 <style id="restore-both-dashboards">
@@ -966,63 +966,93 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 .productQA .brandEyebrow{color:#4f7f7e}
 .productQA h2{font-family:Poppins,Roboto,sans-serif;font-style:italic;font-size:clamp(26px,3vw,38px);margin:8px 0 24px;color:#403e4b}
 .productQAItem{padding:24px 0;border-top:1px solid rgba(82,80,98,.18)}
-.productQAItem h3{font-size:19px;font-weight:600;line-height:1.4}
-.productQAItem p{font-size:16px;line-height:1.7;margin-top:10px;max-width:850px}
-@media(max-width:700px){.productQA{padding:32px 20px}.productQAItem{padding:20px 0}.productQAItem h3{font-size:17px}.productQAItem p{font-size:15px}}
+.productQAItem h3{font-size:1.1875rem;font-weight:600;line-height:1.4}
+.productQAItem p{font-size:1rem;line-height:1.7;margin-top:10px;max-width:850px}
+@media(max-width:700px){.productQA{padding:32px 20px}.productQAItem{padding:20px 0}.productQAItem h3{font-size:1.0625rem}.productQAItem p{font-size:1rem}}
 </style>
 <style id="expanded-product-qa">
 .productQAGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
 .productQAGroup{min-width:0}
-.productQAGroup>h3{font-size:18px;color:#4f7f7e;margin:0 0 14px;font-weight:700}
+.productQAGroup>h3{font-size:1.125rem;color:#4f7f7e;margin:0 0 14px;font-weight:700}
 .productQA .productQAItem{background:#fff;border:1px solid rgba(82,80,98,.15);border-radius:8px;margin:0 0 10px;padding:0;overflow:hidden}
-.productQAItem summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;font-size:16px;font-weight:600;line-height:1.45;padding:18px 20px;min-height:56px}
+.productQAItem summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;font-size:1rem;font-weight:600;line-height:1.45;padding:18px 20px;min-height:56px}
 .productQAItem summary::-webkit-details-marker{display:none}
-.productQAItem summary::after{content:"+";flex-shrink:0;color:#4f7f7e;font-size:24px;line-height:1}
+.productQAItem summary::after{content:"+";flex-shrink:0;color:#4f7f7e;font-size:1.5rem;line-height:1}
 .productQAItem[open] summary::after{content:"−"}
 .productQAItem summary:hover{background:#f2f7f6}
 .productQAItem summary:focus-visible{outline:3px solid #503c79;outline-offset:-3px}
-.productQA .productQAItem p{padding:0 20px 20px;margin:0;font-size:16px;line-height:1.7}
-@media(max-width:760px){.productQAGrid{grid-template-columns:minmax(0,1fr);gap:24px}.productQAItem summary{padding:16px;font-size:16px}.productQA .productQAItem p{padding:0 16px 18px;font-size:15px}}
+.productQA .productQAItem p{padding:0 20px 20px;margin:0;font-size:1rem;line-height:1.7}
+@media(max-width:760px){.productQAGrid{grid-template-columns:minmax(0,1fr);gap:24px}.productQAItem summary{padding:16px;font-size:1rem}.productQA .productQAItem p{padding:0 16px 18px;font-size:1rem}}
 </style>
 <style id="record-story-design">
 .recordStory{background:#e9efee;color:#403e4b;padding:64px 24px}
 .recordStoryInner{max-width:1160px;margin:0 auto}
-.recordEyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;color:#4f7f7e}
+.recordEyebrow{font-size:1rem;font-weight:700;letter-spacing:.16em;color:#4f7f7e}
 .recordStory h2{font-family:Poppins,Roboto,sans-serif;font-weight:700;font-style:italic;font-size:clamp(30px,4vw,48px);line-height:1.16;letter-spacing:-.035em;margin:14px 0 28px;color:#403e4b}
 .recordSteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .recordSteps article{background:#fff;border:1px solid #d6dfde;border-radius:8px;padding:24px;position:relative}
-.recordStepNumber{font-size:11px;letter-spacing:.13em;font-weight:700;color:#4f7f7e}
-.recordGlyph{font-size:46px;line-height:1.2;color:#5c8d8c;margin:24px 0 18px;height:56px;font-weight:500}
-.recordTags{font-size:36px;letter-spacing:.1em}.recordTags span{color:#7b6fb0}
-.recordSteps h3{font-size:21px;line-height:1.25;margin:0 0 12px}
-.recordSteps p{font-size:16px;line-height:1.55;margin:0;max-width:28ch}
+.recordStepNumber{font-size:1rem;letter-spacing:.13em;font-weight:700;color:#4f7f7e}
+.recordGlyph{font-size:2.875rem;line-height:1.2;color:#5c8d8c;margin:24px 0 18px;height:56px;font-weight:500}
+.recordTags{font-size:2.25rem;letter-spacing:.1em}.recordTags span{color:#7b6fb0}
+.recordSteps h3{font-size:1.3125rem;line-height:1.25;margin:0 0 12px}
+.recordSteps p{font-size:1rem;line-height:1.55;margin:0;max-width:28ch}
 .recordTokens{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
-.recordTokens span{font-size:11px;font-weight:500;padding:5px 8px;background:#edf3f2;border-radius:4px;color:#4f7f7e}
+.recordTokens span{font-size:1rem;font-weight:500;padding:5px 8px;background:#edf3f2;border-radius:4px;color:#4f7f7e}
 .recordProof{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;background:#403e4b;border-radius:8px;color:#fff;margin:20px 0 52px;padding:28px 32px;align-items:center}
 .recordProofStat{display:flex;align-items:center;gap:16px;border-right:1px solid #706e79;padding-right:24px}
-.recordProofStat strong{font-size:56px;line-height:1;color:#a8d1ce;letter-spacing:-.05em}.recordProofStat span{font-size:12px;line-height:1.4;color:#dce8e7}
-.recordProof blockquote{font-size:19px;line-height:1.5;margin:0 0 8px}
-.recordProof cite{font-size:12px;color:#dce8e7;font-style:normal}
-.recordProof .claimQualifier{font-size:11px;color:#d0d5d6;margin:12px 0 0;line-height:1.5}
+.recordProofStat strong{font-size:3.5rem;line-height:1;color:#a8d1ce;letter-spacing:-.05em}.recordProofStat span{font-size:1rem;line-height:1.4;color:#dce8e7}
+.recordProof blockquote{font-size:1.1875rem;line-height:1.5;margin:0 0 8px}
+.recordProof cite{font-size:1rem;color:#dce8e7;font-style:normal}
+.recordProof .claimQualifier{font-size:1rem;color:#d0d5d6;margin:12px 0 0;line-height:1.5}
 .recordExport{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
 .recordExportIntro h2{font-size:clamp(28px,3vw,38px);margin-bottom:16px}
-.recordExportIntro p{font-size:16px;line-height:1.5;margin:0 0 24px}
+.recordExportIntro p{font-size:1rem;line-height:1.5;margin:0 0 24px}
 .recordDestinations details{background:#fff;border:1px solid #d6dfde;border-radius:8px;margin-bottom:10px;overflow:hidden}
-.recordDestinations summary{list-style:none;padding:22px;display:flex;justify-content:space-between;gap:16px;align-items:center;cursor:pointer;font-size:19px;font-weight:600;min-height:64px}
+.recordDestinations summary{list-style:none;padding:22px;display:flex;justify-content:space-between;gap:16px;align-items:center;cursor:pointer;font-size:1.1875rem;font-weight:600;min-height:64px}
 .recordDestinations summary::-webkit-details-marker{display:none}
-.recordDestinations summary small{font-size:12px;color:#5c8d8c;margin-right:16px}
+.recordDestinations summary small{font-size:1rem;color:#5c8d8c;margin-right:16px}
 .recordDestinations summary:hover{background:#f4f8f7}
 .recordDestinations summary:focus-visible{outline:3px solid #503c79;outline-offset:-3px}
-.recordExpand{color:#5c8d8c;font-size:26px;line-height:1}
+.recordExpand{color:#5c8d8c;font-size:1.625rem;line-height:1}
 .recordDestinations details[open] .recordExpand{transform:rotate(45deg)}
 .recordDestinationBody{padding:0 22px 22px}
-.recordDestinationBody p{font-size:16px;line-height:1.6;margin:0 0 16px}
+.recordDestinationBody p{font-size:1rem;line-height:1.6;margin:0 0 16px}
 .recordFileList{display:flex;flex-wrap:wrap;gap:10px}
-.recordFileList>span{font-size:13px;background:#edf3f2;border-radius:4px;padding:10px}
-.recordFileList b{color:#4f7f7e;margin-right:8px;font-size:11px}
-.recordRoute{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px}
+.recordFileList>span{font-size:1rem;background:#edf3f2;border-radius:4px;padding:10px}
+.recordFileList b{color:#4f7f7e;margin-right:8px;font-size:1rem}
+.recordRoute{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:1rem}
 .recordRoute span{padding:8px;background:#edf3f2;border-radius:4px}.recordRoute>b{color:#5c8d8c}
-@media(max-width:800px){.recordStory{padding:40px 20px}.recordSteps{grid-template-columns:1fr}.recordSteps article{padding:20px}.recordGlyph{position:absolute;right:20px;top:14px;font-size:32px;margin:0;height:auto}.recordTags{font-size:24px}.recordSteps h3{margin-top:20px}.recordSteps p{max-width:none}.recordTokens{margin-top:16px}.recordProof{grid-template-columns:1fr;gap:20px;padding:24px;margin-bottom:36px}.recordProofStat{border-right:0;border-bottom:1px solid #706e79;padding:0 0 20px}.recordProofStat strong{font-size:48px}.recordExport{grid-template-columns:1fr;gap:24px}.recordDestinations summary{padding:18px}.recordDestinationBody{padding:0 18px 20px}}
+@media(max-width:800px){.recordStory{padding:40px 20px}.recordSteps{grid-template-columns:1fr}.recordSteps article{padding:20px}.recordGlyph{position:absolute;right:20px;top:14px;font-size:2rem;margin:0;height:auto}.recordTags{font-size:1.5rem}.recordSteps h3{margin-top:20px}.recordSteps p{max-width:none}.recordTokens{margin-top:16px}.recordProof{grid-template-columns:1fr;gap:20px;padding:24px;margin-bottom:36px}.recordProofStat{border-right:0;border-bottom:1px solid #706e79;padding:0 0 20px}.recordProofStat strong{font-size:3rem}.recordExport{grid-template-columns:1fr;gap:24px}.recordDestinations summary{padding:18px}.recordDestinationBody{padding:0 18px 20px}}
+</style>
+
+<style id="readable-typography">
+/* Respect browser font preferences and keep body copy comfortable to read. */
+html{font-size:100%}
+body{font-size:1.125rem;line-height:1.6}
+p,.sub,.brandDetail,.productScope,.exportMethod{line-height:1.7}
+.sub,.lpAudience p,.lpQuote blockquote,.lpFooter,.ctaParticles .ctaSub{font-weight:400}
+.brandDetail,.productScope,.exportMethod,.lpHero .sub{font-size:1.125rem}
+.brandActions,.brandProductTop,.brandProductFoot,.brandWorkflow,.lpHeaderInner,
+.sandboxHeading,.hdr,.nav,.appbar,.exTop,.abtns,.radioRow,.previewBar{flex-wrap:wrap}
+.brandHeroInner>*{min-width:0}
+.brandProductFoot,.brandWorkflow,.brandEyebrow{overflow-wrap:anywhere}
+.btn,.abtn,.brandTextLink{white-space:normal}
+.lpBand{height:auto;min-height:2rem}
+.lpBand div{min-height:2rem}
+.slide--report .bmrReport{zoom:1;transform:none}
+.slide--report{overflow-x:auto}
+.bmrReport{min-width:40rem}
+#myihConsent{max-height:70dvh;overflow-y:auto}
+#myihPrefs{max-width:calc(100% - 2rem);max-height:90dvh;overflow:auto}
+@media(max-width:700px){
+ .sandboxHeading{flex-direction:column}
+ .brandWorkflow{grid-template-columns:1fr}
+ .brandProductFoot{align-items:flex-start}
+ .lpExportRow{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+ .previewBar{height:auto;min-height:56px;gap:8px;padding:8px 16px}
+ .svGrid,.brandActions{gap:16px}
+ .sciInstr{max-height:40svh;overflow:auto;pointer-events:auto}
+}
 </style>
 </head>
 <body>
@@ -1145,7 +1175,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
           <p class="sub" id="c_dashSub"></p>
           <div class="appbar" style="margin-top:16px"><span>Dashboard · Sam Garrison (DEMO)</span><div class="abtns"><button class="abtn">Expand<span class="visually-hidden"> the dashboard to full width</span></button></div></div>
           <div class="appbody">
-            <div style="font-size:13px;font-weight:600;color:var(--slate)">Total # of samples collected by % of OEL category</div>
+            <div style="font-size:1rem;font-weight:600;color:var(--slate)">Total # of samples collected by % of OEL category</div>
             <div class="oelLegend">
               <span><i style="background:var(--oel-red)" aria-hidden="true"></i>Over 100% of OEL — over the exposure limit</span>
               <span><i style="background:var(--oel-orange)"></i>50–100%</span>
@@ -1154,7 +1184,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
               <span><i style="background:var(--oel-green)"></i>&lt; 1%</span>
             </div>
             <div id="introChart"></div>
-            <div style="font-size:11px;color:var(--ink-soft);margin-top:6px">Filter by date range, client, and hazard. Click a band to drill into the underlying samples.</div>
+            <div style="font-size:1rem;color:var(--ink-soft);margin-top:6px">Filter by date range, client, and hazard. Click a band to drill into the underlying samples.</div>
           </div>
         </section>
 
@@ -1165,14 +1195,14 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
           <div class="grid2">
             <div class="cardShadow">
               <div class="eyebrow" style="margin-bottom:6px">Client</div>
-              <div style="font-size:15px;font-weight:600;color:var(--slate)">YXY Company</div>
-              <div style="font-size:12.5px;color:var(--ink-soft);margin-top:4px">5133 Taravella Rd · Los Osos, CA</div>
+              <div style="font-size:1rem;font-weight:600;color:var(--slate)">YXY Company</div>
+              <div style="font-size:1rem;color:var(--ink-soft);margin-top:4px">5133 Taravella Rd · Los Osos, CA</div>
               <div class="chip" style="margin-top:10px">Contact: Site EHS Director</div>
             </div>
             <div class="cardShadow">
               <div class="eyebrow" style="margin-bottom:6px">Project</div>
-              <div style="font-size:15px;font-weight:600;color:var(--slate)">2026 IH Sampling Campaign</div>
-              <div style="font-size:12.5px;color:var(--ink-soft);margin-top:4px">Sampling plan attached · Question groups assigned</div>
+              <div style="font-size:1rem;font-weight:600;color:var(--slate)">2026 IH Sampling Campaign</div>
+              <div style="font-size:1rem;color:var(--ink-soft);margin-top:4px">Sampling plan attached · Question groups assigned</div>
               <div class="chip" style="margin-top:10px;background:#EAF3F2;color:var(--teal-deep)">Samples taken: 11 / 59</div>
             </div>
           </div>
@@ -1181,7 +1211,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
           <h2 id="c_pqH" style="font-size:clamp(17px,2.6vw,21px)"></h2>
           <p class="sub" id="c_pqSub"></p>
           <div class="cardShadow" style="margin-top:16px;max-width:640px">
-            <div style="background:var(--slate);color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:500">Benzene Air Sampling Questions — Full Shift &amp; Short Term <span style="float:right;background:#D33B2F;border-radius:10px;padding:0 8px;font-size:11px" id="qCount">6</span></div>
+            <div style="background:var(--slate);color:#fff;border-radius:8px;padding:8px 14px;font-size:1rem;font-weight:500">Benzene Air Sampling Questions — Full Shift &amp; Short Term <span style="float:right;background:#D33B2F;border-radius:10px;padding:0 8px;font-size:1rem" id="qCount">6</span></div>
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Did product drip from the hose during sampling?</legend>
               <div class="radioRow" onchange="answerQ(this,0)">
                 <label><input type="radio" name="q1" value="none"> No drip</label>
@@ -1240,10 +1270,10 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
           <h2>Equipment, media, and calibration — on the record</h2>
           <p class="sub" id="c_sampleSub"></p>
           <div class="cardShadow" style="margin-top:16px">
-            <div style="font-size:13px;font-weight:600;color:var(--slate)">Sample ID: #KA070626-0000555</div>
+            <div style="font-size:1rem;font-weight:600;color:var(--slate)">Sample ID: #KA070626-0000555</div>
             <div class="grid2" style="margin-top:10px">
-              <div style="font-size:12.5px;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">IH instrument:</b> Casella dB2 · SN 789587<br><b style="color:var(--slate)">Calibration device:</b> Acoustical Calibrator · SN 24568<br><b style="color:var(--slate)">Sample media:</b> PW PVC · Lot #4471</div>
-              <div style="font-size:12.5px;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">Start:</b> 9:00 a.m. · <b style="color:var(--slate)">Flow rate:</b> 2.001 L/min<br><b style="color:var(--slate)">Calibration:</b> Pre- and post-sampling records<br><b style="color:var(--slate)">Type:</b> Full shift</div>
+              <div style="font-size:1rem;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">IH instrument:</b> Casella dB2 · SN 789587<br><b style="color:var(--slate)">Calibration device:</b> Acoustical Calibrator · SN 24568<br><b style="color:var(--slate)">Sample media:</b> PW PVC · Lot #4471</div>
+              <div style="font-size:1rem;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">Start:</b> 9:00 a.m. · <b style="color:var(--slate)">Flow rate:</b> 2.001 L/min<br><b style="color:var(--slate)">Calibration:</b> Pre- and post-sampling records<br><b style="color:var(--slate)">Type:</b> Full shift</div>
             </div>
             <div class="chip" style="margin-top:12px;background:#EAF3F2;color:var(--teal-deep)">Equipment serial numbers linked to each sample</div>
           </div>
@@ -1274,12 +1304,12 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
               <div id="statusOut" style="margin-top:14px"></div>
             </div>
             <div class="cardShadow">
-              <div style="font-size:12.5px;font-weight:600;color:var(--slate)">Samples by % of OEL · updates as results are added</div>
+              <div style="font-size:1rem;font-weight:600;color:var(--slate)">Samples by % of OEL · updates as results are added</div>
               <div class="oelLegend">
                 <span><i style="background:var(--oel-red)"></i>&gt;100%</span><span><i style="background:var(--oel-orange)"></i>50–100%</span><span><i style="background:var(--oel-yellow)"></i>10–50%</span><span><i style="background:var(--oel-blue)"></i>1–10%</span><span><i style="background:var(--oel-green)"></i>&lt;1%</span>
               </div>
               <div class="barRow"><div class="lbl">Your entries</div><div class="barTrack" id="liveBar"></div></div>
-              <div id="entryList" style="font-size:11.5px;color:var(--ink-soft);line-height:1.7;margin-top:8px">No results yet — add one on the left.</div>
+              <div id="entryList" style="font-size:1rem;color:var(--ink-soft);line-height:1.7;margin-top:8px">No results yet — add one on the left.</div>
             </div>
           </div>
         </section>
@@ -1323,7 +1353,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
                 <div class="bmrLabel">Exposure control</div><div class="bmrValue">—</div>
               </div>
               <div class="bmrSectionHeader">IH Sample Equipment</div>
-              <div style="padding:10px; font-size:11px; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #SG-062124-001</div>
+              <div style="padding:10px; font-size:1rem; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #SG-062124-001</div>
               <div class="bmrGrid">
                 <div class="bmrLabel">IH instrument</div><div class="bmrValue">N/A for passive badges</div>
                 <div class="bmrLabel">Calibration device</div><div class="bmrValue">N/A for passive badges</div>
@@ -1343,7 +1373,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
                 <tbody><tr><td>Benzene</td><td>71-43-2</td><td>0.32 ppm</td><td>0.5 ppm</td><td>1 ppm</td><td>32%</td></tr></tbody>
               </table>
               <div class="bmrSectionHeader">Daily Log — Tagged Entries</div>
-              <div style="padding:8px 12px;font-size:11px;line-height:1.8;border-bottom:1px solid #ccc">
+              <div style="padding:8px 12px;font-size:1rem;line-height:1.8;border-bottom:1px solid #ccc">
                 7:57 AM — Demonstration Person: Checked on $CR-050224-01 and it was operating correctly<br>
                 7:58 AM — Demonstration Person: Observed @Walter Paton standing downwind of the welding fumes<br>
                 9:08 AM — Demonstration Person: Observed @Walter Paton working in the shop MIG welding on carbon steel with no ventilation other than natural ventilation through the shop assisted by a shop fan
@@ -1453,7 +1483,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
           </div>
           <div class="sciSoftCard">
             <h3>Upload Autoload Lab Results</h3>
-            <p style="font-size:13px;color:var(--ink-soft);margin:8px 0 12px;line-height:1.5">Upload your lab results file into the survey using Autoload Lab Results.</p>
+            <p style="font-size:1rem;color:var(--ink-soft);margin:8px 0 12px;line-height:1.5">Upload your lab results file into the survey using Autoload Lab Results.</p>
             <div class="sciSoftBtn" style="display:inline-block">AUTOLOAD LAB RESULTS</div>
           </div>
         </div>
@@ -1561,7 +1591,7 @@ main{overflow:clip}button,input,select,textarea{font-family:inherit}
 <footer class="lpFooter">
   <img src="data:image/png;base64,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" alt="myIH" style="height:26px;width:auto;display:block;margin:0 auto;background:transparent;filter:brightness(0) invert(1)">
   <p style="margin-top:10px">Built by IH specialists, for IH specialists. myIH is a registered trademark.</p>
-  <p style="margin-top:6px;font-size:11px;color:#B4C1C0">*Based on internal data from beta testing and active user subscriptions.</p>
+  <p style="margin-top:6px;font-size:1rem;color:#B4C1C0">*Based on internal data from beta testing and active user subscriptions.</p>
   <nav class="a11yFooterLinks" aria-label="Legal and accessibility">
     <a href="/accessibility.html">Accessibility statement</a> &middot;
     <a href="/privacy.html">Privacy policy</a> &middot;
@@ -1802,7 +1832,7 @@ const c=catFor(pct);
 counts[c]++; entries.unshift({v,unit:h.unit,cat:c,pctTxt:key==='noise'?'':' · '+Math.round(pct)+'% of OEL'});
 document.getElementById('statusOut').innerHTML=
 `<span class="pill" style="background:${PILLC[c]};animation:pop .3s ease both">${CATLBL[c]}</span>
-<div style="font-size:12.5px;color:var(--ink);margin-top:8px;line-height:1.5">Banded instantly against dynamic legal standards.</div>`;
+<div style="font-size:1rem;color:var(--ink);margin-top:8px;line-height:1.5">Banded instantly against dynamic legal standards.</div>`;
 const total=counts.reduce((a,b)=>a+b,0);
 const bar=document.getElementById('liveBar');bar.innerHTML='';
 counts.forEach((n,i)=>{
@@ -1895,7 +1925,7 @@ return `<div class="svHead">
 <span class="on" onclick="switchSubTab('${p}','survey_dash')">Survey Dashboard</span>
 <span onclick="switchSubTab('${p}','loc_info')">Location info</span>
 <span onclick="switchSubTab('${p}','proj_info')">Project config</span>
-<span onclick="switchSubTab('${p}','questions')">Questions <div style="display:inline-block; background:#D33B2F; color:#fff; font-size:9px; padding:1px 5px; border-radius:10px; margin-left:4px; vertical-align:top;">45</div></span>
+<span onclick="switchSubTab('${p}','questions')">Questions <div style="display:inline-block; background:#D33B2F; color:#fff; font-size:1rem; padding:1px 5px; border-radius:10px; margin-left:4px; vertical-align:top;">45</div></span>
 </div>
 </div>
 <div class="svBody" id="${p}ContentContainer"><div class="svGrid">
@@ -1945,33 +1975,33 @@ container.innerHTML = `
 <div class="svGrid">
 <div style="display:flex; flex-direction:column; gap:14px; flex:1;">
 <div class="cardShadow" style="background:#fff;">
-<h3 style="margin-bottom:10px; font-size:16px;">#SG-0621-2025</h3>
-<b style="font-size:14px;">Hazards Survey</b><br>
-<div style="font-size:12px; color:var(--ink-soft); margin-top:5px; line-height:1.5;">100 myIH Rd<br>70820 Indianapolis<br>IN United States</div>
+<h3 style="margin-bottom:10px; font-size:1rem;">#SG-0621-2025</h3>
+<b style="font-size:1rem;">Hazards Survey</b><br>
+<div style="font-size:1rem; color:var(--ink-soft); margin-top:5px; line-height:1.5;">100 myIH Rd<br>70820 Indianapolis<br>IN United States</div>
 </div>
 <div class="cardShadow" style="background:#fff;">
-<h3 style="margin-bottom:10px; font-size:16px;">Contact information</h3>
-<div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">Sam Davidson<br>Email: sdavidson@myihportal.com<br>Phone: 888-760-8811</div>
+<h3 style="margin-bottom:10px; font-size:1rem;">Contact information</h3>
+<div style="font-size:1rem; color:var(--ink-soft); line-height:1.6;">Sam Davidson<br>Email: sdavidson@myihportal.com<br>Phone: 888-760-8811</div>
 </div>
 </div>
 <div style="flex:2;">
 <div class="cardShadow" style="background:#fff; position:relative; height:100%;">
 <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-<h3 style="font-size:16px;">Sampling Plan</h3>
+<h3 style="font-size:1rem;">Sampling Plan</h3>
 <button class="abtn" style="background:var(--teal-deep); opacity:0.7; pointer-events:none;">MANAGE SAMPLING PLAN</button>
 </div>
-<div style="display:flex; justify-content:space-between; margin-top:15px; font-size:12px;">
+<div style="display:flex; justify-content:space-between; margin-top:15px; font-size:1rem;">
 <div><b>First survey date</b><br>August 15, 2025</div>
 <div style="text-align:right;"><b>Samples taken</b><br>32 / 39</div>
 </div>
-<div style="height:120px; background:#f4f6f6; margin-top:20px; display:flex; align-items:center; justify-content:center; border:1px solid #e1e5e6; color:var(--ink-soft); font-size:11px;">
+<div style="height:120px; background:#f4f6f6; margin-top:20px; display:flex; align-items:center; justify-content:center; border:1px solid #e1e5e6; color:var(--ink-soft); font-size:1rem;">
 [ Chart Visualization Placeholder ]
 </div>
 </div>
 </div>
 </div>
 <div class="cardShadow" style="background:#fff; margin-top:14px;">
-<h3 style="margin-bottom:10px; font-size:16px;">Survey days</h3>
+<h3 style="margin-bottom:10px; font-size:1rem;">Survey days</h3>
 <table style="width:100%;">
 <thead><tr><th>Created at</th><th>Sampler(s)</th><th>Samples created</th><th>Lab results</th><th>Recent activity</th></tr></thead>
 <tbody>
@@ -1987,40 +2017,40 @@ container.innerHTML = `
 container.innerHTML = `
 <div style="padding:10px;">
 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-<h2 style="font-size:24px; font-weight:400; color:var(--slate);">Prompted Questions</h2>
+<h2 style="font-size:1.5rem; font-weight:400; color:var(--slate);">Prompted Questions</h2>
 <div style="display:flex; gap:10px;">
 <button class="abtn" style="background:#4E495F;">DOWNLOAD SELECTED DAILY QUESTIONS</button>
 <button class="abtn" style="background:#4E495F;">DOWNLOAD ALL QUESTIONS</button>
 </div>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; margin-bottom:15px; flex-wrap:wrap;">
-<h3 style="font-size:18px; color:var(--slate); font-weight:500;">Survey Dashboard, Sun 07 Dec 2025</h3>
-<div style="font-size:12px; color:var(--ink-soft);">Sunday 07 December 2025 &nbsp;|&nbsp; &lt; &nbsp; &gt;</div>
+<h3 style="font-size:1.125rem; color:var(--slate); font-weight:500;">Survey Dashboard, Sun 07 Dec 2025</h3>
+<div style="font-size:1rem; color:var(--ink-soft);">Sunday 07 December 2025 &nbsp;|&nbsp; &lt; &nbsp; &gt;</div>
 </div>
-<h3 style="margin-bottom:10px; font-size:18px; color:var(--slate); font-weight:600;">Daily Questions</h3>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:15px;">Benzene Air Sampling Documentation Questions <span>˅</span></div>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:15px;">Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling <span>˅</span></div>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:20px; display:flex; justify-content:space-between; font-size:15px;">Asbestos Air Sampling Questions - Daily <span>˅</span></div>
-<h3 style="margin-bottom:10px; font-size:18px; color:var(--slate); font-weight:600;">One time Questions</h3>
+<h3 style="margin-bottom:10px; font-size:1.125rem; color:var(--slate); font-weight:600;">Daily Questions</h3>
+<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:1rem;">Benzene Air Sampling Documentation Questions <span>˅</span></div>
+<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:1rem;">Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling <span>˅</span></div>
+<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:20px; display:flex; justify-content:space-between; font-size:1rem;">Asbestos Air Sampling Questions - Daily <span>˅</span></div>
+<h3 style="margin-bottom:10px; font-size:1.125rem; color:var(--slate); font-weight:600;">One time Questions</h3>
 <div style="border:1px solid var(--line); border-radius:4px; overflow:hidden;">
-<div style="background:#524e5d; color:#fff; padding:14px 18px; display:flex; justify-content:space-between; font-size:15px;">Catalyst change Out <span>˄</span></div>
+<div style="background:#524e5d; color:#fff; padding:14px 18px; display:flex; justify-content:space-between; font-size:1rem;">Catalyst change Out <span>˄</span></div>
 <div style="padding:20px; background:#fff;">
-<p style="font-size:13px; color:var(--ink-soft); margin-bottom:10px;">Are there 5 workers in the confined space</p>
+<p style="font-size:1rem; color:var(--ink-soft); margin-bottom:10px;">Are there 5 workers in the confined space</p>
 <div style="display:flex; gap:15px; margin-bottom:20px;">
-<label style="font-size:13px; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> Yes</label>
-<label style="font-size:13px; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> No</label>
+<label style="font-size:1rem; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> Yes</label>
+<label style="font-size:1rem; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> No</label>
 </div>
 <div style="background:#FAFBFB; padding:12px; border:1px solid var(--line); border-radius:4px; min-height:80px;">
-<p style="font-size:11px; color:var(--ink-soft);">What is the catalyst ?</p>
+<p style="font-size:1rem; color:var(--ink-soft);">What is the catalyst ?</p>
 </div>
-<button class="abtn" style="background:#6c757d; margin-top:20px; padding:10px 20px; font-size:12px; opacity:0.8; pointer-events:none;">SUBMIT</button>
+<button class="abtn" style="background:#6c757d; margin-top:20px; padding:10px 20px; font-size:1rem; opacity:0.8; pointer-events:none;">SUBMIT</button>
 </div>
 </div>
 </div>`;
 } else if(tabName === 'proj_info') {
 container.innerHTML = `
 <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
-<div><h2 style="font-size:24px;color:var(--slate);margin-bottom:2px">XYZ Company</h2><div style="font-size:13px;color:var(--ink-soft);line-height:1.55">Alice Dignam<br>United States</div></div>
+<div><h2 style="font-size:1.5rem;color:var(--slate);margin-bottom:2px">XYZ Company</h2><div style="font-size:1rem;color:var(--ink-soft);line-height:1.55">Alice Dignam<br>United States</div></div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
 <button class="abtn" style="background:#4E495F">&#x2B07; DOWNLOAD SUBJECTS</button>
 <button class="abtn" style="background:#4E495F">&#x2B07; DOWNLOAD EXCEL</button>
@@ -2028,23 +2058,23 @@ container.innerHTML = `
 </div>
 </div>
 <div class="cardShadow" style="background:#fff;margin-top:16px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Download Chain of Custody</h3>
+<h3 style="font-size:1rem;margin-bottom:12px;color:var(--slate)">Download Chain of Custody</h3>
 <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
-<label style="font-size:11px;color:var(--ink-soft);font-weight:600">From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
-<label style="font-size:11px;color:var(--ink-soft);font-weight:600">To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label style="font-size:1rem;color:var(--ink-soft);font-weight:600">From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label style="font-size:1rem;color:var(--ink-soft);font-weight:600">To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
 <button class="abtn" style="background:#e4e8e8;color:#9aa1a1;pointer-events:none">DOWNLOAD</button>
 </div>
 </div>
 <div class="cardShadow" style="background:#fff;margin-top:14px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Chemical samples</h3>
+<h3 style="font-size:1rem;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Chemical samples</h3>
 <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
-<label style="font-size:11px;color:var(--ink-soft);font-weight:600">From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
-<label style="font-size:11px;color:var(--ink-soft);font-weight:600">To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label style="font-size:1rem;color:var(--ink-soft);font-weight:600">From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
+<label style="font-size:1rem;color:var(--ink-soft);font-weight:600">To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
 <button class="abtn" style="background:#e4e8e8;color:#9aa1a1;pointer-events:none">DOWNLOAD</button>
 </div>
 </div>
 <div class="cardShadow" style="background:#fff;margin-top:14px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Noise samples</h3>
+<h3 style="font-size:1rem;margin-bottom:12px;color:var(--slate)">Download Employee Notifications for Noise samples</h3>
 <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
 <label>From<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
 <label>To<input type="date" style="display:block;max-width:170px;margin-top:4px"></label>
@@ -2052,15 +2082,15 @@ container.innerHTML = `
 <button class="abtn" disabled style="background:#e4e8e8;color:#9aa1a1">DOWNLOAD</button>
 </div></div>
 <div class="cardShadow" style="background:#fff;margin-top:14px">
-<h3 style="font-size:16px;margin-bottom:12px;color:var(--slate)">Upload Autoload Lab Results</h3>
-<p style="font-size:13px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px">Upload your lab results file into the survey using Autoload Lab Results.</p>
+<h3 style="font-size:1rem;margin-bottom:12px;color:var(--slate)">Upload Autoload Lab Results</h3>
+<p style="font-size:1rem;color:var(--ink-soft);line-height:1.5;margin-bottom:12px">Upload your lab results file into the survey using Autoload Lab Results.</p>
 <button class="abtn" style="background:#4E495F">AUTOLOAD LAB RESULTS</button>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px">
-<h3 style="font-size:20px;color:var(--slate);font-weight:600">Project Locks</h3>
+<h3 style="font-size:1.25rem;color:var(--slate);font-weight:600">Project Locks</h3>
 <div style="display:flex;gap:10px"><label for="projSearch" class="visually-hidden">Search projects</label><input type="text" id="projSearch" placeholder="Search" aria-label="Search projects" style="max-width:200px"><button class="abtn" style="background:#4E495F">+ NEW PROJECT LOCK</button></div>
 </div>
-<div class="cardShadow" style="background:#fff;margin-top:10px;color:var(--ink-soft);font-size:13px">No items found yet.</div>`;
+<div class="cardShadow" style="background:#fff;margin-top:10px;color:var(--ink-soft);font-size:1rem">No items found yet.</div>`;
 } else {
 container.innerHTML = `<div style="padding:40px; text-align:center; color:var(--ink-soft);"><h3>Book a demo to unlock</h3></div>`;
 }
@@ -2131,26 +2161,26 @@ instruments:[['3M DL-2-1/3','Dec 11, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026
 calibration:[['3M AC-300','Dec 17, 2025'],['Assay 525 Badge','May 01, 2025'],['Blackline Docking Station','Apr 10, 2025'],['Cal dev','Aug 12, 2026'],['Cal dev','Nov 14, 2026'],['Calibrator X','May 07, 2026'],['Casella Acoustical Calibrator','May 08, 2026'],['Casella CEL - 120/12','Oct 01, 2026'],['Casella CEL Calibrator','May 07, 2026'],['Casella CEL-120/2','May 07, 2026']],
 qgroups:[
 ['Catalyst change Out','2',''],
-['General Questions','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
-['Frequently Asked Questions','2','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+['General Questions','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>'],
+['Frequently Asked Questions','2','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>'],
 ['Blasting Question Group','4',''],
 ['Full Shift Sampling Questions','3',''],
-['Daily Questions to Ask','3','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
+['Daily Questions to Ask','3','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>'],
 ['2024 Turnaround Sample Plan','1',''],
-['Welding Fume Sampling','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>'],
-['FNV Asbestos Air Sampling Questions - Clearance','4','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:10px; padding:2px 8px;">Daily</span>']
+['Welding Fume Sampling','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>'],
+['FNV Asbestos Air Sampling Questions - Clearance','4','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>']
 ]
 };
 function tbl(head,rows,isProject=false){
 return `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r, idx)=>`<tr ${isProject?`style="cursor:pointer;" onclick="expandProjectSurvey(this, '${r[0]}')"`:''}>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table><div id="nestedExploreDashboard"></div>`;
 }
 function pager(total){
-return `<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:12.5px;color:var(--ink-soft);padding:14px 6px"><span>Rows per page: 10</span><span>1–10 of ${total.toLocaleString()}</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;
+return `<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:1rem;color:var(--ink-soft);padding:14px 6px"><span>Rows per page: 10</span><span>1–10 of ${total.toLocaleString()}</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;
 }
 function expandProjectSurvey(rowElement, projName) {
 const container = document.getElementById('nestedExploreDashboard');
 container.innerHTML = `<div style="margin-top:20px; animation:pop 0.3s ease both;">
-<h3 style="font-size:14px; margin-bottom:8px; color:var(--teal-deep);">Active Survey Workspace Context: ${projName}</h3>
+<h3 style="font-size:1rem; margin-bottom:8px; color:var(--teal-deep);">Active Survey Workspace Context: ${projName}</h3>
 ${svHTML('ex')}
 </div>`;
 switchSubTab('ex', 'survey_dash');
@@ -2171,7 +2201,7 @@ const s=document.getElementById('dashStart').value,e=document.getElementById('da
 const q=((document.getElementById('dashClientQ')||{}).value||'').toLowerCase().trim();
 const rows=dashData.filter(d=>(!s||d[1]>=s)&&(!e||d[1]<=e)&&(!q||d[0].toLowerCase().indexOf(q)!==-1));
 const AX=12;
-if(!rows.length){host.innerHTML='<div style="padding:24px;text-align:center;font-size:12.5px;color:var(--ink-soft)">No results in this date range</div>';document.getElementById('hAxis').innerHTML='';return;}
+if(!rows.length){host.innerHTML='<div style="padding:24px;text-align:center;font-size:1rem;color:var(--ink-soft)">No results in this date range</div>';document.getElementById('hAxis').innerHTML='';return;}
 host.innerHTML=rows.map(d=>{
 const name=d[0],counts=d[2],total=counts.reduce((a,b)=>a+b,0),ri=dashData.indexOf(d);
 const segs=counts.map((c,i)=>c?`<div class="hseg${i===2?' yellowSeg':''}" style="background:${CAT[i][1]};flex:${c}" data-row="${ri}" data-cat="${i}">${c}</div>`:'').join('');
@@ -2187,16 +2217,16 @@ seg.addEventListener('click',()=>showSegSamples(+seg.dataset.row,+seg.dataset.ca
 function showSegSamples(ri,cat){
 const host=document.getElementById('segSamples');if(!host)return;
 const name=dashData[ri][0],n=dashData[ri][2][cat];
-if(!n){host.innerHTML='<div class="cardShadow" style="background:#fff;margin-top:16px;font-size:13px;color:var(--ink-soft)">No samples for '+name+' in the '+CATLBL[cat]+' band.</div>';return;}
+if(!n){host.innerHTML='<div class="cardShadow" style="background:#fff;margin-top:16px;font-size:1rem;color:var(--ink-soft)">No samples for '+name+' in the '+CATLBL[cat]+' band.</div>';return;}
 const hazards=['Noise Dose','Benzene','Carbon Monoxide','Manganese','Hexavalent Chromium','Respirable Dust','Isocyanates'];
 const proj=name.split(' ')[0].toUpperCase()+' - 2026 SAMPLING CAMPAIGN';
 let rows='';
 for(let i=0;i<n;i++){
 const id='DW-0'+(40726+ri*211+i*13)+'-'+String(5+i*2).padStart(2,'0');
 const hz=hazards[(ri*3+cat+i)%hazards.length];
-rows+=`<tr><td>${id}</td><td>${hz}</td><td>${proj}</td><td style="text-align:right;font-size:16px;color:var(--slate)">&rarr;</td></tr>`;
+rows+=`<tr><td>${id}</td><td>${hz}</td><td>${proj}</td><td style="text-align:right;font-size:1rem;color:var(--slate)">&rarr;</td></tr>`;
 }
-host.innerHTML=`<div class="cardShadow" style="background:#fff;margin-top:16px;animation:pop .3s ease both"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h3 style="font-size:18px;color:var(--slate)">Samples <span style="font-weight:400;color:var(--ink-soft);font-size:14px">— ${name}, ${CATLBL[cat]}</span></h3><input type="text" placeholder="Search for samples" style="max-width:220px"></div><br><table><thead><tr><th>Sample ID</th><th>Hazard</th><th>Project</th><th style="text-align:right">Go to sample</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+host.innerHTML=`<div class="cardShadow" style="background:#fff;margin-top:16px;animation:pop .3s ease both"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h3 style="font-size:1.125rem;color:var(--slate)">Samples <span style="font-weight:400;color:var(--ink-soft);font-size:1rem">— ${name}, ${CATLBL[cat]}</span></h3><input type="text" placeholder="Search for samples" style="max-width:220px"></div><br><table><thead><tr><th>Sample ID</th><th>Hazard</th><th>Project</th><th style="text-align:right">Go to sample</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function drawDonut(){
 const box=document.getElementById('donutBox');if(!box)return;
@@ -2213,7 +2243,7 @@ data[3]+=total-data.reduce((a,b)=>a+b,0);if(data[3]<0){data[4]+=data[3];data[3]=
 const r=118,cx=150,cy=150,C=2*Math.PI*r,gap=6;
 let off=0,segs='';
 data.forEach((n,i)=>{if(n<=0)return;const len=n/total*C;segs+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${CAT[i][1]}" stroke-width="24" stroke-linecap="round" stroke-dasharray="${Math.max(0.5,len-gap)} ${C-Math.max(0.5,len-gap)}" stroke-dashoffset="${-off}" data-cat="${i}" data-n="${n}" style="cursor:pointer"></circle>`;off+=len;});
-box.innerHTML=`<svg width="300" height="300" viewBox="0 0 300 300" style="transform:rotate(-90deg)">${segs}</svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink)">Total results: ${total}</div>`;
+box.innerHTML=`<svg width="300" height="300" viewBox="0 0 300 300" style="transform:rotate(-90deg)">${segs}</svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--ink)">Total results: ${total}</div>`;
 box.querySelectorAll('circle').forEach(ci=>{
 ci.addEventListener('mousemove',ev=>{const i=+ci.dataset.cat,n=+ci.dataset.n;const tip=tipEl();tip.innerHTML=`<div class="r"><span><i style="background:${CAT[i][1]}"></i>${CATLBL[i]}</span><b>${n}</b></div>`;posTip(tip,ev);});
 ci.addEventListener('mouseleave',hideTip);
@@ -2234,15 +2264,15 @@ m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 <div class="oelLegend" style="justify-content:center;margin:16px 0 6px"><span><i style="background:var(--oel-red)"></i>&gt; 100% of OEL</span><span><i style="background:var(--oel-orange)"></i>50–100% of OEL</span><span><i style="background:var(--oel-yellow)"></i>10–50% of OEL</span><span><i style="background:var(--oel-blue)"></i>1–10% of OEL</span><span><i style="background:var(--oel-green)"></i>&lt; 1% of OEL</span></div>
 <div class="hdash" id="hdash"></div>
 <div class="hAxis" id="hAxis"></div>
-<div style="text-align:center;font-size:11px;font-weight:600;color:var(--ink-soft);margin-top:4px">Number of results</div>
-<div style="font-size:11.5px;color:var(--teal-deep);margin-top:10px;text-align:center">Select a bar segment to view its samples.</div>
+<div style="text-align:center;font-size:1rem;font-weight:600;color:var(--ink-soft);margin-top:4px">Number of results</div>
+<div style="font-size:1rem;color:var(--teal-deep);margin-top:10px;text-align:center">Select a bar segment to view its samples.</div>
 </div>
 <div class="cardShadow dashboardHazard" data-dashboard-panel="hazard" style="background:#fff">
 <h3 class="dashboardChartTitle">Dashboard 2 · Results by Hazard</h3>
 <div class="dashDates"><label>Hazard<select id="donutHaz" style="min-width:240px" onchange="drawDonut()"><option>Carbon Monoxide - # 630-08-0</option><option>1,3-Butadiene - # 106-99-0</option><option>Benzene - # 71-43-2</option><option>Manganese - # 7439-96-5</option><option>Noise Dose</option></select></label></div>
 <div class="donutGrid">
 <div class="donutBox" id="donutBox"></div>
-<div class="donutClients"><b style="font-size:14px">Clients</b>
+<div class="donutClients"><b style="font-size:1rem">Clients</b>
 <label><input type="checkbox" onchange="drawDonut()"> XYZ Inc.</label>
 <label><input type="checkbox" onchange="drawDonut()"> BMR Industrial</label>
 <label><input type="checkbox" onchange="drawDonut()"> CBC</label>
@@ -2261,15 +2291,15 @@ m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 <tr><td>13</td><td>Client D – Site 1 – Q4 2026</td></tr>
 <tr><td>10</td><td>Client D – Site 1 – Q2 2026</td></tr>
 <tr><td>12</td><td>Client D – Site 1 – Q3 2026</td></tr>
-</tbody></table><div style="display:flex;justify-content:flex-end;align-items:center;gap:22px;font-size:12.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1–10 of 136</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div></div>
+</tbody></table><div style="display:flex;justify-content:flex-end;align-items:center;gap:22px;font-size:1rem;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1–10 of 136</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div></div>
 </div>
 </div>
 <div id="segSamples" data-dashboard-panel="overview"></div>`;
 drawHDash();drawDonut();
 }
-else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:11.5px;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
+else if(t==='clients'){m.innerHTML=`<h2>Client</h2><div style="margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><input type="text" placeholder="Search on client" style="max-width:260px"><button class="btn sm" style="background:#4E495F;">+ NEW CLIENT</button></div>`+tbl(['Name','Address','Recent Activity'],MOCK.clients)+`<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:1rem;color:var(--ink-soft);padding:12px 6px"><span>Rows per page: 10</span><span>1-8 of 8</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;}
 else if(t==='projects'){
-m.innerHTML=`<div style="background:#EAF3F2;color:var(--slate);padding:12px 16px;border-radius:8px;margin-bottom:12px;font-size:14px;font-weight:600;text-align:center;">Scroll to see our Survey Dashboard</div><h2>Projects</h2><div style="margin:10px 0"><input type="text" placeholder="" style="max-width:260px"> <button class="btn sm" style="background:#4E495F; margin-left:8px;">+ NEW PROJECT</button></div>`+tbl(['Project name','Job number','Client name','Recent activity','Actions'],MOCK.projects, true);
+m.innerHTML=`<div style="background:#EAF3F2;color:var(--slate);padding:12px 16px;border-radius:8px;margin-bottom:12px;font-size:1rem;font-weight:600;text-align:center;">Scroll to see our Survey Dashboard</div><h2>Projects</h2><div style="margin:10px 0"><input type="text" placeholder="" style="max-width:260px"> <button class="btn sm" style="background:#4E495F; margin-left:8px;">+ NEW PROJECT</button></div>`+tbl(['Project name','Job number','Client name','Recent activity','Actions'],MOCK.projects, true);
 setTimeout(() => { expandProjectSurvey(null, 'Hazards Survey'); const _m=document.getElementById('exMain'); if(_m)_m.scrollTop=0; }, 150);
 }
 else if(t==='samples'){m.innerHTML=`<h2>Samples</h2><br>`+tbl(['Sample ID','Subject','Hazard','Type','Date','Result'],MOCK.samples)+pager(17083);}
@@ -2278,14 +2308,14 @@ else if(t==='instruments'){m.innerHTML=`<h2>Instrument</h2><div style="margin:10
 else if(t==='calibration'){m.innerHTML=`<h2>Calibration devices</h2><div style="margin:10px 0;display:flex;justify-content:flex-end"><button class="btn sm" style="background:#4E495F;">+ NEW CALIBRATION DEVICE</button></div>`+tbl(['Calibration name','Recent activity'],MOCK.calibration)+pager(96);}
 else if(t==='questions'){
 m.innerHTML=`
-<div style="background:#EAF3F2; color:var(--teal-deep); padding:12px 16px; border-radius:8px; margin-bottom:15px; font-size:15px; font-weight:600; text-align:center;">
+<div style="background:#EAF3F2; color:var(--teal-deep); padding:12px 16px; border-radius:8px; margin-bottom:15px; font-size:1rem; font-weight:600; text-align:center;">
 See how we create questions in a demo
 </div>
 <div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;">
-<h2 style="font-size:24px; font-weight:600; color:var(--slate);">Question groups</h2>
+<h2 style="font-size:1.5rem; font-weight:600; color:var(--slate);">Question groups</h2>
 <div style="display:flex; gap:10px;">
-<input type="text" placeholder="Search question groups" aria-label="Search question groups" style="max-width:200px; padding:6px 12px; font-size:12px;">
-<button class="abtn" style="background:#4E495F; padding:8px 14px; font-size:12px;">+ NEW GROUP</button>
+<input type="text" placeholder="Search question groups" aria-label="Search question groups" style="max-width:200px; padding:6px 12px; font-size:1rem;">
+<button class="abtn" style="background:#4E495F; padding:8px 14px; font-size:1rem;">+ NEW GROUP</button>
 </div>
 </div>
 `+tbl(['Title','Questions','Group type'], MOCK.qgroups);
