@@ -1691,7 +1691,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
       <div class="sciHeadBox">
         <div class="sciKicker">The science of exposure</div>
         <div class="sciTitle" id="sciTitle">On the plant floor</div>
-        <p class="sciCaption" id="sciCaption"></p>
+
       </div>
 
       <!-- Phase 1 — plant floor -->
@@ -2654,17 +2654,10 @@ switchSubTab('g', 'survey_dash');
     // re-measure after layout settles (initial innerHeight can be wrong in embedded frames)
     addEventListener('load',ssize); setTimeout(ssize,80); setTimeout(ssize,400);
     function e(id){ return document.getElementById(id); }
-    var title=e('sciTitle'), cap=e('sciCaption'), rail=scene.querySelectorAll('.sciRail i'), headBox=scene.querySelector('.sciHeadBox');
+    var title=e('sciTitle'), rail=scene.querySelectorAll('.sciRail i'), headBox=scene.querySelector('.sciHeadBox');
     var chips={pump:e('i-pump'),benzene:e('i-benzene'),gcms:e('i-gcms'),pcm:e('i-pcm'),soft:e('i-soft'),dust:e('i-dust'),oel:e('i-oel'),sound:e('i-sound')};
 
     var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','Capture the sample. Keep the context.'];
-    var CAPS=[
-      "",
-      "",
-      "Import lab results in Project Config. Each result stays with its sample.",
-      "Review each result as a percentage of its selected occupational exposure limit.",
-      "Air flows toward the pump. Vapor collects on the sorbent inside the glass tube."
-    ];
 
     // dust particles — each carries: a sound-wave slot (sx:0..1 along the wave, strand:layer offset)
     // AND a media-bed target. Sequence: airborne sample -> intake -> retained sample.
@@ -2886,7 +2879,7 @@ switchSubTab('g', 'survey_dash');
       var ph = p<0.19?0 : (p<0.37?1 : (p<0.54?2 : (p<0.70?3 : 4)));
       if(ph!==curPh){ curPh=ph;
         if(title) title.textContent=TITLES[ph];
-        if(cap){ cap.textContent=CAPS[ph]; cap.hidden=!CAPS[ph]; }
+
       }
       for(var i=0;i<rail.length;i++){ rail[i].classList.toggle('on',i<=ph); }
       // hide the heading box entirely during the finale (phase 4); keep it for phases 0-3
