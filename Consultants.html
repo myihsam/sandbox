@@ -1276,7 +1276,29 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 #sandbox .slide .btn,#sandbox .slide .abtn,#sandbox .slide input,#sandbox .slide select{font-size:16px}
 #sandbox .slide:nth-child(2) .appbody>div:last-child{font-size:14px!important;line-height:1.4}
 </style>
-</head>
+<style id="responsive-fieldwork">
+.brandHeroInner{max-width:1640px;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(24px,3vw,48px);padding:clamp(32px,4vw,68px)}
+.brandProduct{max-width:none;width:100%;transform:perspective(1600px) rotateY(-4deg)}
+.brandProductFoot,.brandProductTop,.brandWorkflow{flex-wrap:wrap}
+.brandHeroCopy,.recordStoryInner,.recordExport>*{min-width:0;overflow-wrap:break-word}
+.recordStory{background:#f6f6f1!important}
+.recordSteps.card-group{gap:0!important;background:#fff;border-block:1px solid #889a96;perspective:none}
+.recordSteps article.card,.recordSteps article.card:nth-child(2){display:flex;flex-direction:column;min-width:0;padding:clamp(20px,2.3vw,38px)!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;transform:none}
+.recordSteps article.card+article.card{border-left:1px solid #c4cfca!important}
+.recordSteps .card-body{flex:1 1 auto;padding:20px 0}
+.recordSteps .recordStepNumber{font:600 .84rem/1.5 Roboto,sans-serif;letter-spacing:.08em;color:#3f6662}
+.recordSteps .recordTokens{margin:0;padding-top:12px;border-top:1px solid #d9dfdc}
+.recordSteps .recordTokens span{padding:0 12px 0 0;border:0!important;border-radius:0!important;background:none!important;box-shadow:none;color:#385951;font-size:.9rem}
+.recordProof{border-radius:0!important;background:#373944!important;box-shadow:none!important;grid-template-columns:minmax(180px,.5fr) minmax(0,1fr)}
+.recordProofStat{flex-wrap:wrap}
+.recordDestinations details,.recordDestinations details[open]{border:0!important;border-block-end:1px solid #bdc8c4!important;border-radius:0!important;box-shadow:none;background:#fff!important;margin:0}
+.sciCaption:empty{display:none}.sciCaption{line-height:1.45;max-width:50ch;color:#343643}
+.sciHeadBox{backdrop-filter:none!important;top:clamp(66px,10svh,100px);padding:12px 18px}
+.sciSoft:not(.on){visibility:hidden}
+@media(max-width:1050px){.brandHeroInner{grid-template-columns:minmax(0,1fr);gap:24px}.brandProduct{max-width:960px;justify-self:center}.brandHeroCopy{max-width:780px}.brandIntro{max-width:54ch}.recordSteps.card-group{grid-template-columns:1fr}.recordSteps article.card+article.card{border-left:0!important;border-top:1px solid #bdc8c4!important}.recordSteps p{max-width:60ch}.recordExport{grid-template-columns:1fr;gap:24px!important}}
+@media(max-width:700px){.brandHeroInner{padding:32px 16px}.brandProductTop,.brandProductFoot{font-size:.85rem}.recordProof{grid-template-columns:1fr}.sciCanvas{top:40%;height:36%}.sciSoft,.sciSoft.on{top:42%;max-height:51%}.sciTitle{font-size:clamp(24px,5vw,34px)}.sciCaption{font-size:1rem}.sciSound{bottom:32px}.recordSteps h3{margin-top:0}}
+@media(prefers-reduced-motion:reduce){.brandProduct{transform:none}}
+</style></head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
 
@@ -1669,7 +1691,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
       <div class="sciHeadBox">
         <div class="sciKicker">The science of exposure</div>
         <div class="sciTitle" id="sciTitle">On the plant floor</div>
-        <p class="sciCaption" id="sciCaption">A personal sampling pump draws air through a sampling medium. Record the equipment and calibration with the sample.</p>
+        <p class="sciCaption" id="sciCaption"></p>
       </div>
 
       <!-- Phase 1 — plant floor -->
@@ -1735,10 +1757,10 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 <section class="recordStory" aria-labelledby="recordStoryTitle">
 <div class="recordStoryInner">
 <header class="recordStoryHeader"><span class="recordEyebrow">FROM FIELDWORK TO FOLLOW-UP</span><h2 id="recordStoryTitle">Capture it once.<br>Keep the context.</h2></header>
-<div class="recordSteps">
-<article><span class="recordStepNumber">01 / CAPTURE</span><div class="recordGlyph" aria-hidden="true">☑</div><h3>Follow the prompts.</h3><p>Project questions guide what samplers record.</p><div class="recordTokens"><span>Field notes</span><span>Daily observations</span></div></article>
-<article><span class="recordStepNumber">02 / KEEP TOGETHER</span><div class="recordGlyph recordTags" aria-hidden="true">@ <span>#</span> $</div><h3>A sample with its story.</h3><p>Equipment, calibration, and observations stay with the sample.</p><div class="recordTokens"><span>Serial numbers</span><span>Pre / post calibration</span></div></article>
-<article><span class="recordStepNumber">03 / TAKE WITH YOU</span><div class="recordGlyph" aria-hidden="true">↗</div><h3>Ready to export.</h3><p>Download the records in Excel or PDF.</p><div class="recordTokens"><span>Excel</span><span>PDF</span></div></article>
+<div class="recordSteps card-group">
+<article class="card"><span class="recordStepNumber">01 / CAPTURE</span><div class="card-body"><h3>Follow the prompts.</h3><p>Project questions guide what samplers record.</p></div><div class="recordTokens"><span>Field notes</span><span>Daily observations</span></div></article>
+<article class="card"><span class="recordStepNumber">02 / KEEP TOGETHER</span><div class="card-body"><h3>A sample with its story.</h3><p>Equipment, calibration, and observations stay with the sample.</p></div><div class="recordTokens"><span>Serial numbers</span><span>Pre / post calibration</span></div></article>
+<article class="card"><span class="recordStepNumber">03 / TAKE WITH YOU</span><div class="card-body"><h3>Ready to export.</h3><p>Download the records in Excel or PDF.</p></div><div class="recordTokens"><span>Excel</span><span>PDF</span></div></article>
 </div>
 <aside class="recordProof">
 <div class="recordProofStat"><strong>20%</strong><span>minimum efficiency gain<br>reported by a user</span></div>
@@ -2637,11 +2659,11 @@ switchSubTab('g', 'survey_dash');
 
     var TITLES=['From the test space','Into the analytical lab','Back into the software','Down to the particle','Capture the sample. Keep the context.'];
     var CAPS=[
-      "A personal sampling pump draws air through a sampling medium. Record the equipment and calibration with the sample.",
-      "Send the sampled media to a laboratory for analysis, then upload the lab results file into the survey using Autoload Lab Results.",
-      "Upload your lab results file from Project Config. Review results against the selected OEL and download chain-of-custody documentation and employee notifications.",
+      "",
+      "",
+      "Import lab results in Project Config. Each result stays with its sample.",
       "Review each result as a percentage of its selected occupational exposure limit.",
-      "For vapor sampling, a pump draws air through a sorbent tube. myIH connects the sample ID, flow checks, and field notes to the record."
+      "Air flows toward the pump. Vapor collects on the sorbent inside the glass tube."
     ];
 
     // dust particles — each carries: a sound-wave slot (sx:0..1 along the wave, strand:layer offset)
@@ -2778,7 +2800,7 @@ switchSubTab('g', 'survey_dash');
       g.save();g.globalAlpha=reveal;
       // Compact sampling schematic; no beaker, rising liquid, or vapor exhaust.
       var glass=g.createLinearGradient(0,ty-th/2,0,ty+th/2);
-      glass.addColorStop(0,'rgba(255,255,255,.9)');glass.addColorStop(.5,'rgba(216,235,235,.45)');glass.addColorStop(1,'rgba(117,163,163,.4)');
+      glass.addColorStop(0,'rgba(255,255,255,.9)');glass.addColorStop(.12,'rgba(115,150,153,.5)');glass.addColorStop(.2,'rgba(255,255,255,.96)');glass.addColorStop(.47,'rgba(220,240,239,.22)');glass.addColorStop(.82,'rgba(108,151,154,.56)');glass.addColorStop(1,'rgba(117,163,163,.4)');
       g.fillStyle=glass;g.strokeStyle='#525062';g.lineWidth=2;
       rr(tx,ty-th/2,tw,th,Math.min(9,th*.15));g.fill();g.stroke();
       // Narrow open ends and visible inlet point in the direction of airflow.
@@ -2787,10 +2809,10 @@ switchSubTab('g', 'survey_dash');
       // Actual sorbent is shown as two dark granular beds.
       g.fillStyle='#403e4b';g.fillRect(front,ty-th*.34,frontW,th*.68);
       g.fillStyle='#525062';g.fillRect(backup,ty-th*.34,backupW,th*.68);
-      for(var k=0;k<125;k++){
-        var isBackup=k>=95, bx=isBackup?backup:front, bw=isBackup?backupW:frontW;
+      for(var k=0;k<300;k++){
+        var isBackup=k>=220, bx=isBackup?backup:front, bw=isBackup?backupW:frontW;
         var u=((k*47)%101)/101,v=((k*31)%97)/97;
-        dot(bx+4+u*(bw-8),ty-th*.29+v*th*.58,Math.max(.6,th*.023),'182,181,189',.45);
+        dot(bx+4+u*(bw-8),ty-th*.29+v*th*.58,Math.max(.65,th*(.012+(k%5)*.004)),k%3?'147,145,139':'25,27,29',.65);
       }
       // Fine retaining plugs and glass reflection.
       g.fillStyle='#d9d9dd';[front-5,front+frontW+1,backup-5,backup+backupW+1].forEach(function(x){g.fillRect(x,ty-th*.36,4,th*.72);});
@@ -2836,7 +2858,12 @@ switchSubTab('g', 'survey_dash');
       g.restore();
     }
 
-    function draw(){ if(!reduce) tt+=0.01; var p=prog;
+    var previousTime=0, displayedProgress=0;
+    function draw(now){
+      var elapsed=Math.min(0.05,(now-previousTime)/1000); previousTime=now;
+      if(!reduce) tt+=elapsed*.6;
+      displayedProgress=reduce?prog:lerp(displayedProgress,prog,1-Math.exp(-elapsed*18));
+      var p=displayedProgress;
       var aEng=band(p,-1,0.03,0.15,0.21), aLab=band(p,0.19,0.25,0.33,0.39),
           aSoft=band(p,0.37,0.43,0.50,0.56), aDust=band(p,0.54,0.60,0.66,0.72),
           fin=ramp(p,0.70,1.0);
@@ -2858,8 +2885,8 @@ switchSubTab('g', 'survey_dash');
 
       var ph = p<0.19?0 : (p<0.37?1 : (p<0.54?2 : (p<0.70?3 : 4)));
       if(ph!==curPh){ curPh=ph;
-        if(title){ title.style.opacity=0; setTimeout(function(){ title.textContent=TITLES[ph]; title.style.opacity=1; },170); }
-        if(cap){ cap.style.opacity=0; setTimeout(function(){ cap.textContent=CAPS[ph]; cap.style.opacity=1; },170); }
+        if(title) title.textContent=TITLES[ph];
+        if(cap){ cap.textContent=CAPS[ph]; cap.hidden=!CAPS[ph]; }
       }
       for(var i=0;i<rail.length;i++){ rail[i].classList.toggle('on',i<=ph); }
       // hide the heading box entirely during the finale (phase 4); keep it for phases 0-3
