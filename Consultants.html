@@ -1298,6 +1298,22 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 @media(max-width:1050px){.brandHeroInner{grid-template-columns:minmax(0,1fr);gap:24px}.brandProduct{max-width:960px;justify-self:center}.brandHeroCopy{max-width:780px}.brandIntro{max-width:54ch}.recordSteps.card-group{grid-template-columns:1fr}.recordSteps article.card+article.card{border-left:0!important;border-top:1px solid #bdc8c4!important}.recordSteps p{max-width:60ch}.recordExport{grid-template-columns:1fr;gap:24px!important}}
 @media(max-width:700px){.brandHeroInner{padding:32px 16px}.brandProductTop,.brandProductFoot{font-size:.85rem}.recordProof{grid-template-columns:1fr}.sciCanvas{top:40%;height:36%}.sciSoft,.sciSoft.on{top:42%;max-height:51%}.sciTitle{font-size:clamp(24px,5vw,34px)}.sciCaption{font-size:1rem}.sciSound{bottom:32px}.recordSteps h3{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.brandProduct{transform:none}}
+</style><style>
+.fieldExamples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;perspective:1200px}
+.fieldExamples article{position:relative;display:flex;flex-direction:column;min-width:0;padding:clamp(20px,2vw,32px);overflow-wrap:anywhere;border-radius:5px;color:#fff;box-shadow:0 5px 14px #20212a22}
+.fieldExamples header,.fieldExamples footer,.fieldExamples dt{font:500 .85rem/1.5 ui-monospace,monospace}
+.fieldExamples header{letter-spacing:.08em;text-transform:uppercase;color:#d2d6dd}
+.fieldExamples h3{font-size:clamp(24px,2.4vw,36px);line-height:1.15;margin:20px 0 8px;color:white}
+.fieldExamples p{color:#f3f2f7;line-height:1.5;margin:0 0 18px}
+.fieldExamples footer{margin-top:auto;padding-top:16px;border-top:1px solid #ffffff40}
+.fieldSample{background:linear-gradient(155deg,#383b42,#1c1e23 66%);border:1px solid #60646c}
+.fieldSample:before{content:"";position:absolute;inset:0 9% auto;height:2px;background:linear-gradient(90deg,transparent,#a9dfdc,transparent)}
+.fieldSample h3{font-family:ui-monospace,monospace}
+.fieldReadout{background:#202a2c;border:1px solid #455658}
+.fieldReadout header{color:#abded4}.fieldReadout dl{display:grid;grid-template-columns:auto 1fr;margin:8px 0 0}
+.fieldReadout dt,.fieldReadout dd{padding:7px 0;border-top:1px solid #435053}.fieldReadout dt{color:#c1d0cf}.fieldReadout dd{font-size:.9rem;text-align:right;margin:0;padding-left:8px}
+.fieldExport{background:linear-gradient(128deg,#514764,#393345 64%,#302a3a);border:1px solid #766983;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+@media(max-width:960px){.fieldExamples{grid-template-columns:1fr}.fieldExamples article{padding:22px}}
 </style></head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1757,10 +1773,10 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 <section class="recordStory" aria-labelledby="recordStoryTitle">
 <div class="recordStoryInner">
 <header class="recordStoryHeader"><span class="recordEyebrow">FROM FIELDWORK TO FOLLOW-UP</span><h2 id="recordStoryTitle">Capture it once.<br>Keep the context.</h2></header>
-<div class="recordSteps card-group">
-<article class="card"><span class="recordStepNumber">01 / CAPTURE</span><div class="card-body"><h3>Follow the prompts.</h3><p>Project questions guide what samplers record.</p></div><div class="recordTokens"><span>Field notes</span><span>Daily observations</span></div></article>
-<article class="card"><span class="recordStepNumber">02 / KEEP TOGETHER</span><div class="card-body"><h3>A sample with its story.</h3><p>Equipment, calibration, and observations stay with the sample.</p></div><div class="recordTokens"><span>Serial numbers</span><span>Pre / post calibration</span></div></article>
-<article class="card"><span class="recordStepNumber">03 / TAKE WITH YOU</span><div class="card-body"><h3>Ready to export.</h3><p>Download the records in Excel or PDF.</p></div><div class="recordTokens"><span>Excel</span><span>PDF</span></div></article>
+<div class="fieldExamples">
+  <article class="fieldSample"><header>Sample ID</header><h3>#NoiseTest</h3><p>#001 | Noise Tester</p><footer>Casella CEL Noise Dosimeter Calibrator</footer></article>
+  <article class="fieldReadout"><header>Sample record</header><h3>Noise Dose</h3><dl><dt>Sample type</dt><dd>Full shift</dd><dt>Start time</dt><dd>08:00 am</dd><dt>Last check</dt><dd>Not checked</dd><dt>Status</dt><dd>Finished with results</dd></dl></article>
+  <article class="fieldExport"><header>Export</header><h3>Take the record with you.</h3><p>Download the records in Excel or PDF.</p><footer>Excel &nbsp; / &nbsp; PDF</footer></article>
 </div>
 <aside class="recordProof">
 <div class="recordProofStat"><strong>20%</strong><span>minimum efficiency gain<br>reported by a user</span></div>
@@ -3131,6 +3147,16 @@ questions:'M2 3h12v7H2zm0 11h12v7H2zM17 2h6l-3 8h3l-7 13 2-10h-3z'
 document.querySelectorAll('#exNav li').forEach(li=>{li.insertAdjacentHTML('afterbegin','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+icons[li.dataset.tab]+'"/></svg>');});
 })();
 </script>
-</body>
+<script>
+const exportTile=document.querySelector('.fieldExport');
+const tiltEnabled=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+exportTile.addEventListener('pointermove',event=>{
+  if(!tiltEnabled.matches)return;
+  const bounds=exportTile.getBoundingClientRect();
+  exportTile.style.setProperty('--rx',(0.5-(event.clientY-bounds.top)/bounds.height)*6+'deg');
+  exportTile.style.setProperty('--ry',((event.clientX-bounds.left)/bounds.width-0.5)*8+'deg');
+});
+exportTile.addEventListener('pointerleave',()=>{exportTile.style.removeProperty('--rx');exportTile.style.removeProperty('--ry');});
+</script></body>
 </html>
 
