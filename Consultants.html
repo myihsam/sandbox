@@ -1322,7 +1322,50 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 #sandbox #explore .scenarioPair{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(12px,2vw,26px);margin-top:22px;align-items:start;container-type:inline-size}#sandbox #explore .scenarioPair>.cardShadow{margin:0;min-width:0;border-radius:4px;box-shadow:0 2px 7px #24233226;padding:18px;background:white}#sandbox #explore .scenarioPair .dashboardChartTitle{font-size:clamp(22px,1.7vw,28px);line-height:1.2}#sandbox #explore .scenarioPair .donutGrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;align-items:center}#sandbox #explore .scenarioPair .donutClients{max-height:none;overflow:visible;width:auto}#sandbox #explore .donutClients label{display:flex;align-items:baseline;gap:8px;font-size:17px;line-height:1.4;margin:8px 0}#sandbox #explore .scenarioPair .donutBox{width:100%;max-width:320px;min-width:0;height:auto;aspect-ratio:1}#sandbox #explore .donutBox svg{width:100%;height:100%}#sandbox #explore .scenarioPair .dashResults{max-height:none;overflow:visible;padding:0}#sandbox #explore .scenarioPair .dashResults :is(td,th){font-size:16px;line-height:1.4;padding:12px;white-space:normal}#sandbox #explore #donutHaz{min-width:0!important;max-width:100%;width:100%;font-size:17px}
 @media(max-width:1150px){#sandbox #explore .scenarioPair{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:750px){.sampleShowcase{grid-template-columns:minmax(0,1fr)}.bmrReport .bmrGrid{grid-template-columns:minmax(0,1fr) minmax(0,1.55fr)}}
-@media(max-width:600px){#sandbox #explore .scenarioPair .donutGrid{grid-template-columns:minmax(0,1fr)}#sandbox #explore .scenarioPair .donutBox{max-width:250px;margin:auto}}.lpMenu a{display:block;padding:12px 14px;margin:4px;background:#f3f5f5;border:1px solid #d8dede;border-radius:3px;color:#403e4b;font-size:17px;line-height:1.35}.lpMenu a:is(:hover,:focus-visible){background:#e0eded;border-color:#638487}.lpMenu a[href="blog.html"]{font-weight:700}</style><style>#sandbox #explore .scenarioPair table{width:100%;min-width:0;table-layout:fixed}#sandbox #explore .scenarioPair th:first-child{width:5.5em}#sandbox #explore .dashResults>div{flex-wrap:wrap} @media(max-width:700px){#sandbox #explore .exShell{flex-direction:column}#sandbox #explore .exSide{width:100%;height:auto}#sandbox #explore .exSide .who{display:none}#sandbox #explore .exNav{display:flex;overflow-x:auto}#sandbox #explore .exNav li{white-space:nowrap;flex:none}#sandbox #explore .exMain{padding:12px}#sandbox #explore .scenarioPair .dashDates label{min-width:0;display:block}}</style></head>
+@media(max-width:600px){#sandbox #explore .scenarioPair .donutGrid{grid-template-columns:minmax(0,1fr)}#sandbox #explore .scenarioPair .donutBox{max-width:250px;margin:auto}}.lpMenu a{display:block;padding:12px 14px;margin:4px;background:#f3f5f5;border:1px solid #d8dede;border-radius:3px;color:#403e4b;font-size:17px;line-height:1.35}.lpMenu a:is(:hover,:focus-visible){background:#e0eded;border-color:#638487}.lpMenu a[href="blog.html"]{font-weight:700}</style><style>#sandbox #explore .scenarioPair table{width:100%;min-width:0;table-layout:fixed}#sandbox #explore .scenarioPair th:first-child{width:5.5em}#sandbox #explore .dashResults>div{flex-wrap:wrap} @media(max-width:700px){#sandbox #explore .exShell{flex-direction:column}#sandbox #explore .exSide{width:100%;height:auto}#sandbox #explore .exSide .who{display:none}#sandbox #explore .exNav{display:flex;overflow-x:auto}#sandbox #explore .exNav li{white-space:nowrap;flex:none}#sandbox #explore .exMain{padding:12px}#sandbox #explore .scenarioPair .dashDates label{min-width:0;display:block}}</style><style id="phone-tour">
+.workspacePicker{display:none}
+@media(max-width:700px),(max-height:500px) and (max-width:950px){
+ #sandboxModal[open]{display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+ #sandboxModal .previewBar{flex:none;height:auto;min-height:48px;padding:2px 12px}
+ #sandboxModal #previewMount{flex:1;min-height:0;height:auto}
+ #sandbox .stage,#sandbox #explore .exMain{overscroll-behavior:contain}
+ #sandbox .wrap,#sandbox .shell,#sandbox .stage,#sandbox .slide,#sandbox #explore .exShell{min-width:0}
+ #sandbox .progress{padding:0 12px;gap:4px}
+ #sandbox .progress button{height:24px;min-height:24px!important;background:transparent!important;position:relative}
+ #sandbox .progress button:after{content:'';position:absolute;inset:10px 0;background:#dde5e5;border-radius:3px}
+ #sandbox .progress button.on:after{background:#558787}
+ #sandbox.tourOpening .progress{display:none!important}
+ #sandbox .nav .btn,#sandboxModal .previewBar button{min-height:44px}
+ #sandbox .slide:not(:first-child){padding:16px;overflow-wrap:anywhere}
+ #sandbox .grid2,#sandbox .projectOverview{grid-template-columns:minmax(0,1fr)}
+ #sandbox .grid2>*{min-width:0}
+ #sandbox .radioRow,#sandbox .appbar{flex-wrap:wrap}
+ #sandbox .radioRow label{min-height:44px;display:inline-flex;align-items:center}
+ #sandbox .slide :is(input,textarea,select){max-width:100%;min-width:0;font-size:16px}
+ #sandbox .referenceLayout{grid-template-columns:minmax(0,1fr)}
+ #sandbox .referenceSide,#sandbox #explore .exSide,#sandbox #explore .platformMenu,#sandbox #explore .mobileHint{display:none}
+ #sandbox .referenceFilters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #sandbox .referenceClient{grid-column:1/-1}
+ #sandbox .referenceDashboard{height:min(630px,83svh)}
+ #sandboxModal #sandbox .referenceDashboard{height:100%}
+ #sandboxModal .openingDashboard.active{height:100%}
+ #sandbox #explore .exTop{height:auto;padding:5px 10px;gap:12px;min-height:54px}
+ #sandbox #explore .workspacePicker{display:block;min-width:0;flex:1;height:44px;background:white;color:#292836;font-size:16px}
+ #sandbox #explore .exTop .abtn{min-height:44px;flex:none}
+ #sandbox #explore .exShell{flex:1;min-height:0;display:flex;flex-direction:column}
+ #sandbox #explore .exMain{width:100%;padding:10px}
+ #sandbox #explore .cardShadow{min-width:0;padding:14px}
+ #sandbox #explore .dashDates{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #sandbox #explore :is(th,td){padding:10px;overflow-wrap:anywhere}
+ #sandbox #explore table{display:block;min-width:0;max-width:100%;overflow:auto}
+ #sandbox #explore .scenarioPair table{display:table}
+ #sandbox #explore .hbarRow{display:block;padding:4px 0}
+ #sandbox #explore .hbarLabel{width:auto;text-align:left;font-size:15px}
+ #sandbox #explore .hAxis{margin-left:0}
+ #sandbox .svGrid{flex-direction:column}
+ #sandbox .svGrid>div{width:100%}
+}
+</style></head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
 
@@ -1425,7 +1468,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
       <div class="stage" id="stage">
 
         <section class="slide active openingDashboard">
-<div class="tourStart"><button class="btn" type="button" onclick="go(1)">Start Tour <span aria-hidden="true">→</span></button></div>
+<div class="tourStart"><button class="btn" type="button" onclick="if(phoneTour.matches)openSandbox();go(1)">Start Tour <span aria-hidden="true">→</span></button></div>
 <div class="referenceDashboard" aria-label="OEL Dashboard — illustrative sample data">
 <div class="referenceTop"><button type="button" aria-label="Toggle dashboard navigation" aria-expanded="true" onclick="var d=this.closest('.referenceDashboard');d.classList.toggle('navCollapsed');this.setAttribute('aria-expanded',!d.classList.contains('navCollapsed'))">☰</button></div>
 <div class="referenceLayout"><aside class="referenceSide"><div class="referenceUser"><span aria-hidden="true">●</span><div><b>Jordan Smith</b><small>XYZ Consulting</small></div><span aria-hidden="true">⌄</span></div><nav aria-label="Dashboard preview"><button type="button" class="selected" onclick="enterExplore();showTab('dashboard')"><span aria-hidden="true">▦</span>Dashboard</button><button type="button" class="" onclick="enterExplore();showTab('clients')"><span aria-hidden="true">♟</span>Client</button><button type="button" class="" onclick="enterExplore();showTab('projects')"><span aria-hidden="true">▣</span>Projects</button><button type="button" class="" onclick="enterExplore();showTab('samples')"><span aria-hidden="true">⚗</span>Samples</button><button type="button" class="" onclick="enterExplore();showTab('media')"><span aria-hidden="true">♧</span>Sample Media</button><button type="button" class="" onclick="enterExplore();showTab('instruments')"><span aria-hidden="true">⚒</span>Instruments</button><button type="button" class="" onclick="enterExplore();showTab('calibration')"><span aria-hidden="true">☷</span>Calibration</button><button type="button" class="" onclick="enterExplore();showTab('questions')"><span aria-hidden="true">▤</span>Question groups</button><button type="button" onclick="go(5)"><span aria-hidden="true">▥</span>OEL Table</button></nav></aside>
@@ -1893,6 +1936,7 @@ reportSub:"Export field records to Excel or PDF.",
 ctaFoot:"*Based on internal data from beta testing and active user subscriptions."
 };
 
+const phoneTour=matchMedia('(max-width:700px),(max-height:500px) and (max-width:950px)');
 let cur = 0;
 const slides = document.querySelectorAll('.slide');
 const N = slides.length;
@@ -2503,7 +2547,9 @@ ci.addEventListener('mouseleave',hideTip);
 });
 }
 function showTab(t){
+const picker=document.querySelector('.workspacePicker');if(picker)picker.value=t;
 const m=document.getElementById('exMain');
+m.scrollTop=0;m.scrollLeft=0;
 m.classList.toggle('dashboardView',t==='dashboard');
 if(t==='dashboard'){
 m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
@@ -3124,7 +3170,7 @@ switchSubTab('g', 'survey_dash');
   };
   document.getElementById('closePreview').addEventListener('click',function(){modal.close();});
   modal.addEventListener('close',function(){
-    marker.after(sandbox);document.body.style.overflow=previousOverflow;
+    marker.after(sandbox);if(phoneTour.matches){exitExplore();go(0);}document.body.style.overflow=previousOverflow;
     var behavior=document.documentElement.style.scrollBehavior;document.documentElement.style.scrollBehavior='auto';window.scrollTo(savedX,savedY);document.documentElement.style.scrollBehavior=behavior;
     if(lastFocus)lastFocus.focus({preventScroll:true});
   });
@@ -3149,6 +3195,12 @@ const top=document.querySelector('#explore .exTop');
 const menu=document.createElement('button');menu.className='platformMenu';menu.textContent='☰';menu.setAttribute('aria-label','Toggle navigation');menu.setAttribute('aria-expanded','true');
 menu.onclick=()=>{const closed=document.getElementById('explore').classList.toggle('sidebarClosed');menu.setAttribute('aria-expanded',String(!closed));};
 top.prepend(menu);
+const picker=document.createElement('select');
+picker.className='workspacePicker';
+picker.setAttribute('aria-label','Explore workspace');
+document.querySelectorAll('#exNav li').forEach(item=>picker.add(new Option(item.textContent.trim(),item.dataset.tab)));
+picker.onchange=()=>document.querySelector('#exNav [data-tab="'+picker.value+'"]').click();
+top.prepend(picker);
 const icons={
 dashboard:'M3 3h8v8H3zm10 0h8v5h-8zm0 7h8v11h-8zM3 13h8v8H3z',
 clients:'M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 22v-5c0-7 16-7 16 0v5z',
@@ -3162,16 +3214,6 @@ questions:'M2 3h12v7H2zm0 11h12v7H2zM17 2h6l-3 8h3l-7 13 2-10h-3z'
 document.querySelectorAll('#exNav li').forEach(li=>{li.insertAdjacentHTML('afterbegin','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+icons[li.dataset.tab]+'"/></svg>');});
 })();
 </script>
-<script>
-const exportTile=document.querySelector('.fieldExport');
-const tiltEnabled=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
-exportTile.addEventListener('pointermove',event=>{
-  if(!tiltEnabled.matches)return;
-  const bounds=exportTile.getBoundingClientRect();
-  exportTile.style.setProperty('--rx',(0.5-(event.clientY-bounds.top)/bounds.height)*6+'deg');
-  exportTile.style.setProperty('--ry',((event.clientX-bounds.left)/bounds.width-0.5)*8+'deg');
-});
-exportTile.addEventListener('pointerleave',()=>{exportTile.style.removeProperty('--rx');exportTile.style.removeProperty('--ry');});
-</script></body>
+</body>
 </html>
 
