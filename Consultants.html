@@ -1314,7 +1314,9 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 .fieldReadout dt,.fieldReadout dd{padding:7px 0;border-top:1px solid #435053}.fieldReadout dt{color:#c1d0cf}.fieldReadout dd{font-size:.9rem;text-align:right;margin:0;padding-left:8px}
 .fieldExport{background:linear-gradient(128deg,#514764,#393345 64%,#302a3a);border:1px solid #766983;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
 @media(max-width:960px){.fieldExamples{grid-template-columns:1fr}.fieldExamples article{padding:22px}}
-</style></head>
+</style><style>.questionLink{background:none;border:0;font:inherit;color:#44435c;text-decoration:underline;cursor:pointer}.svHead .svTabs{display:flex;flex-wrap:wrap;gap:0}.svTabs button{font-weight:600;line-height:1.25;font-family:inherit;font-size:15px;padding:12px;border:0;border-bottom:3px solid transparent;color:#182e30;background:transparent;cursor:pointer}.svTabs button.on{color:#102122;border-bottom-color:white;background:#ffffff26}.svTabs sup{background:#ad312a;color:white;border-radius:1em;padding:2px 5px}
+.svBody:is([data-view=project_dash],[data-view=questions],[data-view=proj_info]){max-width:1152px;margin:auto;padding:clamp(12px,2vw,30px);background:#fafbfc;border:0;color:#504e60}.svBody[data-view=project_dash] h2,.projectQuestions h2{font-size:clamp(24px,2vw,34px);font-weight:400;margin:0 0 18px}.projectOverview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:24px}.projectOverview article,.surveyDays{background:white;border-radius:4px;box-shadow:0 1px 4px #0003;padding:16px;min-width:0;overflow-wrap:anywhere}.projectOverview h3,.svBody[data-view=project_dash]>h3{font-size:20px;margin:0 0 14px}.projectOverview p,.planStats{font:16px/1.5 Roboto,Arial,sans-serif;margin:6px 0}.planStats,.questionActions{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}.projectOverview progress{width:100%;height:18px;accent-color:#517f80}.surveyDays{overflow-x:auto;padding:0}.svBody[data-view=project_dash] :is(td,th){font-size:15px;line-height:1.4;padding:10px;text-transform:none;letter-spacing:normal}.projectQuestions details{margin:8px 0;background:white;border:1px solid #ddd;border-radius:4px}.projectQuestions summary{cursor:pointer;background:#514e60;color:white;padding:12px 16px;font-weight:600}.projectQuestions form,.exportChoice{padding:12px 16px}.projectQuestions form label,.projectQuestions textarea,.projectQuestions select{display:block;width:100%;margin:0 0 10px;font:inherit}.projectQuestions textarea,.projectQuestions select{padding:8px;border:1px solid #9796a0;color:#222;background:white}.projectQuestions button{font:inherit;background:#504e60;color:white;padding:8px 14px;border:0;border-radius:4px;cursor:pointer}.projectQuestions button:disabled{background:#ddd;color:#555}.projectQuestions [role=status]{margin-inline:10px}.questionActions{justify-content:flex-start}.projectQuestions h3{margin:16px 0 8px}.projectQuestions .exportChoice{display:flex;align-items:center;gap:8px}.exportChoice input{width:auto}.projectQuestions p{margin:12px 0}@media(max-width:700px){.projectOverview{grid-template-columns:1fr}.svTabs button{padding:8px;font-size:14px}}</style>
+</head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
 
@@ -2179,12 +2181,7 @@ toggleSampleMenu(p);
 function svHTML(p){
 return `<div class="svHead">
 <div class="svTitle">Hazards Survey <span>#SG-0621-2024</span></div>
-<div class="svTabs">
-<span onclick="switchSubTab('${p}','project_dash')">Project Dashboard</span>
-<span class="on" onclick="switchSubTab('${p}','survey_dash')">Survey Dashboard</span>
-<span onclick="switchSubTab('${p}','loc_info')">Location info</span>
-<span onclick="switchSubTab('${p}','proj_info')">Project config</span>
-<span onclick="switchSubTab('${p}','questions')">Questions <div style="display:inline-block; background:#D33B2F; color:#fff; font-size:1rem; padding:1px 5px; border-radius:10px; margin-left:4px; vertical-align:top;">45</div></span>
+<div class="svTabs"><button type="button" data-view="project_dash" onclick="switchSubTab('${p}','project_dash')">Project Dashboard</button><button type="button" data-view="survey_dash" onclick="switchSubTab('${p}','survey_dash')">Survey Dashboard</button><button type="button" data-view="loc_info" onclick="switchSubTab('${p}','loc_info')">Location info</button><button type="button" data-view="proj_info" onclick="switchSubTab('${p}','proj_info')">Project config</button><button type="button" data-view="questions" onclick="switchSubTab('${p}','questions')">Questions <sup>45</sup></button>
 </div>
 </div>
 <div class="svBody" id="${p}ContentContainer"><div class="svGrid">
@@ -2203,15 +2200,55 @@ return `<div class="svHead">
 </div>
 </div></div>`;
 }
-function switchSubTab(p, tabName) {
-const container = document.getElementById(p + 'ContentContainer');
-const tabs = container.parentElement.querySelectorAll('.svTabs span');
-tabs.forEach(t => t.classList.remove('on'));
-if (typeof event !== 'undefined' && event && event.target && event.target.closest && event.target.closest('.svTabs')) {
-event.target.classList.add('on');
-} else {
-tabs.forEach(t => { const oc = t.getAttribute('onclick') || ''; if (oc.indexOf("'" + tabName + "'") !== -1) t.classList.add('on'); });
+const demoQuestionAnswers=new Map();
+function renderQuestionGroups(host,groups,project){
+ const title=document.createElement('h2');title.textContent=project?'Prompted Questions':'Question groups';
+ const wrap=document.createElement('div');wrap.className='projectQuestions';wrap.append(title);host.replaceChildren(wrap);
+ const forms=[];
+ function download(selected){
+  const rows=[['Group','Question','Answer']];
+  forms.forEach(({name,form,select})=>{
+   if(selected&&!select.checked)return;
+   for(const [question,value] of new FormData(form))rows.push([name,question,value]);
+  });
+  const escape=v=>'"'+(/^[=+\-@\t\r]/.test(v)?"'":"")+v.replaceAll('"','""')+'"';
+  const url=URL.createObjectURL(new Blob([rows.map(row=>row.map(escape).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='demo-questions.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ }
+ const actions=document.createElement('div');actions.className='questionActions';wrap.append(actions);
+ const selected=document.createElement('button');selected.textContent='Download selected daily questions';selected.disabled=true;selected.onclick=()=>download(true);
+ const all=document.createElement('button');all.textContent='Download all questions';all.onclick=()=>download(false);actions.append(selected,all);
+ if(project){const day=document.createElement('p');day.textContent='Survey Dashboard · Sunday 07 December 2025';wrap.append(day);}
+ groups.forEach(([name,prompts,daily],index)=>{
+  if(project&&(index===0||!daily)){const heading=document.createElement('h3');heading.textContent=daily?'Daily Questions':'One time Questions';wrap.append(heading);}
+  const details=document.createElement('details');details.open=index===0;
+  const summary=document.createElement('summary');summary.textContent=name;
+  const form=document.createElement('form');const select=document.createElement('input');select.type='checkbox';
+  if(daily){const choice=document.createElement('label');choice.className='exportChoice';choice.append(select,' Include in daily download');select.onchange=()=>selected.disabled=!forms.some(x=>x.select.checked);details.append(summary,choice,form);}else details.append(summary,form);
+  const key='myih-demo-questions-v1:'+name;
+  let saved=demoQuestionAnswers.get(key)||{};try{saved=JSON.parse(sessionStorage.getItem(key))||saved;}catch{}
+  for(const prompt of prompts){
+   const label=document.createElement('label');label.append(prompt);
+   const binary=prompt==='Are there 5 workers in the confined space?';
+   const field=document.createElement(binary?'select':'textarea');
+   if(binary){for(const v of ['','Yes','No'])field.add(new Option(v||'Choose an answer',v));}else field.rows=2;
+   field.name=prompt;field.value=saved[prompt]||'';label.append(field);form.append(label);
+  }
+  const submit=document.createElement('button');submit.textContent='Save answers';
+  const status=document.createElement('span');status.setAttribute('role','status');
+  form.oninput=()=>status.textContent='Unsaved changes';
+  form.onsubmit=event=>{event.preventDefault();const values=Object.fromEntries(new FormData(form));demoQuestionAnswers.set(key,values);try{sessionStorage.setItem(key,JSON.stringify(values));}catch{}status.textContent='Answers saved for this demo session.';};
+  form.append(submit,status);forms.push({name,form,select});wrap.append(details);
+ });
 }
+function switchSubTab(p, tabName) {
+const container=document.getElementById(p+'ContentContainer');
+container.dataset.view=tabName;
+container.parentElement.querySelectorAll('.svTabs button').forEach(tab=>{
+ const active=tab.dataset.view===tabName;
+ tab.classList.toggle('on',active);
+ tab.setAttribute('aria-pressed',String(active));
+});
 if(tabName === 'survey_dash') {
 container.innerHTML = `<div class="svGrid">
 <div>${samplesPanelHTML(p)}</div>
@@ -2231,37 +2268,12 @@ container.innerHTML = `<div class="svGrid">
 initLog(p);
 } else if(tabName === 'project_dash') {
 container.innerHTML = `
-<div class="svGrid">
-<div style="display:flex; flex-direction:column; gap:14px; flex:1;">
-<div class="cardShadow" style="background:#fff;">
-<h3 style="margin-bottom:10px; font-size:1rem;">#SG-0621-2025</h3>
-<b style="font-size:1rem;">Hazards Survey</b><br>
-<div style="font-size:1rem; color:var(--ink-soft); margin-top:5px; line-height:1.5;">100 myIH Rd<br>70820 Indianapolis<br>IN United States</div>
-</div>
-<div class="cardShadow" style="background:#fff;">
-<h3 style="margin-bottom:10px; font-size:1rem;">Contact information</h3>
-<div style="font-size:1rem; color:var(--ink-soft); line-height:1.6;">Sam Davidson<br>Email: sdavidson@myihportal.com<br>Phone: 888-760-8811</div>
-</div>
-</div>
-<div style="flex:2;">
-<div class="cardShadow" style="background:#fff; position:relative; height:100%;">
-<div style="display:flex; justify-content:space-between; align-items:flex-start;">
-<h3 style="font-size:1rem;">Sampling Plan</h3>
-<button class="abtn" style="background:var(--teal-deep); opacity:0.7; pointer-events:none;">MANAGE SAMPLING PLAN</button>
-</div>
-<div style="display:flex; justify-content:space-between; margin-top:15px; font-size:1rem;">
-<div><b>First survey date</b><br>August 15, 2025</div>
-<div style="text-align:right;"><b>Samples taken</b><br>32 / 39</div>
-</div>
-<div style="height:120px; background:#f4f6f6; margin-top:20px; display:flex; align-items:center; justify-content:center; border:1px solid #e1e5e6; color:var(--ink-soft); font-size:1rem;">
-[ Chart Visualization Placeholder ]
-</div>
-</div>
-</div>
-</div>
-<div class="cardShadow" style="background:#fff; margin-top:14px;">
-<h3 style="margin-bottom:10px; font-size:1rem;">Survey days</h3>
-<table style="width:100%;">
+<h2>Hazards Survey</h2><div class="projectOverview">
+<article><h3>#SG-0621-2025</h3><strong>Hazards Survey</strong><p>100 myIH Rd<br>70820 Indianapolis<br>IN United States</p></article>
+<article><h3>Contact information</h3><p>Sam Davidson</p><p>sdavidson@myihportal.com<br>888-760-8811</p></article>
+<article><h3>Sampling Plan</h3><div class="planStats"><span><b>First survey date</b><br>August 15, 2025</span><span><b>Samples taken</b><br>32 / 39</span></div><progress value="32" max="39" aria-label="32 of 39 planned samples taken"></progress><small>7 samples remaining</small></article>
+<article><h3>Employee Plan</h3><table><thead><tr><th>Employee name</th><th>Employee number</th></tr></thead><tbody><tr><td>Walter Paton</td><td>789562</td></tr></tbody></table></article></div>
+<h3>Survey days</h3><div class="surveyDays"><table>
 <thead><tr><th>Created at</th><th>Sampler(s)</th><th>Samples created</th><th>Lab results</th><th>Recent activity</th></tr></thead>
 <tbody>
 <tr><td>2025-07-30</td><td>Sam Davidson</td><td>1</td><td>1</td><td>Oct 04, 2025 04:22 PM</td></tr>
@@ -2273,39 +2285,12 @@ container.innerHTML = `
 </table>
 </div>`;
 } else if(tabName === 'questions') {
-container.innerHTML = `
-<div style="padding:10px;">
-<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-<h2 style="font-size:1.5rem; font-weight:400; color:var(--slate);">Prompted Questions</h2>
-<div style="display:flex; gap:10px;">
-<button class="abtn" style="background:#4E495F;">DOWNLOAD SELECTED DAILY QUESTIONS</button>
-<button class="abtn" style="background:#4E495F;">DOWNLOAD ALL QUESTIONS</button>
-</div>
-</div>
-<div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; margin-bottom:15px; flex-wrap:wrap;">
-<h3 style="font-size:1.125rem; color:var(--slate); font-weight:500;">Survey Dashboard, Sun 07 Dec 2025</h3>
-<div style="font-size:1rem; color:var(--ink-soft);">Sunday 07 December 2025 &nbsp;|&nbsp; &lt; &nbsp; &gt;</div>
-</div>
-<h3 style="margin-bottom:10px; font-size:1.125rem; color:var(--slate); font-weight:600;">Daily Questions</h3>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:1rem;">Benzene Air Sampling Documentation Questions <span>˅</span></div>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:8px; display:flex; justify-content:space-between; font-size:1rem;">Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling <span>˅</span></div>
-<div style="background:#524e5d; color:#fff; padding:14px 18px; border-radius:4px; margin-bottom:20px; display:flex; justify-content:space-between; font-size:1rem;">Asbestos Air Sampling Questions - Daily <span>˅</span></div>
-<h3 style="margin-bottom:10px; font-size:1.125rem; color:var(--slate); font-weight:600;">One time Questions</h3>
-<div style="border:1px solid var(--line); border-radius:4px; overflow:hidden;">
-<div style="background:#524e5d; color:#fff; padding:14px 18px; display:flex; justify-content:space-between; font-size:1rem;">Catalyst change Out <span>˄</span></div>
-<div style="padding:20px; background:#fff;">
-<p style="font-size:1rem; color:var(--ink-soft); margin-bottom:10px;">Are there 5 workers in the confined space</p>
-<div style="display:flex; gap:15px; margin-bottom:20px;">
-<label style="font-size:1rem; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> Yes</label>
-<label style="font-size:1rem; display:flex; align-items:center; gap:5px;"><input type="radio" name="q_conf"> No</label>
-</div>
-<div style="background:#FAFBFB; padding:12px; border:1px solid var(--line); border-radius:4px; min-height:80px;">
-<p style="font-size:1rem; color:var(--ink-soft);">What is the catalyst ?</p>
-</div>
-<button class="abtn" style="background:#6c757d; margin-top:20px; padding:10px 20px; font-size:1rem; opacity:0.8; pointer-events:none;">SUBMIT</button>
-</div>
-</div>
-</div>`;
+renderQuestionGroups(container,[
+['Benzene Air Sampling Documentation Questions',['Which sample ID and sampling location were recorded?','What observations should accompany the sample?'],true],
+['Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling',['Which tasks occurred during the sampling period?','When did sampling start and finish?'],true],
+['Asbestos Air Sampling Questions - Daily',['Where was the sample collected?','Which activities were observed?'],true],
+['Catalyst change Out',['Are there 5 workers in the confined space?','What is the catalyst?'],false]
+],true);
 } else if(tabName === 'proj_info') {
 container.innerHTML = `
 <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
@@ -2571,6 +2556,30 @@ questions:['Question groups',['Title','Questions','Group type'],MOCK.qgroups,'NE
 };
 const c=configs[t];if(!c)return;
 m.innerHTML='<div class="platformToolbar"><h2>'+c[0]+'</h2><input type="search" aria-label="Search '+c[0]+'" placeholder="Search '+c[0].toLowerCase()+'">'+(c[3]?'<button class="btn sm">+ '+c[3]+'</button>':'')+'</div>'+tbl(c[1],c[2],t==='projects')+'<div class="platformPager" style="text-align:right;padding:18px;font-size:14px">Rows per page: 10　　1–'+c[2].length+' of '+c[2].length+'</div>';
+if(t==='questions'){
+ const prompts=[
+ ['Are there 5 workers in the confined space?','What is the catalyst?'],
+ ['What changed during the survey?'],
+ ['What did the crew ask?','How was the question resolved?'],
+ ['Where did blasting occur?','Which media were used?','Who was observed?','Which controls were in use?'],
+ ['Which tasks were sampled?','When did the shift start?','Were there interruptions?'],
+ ['Who was on site?','What work took place?','What follow-up is needed?'],
+ ['Which samples are planned for the turnaround?'],
+ ['Which welding tasks and controls were observed?'],
+ ['Which area was sampled?','What was the sample ID?','When did sampling finish?','What field observations were recorded?']
+ ];
+ const create=m.querySelector('.platformToolbar button');if(create)create.remove();
+ m.querySelectorAll('tbody tr').forEach((row,index)=>{
+  const name=MOCK.qgroups[index][0],btn=document.createElement('button');
+  btn.type='button';btn.className='questionLink';btn.textContent=name;
+  row.cells[0].replaceChildren(btn);
+  btn.onclick=()=>{
+   renderQuestionGroups(m,[[name,prompts[index],Boolean(MOCK.qgroups[index][2])]],false);
+   const back=document.createElement('button');back.type='button';back.textContent='← Question groups';
+   back.onclick=()=>showTab('questions');m.querySelector('.projectQuestions').prepend(back);back.focus();
+  };
+ });
+}
 m.querySelector('input[type=search]').addEventListener('input',function(){
 const q=this.value.toLowerCase();
 m.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q));
