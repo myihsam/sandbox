@@ -14,7 +14,7 @@ async function visit(browser, width) {
   const checks = [];
   const errors = [];
   const consoleErrors = [];
-  page.on('console', msg => { if(msg.type()==='error') consoleErrors.push(msg.text().slice(0,240)); });
+  page.on('console', msg => { if(msg.type()==='error') consoleErrors.push((msg.location().url+' '+msg.text()).slice(0,300)); });
   page.on('pageerror', error => errors.push(error.message));
   const check = async (label, fn) => {
     try { await fn(); checks.push({ label, pass: true }); }
@@ -46,8 +46,8 @@ async function visit(browser, width) {
   await check('back and next', async () => {await click('#backBtn');await click('.tourStart button');});
   for(let step=2;step<8;step++) {
     if(step===5) {
-      await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); await click('#gContentContainer summary');
-        const form=page.locator('#gContentContainer details[open] form').first();
+      await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); const group=page.locator('#gContentContainer details').nth(1); await group.locator('summary').click();
+        const form=group.locator('form');
         const field=form.locator('textarea').first();
         await field.fill('Example field observation'); await form.locator('button').click();
         if(!(await form.locator('[role=status]').innerText()).includes('saved')) throw Error('Answers did not save');});
