@@ -1953,6 +1953,8 @@ slides[cur].classList.remove('active');
 cur=n;
 document.getElementById('sandbox').classList.toggle('tourOpening',cur===0);
 slides[cur].classList.add('active');
+const firstReportPanel = slides[cur].querySelector('.tourRecord [data-panel-id], .printDesk [data-panel-id]');
+if (firstReportPanel) firstReportPanel.click();
 document.getElementById('stepLabel').textContent=`Step ${cur+1} of ${N}`;
 var _names=['the overview','the dashboard','structural plan and scenarios','attaching the sample','the survey dashboard','entering results','the enlarged sample record','the printed sample data sheet'];
 var _st=document.getElementById('tourStatus');

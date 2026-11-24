@@ -118,6 +118,7 @@ async function visit(browser, width) {
   });
   await check('close preview and reopen at sample sheet',async () => {
     await click('#closePreview');await click('.sampleExport button');await page.locator('.slide--report.active').waitFor();
+    if(revisedTour) await page.locator('#dataSheet:visible').waitFor();
     await page.screenshot({path:output+'/report-'+width+'.png',timeout:15000});
     await page.keyboard.press('Escape');
   });
