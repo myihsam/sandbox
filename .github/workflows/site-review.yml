@@ -9,25 +9,33 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [live, branch]
+        version: [live, baseline, branch]
     runs-on: ubuntu-latest
     timeout-minutes: 12
     outputs:
       live: ${{ steps.summary.outputs.live }}
       branch: ${{ steps.summary.outputs.branch }}
+      baseline: ${{ steps.summary.outputs.baseline }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install --prefix "$RUNNER_TEMP/audit" lighthouse@12 playwright-core@1.52.0 axe-core@4
       - name: Start the site
         run: |
-          cp Consultants.html index.html
-          python3 -m http.server 8191 --bind 127.0.0.1 > /tmp/server.log 2>&1 &
           if [[ "${{ matrix.version }}" == live ]]; then
             echo 'URL=https://www.getmyih.com/' >> "$GITHUB_ENV"
           else
+            folder="$RUNNER_TEMP/marketing-site"
+            mkdir -p "$folder"
+            revision=HEAD
+            if [[ "${{ matrix.version }}" == baseline ]]; then revision=5ec18e4bac961566c69733f0a6b7fcb78a5a5d36; fi
+            git archive "$revision" | tar -x -C "$folder"
+            cp "$folder/Consultants.html" "$folder/index.html"
+            python3 -m http.server 8191 --directory "$folder" --bind 127.0.0.1 > /tmp/server.log 2>&1 &
             echo 'URL=http://127.0.0.1:8191/' >> "$GITHUB_ENV"
           fi
           mkdir review
@@ -59,10 +67,11 @@ jobs:
           path: |
             review/metrics.json
             review/audit.json
+            review/*.png
   results:
     if: always()
     needs: audit
     runs-on: ubuntu-latest
-    name: Live ${{ needs.audit.outputs.live }} · Branch ${{ needs.audit.outputs.branch }}
+    name: Live ${{ needs.audit.outputs.live }} · Baseline ${{ needs.audit.outputs.baseline }} · Branch ${{ needs.audit.outputs.branch }}
     steps:
       - run: echo "Compare the live and branch reports in the audit artifacts."

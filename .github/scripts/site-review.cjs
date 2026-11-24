@@ -16,7 +16,7 @@ async function visit(browser, width) {
   page.on('pageerror', error => errors.push(error.message));
   const check = async (label, fn) => {
     try { await fn(); checks.push({ label, pass: true }); }
-    catch (error) { checks.push({ label, pass: false, error: String(error.message).split('\n').slice(0,4).join(' ') }); }
+    catch (error) { checks.push({ label, pass: false, error: String(error.message).split('\n').slice(0,18).join(' ') }); }
   };
   const click = selector => page.locator(selector).first().click();
   await page.goto(base, {waitUntil:'domcontentloaded'});
@@ -57,6 +57,7 @@ async function visit(browser, width) {
   }
   await check('explore workspace', async () => {await click('.slide.active button[onclick="enterExplore()"]');});
   await check('open sample band and dismiss', async () => {await click('#hdash .hseg');await click('.sampleDialogClose');});
+  await page.screenshot({path:output+'/workspace-'+width+'.png',timeout:15000});
   const workspace = await audit();
   await check('workspace lists', async () => {
     for (const name of ['clients','projects','samples','media','instruments','calibration','questions']) {
