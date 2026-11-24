@@ -1434,6 +1434,8 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
   .brandProof { margin-top: 10px; gap: 4px 8px; font-size: .85rem; line-height: 1.4; }
 }
 </style>
+<link rel="stylesheet" href="assets/tour/tour.css">
+<script defer src="assets/tour/tour.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1517,7 +1519,10 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
     </div>
     <div class="brandProduct">
       <div class="brandProductTop"><span class="liveDot"></span> THE FIELD DAY, CONNECTED <span class="brandProductTag">myIH / SURVEY</span></div>
-      <div class="brandProductImage"><img src="assets/survey-dashboard-4dcff.webp" width="1080" height="1080" decoding="async" srcset="assets/survey-dashboard-4dcff-640.webp 640w, assets/survey-dashboard-4dcff.webp 1080w" sizes="(max-width:1050px) 94vw, 55vw" fetchpriority="high" alt="myIH Survey Dashboard showing Samples and Subjects beside the tagged Daily Log"></div>
+      <div class="brandProductImage"><picture>
+        <source media="(max-width:600px)" srcset="assets/survey-mobile.svg" width="440" height="590">
+        <img src="assets/survey.svg" width="960" height="530" fetchpriority="high" alt="Survey dashboard for BMR Industrial showing the technician’s sample and the matching pump checks in the daily log.">
+      </picture></div>
       <div class="brandProductFoot"><span><b>@</b> People</span><span><b>#</b> Samples</span><span><b>$</b> Pump checks</span><span class="brandRecord">One connected record</span></div>
     </div>
   </div>
@@ -1562,33 +1567,17 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
               <span><i style="background:var(--oel-green)"></i>&lt; 1%</span>
             </div>
             <div id="introChart"></div>
-            <div style="font-size:1rem;color:var(--ink-soft);margin-top:6px">Filter by date range, client, and hazard. Click a band to drill into the underlying samples.</div>
+            <div style="font-size:1rem;color:var(--ink-soft);margin-top:6px"><span id="bandReading" role="status">Select a colored band to inspect the sample count.</span></div>
           </div>
         </section>
 
         <section class="slide">
           <div class="eyebrow">Step 3 · Structural Plan &amp; Scenarios</div>
           <h2>Standardize what your samplers capture.</h2>
-          <p class="sub" id="c_projSub"></p>
-          <div class="grid2">
-            <div class="cardShadow">
-              <div class="eyebrow" style="margin-bottom:6px">Client</div>
-              <div style="font-size:1rem;font-weight:600;color:var(--slate)">YXY Company</div>
-              <div style="font-size:1rem;color:var(--ink-soft);margin-top:4px">5133 Taravella Rd · Los Osos, CA</div>
-              <div class="chip" style="margin-top:10px">Contact: Site EHS Director</div>
-            </div>
-            <div class="cardShadow">
-              <div class="eyebrow" style="margin-bottom:6px">Project</div>
-              <div style="font-size:1rem;font-weight:600;color:var(--slate)">2026 IH Sampling Campaign</div>
-              <div style="font-size:1rem;color:var(--ink-soft);margin-top:4px">Sampling plan attached · Question groups assigned</div>
-              <div class="chip" style="margin-top:10px;background:#EAF3F2;color:var(--teal-deep)">Samples taken: 11 / 59</div>
-            </div>
-          </div>
-          <hr style="margin:25px 0; border:none; border-top:1px dashed var(--line);">
-          <div class="eyebrow">Prompted questions — try it</div>
-          <h2 id="c_pqH" style="font-size:clamp(17px,2.6vw,21px)"></h2>
-          <p class="sub" id="c_pqSub"></p>
-          <div class="cardShadow" style="margin-top:16px;max-width:640px">
+          <p class="sub">Choose a field prompt and record what happened during the benzene sampling task.</p>
+          <details class="tourContext"><summary>YXY Company · 2026 IH Sampling Campaign</summary><p>5133 Taravella Rd · Los Osos, CA. Contact: Site EHS Director. Sampling plan attached, question groups assigned. Samples taken: 11 / 59.</p></details>
+          <div class="cardShadow tourQuestions">
+            <label for="promptChoice">Field prompt</label><select id="promptChoice"></select>
             <div style="background:var(--slate);color:#fff;border-radius:8px;padding:8px 14px;font-size:1rem;font-weight:500">Benzene Air Sampling Questions — Full Shift &amp; Short Term <span style="float:right;background:#D33B2F;border-radius:10px;padding:0 8px;font-size:1rem" id="qCount">6</span></div>
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Did product drip from the hose during sampling?</legend>
               <div class="radioRow" onchange="answerQ(this,0)">
@@ -1645,15 +1634,28 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 
         <section class="slide">
           <div class="eyebrow">Step 4 · Attach the sample</div>
-          <h2>Equipment, media, and calibration — on the record</h2>
-          <p class="sub" id="c_sampleSub"></p>
-          <div class="cardShadow" style="margin-top:16px">
-            <div style="font-size:1rem;font-weight:600;color:var(--slate)">Sample ID: #KA070626-0000555</div>
-            <div class="grid2" style="margin-top:10px">
-              <div style="font-size:1rem;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">IH instrument:</b> Casella dB2 · SN 789587<br><b style="color:var(--slate)">Calibration device:</b> Acoustical Calibrator · SN 24568<br><b style="color:var(--slate)">Sample media:</b> PW PVC · Lot #4471</div>
-              <div style="font-size:1rem;line-height:1.8;color:var(--ink)"><b style="color:var(--slate)">Start:</b> 9:00 a.m. · <b style="color:var(--slate)">Flow rate:</b> 2.001 L/min<br><b style="color:var(--slate)">Calibration:</b> Pre- and post-sampling records<br><b style="color:var(--slate)">Type:</b> Full shift</div>
-            </div>
-            <div class="chip" style="margin-top:12px;background:#EAF3F2;color:var(--teal-deep)">Equipment serial numbers linked to each sample</div>
+          <h2>Follow a personal air sample</h2>
+          <p class="sub">A bench technician wipes steel parts at BMR Industrial. Follow the sample from the lapel to the laboratory.</p>
+          <div class="kitBench" data-switch>
+            <div class="kitIllustration"><div class="kitLabel">BR-062124-001</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 255" width="520" height="255" role="img" aria-label="Cutaway of a two-bed charcoal tube connected to a personal sampling pump">
+<defs>
+  <linearGradient id="glass" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#c2e7e4"/><stop offset=".22" stop-color="#f5ffff"/><stop offset=".55" stop-color="#b0cecf"/><stop offset=".88" stop-color="#799a9d"/><stop offset="1" stop-color="#cdebe9"/></linearGradient>
+  <linearGradient id="pump" x2=".9" y2="1"><stop stop-color="#68637a"/><stop offset="1" stop-color="#363345"/></linearGradient>
+  <pattern id="carbon" width="9" height="8" patternUnits="userSpaceOnUse"><rect width="9" height="8" fill="#2e3436"/><path d="m0 1 3-1 1 3-3 1zm5 3 3-1 1 2-3 2z" fill="#626967"/><circle cx="4" cy="6" r="1.2" fill="#171d23"/></pattern>
+</defs>
+<path d="M292 119h24q16 0 16 16v48q0 19 20 19h6q19 0 19-19V75q0-22 26-22h13" fill="none" stroke="#88999e" stroke-width="9"/>
+<path d="M292 117h24q18 0 18 18v48q0 17 18 17h6q17 0 17-17V75q0-24 28-24h13" fill="none" stroke="#e1ece9" stroke-width="3"/>
+<path class="flowTrace" d="M292 119h24q16 0 16 16v48q0 19 20 19h6q19 0 19-19V75q0-22 26-22h13" fill="none" stroke="#3d686a" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 12"/>
+<rect x="404" y="47" width="32" height="12" rx="4" fill="#667276"/><rect x="417" y="39" width="77" height="124" rx="13" fill="url(#pump)" stroke="#2c2939" stroke-width="2"/>
+<rect x="427" y="58" width="57" height="29" rx="3" fill="#c9e0d8"/><text x="455" y="77" font-family="monospace" font-size="13" text-anchor="middle" fill="#243a37">0.050</text>
+<circle cx="442" cy="103" r="5" fill="#a1c9c5"/><circle cx="464" cy="103" r="5" fill="#aba9ba"/><path d="M430 126h50m-50 6h50m-50 6h50" stroke="#8c879b" stroke-width="2"/>
+<path d="M27 112h18l25-11h187l24 11h15v16h-15l-24 11H70l-25-11H27z" fill="url(#glass)" stroke="#71969b" stroke-width="2"/>
+<rect x="88" y="104" width="85" height="32" rx="1.5" fill="url(#carbon)"/><rect x="192" y="104" width="45" height="32" rx="1.5" fill="url(#carbon)"/>
+<path d="M76 106v28m5-28v28m97-28v28m5-28v28m59-28v28m5-28v28" stroke="#f7f6ec" stroke-width="4"/><path d="M67 106h192" stroke="white" opacity=".67" stroke-width="2"/>
+<g fill="none" stroke="#617e80"><path d="M126 97V68H48"/><path d="M215 144v36h-64"/></g>
+<g font-family="Arial,sans-serif" font-size="16" fill="#304c50"><text x="45" y="59">Front bed</text><text x="104" y="201">Backup bed</text><text x="411" y="184">Pump P-014</text></g></svg>
+</div>
+            <div class="kitReadout"><div class="tourSwitch" role="group" aria-label="Inspect the sample"><button type="button" data-panel-id="tubeStation" aria-controls="tubeStation" aria-pressed="true">Charcoal tube</button><button type="button" data-panel-id="pumpStation" aria-controls="pumpStation" aria-pressed="false">Flow check</button><button type="button" data-panel-id="labStation" aria-controls="labStation" aria-pressed="false">Lab results</button></div><div id="tubeStation"><h3>Collect the vapor</h3><p>A personal charcoal tube captured toluene and o-xylene during the two-hour parts-cleaning task.</p><dl class="fieldPairs"><div><dt>Media lot</dt><dd>CT-2406</dd></div><div><dt>Charcoal beds</dt><dd>100 / 50 mg</dd></div></dl></div><div id="pumpStation" hidden><h3>Check the flow</h3><p>An SKC Pocket Pump TOUCH (P-014) was checked with a low-flow SKC chek-mate (FC-02). Pre- and post-sample checks both read 0.050 L/min.</p><dl class="fieldPairs"><div><dt>Elapsed time</dt><dd>120 min</dd></div><div><dt>Air collected</dt><dd>6.00 L</dd></div></dl></div><div id="labStation" hidden><h3>Read the task results</h3><p>The lab analyzed the charcoal tube using NIOSH 1501. These concentrations describe the sampled task window.</p><dl class="fieldPairs"><div><dt>Toluene</dt><dd>8.0 ppm</dd></div><div><dt>o-Xylene</dt><dd>3.0 ppm</dd></div></dl></div></div>
           </div>
         </section>
 
@@ -1679,7 +1681,8 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
               </div>
               <div class="fieldRow"><label id="valLabel" for="valIn">Result (µg/m³)</label><input type="number" id="valIn" step="any" aria-describedby="valHint"><span id="valHint" class="footnote">Enter a number, for example 32</span><span class="fieldError" id="valErr" hidden></span></div>
               <div style="margin-top:13px"><button class="btn sm" onclick="logResult()">Add result</button></div>
-              <div id="statusOut" style="margin-top:14px"></div>
+              <div class="tourPresets" role="group" aria-label="Example readings"><button type="button" data-hazard="silica" data-value="32">Try silica · 32 µg/m³</button><button type="button" data-hazard="benzene" data-value="0.4">Try benzene · 0.4 ppm</button></div>
+              <div role="status" id="statusOut" style="margin-top:14px"></div>
             </div>
             <div class="cardShadow">
               <div style="font-size:1rem;font-weight:600;color:var(--slate)">Samples by % of OEL · updates as results are added</div>
@@ -1693,94 +1696,24 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
         </section>
 
         <section class="slide slide--report">
-          <div class="eyebrow">Step 7 · The sample record export</div>
-          <h2 id="c_reportH"></h2>
-          <p class="sub" id="c_reportSub"></p>
-          <div class="reportFrame">
-            <div class="bmrReport">
-              <div class="bmrHeader">
-                <img src="assets/myih-wordmark-595a5.webp" width="480" height="242" decoding="async" alt="" role="presentation" style="height:26px;width:auto;display:inline-block;vertical-align:middle;background:transparent">
-                <div class="bmrTitleBlock">
-                  <div>Client: <b>BMR Industrial</b></div>
-                  <div>Project: <b>Hazards Survey</b></div>
-                </div>
-              </div>
-              <details open><summary>Sample Data Sheet</summary><div class="reportSection">
-              <div class="bmrGrid">
-                <div class="bmrLabel">Job#</div><div class="bmrValue">BR-0621-2024</div>
-                <div class="bmrLabel">Client</div><div class="bmrValue">BMR Industrial</div>
-                <div class="bmrLabel">Sample ID</div><div class="bmrValue">BR-062124-001</div>
-                <div class="bmrLabel">Project name</div><div class="bmrValue">Hazards Survey</div>
-                <div class="bmrLabel">Sampler name</div><div class="bmrValue">Sam Garrison</div>
-                <div class="bmrLabel">Project Location</div><div class="bmrValue">123 Ardmore Road Rd<br>70820 Chambersburg<br>PA United States</div>
-                <div class="bmrLabel">Date</div><div class="bmrValue">06/21/24</div>
-              </div>
-               </div></details><details><summary>Subject Data</summary><div class="reportSection">
-              <div class="bmrGrid">
-                <div class="bmrLabel">Employee name</div><div class="bmrValue">Garage</div>
-                <div class="bmrLabel">Sampling conditions</div><div class="bmrValue">Average (Normal Operations)</div>
-                <div class="bmrLabel">Employee ID #</div><div class="bmrValue">N/A</div>
-                <div class="bmrLabel">Work environment</div><div class="bmrValue">Open area</div>
-                <div class="bmrLabel">Ventilation</div><div class="bmrValue">Natural</div>
-                <div class="bmrLabel">Welding process</div><div class="bmrValue">N/A</div>
-                <div class="bmrLabel">Job title</div><div class="bmrValue">—</div>
-                <div class="bmrLabel">Metal</div><div class="bmrValue">—</div>
-                <div class="bmrLabel">Shift length</div><div class="bmrValue">—</div>
-                <div class="bmrLabel">Electrode</div><div class="bmrValue">—</div>
-                <div class="bmrLabel">Description</div><div class="bmrValue">Three story structure, parking spaces are very small</div>
-                <div class="bmrLabel">Exposure control</div><div class="bmrValue">—</div>
-              </div>
-               </div></details><details><summary>IH Sample Equipment</summary><div class="reportSection">
-              <div style="padding:10px; font-size:1rem; font-weight:bold; background:#f4f6f6; border-bottom:1px solid #ccc;">Sample ID: #SG-062124-001</div>
-              <div class="bmrGrid">
-                <div class="bmrLabel">IH instrument</div><div class="bmrValue">N/A for passive badges</div>
-                <div class="bmrLabel">Calibration device</div><div class="bmrValue">N/A for passive badges</div>
-                <div class="bmrLabel">Sample media</div><div class="bmrValue">Assay 566 Badge</div>
-                <div class="bmrLabel">Serial number</div><div class="bmrValue">N/A</div>
-                <div class="bmrLabel">Serial number</div><div class="bmrValue">N/A</div>
-                <div class="bmrLabel">Serial number</div><div class="bmrValue">11223344</div>
-              </div>
-               </div></details><details><summary>Sample Data</summary><div class="reportSection">
-              <table class="bmrTable">
-                <thead><tr><th>Start time</th><th>Stop time</th><th>Total time</th><th>Flow rate</th><th>Total volume</th></tr></thead>
-                <tbody><tr><td>06:55 AM</td><td>03:05 PM</td><td>490 min</td><td>N/A (passive badge)</td><td>N/A (passive badge)</td></tr></tbody>
-              </table>
-               </div></details><details><summary>Analytical Results</summary><div class="reportSection">
-              <table class="bmrTable">
-                <thead><tr><th>Hazard</th><th>CAS #</th><th>Result</th><th>Action level</th><th>OEL</th><th>% of OEL</th></tr></thead>
-                <tbody><tr><td>Benzene</td><td>71-43-2</td><td>0.32 ppm</td><td>0.5 ppm</td><td>1 ppm</td><td>32%</td></tr></tbody>
-              </table>
-               </div></details><details><summary>Daily Log — Tagged Entries</summary><div class="reportSection">
-              <div style="padding:8px 12px;font-size:1rem;line-height:1.8;border-bottom:1px solid #ccc">
-                7:57 AM — Demonstration Person: Checked on $CR-050224-01 and it was operating correctly<br>
-                7:58 AM — Demonstration Person: Observed @Walter Paton standing downwind of the welding fumes<br>
-                9:08 AM — Demonstration Person: Observed @Walter Paton working in the shop MIG welding on carbon steel with no ventilation other than natural ventilation through the shop assisted by a shop fan
-              </div>
-               </div></details><details><summary>Prompted Question Responses</summary><div class="reportSection">
-              <div class="bmrGrid">
-                <div class="bmrLabel">Product drip during sampling</div><div class="bmrValue">No drip</div>
-                <div class="bmrLabel">Engineering controls operating</div><div class="bmrValue">Yes</div>
-                <div class="bmrLabel">Respiratory protection worn</div><div class="bmrValue">Yes — Half-face APR, OV cartridge</div>
-                <div class="bmrLabel">Sampling interruptions</div><div class="bmrValue">None</div>
-              </div>
-            </div></details></div>
-          </div>
+          <div class="eyebrow">Step 7 · Sample record</div>
+          <h2>Read the field record</h2>
+          <p class="sub">This data sheet is enlarged for screen reading. The next slide shows the two-page PDF in its normal print layout.</p>
+          <div class="tourRecord" data-switch><div class="tourSwitch" role="group" aria-label="Record view"><button type="button" data-panel-id="dataSheet" aria-controls="dataSheet" aria-pressed="true">Data sheet</button><button type="button" data-panel-id="exposureNote" aria-controls="exposureNote" aria-pressed="false">Employee exposure note</button></div><div id="dataSheet"><dl class="fieldPairs"><div><dt>Job #</dt><dd>BR-0621-2024</dd></div><div><dt>Client</dt><dd>BMR Industrial</dd></div><div><dt>Sample ID</dt><dd>BR-062124-001</dd></div><div><dt>Project</dt><dd>Hazards Survey</dd></div><div><dt>Sampler</dt><dd>Sam Garrison</dd></div><div><dt>Location</dt><dd>Chambersburg, PA</dd></div><div><dt>Date</dt><dd>June 21, 2024</dd></div></dl><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>Protective equipment observed</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details><details><summary>Equipment, calibration and sample times</summary><dl class="fieldPairs"><div><dt>IH instrument</dt><dd>SKC Pocket Pump TOUCH</dd></div><div><dt>Pump serial</dt><dd>P-014</dd></div><div><dt>Calibration device</dt><dd>SKC chek-mate (low flow)</dd></div><div><dt>Calibrator serial</dt><dd>FC-02</dd></div><div><dt>Sample media</dt><dd>Coconut-shell charcoal tube, 100/50 mg</dd></div><div><dt>Media lot</dt><dd>CT-2406</dd></div><div><dt>Start / stop</dt><dd>08:00 – 10:00</dd></div><div><dt>Duration</dt><dd>120 min</dd></div><div><dt>Pre / post flow</dt><dd>0.050 / 0.050 L/min</dd></div><div><dt>Average flow</dt><dd>0.050 L/min</dd></div><div><dt>Air volume</dt><dd>6.00 L</dd></div><div><dt>Sample type</dt><dd>Personal task sample</dd></div><div><dt>TWA calculation</dt><dd>No full-shift TWA calculated</dd></div><div><dt>Weather</dt><dd>Indoors; no outdoor weather entry</dd></div></dl></details><details><summary>Chemical results and daily log</summary><dl class="fieldPairs"><div><dt>Toluene (108-88-3)</dt><dd>8.0 ppm</dd></div><div><dt>o-Xylene (95-47-6)</dt><dd>3.0 ppm</dd></div><div><dt>Method</dt><dd>NIOSH 1501 · GC/FID</dd></div><div><dt>08:00</dt><dd>Tube attached at the lapel. Bench exhaust operating.</dd></div><div><dt>09:00</dt><dd>Pump running. Parts wiping continued at the same bench.</dd></div><div><dt>10:00</dt><dd>Sample stopped. Tube capped and labeled for the laboratory.</dd></div></dl></details></div><div id="exposureNote" hidden><h3>Employee exposure note</h3><p>During the two hours you wiped steel parts at the finishing bench, your personal air sample measured 8.0 ppm toluene and 3.0 ppm o-xylene. These results describe that task window. The rest of your shift was not sampled.</p><p><strong>Sample BR-062124-001</strong> · June 21, 2024 · 08:00–10:00</p><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>View PPE worn during sampling</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details></div></div>
         </section>
-
-        <section class="slide" style="text-align:center">
-          <div style="max-width:620px;margin:0 auto;padding-top:12px">
-            <div class="eyebrow">That's the core loop — plan, collect, review, export</div>
-            <h2 id="c_ctaH"></h2>
-            <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-              <a class="btn violet" href="https://koalendar.com/e/meet-with-sam-garrison-6" target="_blank" rel="noopener">Book a Demo</a>
-              <button class="btn ghost" onclick="enterExplore()">EXPLORE<span aria-hidden="true"> →</span></button>
-            </div>
-            <p class="footnote" style="margin-top:22px" id="c_ctaFoot"></p>
-          </div>
+        <section class="slide slidePrint">
+          <div class="eyebrow">Step 8 · Printed export</div>
+          <h2>The printed sample data sheet</h2>
+          <div class="printDesk" data-switch><div class="printTools">
+          <p>BR-062124-001 · BMR Industrial<br>Fictional sample · Two A4 pages in their original proportions.</p>
+          <div class="tourSwitch" role="group" aria-label="Printed page"><button type="button" data-panel-id="printOne" aria-controls="printOne" aria-pressed="true">Page 1</button><button type="button" data-panel-id="printTwo" aria-controls="printTwo" aria-pressed="false">Page 2</button></div>
+          <p><a class="btn" href="assets/tour/BR-062124-001.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></p>
+          <p><a href="assets/tour/BR-062124-001.pdf" download>Download the PDF</a></p>
+          <div class="printActions"><button class="btn ghost" onclick="enterExplore()">Explore the workspace →</button>
+          <a href="https://koalendar.com/e/meet-with-sam-garrison-6" target="_blank" rel="noopener">Book a demo</a></div>
+          </div><div class="paperMat"><div id="printOne"><img src="assets/tour/print-1.webp" width="595" height="842" loading="lazy" alt="Printed page 1 with subject, conditions, PPE, equipment, weather, and capture times."></div><div id="printTwo" hidden><img src="assets/tour/print-2.webp" width="595" height="842" loading="lazy" alt="Printed page 2 with toluene and o-xylene results and time-stamped log entries."></div></div></div>
         </section>
-
       </div>
-
       <!-- =================== EXPLORE MODE =================== -->
       <div id="explore">
         <div class="exTop">
@@ -1990,15 +1923,15 @@ stat1n:"30%", stat1l:"CIH time savings per report*",
 stat2n:"$26,000", stat2l:"annual data-entry savings per IH*",
 stat3n:"40%", stat3l:"reduction in technician feedback*",
 dashH:"Your whole program, banded by % of OEL",
-dashSub:"Every result lands here banded against its OEL — filterable by client, hazard, date range, and sample type (full shift, short term, excursion, grab). Click the chart to browse the underlying samples. No pivot tables required.",
+dashSub:"Choose a band to see how many samples from that client fell into that exposure range.",
 projSub:"Prompted questions help standardize what samplers capture across projects. Keep field observations and sampling records organized for review by your IH team.",
 sampleSub:"Record media, instrument and calibrator serial numbers linked to each sample, along with pre- and post-sampling calibration. Keep equipment details with your field observations.",
 pqH:"Standardize observations with prompted questions",
 pqSub:"Prompted questions help standardize what your samplers record. Capture observations consistently, then let your IH team review the context. Try the example questions below:",
-logH:"The survey dashboard: your field-day command center",
-logSub:"Samples & subjects on the left; a contemporaneous daily log on the right. @ tags subjects (flows to the Excel export), # tags samples — including media change-outs you'll need for TWA calcs — and $ stamps pump checks onto the sample card. Type an entry and tag it yourself:",
+logH:"Work through a survey day",
+logSub:"Open Questions to answer a field prompt, or choose Survey Dashboard to add a tagged observation.",
 oelH:"Results shown as a percentage of the selected OEL",
-oelSub:"Manage OELs, including statutory and non-statutory designations. Dashboards update as results are added, showing each result as a percentage of its OEL. Your IH interprets the result:",
+oelSub:"Try an example measurement, then enter your own value to see where it lands on the chart.",
 ctaH:"30% CIH time savings per report, observed internally.*",
 reportH:"Export your field records for your own review",
 reportSub:"Export field records to Excel or PDF.",
@@ -2023,7 +1956,7 @@ cur=n;
 document.getElementById('sandbox').classList.toggle('tourOpening',cur===0);
 slides[cur].classList.add('active');
 document.getElementById('stepLabel').textContent=`Step ${cur+1} of ${N}`;
-var _names=['the overview','the dashboard','structural plan and scenarios','attaching the sample','the survey dashboard','entering results','the sample record export','the export'];
+var _names=['the overview','the dashboard','structural plan and scenarios','attaching the sample','the survey dashboard','entering results','the enlarged sample record','the printed sample data sheet'];
 var _st=document.getElementById('tourStatus');
 if(_st)_st.textContent='Step '+(cur+1)+' of '+N+', '+(_names[cur]||'');
 var _nc=document.getElementById('nextBtnCtx'),_bc=document.getElementById('backBtnCtx');
@@ -2061,7 +1994,16 @@ const l=document.createElement('div');l.className='lbl';l.textContent=label;row.
 const tr=document.createElement('div');tr.className='barTrack';
 counts.forEach((c,i)=>{
 if(!c)return;
-const seg=document.createElement('div');seg.className='seg'+(i===2?' yellow':'');
+const seg=document.createElement('button');seg.type='button';seg.className='seg'+(i===2?' yellow':'');
+const band=['over 100%', '50–100%', '10–50%', '1–10%', 'under 1%'][i];
+const reading=label+' · '+c+' of '+counts.reduce((a,b)=>a+b,0)+' samples in the '+band+' OEL band.';
+seg.setAttribute('aria-label',reading);
+seg.setAttribute('aria-pressed','false');
+seg.onclick=()=>{
+  target.querySelectorAll('[aria-pressed=true]').forEach(button=>button.setAttribute('aria-pressed','false'));
+  seg.setAttribute('aria-pressed','true');
+  document.getElementById('bandReading').textContent=reading;
+};
 seg.style.background=CAT[i][1];seg.style.width=(c/MAXROW*100)+'%';seg.textContent=c;
 tr.appendChild(seg);
 });
@@ -2222,7 +2164,7 @@ const c=catFor(pct);
 counts[c]++; entries.unshift({v,unit:h.unit,cat:c,pctTxt:key==='noise'?'':' · '+Math.round(pct)+'% of OEL'});
 document.getElementById('statusOut').innerHTML=
 `<span class="pill" style="background:${PILLC[c]};animation:pop .3s ease both">${CATLBL[c]}</span>
-<div style="font-size:1rem;color:var(--ink);margin-top:8px;line-height:1.5">Banded instantly against dynamic legal standards.</div>`;
+<div style="font-size:1rem;color:var(--ink);margin-top:8px;line-height:1.5">Compared with the selected example OEL.</div>`;
 const total=counts.reduce((a,b)=>a+b,0);
 const bar=document.getElementById('liveBar');bar.innerHTML='';
 counts.forEach((n,i)=>{

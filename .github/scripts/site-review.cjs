@@ -44,7 +44,36 @@ async function visit(browser, width) {
   await check('hero preview overlay', async () => {await click('.brandActions button'); await page.locator('#sandboxModal[open]').waitFor();});
   await check('start tour', async () => {await click('.tourStart button');});
   await check('back and next', async () => {await click('#backBtn');await click('.tourStart button');});
+  const revisedTour = await page.locator('.tourRecord').count();
   for(let step=2;step<8;step++) {
+    if (revisedTour && step===2) await check('inspect a client exposure band', async () => {
+      await click('#introChart .seg');
+      if (!(await page.locator('#bandReading').innerText()).includes('BMR Industrial')) throw Error('Missing band feedback');
+    });
+    if (revisedTour && step===3) await check('switch field prompts and retain the answer', async () => {
+      await page.locator('input[name=q1][value=slight]').check();
+      await page.locator('#qSpillVol').fill('Field observation');
+      await page.locator('#promptChoice').selectOption('2');
+      await page.locator('input[name=q3][value=yes]').check();
+      await page.locator('#promptChoice').selectOption('0');
+      if(await page.locator('#qSpillVol').inputValue()!=='Field observation') throw Error('Lost field note');
+    });
+    if (revisedTour && step===4) await check('inspect equipment and lab results', async () => {
+      await click('[aria-controls=pumpStation]');
+      await page.locator('#pumpStation:visible').waitFor();
+      await click('[aria-controls=labStation]');
+      await page.locator('#labStation:visible').waitFor();
+    });
+    if (revisedTour && step===6) await check('plot an example result', async () => {
+      await click('[data-hazard=silica]');
+      if(!(await page.locator('#statusOut').innerText()).includes('64%')) throw Error('Wrong OEL band');
+    });
+    if (revisedTour && step===7) await check('read conditions, PPE and employee note', async () => {
+      await page.locator('#dataSheet summary').filter({hasText:'Protective equipment'}).click();
+      await page.locator('#dataSheet').getByText('Steel Toe Boots',{exact:true}).waitFor();
+      await click('[aria-controls=exposureNote]');
+      await page.locator('#exposureNote:visible').waitFor();
+    });
     if(step===5) {
       await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); const group=page.locator('#gContentContainer details').nth(1); await group.locator('summary').click();
         const form=group.locator('form');
@@ -69,6 +98,13 @@ async function visit(browser, width) {
       if(await page.locator('.slide').nth(step).evaluate(el=>!el.matches('.active')))throw Error('Unexpected step');
     });
   }
+  if (revisedTour) await check('view both printed pages and download the actual PDF', async () => {
+    await page.locator('#printOne img:visible').waitFor();
+    await click('[aria-controls=printTwo]');
+    await page.locator('#printTwo img:visible').waitFor();
+    const [download] = await Promise.all([page.waitForEvent('download'),click('.printTools a[download]')]);
+    if (fs.readFileSync(await download.path()).subarray(0,5).toString()!=='%PDF-') throw Error('Invalid PDF');
+  });
   await check('explore workspace', async () => {await click('.slide.active button[onclick="enterExplore()"]');});
   await check('open sample band and dismiss', async () => {await click('#hdash .hseg');await click('.sampleDialogClose');});
   await page.screenshot({path:output+'/workspace-'+width+'.png',timeout:15000});

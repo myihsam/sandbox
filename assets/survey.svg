@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" role="img" aria-labelledby="title"><title id="title">Survey Dashboard for Hazards Survey at BMR Industrial</title><g font-family="Arial,Helvetica,sans-serif">
+<rect x="0" y="0" width="960" height="530" rx="0" fill="#f5f7f8" stroke="none"/>
+<rect x="0" y="0" width="960" height="105" rx="0" fill="#75a5a4" stroke="none"/>
+<text x="22" y="36" fill="#302f3a" font-size="25" font-weight="700">Hazards Survey</text>
+<text x="22" y="63" fill="#302f3a" font-size="18" font-weight="400">BMR Industrial</text>
+<rect x="744" y="17" width="192" height="39" rx="4" fill="#534e67" stroke="none"/>
+<text x="763" y="42" fill="white" font-size="17" font-weight="700">↓  Download Excel</text>
+<text x="22" y="94" fill="#302f3a" font-size="16" font-weight="400">Project</text>
+<text x="109" y="94" fill="#302f3a" font-size="17" font-weight="700">Survey Dashboard</text>
+<rect x="106" y="101" width="153" height="4" rx="0" fill="white" stroke="none"/>
+<text x="284" y="94" fill="#302f3a" font-size="16" font-weight="400">Location info</text>
+<text x="22" y="145" fill="#302f3a" font-size="30" font-weight="700">Survey Dashboard</text>
+<text x="763" y="144" fill="#536367" font-size="18" font-weight="400">Fri, 21 Jun 2024</text>
+<rect x="18" y="170" width="440" height="321" rx="5" fill="white" stroke="#d8dfe0"/>
+<text x="35" y="204" fill="#302f3a" font-size="22" font-weight="700">Samples &amp; Subjects</text>
+<rect x="33" y="222" width="410" height="40" rx="3" fill="#eeedef" stroke="none"/>
+<text x="46" y="249" fill="#302f3a" font-size="18" font-weight="700">#001  |  Bench technician</text>
+<text x="42" y="292" fill="#534e67" font-size="21" font-weight="700">#BR-062124-001</text>
+<text x="42" y="321" fill="#536367" font-size="17" font-weight="400">Charcoal tube · Personal sample</text>
+<text x="42" y="350" fill="#536367" font-size="17" font-weight="400">08:00 – 10:00</text>
+<rect x="41" y="376" width="394" height="1" rx="0" fill="#dce1e2" stroke="none"/>
+<text x="42" y="414" fill="#302f3a" font-size="21" font-weight="700">Toluene / o-Xylene</text>
+<text x="42" y="448" fill="#536367" font-size="17" font-weight="400">Sample finished with results</text>
+<rect x="478" y="170" width="464" height="321" rx="5" fill="white" stroke="#cbd7d7"/>
+<text x="496" y="204" fill="#302f3a" font-size="22" font-weight="700">Daily log</text>
+<text x="496" y="236" fill="#536367" font-size="17" font-weight="400">08:00   ·   Sample started</text>
+<rect x="516" y="248" width="409" height="43" rx="7" fill="#e1efed" stroke="none"/>
+<text x="530" y="276" fill="#302f3a" font-size="17" font-weight="400">#BR-062124-001  Tube attached.</text>
+<text x="496" y="319" fill="#536367" font-size="17" font-weight="400">09:00   ·   Pump check</text>
+<text x="518" y="347" fill="#302f3a" font-size="17" font-weight="400">$P-014  Flow steady at the bench.</text>
+<rect x="495" y="374" width="430" height="1" rx="0" fill="#dce1e2" stroke="none"/>
+<text x="496" y="412" fill="#536367" font-size="17" font-weight="400">10:00   ·   Sample stopped</text>
+<rect x="516" y="425" width="409" height="44" rx="7" fill="#e1efed" stroke="none"/>
+<text x="530" y="453" fill="#302f3a" font-size="17" font-weight="400">Tube capped for the laboratory.</text>
+</g></svg>
