@@ -13,6 +13,8 @@ async function visit(browser, width) {
   page.setDefaultTimeout(3500);
   const checks = [];
   const errors = [];
+  const consoleErrors = [];
+  page.on('console', msg => { if(msg.type()==='error') consoleErrors.push(msg.text().slice(0,240)); });
   page.on('pageerror', error => errors.push(error.message));
   const check = async (label, fn) => {
     try { await fn(); checks.push({ label, pass: true }); }
@@ -21,7 +23,10 @@ async function visit(browser, width) {
   const click = selector => page.locator(selector).first().click();
   await page.goto(base, {waitUntil:'domcontentloaded'});
   await check('cookie preferences, reject analytics', async () => {
-    await click('#myihManage'); await click('#myihClosePrefs'); await click('#myihRejectAll');
+    await click('#myihManage');
+    await page.keyboard.press('Tab');
+    if (!await page.locator('#myihPrefs').evaluate(el=>el.contains(document.activeElement))) throw Error('Focus escaped preferences');
+    await click('#myihClosePrefs'); await click('#myihRejectAll');
   });
   await check('menu and Escape', async () => { await click('#lpMenuBtn'); await page.keyboard.press('Escape'); });
   await check('FAQ topic and question', async () => {
@@ -41,13 +46,22 @@ async function visit(browser, width) {
   await check('back and next', async () => {await click('#backBtn');await click('.tourStart button');});
   for(let step=2;step<8;step++) {
     if(step===5) {
-      await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); await click('#gContentContainer summary');});
+      await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); await click('#gContentContainer summary');
+        const form=page.locator('#gContentContainer details[open] form').first();
+        const field=form.locator('textarea').first();
+        await field.fill('Example field observation'); await form.locator('button').click();
+        if(!(await form.locator('[role=status]').innerText()).includes('saved')) throw Error('Answers did not save');});
       await check('project config example download', async () => {
         await click('.svTabs:visible button[data-view=proj_info]');
-        const form=page.locator('#gContentContainer form').first();
-        await form.locator('input').first().fill('2026-03-01');
-        await form.locator('input').last().fill('2026-07-31');
-        await Promise.all([page.waitForEvent('download',{timeout:3500}),form.locator('button').click()]);
+        const forms=page.locator('#gContentContainer form');
+        if(await forms.count()!==3) throw Error('Expected three example downloads');
+        for(const form of await forms.all()){
+          await form.locator('input').first().fill('2026-03-01');
+          await form.locator('input').last().fill('2026-07-31');
+          const [download]=await Promise.all([page.waitForEvent('download',{timeout:3500}),form.locator('button').click()]);
+          const csv=fs.readFileSync(await download.path(),'utf8');
+          if(!csv.includes('Sample ID') || !csv.includes('#SG-062124-') || csv.includes('#XZY-')) throw Error('Unexpected project in export');
+        }
       });
     }
     await check('next to step '+(step+1), async () => {
@@ -98,7 +112,7 @@ async function visit(browser, width) {
     });
   }
   await context.close();
-  return {width, checks, errors, homepage, workspace, destinations};
+  return {width, checks, errors, consoleErrors, homepage, workspace, destinations};
 }
 
 (async () => {
