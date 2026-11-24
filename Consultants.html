@@ -1412,6 +1412,16 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
  .ctaStill{position:static;width:auto;height:auto;overflow:visible;clip-path:none;text-align:center;color:#fff;font-size:clamp(2rem,5vw,4rem)}
 }
 </style>
+<style>
+.sciScene .sciHint { color: #334e50; background: #f8faf9; width: fit-content; max-width: 95%; margin-inline: auto; padding: 2px 7px; }
+@media (prefers-reduced-motion: reduce) { .sciScene .sciHint { display: none; } }
+@media (min-width:701px) and (max-width:950px) {
+  #sandbox #explore .hbarRow { display: block; padding-block: 4px; }
+  #sandbox #explore .hbarLabel { width: auto; text-align: left; }
+  #sandbox #explore .hAxis { margin-left: 0; }
+}
+#sandbox #explore .hseg { min-width: 24px; min-height: 24px; }
+</style>
 </head>
 <body>
 <a class="pageSkip" href="#mainContent">Skip to main content</a>
@@ -2356,7 +2366,14 @@ function renderProjectDownloads(container){
     ['Employee notifications for chemical samples','chemical',row=>!row[2].startsWith('Noise')],
     ['Employee notifications for noise samples','noise',row=>row[2].startsWith('Noise')]
   ];
-  container.innerHTML='<h2>Hazards Survey</h2><p>Download an example CSV using the sample records from March to July 2026.</p>';
+  const project = container.dataset.project || 'Hazards Survey';
+  const projectSamples = project === 'Hazards Survey' ? MOCK.samples.filter(row => row[0].startsWith('#SG-062124-')) : [];
+  const heading = document.createElement('h2');
+  heading.textContent = project;
+  const note = document.createElement('p');
+  note.textContent = projectSamples.length ? 'Download an example CSV using this project’s sample records from March to July 2026.' : 'This project has no sample records available for export in the preview.';
+  container.replaceChildren(heading, note);
+  if (!projectSamples.length) return;
   for(const [title,kind,include] of kinds){
     const form=document.createElement('form');
     form.className='configDownload';
@@ -2366,7 +2383,7 @@ function renderProjectDownloads(container){
     from.addEventListener('input',dates);dates();
     form.onsubmit=event=>{
       event.preventDefault();
-      const rows=MOCK.samples.filter(row=>{
+      const rows=projectSamples.filter(row=>{
         const [month,day,year]=row[4].split('/');
         const date='20'+year+'-'+month+'-'+day;
         return include(row) && date>=from.value && date<=to.value;
@@ -2530,6 +2547,7 @@ container.innerHTML = `<div style="margin-top:20px; animation:pop 0.3s ease both
 <h3 style="font-size:1rem; margin-bottom:8px; color:var(--teal-deep);">Active Survey Workspace Context: ${projName}</h3>
 ${svHTML('ex')}
 </div>`;
+document.getElementById('exContentContainer').dataset.project = projName;
 switchSubTab('ex', 'survey_dash');
 }
 const dashData=[
@@ -3120,11 +3138,13 @@ function animateInView(element, draw, still){
   cv.addEventListener('mouseleave', function(){ mouse.on=false; });
   cv.addEventListener('touchend', function(){ mouse.on=false; });
 
-  var ro = new ResizeObserver(function(){ build(); });
-  let started=false;
-  function init(){ if(started)return;started=true;build();ro.observe(wrap);animateInView(wrap,frame); }
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(init); setTimeout(function(){ if(!built) init(); }, 800); }
-  else init();
+  // Rebuild on the next visible frame when the available space changes.
+  new ResizeObserver(() => { built = false; }).observe(wrap);
+  if (document.fonts) document.fonts.ready.then(() => { built = false; });
+  animateInView(wrap, () => {
+    if (!built) build();
+    frame();
+  });
 })();
 </script>
 
