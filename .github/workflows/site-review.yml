@@ -6,19 +6,63 @@ permissions:
   contents: read
 jobs:
   audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [live, branch]
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
+    outputs:
+      live: ${{ steps.summary.outputs.live }}
+      branch: ${{ steps.summary.outputs.branch }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --prefix "$RUNNER_TEMP/audit" lighthouse@12 playwright-core@1.52.0
-      - name: Compare the live homepage with this branch
+      - run: npm install --prefix "$RUNNER_TEMP/audit" lighthouse@12 playwright-core@1.52.0 axe-core@4
+      - name: Start the site
         run: |
-          python3 -m http.server 8191 --bind 127.0.0.1 >/tmp/server.log 2>&1 &
-          for url in https://www.getmyih.com/ http://127.0.0.1:8191/Consultants.html; do
-            "$RUNNER_TEMP/audit/node_modules/.bin/lighthouse" "$url" --chrome-flags="--headless --no-sandbox" --output=json --output-path=/tmp/lhr.json --quiet
-            echo "$url" >> "$GITHUB_STEP_SUMMARY"
-            jq -r '.categories | to_entries[] | "\(.key) \(.value.score * 100)"' /tmp/lhr.json >> "$GITHUB_STEP_SUMMARY"
-          done
+          cp Consultants.html index.html
+          python3 -m http.server 8191 --bind 127.0.0.1 > /tmp/server.log 2>&1 &
+          if [[ "${{ matrix.version }}" == live ]]; then
+            echo 'URL=https://www.getmyih.com/' >> "$GITHUB_ENV"
+          else
+            echo 'URL=http://127.0.0.1:8191/' >> "$GITHUB_ENV"
+          fi
+          mkdir review
+      - name: Mobile Lighthouse
+        run: |
+          "$RUNNER_TEMP/audit/node_modules/.bin/lighthouse" "$URL" --chrome-flags="--headless --no-sandbox" --output=json --output-path=review/lighthouse.json --quiet
+          scores=$(jq -r '[.categories|.performance,.accessibility,."best-practices",.seo | (.score*100|round|tostring)]|join("/")' review/lighthouse.json)
+          echo "SCORES=$scores" >> "$GITHUB_ENV"
+          echo "$scores" >> "$GITHUB_STEP_SUMMARY"
+      - name: Browser checks at three widths
+        if: always()
+        run: NODE_PATH="$RUNNER_TEMP/audit/node_modules" node .github/scripts/site-review.cjs "$URL" review
+      - name: Report measurements
+        id: summary
+        if: always()
+        run: |
+          ui=unavailable
+          if test -f review/audit.json; then
+            ui=$(jq -r '[.[] | ([.checks[]|select(.pass)]|length|tostring) + "/" + (.checks|length|tostring)] | join(",")' review/audit.json)
+            jq -c '.[] | {width,failed:[.checks[]|select(.pass==false)|.label],errors,homepage,workspace}' review/audit.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "${{ matrix.version }}=$SCORES UI $ui" >> "$GITHUB_OUTPUT"
+          echo "Lighthouse $SCORES" >> "$GITHUB_STEP_SUMMARY"
+          if test -f review/lighthouse.json; then jq '{categories: [.categories[] | {id,score}], version:.lighthouseVersion}' review/lighthouse.json > review/metrics.json; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.version }}-review
+          path: |
+            review/metrics.json
+            review/audit.json
+  results:
+    if: always()
+    needs: audit
+    runs-on: ubuntu-latest
+    name: Live ${{ needs.audit.outputs.live }} · Branch ${{ needs.audit.outputs.branch }}
+    steps:
+      - run: echo "Compare the live and branch reports in the audit artifacts."
