@@ -1517,10 +1517,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
     </div>
     <div class="brandProduct">
       <div class="brandProductTop"><span class="liveDot"></span> THE FIELD DAY, CONNECTED <span class="brandProductTag">myIH / SURVEY</span></div>
-      <div class="brandProductImage"><picture>
-        <source media="(max-width:600px)" srcset="assets/survey-mobile.svg" width="440" height="590">
-        <img src="assets/survey.svg" width="960" height="530" fetchpriority="high" alt="Survey dashboard for BMR Industrial showing the technician’s sample and the matching pump checks in the daily log.">
-      </picture></div>
+      <div class="brandProductImage"><img src="assets/survey-dashboard-4dcff.webp" width="1080" height="1080" decoding="async" srcset="assets/survey-dashboard-4dcff-640.webp 640w, assets/survey-dashboard-4dcff.webp 1080w" sizes="(max-width:1050px) 94vw, 55vw" fetchpriority="high" alt="myIH Survey Dashboard showing Samples and Subjects beside the tagged Daily Log"></div>
       <div class="brandProductFoot"><span><b>@</b> People</span><span><b>#</b> Samples</span><span><b>$</b> Pump checks</span><span class="brandRecord">One connected record</span></div>
     </div>
   </div>
@@ -1540,7 +1537,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
       <div class="stage" id="stage">
 
         <section class="slide active openingDashboard">
-<div class="tourStart"><button class="btn" type="button" onclick="if(phoneTour.matches)openSandbox();go(1)">Start Tour <span aria-hidden="true">→</span></button></div>
+<div class="tourStart"><div class="entryChoices"><button class="btn" type="button" onclick="if(phoneTour.matches)openSandbox();go(1)">Take the Guided Tour</button><button class="btn" type="button" onclick="if(phoneTour.matches)openSandbox();enterExplore()">Enter the Software <span aria-hidden="true">→</span></button></div></div>
 <div class="referenceDashboard" aria-label="OEL Dashboard — illustrative sample data">
 <div class="referenceTop"><button type="button" aria-label="Toggle dashboard navigation" aria-expanded="true" onclick="var d=this.closest('.referenceDashboard');d.classList.toggle('navCollapsed');this.setAttribute('aria-expanded',!d.classList.contains('navCollapsed'))">☰</button></div>
 <div class="referenceLayout"><aside class="referenceSide"><div class="referenceUser"><span aria-hidden="true">●</span><div><b>Jordan Smith</b><small>XYZ Consulting</small></div><span aria-hidden="true">⌄</span></div><nav aria-label="Dashboard preview"><button type="button" class="selected" onclick="enterExplore();showTab('dashboard')"><span aria-hidden="true">▦</span>Dashboard</button><button type="button" class="" onclick="enterExplore();showTab('clients')"><span aria-hidden="true">♟</span>Client</button><button type="button" class="" onclick="enterExplore();showTab('projects')"><span aria-hidden="true">▣</span>Projects</button><button type="button" class="" onclick="enterExplore();showTab('samples')"><span aria-hidden="true">⚗</span>Samples</button><button type="button" class="" onclick="enterExplore();showTab('media')"><span aria-hidden="true">♧</span>Sample Media</button><button type="button" class="" onclick="enterExplore();showTab('instruments')"><span aria-hidden="true">⚒</span>Instruments</button><button type="button" class="" onclick="enterExplore();showTab('calibration')"><span aria-hidden="true">☷</span>Calibration</button><button type="button" class="" onclick="enterExplore();showTab('questions')"><span aria-hidden="true">▤</span>Question groups</button><button type="button" onclick="go(5)"><span aria-hidden="true">▥</span>OEL Table</button></nav></aside>
@@ -1572,60 +1569,54 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
         <section class="slide">
           <div class="eyebrow">Step 3 · Structural Plan &amp; Scenarios</div>
           <h2>Standardize what your samplers capture.</h2>
-          <p class="sub">Choose a field prompt and record what happened during the benzene sampling task.</p>
+          <p class="sub">Record observations for the benzene sampling task. Answer the questions in any order.</p>
           <details class="tourContext"><summary>YXY Company · 2026 IH Sampling Campaign</summary><p>5133 Taravella Rd · Los Osos, CA. Contact: Site EHS Director. Sampling plan attached, question groups assigned. Samples taken: 11 / 59.</p></details>
           <div class="cardShadow tourQuestions">
-            <label for="promptChoice">Field prompt</label><select id="promptChoice"></select>
+
             <div style="background:var(--slate);color:#fff;border-radius:8px;padding:8px 14px;font-size:1rem;font-weight:500">Benzene Air Sampling Questions — Full Shift &amp; Short Term <span style="float:right;background:#D33B2F;border-radius:10px;padding:0 8px;font-size:1rem" id="qCount">6</span></div>
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Did product drip from the hose during sampling?</legend>
-              <div class="radioRow" onchange="answerQ(this,0)">
+              <div class="radioRow">
                 <label><input type="radio" name="q1" value="none"> No drip</label>
                 <label><input type="radio" name="q1" value="slight"> Slight</label>
                 <label><input type="radio" name="q1" value="moderate"> Moderate</label>
                 <label><input type="radio" name="q1" value="high"> High</label>
               </div>
             </fieldset>
-            <div class="qFollow" id="qf0"></div>
+
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Activity included in the monitoring? (all that apply)</legend>
-              <div class="radioRow" style="flex-wrap:wrap" onchange="answerQ(this,1)">
+              <div class="radioRow" style="flex-wrap:wrap">
                 <label><input type="checkbox" value="connect"> Connecting line(s)</label>
                 <label><input type="checkbox" value="cargo"> Cargo operations</label>
                 <label><input type="checkbox" value="disconnect"> Disconnecting</label>
                 <label><input type="checkbox" value="purge"> Line clearing / purging</label>
               </div>
             </fieldset>
-            <div class="qFollow" id="qf1"></div>
+
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Were engineering controls operating during the task?</legend>
-              <div class="radioRow" onchange="answerQ(this,2)">
+              <div class="radioRow">
                 <label><input type="radio" name="q3" value="yes"> Yes</label>
                 <label><input type="radio" name="q3" value="no"> No</label>
               </div>
             </fieldset>
-            <div class="qFollow" id="qf2"></div>
+
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Was respiratory protection worn during the task?</legend>
-              <div class="radioRow" onchange="answerQ(this,3)">
+              <div class="radioRow">
                 <label><input type="radio" name="q4" value="yes"> Yes</label>
                 <label><input type="radio" name="q4" value="no"> No</label>
               </div>
             </fieldset>
-            <div class="qFollow" id="qf3"></div>
+
             <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Worker position relative to the emission source?</legend>
-              <div class="radioRow" style="flex-wrap:wrap" onchange="answerQ(this,4)">
+              <div class="radioRow" style="flex-wrap:wrap">
                 <label><input type="radio" name="q5" value="upwind"> Upwind</label>
                 <label><input type="radio" name="q5" value="downwind"> Downwind</label>
                 <label><input type="radio" name="q5" value="variable"> Variable</label>
                 <label><input type="radio" name="q5" value="indoors"> Indoors / N/A</label>
               </div>
             </fieldset>
-            <div class="qFollow" id="qf4"></div>
-            <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Any interruptions to sampling?</legend>
-              <div class="radioRow" onchange="answerQ(this,5)">
-                <label><input type="radio" name="q6" value="none"> None</label>
-                <label><input type="radio" name="q6" value="media"> Media change-out</label>
-                <label><input type="radio" name="q6" value="pump"> Pump fault</label>
-              </div>
-            </fieldset>
-            <div class="qFollow" id="qf5"></div>
+
+            <fieldset class="fieldRow" style="border:none;padding:0;margin:0"><legend>Any interruptions to sampling?</legend><textarea aria-label="Describe any interruptions to sampling" rows="2"></textarea></fieldset>
+
             <div id="qDone" style="display:none;margin-top:12px" class="chip"></div>
           </div>
         </section>
@@ -1634,7 +1625,16 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
           <div class="eyebrow">Step 4 · Attach the sample</div>
           <h2>Follow a personal air sample</h2>
           <p class="sub">A bench technician wipes steel parts at BMR Industrial. Follow the sample from the lapel to the laboratory.</p>
-          <div class="kitBench" data-switch>
+          <form id="finishDemo" class="finishDemo">
+<div class="sampleBar">Finish sample #BR-062124-001</div>
+<div class="finishFields"><h3>Finish information</h3><div class="finishPair">
+<label>End time <button type="button" id="pickTime">10:00 AM</button></label>
+<label>Final Flowrate (L/min)<input type="number" id="finalFlow" value="0.050" step="0.001" min="0.001" required></label></div>
+<fieldset><legend>TWA Calculation Method</legend><div class="answerOptions">
+<label><input type="radio" name="twa" value="Assume Same"> Assume Same</label><label><input type="radio" name="twa" value="Assume Zero"> Assume Zero</label><label><input type="radio" name="twa" value="N/A" checked> N/A</label></div></fieldset>
+<label><input type="checkbox" id="overnight"> Overnight sample</label></div>
+<div class="finishActions"><output id="finishStatus" role="status"></output><button class="btn" type="submit">Finish</button></div></form>
+<details class="tourContext equipmentDetails"><summary>Equipment and lab results</summary><div class="kitBench" data-switch>
             <div class="kitIllustration"><div class="kitLabel">BR-062124-001</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 255" width="520" height="255" role="img" aria-label="Cutaway of a two-bed charcoal tube connected to a personal sampling pump">
 <defs>
   <linearGradient id="glass" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#c2e7e4"/><stop offset=".22" stop-color="#f5ffff"/><stop offset=".55" stop-color="#b0cecf"/><stop offset=".88" stop-color="#799a9d"/><stop offset="1" stop-color="#cdebe9"/></linearGradient>
@@ -1655,7 +1655,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 </div>
             <div class="kitReadout"><div class="tourSwitch" role="group" aria-label="Inspect the sample"><button type="button" data-panel-id="tubeStation" aria-controls="tubeStation" aria-pressed="true">Charcoal tube</button><button type="button" data-panel-id="pumpStation" aria-controls="pumpStation" aria-pressed="false">Flow check</button><button type="button" data-panel-id="labStation" aria-controls="labStation" aria-pressed="false">Lab results</button></div><div id="tubeStation"><h3>Collect the vapor</h3><p>A personal charcoal tube captured toluene and o-xylene during the two-hour parts-cleaning task.</p><dl class="fieldPairs"><div><dt>Media lot</dt><dd>CT-2406</dd></div><div><dt>Charcoal beds</dt><dd>100 / 50 mg</dd></div></dl></div><div id="pumpStation" hidden><h3>Check the flow</h3><p>An SKC Pocket Pump TOUCH (P-014) was checked with a low-flow SKC chek-mate (FC-02). Pre- and post-sample checks both read 0.050 L/min.</p><dl class="fieldPairs"><div><dt>Elapsed time</dt><dd>120 min</dd></div><div><dt>Air collected</dt><dd>6.00 L</dd></div></dl></div><div id="labStation" hidden><h3>Read the task results</h3><p>The lab analyzed the charcoal tube using NIOSH 1501. These concentrations describe the sampled task window.</p><dl class="fieldPairs"><div><dt>Toluene</dt><dd>8.0 ppm</dd></div><div><dt>o-Xylene</dt><dd>3.0 ppm</dd></div></dl></div></div>
           </div>
-        </section>
+        </details></section>
 
         <section class="slide">
           <div class="eyebrow">Step 5 · The survey dashboard workspace</div>
@@ -1697,7 +1697,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
           <div class="eyebrow">Step 7 · Sample record</div>
           <h2>Read the field record</h2>
           <p class="sub">This data sheet is enlarged for screen reading. The next slide shows the two-page PDF in its normal print layout.</p>
-          <div class="tourRecord" data-switch><div class="tourSwitch" role="group" aria-label="Record view"><button type="button" data-panel-id="dataSheet" aria-controls="dataSheet" aria-pressed="true">Data sheet</button><button type="button" data-panel-id="exposureNote" aria-controls="exposureNote" aria-pressed="false">Employee exposure note</button></div><div id="dataSheet"><dl class="fieldPairs"><div><dt>Job #</dt><dd>BR-0621-2024</dd></div><div><dt>Client</dt><dd>BMR Industrial</dd></div><div><dt>Sample ID</dt><dd>BR-062124-001</dd></div><div><dt>Project</dt><dd>Hazards Survey</dd></div><div><dt>Sampler</dt><dd>Sam Garrison</dd></div><div><dt>Location</dt><dd>Chambersburg, PA</dd></div><div><dt>Date</dt><dd>June 21, 2024</dd></div></dl><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>Protective equipment observed</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details><details><summary>Equipment, calibration and sample times</summary><dl class="fieldPairs"><div><dt>IH instrument</dt><dd>SKC Pocket Pump TOUCH</dd></div><div><dt>Pump serial</dt><dd>P-014</dd></div><div><dt>Calibration device</dt><dd>SKC chek-mate (low flow)</dd></div><div><dt>Calibrator serial</dt><dd>FC-02</dd></div><div><dt>Sample media</dt><dd>Coconut-shell charcoal tube, 100/50 mg</dd></div><div><dt>Media lot</dt><dd>CT-2406</dd></div><div><dt>Start / stop</dt><dd>08:00 – 10:00</dd></div><div><dt>Duration</dt><dd>120 min</dd></div><div><dt>Pre / post flow</dt><dd>0.050 / 0.050 L/min</dd></div><div><dt>Average flow</dt><dd>0.050 L/min</dd></div><div><dt>Air volume</dt><dd>6.00 L</dd></div><div><dt>Sample type</dt><dd>Personal task sample</dd></div><div><dt>TWA calculation</dt><dd>No full-shift TWA calculated</dd></div><div><dt>Weather</dt><dd>Indoors; no outdoor weather entry</dd></div></dl></details><details><summary>Chemical results and daily log</summary><dl class="fieldPairs"><div><dt>Toluene (108-88-3)</dt><dd>8.0 ppm</dd></div><div><dt>o-Xylene (95-47-6)</dt><dd>3.0 ppm</dd></div><div><dt>Method</dt><dd>NIOSH 1501 · GC/FID</dd></div><div><dt>08:00</dt><dd>Tube attached at the lapel. Bench exhaust operating.</dd></div><div><dt>09:00</dt><dd>Pump running. Parts wiping continued at the same bench.</dd></div><div><dt>10:00</dt><dd>Sample stopped. Tube capped and labeled for the laboratory.</dd></div></dl></details></div><div id="exposureNote" hidden><h3>Employee exposure note</h3><p>During the two hours you wiped steel parts at the finishing bench, your personal air sample measured 8.0 ppm toluene and 3.0 ppm o-xylene. These results describe that task window. The rest of your shift was not sampled.</p><p><strong>Sample BR-062124-001</strong> · June 21, 2024 · 08:00–10:00</p><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>View PPE worn during sampling</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details></div></div>
+          <div class="tourRecord" data-switch><div class="tourSwitch" role="group" aria-label="Record view"><button type="button" data-panel-id="dataSheet" aria-controls="dataSheet" aria-pressed="true">Data sheet</button><button type="button" data-panel-id="exposureNote" aria-controls="exposureNote" aria-pressed="false">Employee exposure note</button></div><div id="dataSheet"><dl class="fieldPairs"><div><dt>Job #</dt><dd>BR-0621-2024</dd></div><div><dt>Client</dt><dd>BMR Industrial</dd></div><div><dt>Sample ID</dt><dd>BR-062124-001</dd></div><div><dt>Project</dt><dd>Hazards Survey</dd></div><div><dt>Sampler</dt><dd>Sam Garrison</dd></div><div><dt>Location</dt><dd>Chambersburg, PA</dd></div><div><dt>Date</dt><dd>June 21, 2024</dd></div></dl><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>Protective equipment observed</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details><details><summary>Equipment, calibration and sample times</summary><dl class="fieldPairs"><div><dt>IH instrument</dt><dd>SKC Pocket Pump TOUCH</dd></div><div><dt>Pump serial</dt><dd>P-014</dd></div><div><dt>Calibration device</dt><dd>SKC chek-mate (low flow)</dd></div><div><dt>Calibrator serial</dt><dd>FC-02</dd></div><div><dt>Sample media</dt><dd>Coconut-shell charcoal tube, 100/50 mg</dd></div><div><dt>Media lot</dt><dd>CT-2406</dd></div><div><dt>Start / stop</dt><dd>08:00 – 10:00</dd></div><div><dt>Duration</dt><dd>120 min</dd></div><div><dt>Pre / post flow</dt><dd>0.050 / 0.050 L/min</dd></div><div><dt>Average flow</dt><dd>0.050 L/min</dd></div><div><dt>Air volume</dt><dd>6.00 L</dd></div><div><dt>Sample type</dt><dd>Personal task sample</dd></div><div><dt>TWA calculation</dt><dd>No full-shift TWA calculated</dd></div><div><dt>Weather</dt><dd>Indoors; no outdoor weather entry</dd></div></dl></details><details><summary>Chemical results and subject log messages</summary><dl class="fieldPairs"><div><dt>Toluene (108-88-3)</dt><dd>8.0 ppm</dd></div><div><dt>o-Xylene (95-47-6)</dt><dd>3.0 ppm</dd></div><div><dt>Method</dt><dd>NIOSH 1501 · GC/FID</dd></div></dl><div class="recordLog"><b>Author: Sam Garrison &nbsp; Date: 06/21/24 – 08:00</b><p>Tube attached at the lapel. Bench exhaust operating.</p></div><div class="recordLog"><b>Author: Sam Garrison &nbsp; Date: 06/21/24 – 09:00</b><p>Pump running. Parts wiping continued at the same bench.</p></div><div class="recordLog"><b>Author: Sam Garrison &nbsp; Date: 06/21/24 – 10:00</b><p>Sample stopped. Tube capped and labeled for the laboratory.</p></div></details></div><div id="exposureNote" hidden><h3>Employee exposure note</h3><figure class="realLetter"><a href="assets/tour/YYY-Co-chemical-notification.pdf" target="_blank" rel="noopener"><img src="assets/tour/yyy-letter.webp" width="595" height="842" loading="lazy" alt="Full page of the YYY Co. chemical employee notification"><span>Open original YYY Co. notification PDF ↗</span></a></figure><h4>BMR Industrial · task sample</h4><p>During the two hours you wiped steel parts at the finishing bench, your personal air sample measured 8.0 ppm toluene and 3.0 ppm o-xylene. These results describe that task window. The rest of your shift was not sampled.</p><p><strong>Sample BR-062124-001</strong> · June 21, 2024 · 08:00–10:00</p><details><summary>Subject and field conditions</summary><dl class="fieldPairs"><div><dt>Employee / ID</dt><dd>Bench technician / 001</dd></div><div><dt>Job title</dt><dd>Bench technician</dd></div><div><dt>Shift length</dt><dd>8 hours</dd></div><div><dt>Task</dt><dd>Wiping steel parts with solvent at the finishing bench</dd></div><div><dt>Sampling conditions</dt><dd>Average (Normal Operations)</dd></div><div><dt>Work environment</dt><dd>Shop/fabrication area</dd></div><div><dt>Ventilation</dt><dd>Local exhaust</dd></div><div><dt>Welding process</dt><dd>N/A</dd></div><div><dt>Metal / electrode</dt><dd>N/A</dd></div><div><dt>Unusual condition</dt><dd>N/A</dd></div><div><dt>Exposure control</dt><dd>Other — lidded solvent dispenser</dd></div></dl></details><details><summary>View PPE worn during sampling</summary><dl class="fieldPairs"><div><dt>Clothing</dt><dd>Work Uniform</dd></div><div><dt>Respirator</dt><dd>None observed</dd></div><div><dt>Respirator filter</dt><dd>N/A</dd></div><div><dt>Gloves</dt><dd>Nitrile/Latex/Rubber Gloves</dd></div><div><dt>Boots</dt><dd>Steel Toe Boots</dd></div><div><dt>Eye wear</dt><dd>Safety Glasses with Side Shields</dd></div><div><dt>Hearing protection</dt><dd>None observed</dd></div><div><dt>Noise reduction rating</dt><dd>N/A</dd></div><div><dt>Head protection</dt><dd>N/A</dd></div></dl></details></div></div>
         </section>
         <section class="slide slidePrint">
           <div class="eyebrow">Step 8 · Printed export</div>
@@ -1707,7 +1707,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
           <div class="tourSwitch" role="group" aria-label="Printed page"><button type="button" data-panel-id="printOne" aria-controls="printOne" aria-pressed="true">Page 1</button><button type="button" data-panel-id="printTwo" aria-controls="printTwo" aria-pressed="false">Page 2</button></div>
           <p><a class="btn" href="assets/tour/BR-062124-001.pdf" target="_blank" rel="noopener">Open full-size PDF ↗</a></p>
           <p><a href="assets/tour/BR-062124-001.pdf" download>Download the PDF</a></p>
-          <div class="printActions"><button class="btn ghost" onclick="enterExplore()">Explore the workspace →</button>
+          <div class="printActions"><button class="btn workspaceLaunch" onclick="enterExplore()">Explore the Workspace →</button>
           <a href="https://koalendar.com/e/meet-with-sam-garrison-6" target="_blank" rel="noopener">Book a demo</a></div>
           </div><div class="paperMat"><div id="printOne"><img src="assets/tour/print-1.webp" width="595" height="842" loading="lazy" alt="Printed page 1 with subject, conditions, PPE, equipment, weather, and capture times."></div><div id="printTwo" hidden><img src="assets/tour/print-2.webp" width="595" height="842" loading="lazy" alt="Printed page 2 with toluene and o-xylene results and time-stamped log entries."></div></div></div>
         </section>
@@ -1716,7 +1716,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
       <div id="explore">
         <div class="exTop">
           <img src="assets/myih-wordmark-595a5.webp" width="480" height="242" decoding="async" alt="" role="presentation" style="height:22px;width:auto;display:block;background:transparent;filter:brightness(0) invert(1)">
-          <button class="abtn" onclick="exitExplore()"><span aria-hidden="true">← </span>GUIDED TOUR</button>
+          <button class="abtn" onclick="exitExplore();go(cur===0?1:cur)"><span aria-hidden="true">← </span>GUIDED TOUR</button>
         </div>
         <div class="mobileHint">Sample workspace · swipe the navigation to explore</div>
         <div class="exShell">
@@ -2012,135 +2012,6 @@ row.appendChild(tr);target.appendChild(row);
 const ic=document.getElementById('introChart');
 introData.forEach(([l,c])=>renderRow(ic,l,c));
 
-/* ---- Prompted questions: guided branching logic ----
-Most answers spawn a follow-up step, showing how the software
-records observations for professional IH review. */
-const answered=[false,false,false,false,false,false];
-function markAnswered(i){
-answered[i]=true;
-const left=answered.filter(a=>!a).length;
-document.getElementById('qCount').textContent=left;
-if(left===0){
-const d=document.getElementById('qDone');
-d.style.display='inline-block';d.style.background='#EAF3F2';d.style.color='var(--teal-deep)';
-d.textContent='Example questions answered — observations recorded for IH review.';
-}
-}
-function openFollow(id,html){const f=document.getElementById(id);f.innerHTML=html;f.classList.add('open');}
-function closeFollow(id){const f=document.getElementById(id);f.innerHTML='';f.classList.remove('open');}
-function answerQ(el,i){
-markAnswered(i);
-const checked=el.querySelector('input[type=radio]:checked');
-const v=checked?checked.value:null;
-if(i===0){
-if(v && v!=='none'){
-openFollow('qf0',`<label style="color:var(--oel-red);font-weight:600">Product release logged. Specify estimated quantity and duration:</label>
-<label for="qSpillVol">Approximate volume and duration</label><input type="text" id="qSpillVol" style="margin-top:5px" aria-describedby="qSpillVolHint"><span id="qSpillVolHint" class="footnote">For example: 50 ml, less than 2 minutes</span>
-<div class="fieldRow"><label>Was the release cleaned up immediately?</label>
-<div class="radioRow" onchange="qCleanup(this)">
-<label><input type="radio" name="q1b" value="yes"> Yes</label>
-<label><input type="radio" name="q1b" value="no"> No</label>
-</div></div><div id="qf0b"></div>`);
-} else closeFollow('qf0');
-}
-else if(i===1){
-const vals=[...el.querySelectorAll('input:checked')].map(x=>x.value);
-let h='';
-if(vals.includes('disconnect')) h+=`<div><label>Disconnecting selected — was the line drained and depressurized first?</label>
-<div class="radioRow" onchange="qYesNoText(this,'qf1b','no','Describe the deviation and who authorized the task to proceed:','e.g. residual product present — authorized by shift supervisor')">
-<label><input type="radio" name="q2b" value="yes"> Yes</label>
-<label><input type="radio" name="q2b" value="no"> No</label>
-</div><div id="qf1b"></div></div>`;
-if(vals.includes('cargo')) h+=`<div style="margin-top:${vals.includes('disconnect')?'12px':'0'}"><label>Cargo operations selected — was vapor recovery in service?</label>
-<div class="radioRow" onchange="qVapor(this)">
-<label><input type="radio" name="q2c" value="yes"> Yes</label>
-<label><input type="radio" name="q2c" value="partial"> Partial</label>
-<label><input type="radio" name="q2c" value="no"> No</label>
-</div><div id="qf1c"></div></div>`;
-if(h) openFollow('qf1',h); else closeFollow('qf1');
-}
-else if(i===2){
-if(v==='no'){
-openFollow('qf2',`<label>Which controls were unavailable? (all that apply)</label>
-<textarea aria-label="Observed controls" placeholder="Record your field observation"></textarea>
-<div class="fieldRow"><label>Was the task authorized to proceed without controls?</label>
-<div class="radioRow" onchange="qYesNoText(this,'qf2b','yes','Authorized by (name / role):','e.g. J. Rivera, Operations Superintendent')">
-<label><input type="radio" name="q3b" value="yes"> Yes</label>
-<label><input type="radio" name="q3b" value="no"> No</label>
-</div></div><div id="qf2b"></div>
-<div class="flag">Observation recorded: controls reported out of service. IH review required.</div>`);
-} else closeFollow('qf2');
-}
-else if(i===3){
-if(v==='yes'){
-openFollow('qf3',`<label>Respirator type</label>
-<select><option>Half-face APR — organic vapor cartridge</option><option>Full-face APR — organic vapor cartridge</option><option>PAPR</option><option>Supplied air</option></select>
-<div class="fieldRow"><label>Was the wearer fit-tested within the last 12 months?</label>
-<div class="radioRow" onchange="qFit(this)">
-<label><input type="radio" name="q4b" value="yes"> Yes</label>
-<label><input type="radio" name="q4b" value="no"> No</label>
-</div></div><div id="qf3b"></div>`);
-} else closeFollow('qf3');
-}
-else if(i===4){
-if(v==='downwind'||v==='variable'){
-openFollow('qf4',`<label>Estimated distance from the emission source</label>
-<select onchange="qDist(this)"><option value="">Select...</option><option value="near">Less than 3 ft</option><option value="mid">3–10 ft</option><option value="far">More than 10 ft</option></select>
-<div id="qf4b"></div>`);
-} else closeFollow('qf4');
-}
-else if(i===5){
-if(v==='media'){
-openFollow('qf5',`<label>Media change-out logged — time and new media lot #:</label>
-<label for="qMediaChange">Media change-out details</label><input type="text" id="qMediaChange" aria-describedby="qMediaChangeHint"><span id="qMediaChangeHint" class="footnote">For example: 11:32 AM, Lot #4472</span>
-<div class="note">Record the change-out details for your IH to review.</div>`);
-} else if(v==='pump'){
-openFollow('qf5',`<label>Pump fault — time and duration:</label>
-<label for="qPumpFault">Pump fault details</label><input type="text" id="qPumpFault" aria-describedby="qPumpFaultHint"><span id="qPumpFaultHint" class="footnote">For example: 10:14 AM, 6 minutes</span>
-<div class="fieldRow"><label>Was the sample voided?</label>
-<div class="radioRow" onchange="qVoid(this)">
-<label><input type="radio" name="q6b" value="yes"> Yes</label>
-<label><input type="radio" name="q6b" value="no"> No</label>
-</div></div><div id="qf5b"></div>`);
-} else closeFollow('qf5');
-}
-}
-function qCleanup(el){
-const v=el.querySelector('input:checked').value;
-document.getElementById('qf0b').innerHTML = v==='no'
-? `<div class="fieldRow"><label>Describe current containment status:</label><input type="text" placeholder="e.g. absorbent applied, area barricaded"></div>`
-: `<div class="note">Cleanup response recorded with the field observations.</div>`;
-}
-function qYesNoText(el,target,trigger,labelTxt,ph){
-const v=el.querySelector('input:checked').value;
-document.getElementById(target).innerHTML = v===trigger
-? `<div class="fieldRow"><label>${labelTxt}</label><input type="text" placeholder="${ph}"></div>`
-: '';
-}
-function qVapor(el){
-const v=el.querySelector('input:checked').value;
-document.getElementById('qf1c').innerHTML = v==='yes' ? ''
-: `<div class="fieldRow"><label>Reason vapor recovery was out of service:</label>
-<select><option>Scheduled maintenance</option><option>Unit malfunction</option><option>Not required for product</option><option>Other (describe in log)</option></select></div>`;
-}
-function qFit(el){
-const v=el.querySelector('input:checked').value;
-document.getElementById('qf3b').innerHTML = v==='no'
-? `<div class="flag">Fit-test response recorded for your IH to review.</div>`
-: `<div class="note">Fit-test response recorded; your IH evaluates respirator use.</div>`;
-}
-function qDist(el){
-document.getElementById('qf4b').innerHTML = el.value==='near'
-? `<div class="flag">Position and distance recorded for your IH to review.</div>`
-: el.value ? `<div class="note">Position and distance recorded with the sample metadata.</div>` : '';
-}
-function qVoid(el){
-const v=el.querySelector('input:checked').value;
-document.getElementById('qf5b').innerHTML = v==='yes'
-? `<div class="flag">Record the sample concern for your IH to review.</div>`
-: `<div class="note">Record fault timing and duration for your IH to assess.</div>`;
-}
-
 const HAZ={
 silica:{unit:'µg/m³',al:25,oel:50,ph:'e.g. 32'},
 noise:{unit:'dBA',al:85,oel:90,ph:'e.g. 87.5'},
@@ -2225,16 +2096,16 @@ return `<div class="panel">
 <div class="ssAddWrap">
 <button class="abtn" style="background:var(--slate);padding:8px 16px" onclick="toggleSampleMenu('${p}')">ADD SAMPLE</button>
 <div class="ssMenu" id="${p}SampleMenu">
-<div onclick="addExampleSample('${p}','full')">Full shift — Air sample</div>
-<div onclick="addExampleSample('${p}','short')">Short term — Air sample</div>
-<div onclick="addExampleSample('${p}','grab')">Grab sample</div>
-<div onclick="addExampleSample('${p}','noise')">Noise dosimetry</div>
-<div onclick="addExampleSample('${p}','direct')">Direct read</div>
+<button type="button" onclick="addExampleSample('${p}','full')">Full shift — Air sample</button>
+<button type="button" onclick="addExampleSample('${p}','short')">Short term — Air sample</button>
+<button type="button" onclick="addExampleSample('${p}','grab')">Grab sample</button>
+<button type="button" onclick="addExampleSample('${p}','noise')">Noise dosimetry</button>
+<button type="button" onclick="addExampleSample('${p}','direct')">Direct read</button>
 </div>
 </div>
 <div id="${p}SampleList">
 <div class="sampleCard">
-<div class="sampleTop"><span><b>#SG-050224-01</b><span class="skc">SKC 52</span></span><span class="openS">OPEN SAMPLE</span></div>
+<div class="sampleTop"><span><b>#SG-050224-01</b><span class="skc">SKC 52</span></span><button type="button" class="openS" data-open-record>Open Sample</button></div>
 <div class="sampleLines">Sample type: full shift<br>Hazards: Manganese - # 7439-96-5,<br>Start time: 06:55 am. (10 hours ago)<br>Last check: 2 May 2024, 07:57 am (9 hours ago)<br>Samples has finished.<br>Samples has finished and has results.</div>
 </div>
 </div>
@@ -2255,7 +2126,7 @@ function addExampleSample(p,k){
 const s=EX_SAMPLES[k];
 document.getElementById(p+'SampleList').insertAdjacentHTML('beforeend',
 `<div class="sampleCard" style="margin-top:10px;animation:pop .3s ease both">
-<div class="sampleTop"><span><b>${s[0]}</b><span class="skc">${s[1]}</span></span><span class="openS">OPEN SAMPLE</span></div>
+<div class="sampleTop"><span><b>${s[0]}</b><span class="skc">${s[1]}</span></span><button type="button" class="openS" data-open-record>Open Sample</button></div>
 <div class="sampleLines">${s[2]}</div></div>`);
 toggleSampleMenu(p);
 }
@@ -2288,9 +2159,9 @@ function renderQuestionGroups(host,groups,project){
  const forms=[];
  function download(selected){
   const rows=[['Group','Question','Answer']];
-  forms.forEach(({name,form,select})=>{
+  forms.forEach(({name,form,select,prompts})=>{
    if(selected&&!select.checked)return;
-   for(const [question,value] of new FormData(form))rows.push([name,question,value]);
+   const data=new FormData(form);for(const q of prompts)rows.push([name,q,data.getAll(q).join(", ")]);
   });
   const escape=v=>'"'+(/^[=+\-@\t\r]/.test(v)?"'":"")+v.replaceAll('"','""')+'"';
   const url=URL.createObjectURL(new Blob([rows.map(row=>row.map(escape).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));
@@ -2309,17 +2180,30 @@ function renderQuestionGroups(host,groups,project){
   const key='myih-demo-questions-v1:'+name;
   let saved=demoQuestionAnswers.get(key)||{};try{saved=JSON.parse(sessionStorage.getItem(key))||saved;}catch{}
   for(const prompt of prompts){
-   const label=document.createElement('label');label.append(prompt);
-   const binary=prompt==='Are there 5 workers in the confined space?';
-   const field=document.createElement(binary?'select':'textarea');
-   if(binary){for(const v of ['','Yes','No'])field.add(new Option(v||'Choose an answer',v));}else field.rows=2;
-   field.name=prompt;field.value=saved[prompt]||'';label.append(field);form.append(label);
+   const choices={
+    'Which activities were monitored?':['Connecting lines','Cargo operations','Disconnecting','Line clearing'],
+    'Worker position relative to the emission source?':['Upwind','Downwind','Variable'],
+    'Were engineering controls operating?':['Yes','No'],
+    'Are there 5 workers in the confined space?':['Yes','No']
+   }[prompt];
+   if(choices){
+    const group=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=prompt;group.append(legend);
+    for(const choice of choices){
+     const label=document.createElement('label'),input=document.createElement('input');
+     input.type=prompt==='Which activities were monitored?'?'checkbox':'radio';input.name=prompt;input.value=choice;
+     input.checked=[].concat(saved[prompt]||[]).includes(choice);label.append(input,' '+choice);group.append(label);
+    }
+    form.append(group);
+   }else{
+    const label=document.createElement('label'),field=document.createElement('textarea');
+    field.name=prompt;field.rows=2;field.value=saved[prompt]||'';label.append(prompt,field);form.append(label);
+   }
   }
   const submit=document.createElement('button');submit.textContent='Save answers';
   const status=document.createElement('span');status.setAttribute('role','status');
   form.oninput=()=>status.textContent='Unsaved changes';
-  form.onsubmit=event=>{event.preventDefault();const values=Object.fromEntries(new FormData(form));demoQuestionAnswers.set(key,values);try{sessionStorage.setItem(key,JSON.stringify(values));}catch{}status.textContent='Answers saved for this demo session.';};
-  form.append(submit,status);forms.push({name,form,select});wrap.append(details);
+  form.onsubmit=event=>{event.preventDefault();const data=new FormData(form);const values=Object.fromEntries(prompts.map(q=>[q,data.getAll(q)]));demoQuestionAnswers.set(key,values);try{sessionStorage.setItem(key,JSON.stringify(values));}catch{}status.textContent='Answers saved for this demo session.';};
+  form.append(submit,status);forms.push({name,form,select,prompts});wrap.append(details);
  });
 }
 // All downloads are built from the existing public example records.
@@ -2393,7 +2277,13 @@ container.innerHTML = `
 <h2>Hazards Survey</h2><div class="projectOverview">
 <article><h3>#SG-0621-2025</h3><strong>Hazards Survey</strong><p>100 myIH Rd<br>70820 Indianapolis<br>IN United States</p></article>
 <article><h3>Contact information</h3><p>Sam Davidson</p><p>sdavidson@myihportal.com<br>888-760-8811</p></article>
-<article><h3>Sampling Plan</h3><div class="planStats"><span><b>First survey date</b><br>August 15, 2025</span><span><b>Samples taken</b><br>32 / 39</span></div><progress value="32" max="39" aria-label="32 of 39 planned samples taken"></progress><small>7 samples remaining</small></article>
+<article><h3>Sampling Plan</h3><div class="planStats"><span><b>First survey date</b><br>August 15, 2025</span><span><b>Samples taken</b><br>4 / 5</span></div>
+<svg class="planChart" viewBox="0 0 420 145" role="img" aria-label="Sampling plan completion: four of five samples taken, one remaining">
+<path d="M35 118H399 M35 22V118" stroke="#666" fill="none"/>
+<path d="M36 118V99H126V80H216V61H306V42H398V118Z" fill="#e1eeed"/>
+<path d="M36 99H126V80H216V61H306V42H398" stroke="#47817e" stroke-width="3" fill="none"/>
+<path d="M35 22H398" stroke="#726485" stroke-dasharray="5 4"/>
+<g font-size="13" fill="#454450"><text x="16" y="122">0</text><text x="16" y="46">4</text><text x="16" y="26">5</text><text x="295" y="16">Planned · 5</text><text x="35" y="138">First sample</text><text x="311" y="138">Latest sample</text></g></svg></article>
 <article><h3>Employee Plan</h3><table><thead><tr><th>Employee name</th><th>Employee number</th></tr></thead><tbody><tr><td>Walter Paton</td><td>789562</td></tr></tbody></table></article></div>
 <h3>Survey days</h3><div class="surveyDays"><table>
 <thead><tr><th>Created at</th><th>Sampler(s)</th><th>Samples created</th><th>Lab results</th><th>Recent activity</th></tr></thead>
@@ -2408,7 +2298,7 @@ container.innerHTML = `
 </div>`;
 } else if(tabName === 'questions') {
 renderQuestionGroups(container,[
-['Benzene Air Sampling Documentation Questions',['Which sample ID and sampling location were recorded?','What observations should accompany the sample?'],true],
+['Benzene Air Sampling Documentation Questions',['Which sample ID and sampling location were recorded?','What observations should accompany the sample?','Which activities were monitored?','Worker position relative to the emission source?','Were engineering controls operating?'],true],
 ['Benzene Air Sampling Questions for Full Shift and Short Term Air Sampling',['Which tasks occurred during the sampling period?','When did sampling start and finish?'],true],
 ['Asbestos Air Sampling Questions - Daily',['Where was the sample collected?','Which activities were observed?'],true],
 ['Catalyst change Out',['Are there 5 workers in the confined space?','What is the catalyst?'],false]

@@ -42,6 +42,11 @@ async function visit(browser, width) {
   await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
   await page.screenshot({path:output+'/hero-'+width+'.png',timeout:15000});
   await check('hero preview overlay', async () => {await click('.brandActions button'); await page.locator('#sandboxModal[open]').waitFor();});
+  if(await page.locator('.entryChoices').count()) await check('enter software directly and return to tour',async()=>{
+    await click('.entryChoices button:last-child');
+    await page.locator('#hdash:visible').waitFor();
+    await click('#closePreview');await click('.brandActions button');
+  });
   await check('start tour', async () => {await click('.tourStart button');});
   await check('back and next', async () => {await click('#backBtn');await click('.tourStart button');});
   const revisedTour = await page.locator('.tourRecord').count();
@@ -50,15 +55,20 @@ async function visit(browser, width) {
       await click('#introChart .seg');
       if (!(await page.locator('#bandReading').innerText()).includes('BMR Industrial')) throw Error('Missing band feedback');
     });
-    if (revisedTour && step===3) await check('switch field prompts and retain the answer', async () => {
-      await page.locator('input[name=q1][value=slight]').check();
-      await page.locator('#qSpillVol').fill('Field observation');
-      await page.locator('#promptChoice').selectOption('2');
+    if (revisedTour && step===3) await check('independent field questions', async () => {
+      if(await page.locator('.tourQuestions fieldset:visible').count()!==6) throw Error('Hidden question');
+      await page.locator('.tourQuestions textarea').fill('Field observation');
       await page.locator('input[name=q3][value=yes]').check();
-      await page.locator('#promptChoice').selectOption('0');
-      if(await page.locator('#qSpillVol').inputValue()!=='Field observation') throw Error('Lost field note');
+      if(!(await page.locator('#qCount').innerText()).includes('4 remaining')) throw Error('Wrong remaining count');
+    });
+    if (revisedTour && step===4) await check('set end time and finish the example', async () => {
+      await click('#pickTime');await page.locator('.clockWindow input').fill('10:30');
+      await click('.clockActions .btn');await click('#finishDemo [type=submit]');
+      await page.locator('.sampleWindow').getByText('150 min',{exact:true}).waitFor();
+      await page.keyboard.press('Escape');
     });
     if (revisedTour && step===4) await check('inspect equipment and lab results', async () => {
+      await click('.equipmentDetails summary');
       await click('[aria-controls=pumpStation]');
       await page.locator('#pumpStation:visible').waitFor();
       await click('[aria-controls=labStation]');
@@ -75,6 +85,12 @@ async function visit(browser, width) {
       await page.locator('#exposureNote:visible').waitFor();
     });
     if(step===5) {
+      await check('open the survey sample and inspect the sampling plan',async()=>{
+        await click('.svTabs:visible button[data-view=survey_dash]');await click('.slide.active [data-open-record]');
+        await page.locator('.sampleWindow h2').getByText('#SG-050224-01',{exact:true}).waitFor();
+        await page.keyboard.press('Escape');
+        await click('.svTabs:visible button[data-view=project_dash]');await page.locator('.planChart:visible').waitFor();
+      });
       await check('project questions', async () => {await click('.svTabs:visible button[data-view=questions]'); const group=page.locator('#gContentContainer details').nth(1); await group.locator('summary').click();
         const form=group.locator('form');
         const field=form.locator('textarea').first();
