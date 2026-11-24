@@ -59,7 +59,7 @@ jobs:
           fi
           echo "${{ matrix.version }}=$SCORES UI $ui" >> "$GITHUB_OUTPUT"
           echo "Lighthouse $SCORES" >> "$GITHUB_STEP_SUMMARY"
-          if test -f review/lighthouse.json; then jq '{categories: [.categories[] | {id,score}], version:.lighthouseVersion, lcp:.audits["largest-contentful-paint"].numericValue, cls:.audits["cumulative-layout-shift"].numericValue, tbt:.audits["total-blocking-time"].numericValue}' review/lighthouse.json > review/metrics.json; fi
+          if test -f review/lighthouse.json; then jq '{categories: [.categories[] | {id,score}], version:.lighthouseVersion, lcp:.audits["largest-contentful-paint"].numericValue, cls:.audits["cumulative-layout-shift"].numericValue, tbt:.audits["total-blocking-time"].numericValue, shifts:.audits["layout-shifts"].details.items, shiftSources:.audits["cls-culprits-insight"].details}' review/lighthouse.json > review/metrics.json; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
