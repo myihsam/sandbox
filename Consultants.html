@@ -1679,7 +1679,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
                   <option value="benzene">Benzene 8-hr TWA — OEL 1 ppm · AL 0.5 (OSHA)</option>
                 </select>
               </div>
-              <div class="fieldRow"><label id="valLabel" for="valIn">Result (µg/m³)</label><input type="number" id="valIn" step="any" aria-describedby="valHint"><span id="valHint" class="footnote">Enter a number, for example 32</span><span class="fieldError" id="valErr" hidden></span></div>
+              <div class="fieldRow"><label id="valLabel" for="valIn">Result (µg/m³)</label><input type="number" id="valIn" min="0" step="any" aria-describedby="valHint valErr"><span id="valHint" class="footnote">Enter a number, for example 32</span><span class="fieldError" id="valErr" hidden></span></div>
               <div style="margin-top:13px"><button class="btn sm" onclick="logResult()">Add result</button></div>
               <div class="tourPresets" role="group" aria-label="Example readings"><button type="button" data-hazard="silica" data-value="32">Try silica · 32 µg/m³</button><button type="button" data-hazard="benzene" data-value="0.4">Try benzene · 0.4 ppm</button></div>
               <div role="status" id="statusOut" style="margin-top:14px"></div>
@@ -2158,13 +2158,23 @@ const PILLC=['var(--oel-red)','var(--oel-orange)','#C9A227','var(--oel-blue)','v
 function logResult(){
 const key=document.getElementById('hazSel').value, h=HAZ[key];
 const v=parseFloat(document.getElementById('valIn').value);
-if(isNaN(v))return;
+const field=document.getElementById('valIn');
+const message=document.getElementById('valErr');
+if(!Number.isFinite(v)||v<0){
+  message.hidden=false;
+  message.textContent='Enter a measurement of zero or greater.';
+  field.setAttribute('aria-invalid','true');
+  field.focus();
+  return;
+}
+message.hidden=true;
+field.removeAttribute('aria-invalid');
 let pct = key==='noise' ? (v>=h.oel?101 : v>=h.al?60 : v>=h.oel-20?20 : 5) : (v/h.oel*100);
 const c=catFor(pct);
 counts[c]++; entries.unshift({v,unit:h.unit,cat:c,pctTxt:key==='noise'?'':' · '+Math.round(pct)+'% of OEL'});
 document.getElementById('statusOut').innerHTML=
 `<span class="pill" style="background:${PILLC[c]};animation:pop .3s ease both">${CATLBL[c]}</span>
-<div style="font-size:1rem;color:var(--ink);margin-top:8px;line-height:1.5">Compared with the selected example OEL.</div>`;
+<div style="font-size:1rem;color:var(--ink);margin-top:8px;line-height:1.5">${Math.round(pct)}% of the selected example OEL.</div>`;
 const total=counts.reduce((a,b)=>a+b,0);
 const bar=document.getElementById('liveBar');bar.innerHTML='';
 counts.forEach((n,i)=>{
