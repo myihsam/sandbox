@@ -1,0 +1,34 @@
+.cardLight {
+  --light-tone: #315d73;
+  --light-edge: #213844;
+  --light-rgb: 173, 220, 251;
+  --light-x: 30%;
+  --light-y: 0%;
+  --light-alpha: .07;
+}
+.cardLight:nth-of-type(4n+2), .cardLight[data-tone="slate"] {
+  --light-tone: #4a596b; --light-edge: #2c3340; --light-rgb: 215, 230, 250;
+}
+.cardLight:nth-of-type(4n+3), .cardLight[data-tone="teal"] {
+  --light-tone: #295956; --light-edge: #19383d; --light-rgb: 163, 237, 225;
+}
+.cardLight:nth-of-type(4n), .cardLight[data-tone="purple"] {
+  --light-tone: #57486d; --light-edge: #342e43; --light-rgb: 223, 199, 255;
+}
+body .cardLight.cardLight {
+  color: white;
+  background: radial-gradient(ellipse 18rem 12rem at var(--light-x) var(--light-y), rgba(var(--light-rgb),var(--light-alpha)), transparent 80%), linear-gradient(135deg,var(--light-tone),var(--light-edge));
+  border-color: rgba(var(--light-rgb),.42);
+  box-shadow: inset 0 1px rgba(255,255,255,.17), 0 5px 15px rgba(27,41,54,.14);
+}
+body .cardLight.cardLight :is(h2,h3,h4,p,strong,small,dt,dd,span,a,li,cite) {color: inherit}
+body .cardLight.cardLight :is(a,button):focus-visible, body .cardLight.cardLight:focus-visible {outline:3px solid #f2ca86;outline-offset:-3px}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  body .cardLight.cardLight[data-lit] {--light-alpha:.23;box-shadow:inset 0 1px rgba(255,255,255,.32),0 7px 20px rgba(27,41,54,.21)}
+}
+body .cardLight.sampleExport a {color:#44394f}
+body .browseCard.cardLight :is(.bcTitle,.bcMeta), body .browseGrid .browseCard.cardLight:after {color:white}
+body .subjectPreview.cardLight header {background:transparent;color:white}
+body .subjectPreview.cardLight .subjectTray dl {
+  background:radial-gradient(ellipse 18rem 12rem at var(--light-x) var(--light-y),rgba(var(--light-rgb),var(--light-alpha)),transparent 80%),#202e33;
+}

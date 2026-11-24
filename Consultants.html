@@ -722,7 +722,7 @@ input[aria-invalid=true],select[aria-invalid=true]{border:2px solid #B32020}
   .sciInstr .pill{font-size:1rem;padding:5px 8px}
   .sciDot{width:7px;height:7px;box-shadow:none}
   .sciSoft,.sciSoft.on{top:34%;width:calc(100% - 32px);max-height:calc(66% - 62px);transform:translateX(-50%);border-radius:16px}
-  .sciSoft{overflow-y:auto;pointer-events:auto;overscroll-behavior:contain}.sciSoftBody{padding:10px;gap:8px}.sciSoftCard{padding:12px}
+  .sciSoft{overflow-y:auto;pointer-events:auto;overscroll-behavior:auto}.sciSoftBody{padding:10px;gap:8px}.sciSoftCard{padding:12px}
   .sciSoftCard h3{font-size:1rem}.sciSoftCard p{font-size:1rem!important;margin:8px 0!important}
   .sciAutoload{grid-template-columns:1fr 1fr;gap:8px}
   .sciSoftBtn,.sciImport{font-size:1rem;padding:10px 8px;white-space:normal}
@@ -1360,7 +1360,7 @@ details[open] .sampleToggle:after{content:'Close sample −'}
  #sandboxModal[open]{display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
  #sandboxModal .previewBar{flex:none;height:auto;min-height:48px;padding:2px 12px}
  #sandboxModal #previewMount{flex:1;min-height:0;height:auto}
- #sandbox .stage,#sandbox #explore .exMain{overscroll-behavior:contain}
+ #sandbox .stage,#sandbox #explore .exMain{overscroll-behavior:auto}
  #sandbox .wrap,#sandbox .shell,#sandbox .stage,#sandbox .slide,#sandbox #explore .exShell{min-width:0}
  #sandbox .progress{padding:0 12px;gap:4px}
  #sandbox .progress button{height:24px;min-height:24px!important;background:transparent!important;position:relative}
@@ -1465,6 +1465,8 @@ details[open] .sampleToggle:after{content:'Close sample −'}
 </style>
 <link rel="stylesheet" href="assets/tour/tour.css">
 <script defer src="assets/tour/tour.js"></script>
+<link rel="stylesheet" href="/assets/card-light.css">
+<script defer src="/assets/card-light.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -1856,12 +1858,12 @@ details[open] .sampleToggle:after{content:'Close sample −'}
 <div class="recordStoryInner">
 <header class="recordStoryHeader"><span class="recordEyebrow">FROM FIELDWORK TO FOLLOW-UP</span><h2 id="recordStoryTitle">Capture it once.<br>Keep the context.</h2></header>
 <div class="sampleShowcase">
-<article class="subjectPreview" aria-label="Noise Tester sample record">
+<article class="cardLight subjectPreview" aria-label="Noise Tester sample record">
 <header><span aria-hidden="true">▤</span><strong>#001 | Noise Tester</strong></header>
 <div class="subjectTray"><details open><summary><strong>#NoiseTest</strong><span>Casella CEL Noise Dosimeter Calibrator</span><b class="sampleToggle"></b></summary>
-<dl><dt>Sample type</dt><dd>Full shift</dd><dt>Hazard</dt><dd>Noise Dose</dd><dt>Start time</dt><dd>08:00 am</dd><dt>Last check</dt><dd>Not checked</dd><dt>Status</dt><dd>Finished with results</dd></dl></details></div></article>
-<aside class="sampleExport"><h3>Export the sample record</h3><p>Review the field notes and results together in Excel or PDF.</p><a href="assets/tour/BR-062124-001.pdf" target="_blank" rel="noopener">View sample data sheet (PDF) ↗</a></aside></div>
-<aside class="recordProof">
+<dl><dt>Sample type</dt><dd>Full shift</dd><dt>Hazard</dt><dd>Noise Dose</dd><dt>Start time</dt><dd>08:00 am</dd><dt>Last check</dt><dd>4:05 PM</dd><dt>Status</dt><dd>Finished with results</dd></dl></details></div></article>
+<aside class="cardLight sampleExport" data-tone="purple"><h3>Export the sample record</h3><p>Review the field notes and results together in Excel or PDF.</p><a href="assets/tour/BR-062124-001.pdf" target="_blank" rel="noopener">View sample data sheet (PDF) ↗</a></aside></div>
+<aside class="cardLight recordProof">
 <div class="recordProofStat"><strong>20%</strong><span>minimum efficiency gain<br>reported by a user</span></div>
 <div><blockquote>“Using myIH, we experienced a minimum 20% efficiency gain.”</blockquote><cite>— Current user, IH Consultancy CEO</cite><p class="claimQualifier">Based on internal data from beta testing and active user subscriptions.</p></div>
 </aside>
@@ -1978,7 +1980,6 @@ if(window.mixpanel && typeof mixpanel.track === 'function') {
   mixpanel.track('Sandbox Step Viewed', { 'Step Number': n + 1 });
 }
 if(n<0||n>=N)return;
-const _lockX=window.scrollX||window.pageXOffset||0, _lockY=window.scrollY||window.pageYOffset||0;
 const movingFromSlide=slides[cur].contains(document.activeElement);
 slides[cur].classList.remove('active');
 cur=n;
@@ -2006,7 +2007,7 @@ if(movingFromSlide || (cur===N-1 && document.activeElement.id==='nextBtn') || (c
   target.focus({preventScroll:true});
 }
 document.getElementById('stage').scrollTop=0;
-window.scrollTo(_lockX,_lockY); /* keep the page's relative scroll position locked during step navigation */
+ /* keep the page's relative scroll position locked during step navigation */
 }
 for(const k in PERSONA){const el=document.getElementById('c_'+k);if(el)el.textContent=PERSONA[k];}
 go(0);
@@ -3190,23 +3191,7 @@ questions:'M2 3h12v7H2zm0 11h12v7H2zM17 2h6l-3 8h3l-7 13 2-10h-3z'
 document.querySelectorAll('#exNav li').forEach(li=>{li.querySelector('button').insertAdjacentHTML('afterbegin','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+icons[li.dataset.tab]+'"/></svg>');});
 })();
 </script>
-<script>
-(() => {
-  const tile = document.querySelector('.sampleExport');
-  if (!tile) return;
-  const motion = matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
-  tile.addEventListener('pointermove', event => {
-    if (!motion.matches) return;
-    const bounds = tile.getBoundingClientRect();
-    tile.style.setProperty('--tile-x', (100 * (event.clientX - bounds.left) / bounds.width) + '%');
-    tile.style.setProperty('--tile-y', (100 * (event.clientY - bounds.top) / bounds.height) + '%');
-  });
-  tile.addEventListener('pointerleave', () => {
-    tile.style.removeProperty('--tile-x');
-    tile.style.removeProperty('--tile-y');
-  });
-})();
-</script>
+
 </body>
 </html>
 
