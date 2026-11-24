@@ -1317,7 +1317,38 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 @media(max-width:960px){.fieldExamples{grid-template-columns:1fr}.fieldExamples article{padding:22px}}
 </style><style>.questionLink{background:none;border:0;font:inherit;color:#44435c;text-decoration:underline;cursor:pointer}.svHead .svTabs{display:flex;flex-wrap:wrap;gap:0}.svTabs button{font-weight:600;line-height:1.25;font-family:inherit;font-size:15px;padding:12px;border:0;border-bottom:3px solid transparent;color:#182e30;background:transparent;cursor:pointer}.svTabs button.on{color:#102122;border-bottom-color:white;background:#ffffff26}.svTabs sup{background:#ad312a;color:white;border-radius:1em;padding:2px 5px}
 .svBody:is([data-view=project_dash],[data-view=questions],[data-view=proj_info]){max-width:1152px;margin:auto;padding:clamp(12px,2vw,30px);background:#fafbfc;border:0;color:#504e60}.svBody[data-view=project_dash] h2,.projectQuestions h2{font-size:clamp(24px,2vw,34px);font-weight:400;margin:0 0 18px}.projectOverview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:24px}.projectOverview article,.surveyDays{background:white;border-radius:4px;box-shadow:0 1px 4px #0003;padding:16px;min-width:0;overflow-wrap:anywhere}.projectOverview h3,.svBody[data-view=project_dash]>h3{font-size:20px;margin:0 0 14px}.projectOverview p,.planStats{font:16px/1.5 Roboto,Arial,sans-serif;margin:6px 0}.planStats,.questionActions{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}.projectOverview progress{width:100%;height:18px;accent-color:#517f80}.surveyDays{overflow-x:auto;padding:0}.svBody[data-view=project_dash] :is(td,th){font-size:15px;line-height:1.4;padding:10px;text-transform:none;letter-spacing:normal}.projectQuestions details{margin:8px 0;background:white;border:1px solid #ddd;border-radius:4px}.projectQuestions summary{cursor:pointer;background:#514e60;color:white;padding:12px 16px;font-weight:600}.projectQuestions form,.exportChoice{padding:12px 16px}.projectQuestions form label,.projectQuestions textarea,.projectQuestions select{display:block;width:100%;margin:0 0 10px;font:inherit}.projectQuestions textarea,.projectQuestions select{padding:8px;border:1px solid #9796a0;color:#222;background:white}.projectQuestions button{font:inherit;background:#504e60;color:white;padding:8px 14px;border:0;border-radius:4px;cursor:pointer}.projectQuestions button:disabled{background:#ddd;color:#555}.projectQuestions [role=status]{margin-inline:10px}.questionActions{justify-content:flex-start}.projectQuestions h3{margin:16px 0 8px}.projectQuestions .exportChoice{display:flex;align-items:center;gap:8px}.exportChoice input{width:auto}.projectQuestions p{margin:12px 0}@media(max-width:700px){.projectOverview{grid-template-columns:1fr}.svTabs button{padding:8px;font-size:14px}}</style>
-<style>.sampleShowcase{display:grid;grid-template-columns:minmax(0,2fr) minmax(250px,1fr);gap:22px;margin:28px 0;color:#282731}.subjectPreview,.sampleExport{min-width:0;border-radius:5px;overflow:hidden;box-shadow:0 1px 4px #28273135}.subjectPreview{background:white}.subjectPreview header{display:flex;align-items:center;gap:16px;padding:20px 24px;font-size:clamp(20px,2vw,26px)}.subjectPreview header span{color:#74747a}.subjectTray{padding:16px;background:#ebebed}.subjectTray details{background:white;border-radius:4px}.subjectTray summary{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;padding:16px;cursor:pointer;font-size:17px}.subjectTray summary strong{font-size:21px}.sampleToggle{margin-left:auto;font-size:15px;color:#514e61}.sampleToggle::after{content:"Open sample ＋"}.subjectTray details[open] .sampleToggle::after{content:"Close sample −"}.subjectTray dl{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:0;padding:0 16px 16px;font-size:17px;line-height:1.45}.subjectTray dt{color:#555461}.subjectTray dd{margin:0}.sampleExport{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(20px,3vw,40px);background:linear-gradient(135deg,#56506d,#332e42);color:white}.sampleExport h3{font-size:clamp(24px,2.4vw,34px);line-height:1.15;margin:0}.sampleExport p{font-size:18px;line-height:1.5;color:#f4effb}.sampleExport button{border:1px solid #ddd8ed;border-radius:4px;background:transparent;color:white;padding:10px 16px;font:inherit;cursor:pointer}.sampleExport button:hover,.sampleExport button:focus-visible{background:#ffffff20}.subjectTray summary:is(:hover,:focus-visible){background:#f3f4f5}
+<style>
+.sampleShowcase{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(1rem,2.5vw,2.25rem);align-items:stretch}
+.subjectPreview,.sampleExport{min-width:0;border-radius:6px;overflow:hidden}
+.subjectPreview{padding:3px;background:linear-gradient(125deg,#272b32 4%,#a2b9b9 20%,#454953 34%,#252933 72%,#788b91);box-shadow:0 6px 16px #20232c22}
+.subjectPreview header{display:flex;align-items:center;gap:.8rem;background:#282c34;color:white;padding:1rem 1.25rem;font-size:clamp(1.12rem,2vw,1.5rem)}
+.subjectPreview header span{color:#b5d9d8}
+.subjectTray{padding:clamp(.7rem,2vw,1.3rem);background:#e6e8e9}
+.subjectTray details{background:white;border:1px solid #ccd2d4;border-radius:3px}
+.subjectTray summary{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem .8rem;padding:1rem;cursor:pointer;color:#242632;list-style:none}
+.subjectTray summary::-webkit-details-marker{display:none}
+.subjectTray summary strong{font-size:1.25rem}
+.subjectTray summary span{font-size:1rem;flex:1 1 12rem}
+.sampleToggle{color:#46425d;font-size:.95rem}
+.sampleToggle:after{content:'Open sample ＋'}
+details[open] .sampleToggle:after{content:'Close sample −'}
+.subjectTray dl{margin:0;padding:.35rem 1rem .65rem;display:grid;grid-template-columns:minmax(6rem,.8fr) minmax(0,1fr);background:#202e33;color:#f4fafa;border-top:3px solid #88b8b6}
+.subjectTray dt,.subjectTray dd{margin:0;padding:.65rem 0;border-bottom:1px solid #53636a;font-size:1rem;line-height:1.4;overflow-wrap:anywhere}
+.subjectTray dt{font-family:ui-monospace,monospace;color:#bddad8}
+.subjectTray dd{text-align:right}
+.sampleExport{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1rem;padding:clamp(1.35rem,3vw,2.75rem);color:white;background:linear-gradient(130deg,#645871,#483d58 52%,#342d42);border:1px solid #786a86;box-shadow:0 6px 16px #30273825}
+.sampleExport h3,.sampleExport p{color:inherit;margin:0}
+.sampleExport h3{font-size:clamp(1.5rem,2.35vw,2.25rem);line-height:1.15}
+.sampleExport p{font-size:1.1rem;line-height:1.5}
+.sampleExport a{display:inline-flex;align-items:center;min-height:44px;padding:.6rem 1rem;border:1px solid #ece7f2;border-radius:3px;background:#fff;color:#44394f;font-weight:700;text-decoration:none}
+.sampleExport a:hover,.sampleExport a:focus-visible{background:#efe9f5;text-decoration:underline}
+.subjectTray summary:focus-visible,.sampleExport a:focus-visible{outline:3px solid #387a81;outline-offset:-3px}
+.recordStory .recordDestinations{overflow:visible}
+.recordStory .recordDestinations details,.recordStory .recordDestinations details[open]{position:relative;margin:1.1rem 0 .65rem;border:1px solid #839e9c!important;border-radius:0 4px 4px 4px;background:#fcfdfb!important;box-shadow:0 3px 0 #d4dfdd}
+.recordStory .recordDestinations details:before{content:'';position:absolute;bottom:100%;left:-1px;width:clamp(3rem,15%,6rem);height:8px;background:#89acaa;clip-path:polygon(0 0,85% 0,100% 100%,0 100%)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.subjectPreview,.sampleExport{transition:box-shadow .18s ease}.subjectPreview:hover,.sampleExport:hover{box-shadow:0 7px 21px #30273840}.sampleExport{background:radial-gradient(ellipse at var(--tile-x,25%) var(--tile-y,20%),#71647d88,transparent 65%),linear-gradient(130deg,#60536e,#352d42)}}
+@media(max-width:760px){.sampleShowcase{grid-template-columns:minmax(0,1fr)}.sampleExport{padding:1.4rem}.subjectTray summary{align-items:baseline}.subjectTray summary span{flex-basis:100%}}
+
 #sandbox .slide:not(:first-child){width:100%;max-width:1280px;margin-inline:auto;padding:clamp(16px,2.5vw,32px)}#sandbox .slide h2{font-size:clamp(27px,2.5vw,38px);line-height:1.16}#sandbox .slide .sub{font-size:clamp(18px,1.25vw,21px)!important;line-height:1.5;max-width:78ch}#sandbox .slide .eyebrow{font-size:15px;letter-spacing:.09em}
 #sandbox .slide--report .bmrReport{max-width:none;min-width:0;width:100%;zoom:1}.reportFrame{background:#f2f4f5;padding:clamp(8px,1.6vw,20px)}.bmrReport details>summary{cursor:pointer;background:#514c61;color:white;padding:10px 16px;font-size:18px;font-weight:600}.bmrReport details+details{border-top:1px solid #dedbe2}.reportSection{overflow-x:auto}.bmrReport .bmrGrid{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,1fr) minmax(0,1.6fr)}#sandbox .bmrReport :is(.bmrLabel,.bmrValue){font-size:17px;padding:8px 12px;line-height:1.4;overflow-wrap:anywhere}
 #sandbox #explore .scenarioPair{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(12px,2vw,26px);margin-top:22px;align-items:start;container-type:inline-size}#sandbox #explore .scenarioPair>.cardShadow{margin:0;min-width:0;border-radius:4px;box-shadow:0 2px 7px #24233226;padding:18px;background:white}#sandbox #explore .scenarioPair .dashboardChartTitle{font-size:clamp(22px,1.7vw,28px);line-height:1.2}#sandbox #explore .scenarioPair .donutGrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;align-items:center}#sandbox #explore .scenarioPair .donutClients{max-height:none;overflow:visible;width:auto}#sandbox #explore .donutClients label{display:flex;align-items:baseline;gap:8px;font-size:17px;line-height:1.4;margin:8px 0}#sandbox #explore .scenarioPair .donutBox{width:100%;max-width:320px;min-width:0;height:auto;aspect-ratio:1}#sandbox #explore .donutBox svg{width:100%;height:100%}#sandbox #explore .scenarioPair .dashResults{max-height:none;overflow:visible;padding:0}#sandbox #explore .scenarioPair .dashResults :is(td,th){font-size:16px;line-height:1.4;padding:12px;white-space:normal}#sandbox #explore #donutHaz{min-width:0!important;max-width:100%;width:100%;font-size:17px}
@@ -1517,7 +1548,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
     </div>
     <div class="brandProduct">
       <div class="brandProductTop"><span class="liveDot"></span> THE FIELD DAY, CONNECTED <span class="brandProductTag">myIH / SURVEY</span></div>
-      <div class="brandProductImage"><img src="assets/survey-dashboard-4dcff.webp" width="1080" height="1080" decoding="async" srcset="assets/survey-dashboard-4dcff-640.webp 640w, assets/survey-dashboard-4dcff.webp 1080w" sizes="(max-width:1050px) 94vw, 55vw" fetchpriority="high" alt="myIH Survey Dashboard showing Samples and Subjects beside the tagged Daily Log"></div>
+      <div class="brandProductImage"><img src="assets/survey-dashboard-4dcff.webp" width="1080" height="1080" decoding="async" srcset="assets/survey-dashboard-4dcff-640.webp 640w, assets/survey-dashboard-4dcff.webp 1080w, assets/survey-dashboard-daily-log-1920.webp 1920w" sizes="(max-width:1050px) 94vw, 55vw" fetchpriority="high" alt="myIH Survey Dashboard showing Samples and Subjects beside the tagged Daily Log"></div>
       <div class="brandProductFoot"><span><b>@</b> People</span><span><b>#</b> Samples</span><span><b>$</b> Pump checks</span><span class="brandRecord">One connected record</span></div>
     </div>
   </div>
@@ -1829,7 +1860,7 @@ body.previewInView #ventWrap,body.previewInView #fxParticles{visibility:hidden}
 <header><span aria-hidden="true">▤</span><strong>#001 | Noise Tester</strong></header>
 <div class="subjectTray"><details open><summary><strong>#NoiseTest</strong><span>Casella CEL Noise Dosimeter Calibrator</span><b class="sampleToggle"></b></summary>
 <dl><dt>Sample type</dt><dd>Full shift</dd><dt>Hazard</dt><dd>Noise Dose</dd><dt>Start time</dt><dd>08:00 am</dd><dt>Last check</dt><dd>Not checked</dd><dt>Status</dt><dd>Finished with results</dd></dl></details></div></article>
-<aside class="sampleExport"><h3>Export the sample record</h3><p>Review the field notes and results together in Excel or PDF.</p><button type="button" onclick="openSandbox();go(6)">View sample data sheet →</button></aside></div>
+<aside class="sampleExport"><h3>Export the sample record</h3><p>Review the field notes and results together in Excel or PDF.</p><a href="assets/tour/BR-062124-001.pdf" target="_blank" rel="noopener">View sample data sheet (PDF) ↗</a></aside></div>
 <aside class="recordProof">
 <div class="recordProofStat"><strong>20%</strong><span>minimum efficiency gain<br>reported by a user</span></div>
 <div><blockquote>“Using myIH, we experienced a minimum 20% efficiency gain.”</blockquote><cite>— Current user, IH Consultancy CEO</cite><p class="claimQualifier">Based on internal data from beta testing and active user subscriptions.</p></div>
@@ -2885,15 +2916,8 @@ function animateInView(element, draw, still){
       var aEng=band(p,-1,0.03,0.15,0.21), aLab=band(p,0.19,0.25,0.33,0.39),
           aSoft=band(p,0.37,0.43,0.50,0.56), aDust=band(p,0.54,0.60,0.66,0.72),
           fin=ramp(p,0.70,1.0);
-      var bg;
-      if(p<0.19){ bg=[220,234,234]; }
-      else if(p<0.37){ bg=[226,234,239]; }
-      else if(p<0.54){ bg=[230,230,237]; }
-      else if(p<0.70){ bg=[231,226,239]; }
-      else { bg=[220,234,234]; }
-      g.fillStyle='rgb('+bg[0]+','+bg[1]+','+bg[2]+')'; g.fillRect(0,0,W,H);
-
-      drawEng(aEng); drawLab(aLab); drawSoftBg(aSoft); drawDust(fin>0.02?0:aDust); drawFinale(fin);
+      g.fillStyle='#dceaea';g.fillRect(0,0,W,H);
+    drawEng(aEng); drawLab(aLab); drawSoftBg(aSoft); drawDust(fin>0.02?0:aDust); drawFinale(fin);
 
       toggle(chips.pump,aEng>0.5); toggle(chips.benzene,aEng>0.5);
       toggle(chips.gcms,aLab>0.5); toggle(chips.pcm,aLab>0.5);
@@ -3164,6 +3188,23 @@ calibration:'M7 2h13v19H7zm6 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a4 4 0 1 0 0 8 4 
 questions:'M2 3h12v7H2zm0 11h12v7H2zM17 2h6l-3 8h3l-7 13 2-10h-3z'
 };
 document.querySelectorAll('#exNav li').forEach(li=>{li.querySelector('button').insertAdjacentHTML('afterbegin','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+icons[li.dataset.tab]+'"/></svg>');});
+})();
+</script>
+<script>
+(() => {
+  const tile = document.querySelector('.sampleExport');
+  if (!tile) return;
+  const motion = matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+  tile.addEventListener('pointermove', event => {
+    if (!motion.matches) return;
+    const bounds = tile.getBoundingClientRect();
+    tile.style.setProperty('--tile-x', (100 * (event.clientX - bounds.left) / bounds.width) + '%');
+    tile.style.setProperty('--tile-y', (100 * (event.clientY - bounds.top) / bounds.height) + '%');
+  });
+  tile.addEventListener('pointerleave', () => {
+    tile.style.removeProperty('--tile-x');
+    tile.style.removeProperty('--tile-y');
+  });
 })();
 </script>
 </body>

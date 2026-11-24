@@ -132,8 +132,17 @@ async function visit(browser, width) {
       await page.locator('#exMain tbody tr').first().waitFor();
     }
   });
-  await check('close preview and reopen at sample sheet',async () => {
-    await click('#closePreview');await click('.sampleExport button');await page.locator('.slide--report.active').waitFor();
+  await check('close preview and open the sample sheet',async () => {
+    await click('#closePreview');
+    const link = page.locator('.sampleExport a');
+    if (await link.count()) {
+      const href = await link.getAttribute('href');
+      const pdf = await context.request.get(new URL(href, page.url()).href);
+      if (!pdf.ok() || (await pdf.body()).subarray(0,5).toString() !== '%PDF-') throw Error('Invalid sample sheet');
+      if (await link.getAttribute('target') !== '_blank' || await link.getAttribute('onclick')) throw Error('Sample sheet must open directly');
+      return;
+    }
+    await click('.sampleExport button');await page.locator('.slide--report.active').waitFor();
     if(revisedTour) await page.locator('#dataSheet:visible').waitFor();
     await page.screenshot({path:output+'/report-'+width+'.png',timeout:15000});
     await page.keyboard.press('Escape');
