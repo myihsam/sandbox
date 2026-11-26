@@ -2202,27 +2202,44 @@ function renderQuestionGroups(host,groups,project){
  const actions=document.createElement('div');actions.className='questionActions';wrap.append(actions);
  const selected=document.createElement('button');selected.textContent='Download selected daily questions';selected.disabled=true;selected.onclick=()=>download(true);
  const all=document.createElement('button');all.textContent='Download all questions';all.onclick=()=>download(false);actions.append(selected,all);
- if(project){const day=document.createElement('p');day.textContent='Survey Dashboard · Sunday 07 December 2025';wrap.append(day);}
+ if(project&&!host.dataset.project){const day=document.createElement('p');day.textContent='Survey Dashboard · Sunday 07 December 2025';wrap.append(day);}
  groups.forEach(([name,prompts,daily],index)=>{
   if(project&&(index===0||!daily)){const heading=document.createElement('h3');heading.textContent=daily?'Daily Questions':'One time Questions';wrap.append(heading);}
   const details=document.createElement('details');details.open=index===0;
   const summary=document.createElement('summary');summary.textContent=name;
   const form=document.createElement('form');const select=document.createElement('input');select.type='checkbox';
   if(daily){const choice=document.createElement('label');choice.className='exportChoice';choice.append(select,' Include in daily download');select.onchange=()=>selected.disabled=!forms.some(x=>x.select.checked);details.append(summary,choice,form);}else details.append(summary,form);
-  const key='myih-demo-questions-v1:'+name;
+  const key='myih-demo-questions-v1:'+(host.dataset.project||'')+name;
   let saved=demoQuestionAnswers.get(key)||{};try{saved=JSON.parse(sessionStorage.getItem(key))||saved;}catch{}
   for(const prompt of prompts){
    const choices={
     'Which activities were monitored?':['Connecting lines','Cargo operations','Disconnecting','Line clearing'],
     'Worker position relative to the emission source?':['Upwind','Downwind','Variable'],
     'Were engineering controls operating?':['Yes','No'],
-    'Are there 5 workers in the confined space?':['Yes','No']
+    'Are there 5 workers in the confined space?':['Yes','No'],
+    'What changed during the survey?':['Work location','Task','Ventilation','No change'],
+    'How was the question resolved?':['Answered on site','Follow-up requested','Referred to supervisor'],
+    'Which media were used?':['PVC filter','MCE filter','Sorbent tube'],
+    'Which controls were in use?':['Local exhaust','Enclosure','Wet methods','None observed'],
+    'Which tasks were sampled?':['Loading','Cleaning','Maintenance','Production'],
+    'Were there interruptions?':['Yes','No'],
+    'What work took place?':['Routine production','Shutdown','Maintenance','Cleanup'],
+    'Which samples are planned for the turnaround?':['Personal air','Area air','Noise dosimetry'],
+    'Which welding tasks and controls were observed?':['MIG welding','Stick welding','Local exhaust','General ventilation'],
+    'Which area was sampled?':['Work enclosure','Adjacent area','Background location'],
+    'Which tasks occurred during the sampling period?':['Loading','Transfer','Cleaning'],
+    'Which activities were observed?':['Removal','Encapsulation','Cleanup']
    }[prompt];
-   if(choices){
+   if(['Which area was sampled?','How was the question resolved?'].includes(prompt)){
+    const label=document.createElement('label'),field=document.createElement('select');
+    field.name=prompt;field.add(new Option('Select an option',''));
+    choices.forEach(choice=>field.add(new Option(choice,choice)));
+    field.value=[].concat(saved[prompt]||'')[0];label.append(prompt,field);form.append(label);
+   }else if(choices){
     const group=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=prompt;group.append(legend);
     for(const choice of choices){
      const label=document.createElement('label'),input=document.createElement('input');
-     input.type=prompt==='Which activities were monitored?'?'checkbox':'radio';input.name=prompt;input.value=choice;
+     input.type=['Which activities were monitored?','What changed during the survey?','Which media were used?','Which controls were in use?','Which tasks were sampled?','What work took place?','Which samples are planned for the turnaround?','Which welding tasks and controls were observed?','Which tasks occurred during the sampling period?','Which activities were observed?'].includes(prompt)?'checkbox':'radio';input.name=prompt;input.value=choice;
      input.checked=[].concat(saved[prompt]||[]).includes(choice);label.append(input,' '+choice);group.append(label);
     }
     form.append(group);
@@ -2246,7 +2263,7 @@ function renderProjectDownloads(container){
     ['Employee notifications for noise samples','noise',row=>row[2].startsWith('Noise')]
   ];
   const project = container.dataset.project || 'Hazards Survey';
-  const projectSamples = project === 'Hazards Survey' ? MOCK.samples.filter(row => row[0].startsWith('#SG-062124-')) : [];
+  const projectSamples = records.filter(r=>r.project===project).map(sampleRow);
   const heading = document.createElement('h2');
   heading.textContent = project;
   const note = document.createElement('p');
@@ -2287,6 +2304,7 @@ container.parentElement.querySelectorAll('.svTabs button').forEach(tab=>{
  tab.classList.toggle('on',active);
  tab.setAttribute('aria-pressed',String(active));
 });
+if(container.dataset.project && ['survey_dash','project_dash','loc_info'].includes(tabName)){projectWorkspace(container,tabName);return;}
 if(tabName === 'survey_dash') {
 container.innerHTML = `<div class="svGrid">
 <div>${samplesPanelHTML(p)}</div>
@@ -2405,9 +2423,20 @@ projects:[
 ['QEC South','# 12345','QEC Refinery','May 15, 2025','Edit']
 ],
 samples:[['#SG-062124-001','Garage','Noise','Full shift','07/06/26','58% of OEL'],['#SG-062124-002','John Doe','Benzene','Full shift','03/07/26','32% of OEL'],['#XZY-071726-04','Welding Bay A','Manganese','Full shift','07/17/26','12% of OEL'],['#XZY-071726-02','Alice Dignam','Hexavalent Chromium','Full shift','07/17/26','74% of OEL'],['#CTR-071526-11','Boiler Room','Carbon Monoxide','Short term','07/15/26','4% of OEL'],['#QEC-071426-07','Unit 4 Operator','Benzene','Full shift','07/14/26','< 1% of OEL'],['#SG-071026-03','Paint Booth 2','Isocyanates','Full shift','07/10/26','118% of OEL'],['#CBC-070826-01','Loading Dock','Noise Dose','Full shift','07/08/26','61% of OEL']],
-media:[['PW PVC','Lot #4471','In stock'],['Assay 566 Badge','Lot #11223344','In stock']],
-instruments:[['3M DL-2-1/3','Dec 11, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026'],['3M Edge 4 Dosimeter','Aug 07, 2026'],['3M Edge 5 Dosimeter','Aug 07, 2026'],['3M Edge 5 Dosimeter','Aug 07, 2026'],['3M Edge 5 Dosimeter','Aug 07, 2026'],['GilAir 5','Jul 12, 2026']],
-calibration:[['3M AC-300','Dec 17, 2025'],['Assay 525 Badge','May 01, 2025'],['Blackline Docking Station','Apr 10, 2025'],['Cal dev','Aug 12, 2026'],['Cal dev','Nov 14, 2026'],['Calibrator X','May 07, 2026'],['Casella Acoustical Calibrator','May 08, 2026'],['Casella CEL - 120/12','Oct 01, 2026'],['Casella CEL Calibrator','May 07, 2026'],['Casella CEL-120/2','May 07, 2026']],
+media:[
+ ['PW PVC','Lot #4471','In stock'],['Assay 566 Badge','Lot #11223344','In stock'],
+ ['Charcoal tube','Lot #CT-2612','In stock'],['MCE filter cassette','Lot #MC-604','In stock'],
+ ['Silica gel tube','Lot #SG-804','In stock'],['PTFE filter cassette','Lot #PF-109','In stock'],
+ ['Passive vapor badge','Lot #VB-348','In stock'],['Sampling bag','Lot #TB-124','In stock'],
+ ['Quartz fiber filter','Lot #QF-322','In stock'],['Coated sorbent cartridge','Lot #CS-742','In stock']],
+instruments:[
+ ['3M Edge 4 Dosimeter','Aug 07, 2026'],['GilAir 5','Jul 12, 2026'],['SKC Pocket Pump TOUCH','Jul 14, 2026'],
+ ['Casella dBadge2','Jul 16, 2026'],['Sound level meter','Jul 18, 2026'],['Personal aerosol monitor','Jul 19, 2026'],
+ ['Four-gas monitor','Jul 20, 2026'],['Photoionization detector','Jul 21, 2026'],['Heat stress monitor','Jul 22, 2026'],['AirChek XR5000','Jul 23, 2026']],
+calibration:[
+ ['3M AC-300','Jul 10, 2026'],['SKC chek-mate','Jul 11, 2026'],['Blackline Docking Station','Jul 12, 2026'],
+ ['Casella CEL-120/2','Jul 13, 2026'],['DryCal Defender','Jul 14, 2026'],['Bubble flow meter','Jul 15, 2026'],
+ ['Piston flow calibrator','Jul 16, 2026'],['Acoustic pistonphone','Jul 17, 2026'],['Gas calibration station','Jul 18, 2026'],['High-flow transfer standard','Jul 19, 2026']],
 qgroups:[
 ['Catalyst change Out','2',''],
 ['General Questions','1','<span class="chip" style="background:#bfe5e5; color:#3b5959; font-size:1rem; padding:2px 8px;">Daily</span>'],
@@ -2421,27 +2450,103 @@ qgroups:[
 ]
 };
 function tbl(head,rows,isProject=false){
-return `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r, idx)=>`<tr ${isProject?`style="cursor:pointer;" onclick="expandProjectSurvey(this, '${r[0]}')"`:''}>${r.map((cell,col)=>`<td>${isProject && col===0 ? `<button type="button" class="questionLink">${cell}</button>` : isProject && col===4 ? 'View survey' : cell}</td>`).join('')}</tr>`).join('')}</tbody></table><div id="nestedExploreDashboard"></div>`;
+return `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r, idx)=>`<tr ${isProject?`style="cursor:pointer;" onclick="expandProjectSurvey('${r[0]}')"`:''}>${r.map((cell,col)=>`<td>${isProject && col===0 ? `<button type="button" class="questionLink">${cell}</button>` : isProject && col===4 ? 'View survey' : cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 function pager(total){
 return `<div style="display:flex;justify-content:flex-end;align-items:center;gap:26px;font-size:1rem;color:var(--ink-soft);padding:14px 6px"><span>Rows per page: 10</span><span>1–10 of ${total.toLocaleString()}</span><span>&lt;&nbsp;&nbsp;&nbsp;&gt;</span></div>`;
 }
-function expandProjectSurvey(rowElement, projName) {
-const container = document.getElementById('nestedExploreDashboard');
-container.innerHTML = `<div style="margin-top:20px; animation:pop 0.3s ease both;">
-<h3 style="font-size:1rem; margin-bottom:8px; color:var(--teal-deep);">Active Survey Workspace Context: ${projName}</h3>
-${svHTML('ex')}
-</div>`;
-document.getElementById('exContentContainer').dataset.project = projName;
-switchSubTab('ex', 'survey_dash');
+const shiftTypes=['Full Shift','Short Term','Task'];
+const originalOwners=[0,0,3,5,2,4,0,1];
+const records=[];
+function addFinished(projectIndex,row){
+ const [project,,client]=MOCK.projects[projectIndex];
+ const [id,subject,hazard,shift,date,result]=row;
+ const percent=parseFloat(result)||0;
+ const category=percent>100?0:percent>=50?1:percent>=10?2:percent>=1?3:4;
+ const duration={'Full Shift':480,'Short Term':15,'Task':90}[shift];
+ records.push({project,client,id,subject,hazard,shift,date,result,category,duration,
+  end:duration===480?'3:00 PM':duration===15?'7:15 AM':'8:30 AM',
+  instrument:hazard.startsWith('Noise')?'Noise dosimeter':hazard==='Carbon Monoxide'?'CO monitor':'Personal sampling pump'});
 }
-const dashData=[
-['BMR Industrial','2026-06-21',[0,1,0,0,0]],
-['CBC','2026-06-21',[0,0,2,0,0]],
-['CTR Consulting','2026-05-02',[1,2,3,1,0]],
-['QEC Refinery','2026-07-01',[0,1,0,1,0]],
-['XZY Chemical Industries','2026-07-18',[1,4,1,6,0]]
-];
+MOCK.samples.forEach((row,i)=>addFinished(originalOwners[i],[...row.slice(0,2),row[2]==='Noise'?'Noise Dose':row[2],row[3]==='Full shift'?'Full Shift':'Short Term',...row.slice(4)]));
+const projectHazards=[
+ ['Carbon Monoxide','Noise Dose','Manganese'],['Benzene','1,3-Butadiene','Benzene'],
+ ['Carbon Monoxide','Noise Dose','Isopropyl Alcohol'],['Benzene','Manganese','1,3-Butadiene'],
+ ['Benzene','Carbon Monoxide','Noise Dose'],['Manganese','Hexavalent Chromium','Noise Dose'],
+ ['Formaldehyde','Benzene','Isopropyl Alcohol'],['Isopropyl Alcohol','Carbon Monoxide','Noise Dose'],
+ ['1,3-Butadiene','Benzene','Carbon Monoxide']];
+MOCK.projects.forEach((project,i)=>projectHazards[i].forEach((hazard,j)=>{
+ const percent=[8,42,73,116,0.6][(i+j)%5];
+ addFinished(i,['#IH-'+String(i+1).padStart(2,'0')+'-0'+(j+1),['Alex Morgan','Taylor Reed','Casey Lee'][j],hazard,shiftTypes[j],'07/'+String(10+i).padStart(2,'0')+'/26',percent+'% of OEL']);
+}));
+function sampleRow(r){return [r.id,r.subject,r.hazard,r.shift,r.date,r.result];}
+function sampleButton(r){
+ return `<button type="button" class="questionLink" onclick="openFinished('${r.id}')">${r.id}</button>`;
+}
+function openFinished(id){
+ const r=records.find(sample=>sample.id===id);
+ showRecord({id:r.id,type:r.shift,sampler:'Sam Davidson',instrument:r.instrument,equipment:[r.project,r.subject],
+  hazard:r.hazard,status:'Finished',start:'7:00 AM',end:r.end,duration:r.duration,lastCheck:r.date+' · '+r.end,results:[r.result]});
+}
+function expandProjectSurvey(projName){
+ const project=MOCK.projects.find(row=>row[0]===projName);
+ if(!document.getElementById('sandboxModal').open){openSandbox();enterExplore();showTab('projects');}
+ const main=document.getElementById('exMain');
+ main.innerHTML=`<button type="button" class="questionLink" onclick="showTab('projects')">← Projects</button>`+svHTML('ex');
+ main.querySelector('.svTitle').textContent=project[0]+' · '+project[1];
+ main.querySelector('[data-view=questions]').textContent='Questions';
+ document.getElementById('exContentContainer').dataset.project=projName;
+ switchSubTab('ex','survey_dash');main.scrollTop=0;main.querySelector('button').focus();
+}
+function finishedTable(samples){
+ return tbl(['Sample ID','Subject','Hazard','Shift type','Date','Status','Result'],
+  samples.map(r=>[sampleButton(r),r.subject,r.hazard,r.shift,r.date,'Finished',r.result]));
+}
+const projectNotes=new Map();
+function projectWorkspace(container,tab){
+ const project=container.dataset.project, samples=records.filter(r=>r.project===project);
+ const data=MOCK.projects.find(row=>row[0]===project);
+ if(tab==='loc_info'){
+  container.innerHTML=`<h2>Location info</h2><p>${data[2]} · ${MOCK.clients.find(c=>c[0]===data[2])[1]}</p>`;return;
+ }
+ if(tab==='project_dash'){
+  const days=[...new Set(samples.map(r=>r.date))].sort();
+  container.innerHTML=`<h2>${project}</h2><div class="projectOverview"><article><h3>${data[1]}</h3>${data[2]}</article><article><h3>Sampling plan</h3>${samples.length} of ${samples.length} samples finished</article></div><h3>Survey days</h3>`+
+   tbl(['Survey date','Sampler','Finished samples'],days.map(date=>[date,'Sam Davidson',samples.filter(r=>r.date===date).length]))+
+   '<h3>Finished samples</h3>'+finishedTable(samples);return;
+ }
+ const day=document.createElement('select');
+ [...new Set(samples.map(r=>r.date))].sort().reverse().forEach(date=>day.add(new Option(date,date)));
+ container.innerHTML='<label>Survey day </label><div class="svGrid"><div class="panel"><div class="panelHd">Samples &amp; Subjects</div><div class="panelBd"></div></div><div class="panel"><div class="panelHd">Live Track Log</div><div class="dlFeed"></div></div></div>';
+ container.querySelector('label').append(day);
+ const add=document.createElement('details');
+ add.innerHTML='<summary>Add sample</summary><form><label>Sample to log <select></select></label> <button class="btn">Log finished example</button></form>';
+ const template=add.querySelector('select');
+ samples.forEach(r=>template.add(new Option(r.subject+' · '+r.hazard+' · '+r.shift,r.id)));
+ container.querySelector('.panel').append(add);
+ add.querySelector('form').onsubmit=event=>{
+  event.preventDefault();const example=records.find(r=>r.id===template.value);
+  const id='#DEMO-'+String(records.length+1).padStart(4,'0');
+  addFinished(MOCK.projects.indexOf(data),[id,example.subject,example.hazard,example.shift,day.value,example.result]);
+  samples.push(records.at(-1));add.open=false;render();
+ };
+ const composer=document.createElement('form');composer.className='dlComposer';
+ composer.innerHTML='<input required aria-label="Daily log entry" placeholder="Add a field note"><button class="btn">Log</button>';
+ container.querySelector('.dlFeed').after(composer);
+ const noteKey=()=>project+'|'+day.value;
+ composer.onsubmit=event=>{
+  event.preventDefault();const field=composer.querySelector('input'),value=field.value.trim();if(!value)return;
+  const notes=projectNotes.get(noteKey())||[];
+  notes.push([new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}),'SD','Sam Davidson',value]);
+  projectNotes.set(noteKey(),notes);field.value='';render();
+ };
+ const render=()=>{
+  const list=samples.filter(r=>r.date===day.value);
+  container.querySelector('.panelBd').innerHTML=list.map(r=>`<div class="sampleCard"><div class="sampleTop"><b>${r.subject}</b>${sampleButton(r)}</div><div class="sampleLines">${r.hazard} · ${r.shift}<br>7:00 AM – ${r.end}<br>Finished · ${r.result}</div></div>`).join('');
+  container.querySelector('.dlFeed').innerHTML=list.slice().sort((a,b)=>a.duration-b.duration).map(r=>svMsg(r.end,'SD','Sam Davidson',r.id+' finished · '+r.subject+' · '+r.hazard)).join('')+(projectNotes.get(noteKey())||[]).map(entry=>svMsg(...entry)).join('');
+ };
+ day.onchange=render;render();
+}
 function tipEl(){let t=document.getElementById('oelTip');if(!t){t=document.createElement('div');t.id='oelTip';t.className='oelTip';document.body.appendChild(t);}return t;}
 function posTip(t,ev){t.style.display='block';t.style.left=Math.min(ev.clientX+16,innerWidth-t.offsetWidth-10)+'px';t.style.top=Math.max(10,ev.clientY-t.offsetHeight-8)+'px';}
 function hideTip(){const t=document.getElementById('oelTip');if(t)t.style.display='none';}
@@ -2449,34 +2554,29 @@ function drawHDash(){
 const host=document.getElementById('hdash');if(!host)return;
 const s=document.getElementById('dashStart').value,e=document.getElementById('dashEnd').value;
 const q=((document.getElementById('dashClientQ')||{}).value||'').toLowerCase().trim();
-const rows=dashData.filter(d=>(!s||d[1]>=s)&&(!e||d[1]<=e)&&(!q||d[0].toLowerCase().indexOf(q)!==-1));
-const AX=12;
-if(!rows.length){host.innerHTML='<div style="padding:24px;text-align:center;font-size:1rem;color:var(--ink-soft)">No results in this date range</div>';document.getElementById('hAxis').innerHTML='';return;}
+const matching=records.filter(r=>{
+ const [m,d,y]=r.date.split('/'),date='20'+y+'-'+m+'-'+d;
+ return (!s||date>=s)&&(!e||date<=e)&&r.client.toLowerCase().includes(q);
+});
+const rows=MOCK.clients.map(([client])=>[client,null,CATLBL.map((_,i)=>matching.filter(r=>r.client===client&&r.category===i).length)]).filter(row=>row[2].some(Boolean));
+const AX=Math.max(1,...rows.map(row=>row[2].reduce((a,b)=>a+b,0)));
+if(!rows.length){host.innerHTML='<div style="padding:24px;text-align:center;font-size:1rem;color:var(--ink-soft)">No samples match these filters</div>';document.getElementById('hAxis').innerHTML='';return;}
 host.innerHTML=rows.map(d=>{
-const name=d[0],counts=d[2],total=counts.reduce((a,b)=>a+b,0),ri=dashData.indexOf(d);
+const name=d[0],counts=d[2],total=counts.reduce((a,b)=>a+b,0),ri=rows.indexOf(d);
 const segs=counts.map((c,i)=>c?`<button type="button" aria-label="${name}, ${CATLBL[i]}, ${c} samples" class="hseg${i===2?' yellowSeg':''}" style="background:${CAT[i][1]};flex:${c}" data-row="${ri}" data-cat="${i}">${c}</button>`:'').join('');
 return `<div class="hbarRow"><div class="hbarLabel">${name}</div><div class="hbarArea"><div class="hbarTrack" style="width:${total/AX*100}%">${segs}</div></div></div>`;
 }).join('');
 let t='';for(let v=0;v<=AX;v++)t+='<span>'+v+'</span>';document.getElementById('hAxis').innerHTML=t;
 host.querySelectorAll('.hseg').forEach(seg=>{
-seg.addEventListener('mousemove',ev=>{const ri=+seg.dataset.row,counts=dashData[ri][2];const tip=tipEl();tip.innerHTML=counts.map((c,i)=>`<div class="r"><span><i style="background:${CAT[i][1]}"></i>${CATLBL[i]}</span><b>${c}</b></div>`).join('');posTip(tip,ev);});
+seg.addEventListener('mousemove',ev=>{const ri=+seg.dataset.row,counts=rows[ri][2];const tip=tipEl();tip.innerHTML=counts.map((c,i)=>`<div class="r"><span><i style="background:${CAT[i][1]}"></i>${CATLBL[i]}</span><b>${c}</b></div>`).join('');posTip(tip,ev);});
 seg.addEventListener('mouseleave',hideTip);
-seg.addEventListener('click',()=>showSegSamples(+seg.dataset.row,+seg.dataset.cat));
+seg.addEventListener('click',()=>showSegSamples(matching,rows[+seg.dataset.row][0],+seg.dataset.cat));
 });
 }
-function showSegSamples(ri,cat){
+function showSegSamples(matching,name,cat){
 const modal=document.getElementById('sampleDialog');if(modal&&!modal.open)modal.showModal();
 const host=document.getElementById('segSamples');if(!host)return;
-const name=dashData[ri][0],n=dashData[ri][2][cat];
-if(!n){host.innerHTML='<div class="cardShadow" style="background:#fff;margin-top:16px;font-size:1rem;color:var(--ink-soft)">No samples for '+name+' in the '+CATLBL[cat]+' band.</div>';return;}
-const hazards=['Noise Dose','Benzene','Carbon Monoxide','Manganese','Hexavalent Chromium','Respirable Dust','Isocyanates'];
-const proj=name.split(' ')[0].toUpperCase()+' - 2026 SAMPLING CAMPAIGN';
-let rows='';
-for(let i=0;i<n;i++){
-const id='DW-0'+(40726+ri*211+i*13)+'-'+String(5+i*2).padStart(2,'0');
-const hz=hazards[(ri*3+cat+i)%hazards.length];
-rows+=`<tr><td>${id}</td><td>${hz}</td><td>${proj}</td></tr>`;
-}
+const rows=matching.filter(r=>r.client===name&&r.category===cat).map(r=>`<tr><td>${r.id}</td><td>${r.hazard}</td><td>${r.project}</td></tr>`).join('');
 host.innerHTML=`<div class="cardShadow" style="background:#fff;margin-top:16px;animation:pop .3s ease both"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h3 style="font-size:1.125rem;color:var(--slate)">Samples <span style="font-weight:400;color:var(--ink-soft);font-size:1rem">— ${name}, ${CATLBL[cat]}</span></h3><input type="search" aria-label="Search these samples" placeholder="Search for samples" style="max-width:220px"></div><br><table><thead><tr><th>Sample ID</th><th>Hazard</th><th>Project</th></tr></thead><tbody>${rows}</tbody></table><p role="status" hidden>No matching samples.</p></div>`;
 host.querySelector('input').oninput=event=>{
   const query=event.target.value.trim().toLowerCase();
@@ -2487,16 +2587,17 @@ host.querySelector('input').oninput=event=>{
 }
 function drawDonut(){
 const box=document.getElementById('donutBox');if(!box)return;
-const hz=((document.getElementById('donutHaz')||{}).value)||'';
-const checked=[...document.querySelectorAll('.donutClients input:checked')].map(c=>c.parentElement.textContent.trim());
-let sd=2166136261;const seedStr=hz+'|'+checked.join(',');for(let i=0;i<seedStr.length;i++){sd^=seedStr.charCodeAt(i);sd=Math.imul(sd,16777619);}sd=sd>>>0;
-const rnd=()=>{sd=(Math.imul(sd,1103515245)+12345)>>>0;return sd/4294967296;};
-const nClients=checked.length||3;
-const total=Math.max(8,Math.round((25+rnd()*230)*Math.max(1,nClients/2)));
-let w=[rnd()*0.06,rnd()*0.14,rnd()*0.28,0.35+rnd()*0.55,rnd()*0.32];
-const sw=w.reduce((a,b)=>a+b,0);
-let data=w.map(x=>Math.round(x/sw*total));
-data[3]+=total-data.reduce((a,b)=>a+b,0);if(data[3]<0){data[4]+=data[3];data[3]=0;}
+const hazard=document.getElementById('donutHaz').value,shift=document.getElementById('donutShift').value;
+const clients=[...document.querySelectorAll('.donutClients input:checked')].map(c=>c.value);
+const matches=records.filter(r=>(!hazard||r.hazard===hazard)&&(!shift||r.shift===shift)&&(!clients.length||clients.includes(r.client)));
+const data=CATLBL.map((_,i)=>matches.filter(r=>r.category===i).length),total=matches.length;
+const bands=document.getElementById('scenarioBand');
+function renderResults(){
+ const selected=matches.filter(r=>bands.value===''||r.category===Number(bands.value));
+ const groups=MOCK.projects.map(([project])=>[selected.filter(r=>r.project===project).length,project]).filter(([count])=>count);
+ box.closest('.scenarioPair').querySelector('.dashResults').innerHTML=groups.length?tbl(['Results','Project'],groups):'<p role="status">No finished samples match these filters.</p>';
+}
+bands.onchange=renderResults;renderResults();
 const r=118,cx=150,cy=150,C=2*Math.PI*r,gap=6;
 let off=0,segs='';
 data.forEach((n,i)=>{if(n<=0)return;const len=n/total*C;segs+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${CAT[i][1]}" stroke-width="8" stroke-linecap="butt" stroke-dasharray="${Math.max(0.5,len-gap)} ${C-Math.max(0.5,len-gap)}" stroke-dashoffset="${-off}" data-cat="${i}" data-n="${n}" style="cursor:pointer"></circle>`;off+=len;});
@@ -2505,7 +2606,30 @@ box.setAttribute('aria-label','Total results '+total+'. '+data.map((count,i)=>CA
 box.querySelectorAll('circle').forEach(ci=>{
 ci.addEventListener('mousemove',ev=>{const i=+ci.dataset.cat,n=+ci.dataset.n;const tip=tipEl();tip.innerHTML=`<div class="r"><span><i style="background:${CAT[i][1]}"></i>${CATLBL[i]}</span><b>${n}</b></div>`;posTip(tip,ev);});
 ci.addEventListener('mouseleave',hideTip);
+ci.onclick=()=>{bands.value=ci.dataset.cat;renderResults();};
 });
+}
+const inventorySerials=new Map();
+function openInventory(tab,index){
+ const main=document.getElementById('exMain'),[name,detail,status]=MOCK[tab][index];
+ const label={media:'Sample Media',instruments:'Instruments',calibration:'Calibration devices'}[tab];
+ main.innerHTML=`<button class="questionLink" type="button">← ${label}</button><h2>${name}</h2><div class="cardShadow"><h3>${tab==='media'?'Lot details':'Device details'}</h3><p>${tab==='media'?detail+' · '+status:'Recent activity · '+detail}</p></div>`;
+ const back=main.querySelector('button');back.onclick=()=>{showTab(tab);main.querySelectorAll('tbody button')[index].focus();};back.focus();
+ if(tab==='media')return;
+ const key='myih-inventory-'+tab+'-'+index;
+ let serials=inventorySerials.get(key)||[(tab==='instruments'?'INS':'CAL')+'-'+String(index+101)];
+ try{serials=JSON.parse(sessionStorage.getItem(key))||serials;}catch{}
+ const card=main.querySelector('.cardShadow');
+ card.insertAdjacentHTML('beforeend','<h3>Serial numbers</h3><ul></ul><button type="button" class="btn">Add serial number</button><form hidden><label>Serial number <input required maxlength="80"></label> <button class="btn">Save</button></form><p role="status"></p>');
+ const list=card.querySelector('ul'),form=card.querySelector('form'),input=form.querySelector('input'),add=card.querySelector('button');
+ const draw=()=>list.replaceChildren(...serials.map(value=>{const li=document.createElement('li');li.textContent=value;return li;}));
+ draw();add.onclick=()=>{form.hidden=false;input.focus();};
+ form.onsubmit=e=>{
+  e.preventDefault();const value=input.value.trim(),message=card.querySelector('[role=status]');
+  if(!value||serials.some(v=>v.toLowerCase()===value.toLowerCase())){message.textContent=value?'This serial number already exists.':'Enter a serial number.';input.focus();return;}
+  serials.push(value);inventorySerials.set(key,serials);try{sessionStorage.setItem(key,JSON.stringify(serials));}catch{}
+  draw();form.reset();form.hidden=true;add.focus();message.textContent='Serial number added.';
+ };
 }
 function showTab(t){
 document.querySelectorAll('#exNav li').forEach(item=>{
@@ -2534,30 +2658,12 @@ m.innerHTML=`<div class="dashboardHeading"><h2>Dashboards</h2></div>
 </div>
 <div class="scenarioPair" data-dashboard-panel="hazard"><div class="cardShadow dashboardHazard" style="background:#fff">
 <h3 class="dashboardChartTitle">Detail of sample scenario selected by % of OEL category</h3>
-<div class="dashDates"><label>Hazard<select id="donutHaz" style="min-width:240px" onchange="drawDonut()"><option>Carbon Monoxide - # 630-08-0</option><option>1,3-Butadiene - # 106-99-0</option><option>Benzene - # 71-43-2</option><option>Manganese - # 7439-96-5</option><option>Noise Dose</option></select></label></div>
-<div class="donutGrid">
-<div class="donutBox" id="donutBox" role="img"></div>
-<div class="donutClients"><b style="font-size:1rem">Clients</b>
-<label><input type="checkbox" onchange="drawDonut()"> XYZ Inc.</label>
-<label><input type="checkbox" onchange="drawDonut()"> BMR Industrial</label>
-<label><input type="checkbox" onchange="drawDonut()"> CBC</label>
-<label><input type="checkbox" onchange="drawDonut()"> CTR Consulting</label>
-<label><input type="checkbox" onchange="drawDonut()"> QEC Refinery</label>
-<label><input type="checkbox" onchange="drawDonut()"> XZY Chemical Industries</label>
-</div>
-</div></div><div class="cardShadow dashResults"><table><thead><tr><th>Results</th><th>Project</th></tr></thead><tbody>
-<tr><td>13</td><td>Client D – Site 2 – Q4 2026</td></tr>
-<tr><td>3</td><td>Client X Sampling Program – Site 7</td></tr>
-<tr><td>31</td><td>Regional Office – ROTC A&amp;B, Workshop</td></tr>
-<tr><td>14</td><td>Client F – Day 2 – 2026 Q1</td></tr>
-<tr><td>17</td><td>Client Y Chemical – Cell Renovation</td></tr>
-<tr><td>16</td><td>Client Z – Ammonia Program 2026</td></tr>
-<tr><td>18</td><td>Regional Office – Chiller &amp; Equip Room</td></tr>
-<tr><td>13</td><td>Client D – Site 1 – Q4 2026</td></tr>
-<tr><td>10</td><td>Client D – Site 1 – Q2 2026</td></tr>
-<tr><td>12</td><td>Client D – Site 1 – Q3 2026</td></tr>
-</tbody></table><div style="display:flex;justify-content:flex-end;align-items:center;gap:22px;font-size:1rem;color:var(--ink-soft);padding:12px 6px"><span>10 example projects</span></div></div>
-</div>
+<div class="dashDates"><label>Hazard<select id="donutHaz" onchange="drawDonut()"><option value="">All hazards</option>${[...new Set(records.map(r=>r.hazard))].sort().map(h=>`<option>${h}</option>`).join('')}</select></label>
+<label>Shift type<select id="donutShift" onchange="drawDonut()"><option value="">All shift types</option>${shiftTypes.map(t=>`<option>${t}</option>`).join('')}</select></label>
+<label>OEL category<select id="scenarioBand"><option value="">All categories</option>${CATLBL.map((c,i)=>`<option value="${i}">${esc(c)}</option>`).join('')}</select></label></div>
+<div class="donutGrid"><div class="donutBox" id="donutBox" role="img"></div><div class="donutClients"><b>Clients</b>
+${MOCK.clients.map(([name])=>`<label><input type="checkbox" value="${name}" onchange="drawDonut()"> ${name}</label>`).join('')}
+</div></div></div><div class="cardShadow dashResults"></div></div>
 <dialog id="sampleDialog" class="sampleDialog" aria-label="Samples"><button class="sampleDialogClose" aria-label="Close samples" onclick="this.closest(\'dialog\').close()">×</button><div id="segSamples"></div></dialog>`;
 drawHDash();drawDonut();
 }
@@ -2566,14 +2672,20 @@ else {
 const configs={
 clients:['Client',['Name','Address','Recent Activity'],MOCK.clients,'NEW CLIENT'],
 projects:['Projects',['Project name','Job number','Client name','Recent activity','Actions'],MOCK.projects,'NEW PROJECT'],
-samples:['Samples',['Sample ID','Subject','Hazard','Type','Date','Result'],MOCK.samples,''],
+samples:['Samples',['Sample ID','Subject','Hazard','Type','Date','Result'],records.map(r=>[sampleButton(r),...sampleRow(r).slice(1)]),''],
 media:['Sample Media',['Media','Lot','Status'],MOCK.media,''],
 instruments:['Instruments',['Instrument name','Recent activity'],MOCK.instruments,'NEW INSTRUMENT'],
 calibration:['Calibration devices',['Calibration name','Recent activity'],MOCK.calibration,'NEW CALIBRATION DEVICE'],
 questions:['Question groups',['Title','Questions','Group type'],MOCK.qgroups,'NEW GROUP']
 };
 const c=configs[t];if(!c)return;
-m.innerHTML='<div class="platformToolbar"><h2>'+c[0]+'</h2><input type="search" aria-label="Search '+c[0]+'" placeholder="Search '+c[0].toLowerCase()+'">'+'</div>'+tbl(c[1],c[2],t==='projects')+'<div class="platformPager" style="text-align:right;padding:18px;font-size:14px">Rows per page: 10　　1–'+c[2].length+' of '+c[2].length+'</div>';
+m.innerHTML='<div class="platformToolbar"><h2>'+c[0]+'</h2><input type="search" aria-label="Search '+c[0]+'" placeholder="Search '+c[0].toLowerCase()+'">'+'</div>'+tbl(c[1],c[2],t==='projects')+'<div class="platformPager" style="text-align:right;padding:18px;font-size:14px">Showing 1–'+c[2].length+' of '+c[2].length+'</div>';
+if(['media','instruments','calibration'].includes(t)){
+ m.querySelectorAll('tbody tr').forEach((row,i)=>{
+  const button=document.createElement('button');button.type='button';button.className='questionLink';button.textContent=c[2][i][0];
+  row.cells[0].replaceChildren(button);row.style.cursor='pointer';row.onclick=()=>openInventory(t,i);
+ });
+}
 if(t==='questions'){
  const prompts=[
  ['Are there 5 workers in the confined space?','What is the catalyst?'],
